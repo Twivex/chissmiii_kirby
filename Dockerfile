@@ -50,6 +50,10 @@ RUN pecl install zlib zip
 RUN cp $PHP_INI_DIR/php.ini-$env $PHP_INI_DIR/php.ini
 # COPY ./files/php-bildmeister.ini $PHP_INI_DIR/conf.d
 
+# Install Node JS
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+
 ## Copy apache config file to container
 COPY files/apache.conf /etc/apache2/sites-enabled/000-default.conf
 
