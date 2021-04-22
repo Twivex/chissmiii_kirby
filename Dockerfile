@@ -17,16 +17,6 @@ RUN apt-get install -y --no-install-recommends \
         zip \
         libzip-dev
 
-# ENV COMPOSER_HOME $HOME/.composer
-
-# RUN mkdir -p $COMPOSER_HOME/vendor/bin
-
-# # download and check composer (may need to update hash in future)
-# RUN curl -sSL https://getcomposer.org/installer | \
-#     php -- --install-dir=$COMPOSER_HOME/vendor/bin --filename=composer
-# # add composer vendors to path
-# ENV PATH vendor/bin:$COMPOSER_HOME/vendor/bin:$PATH
-
 ###---
 # do we need this?
 # # Install composer
