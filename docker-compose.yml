@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+  chissmiii-kirby:
+    image: chissmiii_kirby
+    build:
+      context: ./
+      target: base-stage
+      args:
+        env: development
+    container_name: chissmiii_kirby
+    command: sh -c "apache2-foreground"
+    ports:
+      - 8000:80
+      - 80:80
+      - 8443:443
+    networks:
+      - chissmiii
+    volumes:
+      - chissmiii_kirby_vol:/var/www/html
+
+networks:
+  chissmiii:
+    driver: bridge
+    name: chissmiii_network
+
+volumes:
+  chissmiii_kirby_vol:
+    name: chissmiii_kirby_src
+    driver: local
+    driver_opts:
+      device: ./dist
+      type: none
+      o: bind
