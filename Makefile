@@ -16,3 +16,9 @@ down:
 
 enter:
 	docker exec -it chissmiii_kirby bash
+
+download-content:
+	sh scripts/copy-to-local.sh
+
+upload-content:
+	sh scripts/copy-to-bay.sh
