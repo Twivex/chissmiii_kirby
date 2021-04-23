@@ -18,7 +18,7 @@ enter:
 	docker exec -it chissmiii_kirby bash
 
 download-content:
-	rsync -avzP dock@bay:/var/www/chissmiii/dist/content/ ./dist/content/
+	rsync -avzP --delete dock@bay:/var/www/chissmiii/dist/content/ ./dist/content/
 
 upload-content:
-	rsync -avzP ./dist/content/ dock@bay:/var/www/chissmiii/dist/content/
+	rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii/dist/content/
