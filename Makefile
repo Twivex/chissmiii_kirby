@@ -18,7 +18,7 @@ enter:
 	docker exec -it chissmiii_kirby bash
 
 download-content:
-	sh scripts/copy-to-local.sh
+	rsync -avzP dock@bay:/var/www/chissmiii/dist/content/ ./dist/content/
 
 upload-content:
-	sh scripts/copy-to-bay.sh
+	rsync -avzP ./dist/content/ dock@bay:/var/www/chissmiii/dist/content/
