@@ -70,5 +70,8 @@ RUN docker-php-ext-enable mcrypt
 
 COPY ./dist ./
 
+RUN npm install --only=prod
+RUN npm run build
+
 RUN chown -R :www-data /var/www/html
 RUN chmod -R 775 /var/www/html
