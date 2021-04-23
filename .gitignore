@@ -3,7 +3,6 @@
 /.vscode
 
 /dist/content
-/dist/resources/css
-/dist/resources/js
-!/dist/resources/js/.gitkeep
+/dist/resources/css/*.css
+/dist/resources/js/*.js
 /dist/node_modules
