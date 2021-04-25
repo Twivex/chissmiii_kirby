@@ -37,10 +37,41 @@ Codename | buster
 TODO: add description
 
 ## Misc Commands
+`make build`
+
+Build images (force)
+
+---
+`make up`
+
+Start containers (Setup network & volumes + build images, if necessary)
+
+---
+`make stop`
+
+Stop containers
+
+---
+`make restart`
+
+Stop and restart containers
+
+---
+`make enter`
+
+Enter the container shell
+
+---
+`make down`
+
+Removes everything (containers, images, volumes, networks)
+
+---
 `make upload-content`
 
 Copy content from local to pi (Hint: may delete!)
 
+---
 `make download-content`
 
 Copy content from pi to local (Hint: may delete!)
