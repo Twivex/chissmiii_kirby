@@ -19,6 +19,7 @@ services:
       - chissmiii
     volumes:
       - chissmiii_dist_vol:/var/www/html
+      - chissmiii_node_modules_vol:/var/www/html/node_modules
 
 networks:
   chissmiii:
@@ -33,3 +34,6 @@ volumes:
       device: ./dist
       type: none
       o: bind
+
+  chissmiii_node_modules_vol:
+    name: chissmiii_node_modules
