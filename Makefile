@@ -14,7 +14,7 @@ stop:
 restart: stop up
 
 down:
-	docker-compose down
+	docker-compose down --volumes --rmi all
 
 enter:
 	docker exec -it chissmiii_kirby bash
