@@ -1,0 +1,12 @@
+title: Test Page
+preset: page
+options:
+  changeTemplate:
+    - test
+    - default
+fields:
+  text:
+    label: Text
+    type: textarea
+    size: large
+
