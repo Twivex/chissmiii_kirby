@@ -18,7 +18,7 @@ services:
     networks:
       - chissmiii
     volumes:
-      - chissmiii_kirby_vol:/var/www/html
+      - chissmiii_dist_vol:/var/www/html
 
 networks:
   chissmiii:
@@ -26,8 +26,8 @@ networks:
     name: chissmiii_network
 
 volumes:
-  chissmiii_kirby_vol:
-    name: chissmiii_kirby_src
+  chissmiii_dist_vol:
+    name: chissmiii_dist_src
     driver: local
     driver_opts:
       device: ./dist
