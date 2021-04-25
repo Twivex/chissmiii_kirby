@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'debug'  => true
+  'routes' => require_once 'routes.php',
+  'debug'  => true
 ];

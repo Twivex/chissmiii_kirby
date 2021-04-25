@@ -1,0 +1,5 @@
+title: Medienzugriff
+description: Zugriff auf exklusive Medien (Photos & Videos)
+permissions:
+  access:
+    panel: false
