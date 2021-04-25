@@ -1,6 +1,16 @@
 title: Default Page
 preset: page
+options:
+  changeTemplate:
+    - test
+    - default
 fields:
+  secured:
+    label: Login erforderlich?
+    type: toggle
+    text:
+      - "Nein"
+      - "Ja"
   text:
     label: Text
     type: textarea
