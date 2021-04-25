@@ -1,5 +1,6 @@
 # TODOS
 ## Infrastruktur
+- Readme anlegen
 - Git
   - Content Ordner als git repo
 - Docker
