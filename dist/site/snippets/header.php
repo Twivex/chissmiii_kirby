@@ -6,4 +6,4 @@
     <header>
       <?php snippet('nav') ?>
     </header>
-    <main id="main">
+    <main id="main" class="container">
