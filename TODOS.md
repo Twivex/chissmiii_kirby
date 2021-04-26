@@ -4,6 +4,8 @@
   - Content Ordner als git repo
 - Docker
   - node modules als volume
+- Kirby
+  - Asset Firewall: https://k2.getkirby.com/docs/cookbook/asset-firewall
 
 ## Design / Layout
 - Bootstrap
@@ -25,7 +27,10 @@
 # Done
 ## Infrastruktur
 - Readme anlegen
-- Kirby Setup
+- Kirby
+  - Installation
+  - Frontend User Login: https://getkirby.com/docs/cookbook/security/access-restriction
+  - Geschützte Seiten per Template
 - Docker Setup
 - Build Chain Setup
 - Make Commands
