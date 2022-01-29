@@ -6,6 +6,7 @@
   - node modules als volume
 - Kirby
   - Asset Firewall: https://k2.getkirby.com/docs/cookbook/asset-firewall
+  - https://forum.getkirby.com/t/how-to-build-an-asset-firewall/1009
 
 ## Design / Layout
 - Bootstrap
