@@ -1,6 +1,11 @@
 <?php
-
 return [
   'routes' => require_once 'routes.php',
-  'debug'  => true
+  'debug'  => true,
+  'panel' => [
+    'language' => 'de'
+  ],
+  'auth' => [
+    'methods' => ['password', 'password-reset']
+  ]
 ];
