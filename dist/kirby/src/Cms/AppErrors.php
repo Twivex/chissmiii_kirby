@@ -83,7 +83,7 @@ trait AppErrors
                 $fatal = $this->option('fatal');
 
                 if (is_a($fatal, 'Closure') === true) {
-                    echo $fatal($this);
+                    echo $fatal($this, $exception);
                 } else {
                     include $this->root('kirby') . '/views/fatal.php';
                 }
@@ -128,7 +128,7 @@ trait AppErrors
                     'code'      => $code,
                     'message'   => $exception->getMessage(),
                     'details'   => $details,
-                    'file'      => ltrim($exception->getFile(), $_SERVER['DOCUMENT_ROOT'] ?? null),
+                    'file'      => ltrim($exception->getFile(), $_SERVER['DOCUMENT_ROOT'] ?? ''),
                     'line'      => $exception->getLine(),
                 ], $httpCode);
             } else {
@@ -144,6 +144,7 @@ trait AppErrors
         });
 
         $this->setWhoopsHandler($handler);
+        $this->whoops()->sendHttpCode(false);
     }
 
     /**
@@ -157,7 +158,21 @@ trait AppErrors
         $whoops = $this->whoops();
         $whoops->clearHandlers();
         $whoops->pushHandler($handler);
+        $whoops->pushHandler($this->getExceptionHookWhoopsHandler());
         $whoops->register(); // will only do something if not already registered
+    }
+
+    /**
+     * Initializes a callback handler for triggering the `system.exception` hook
+     *
+     * @return \Whoops\Handler\CallbackHandler
+     */
+    protected function getExceptionHookWhoopsHandler(): CallbackHandler
+    {
+        return new CallbackHandler(function ($exception, $inspector, $run) {
+            $this->trigger('system.exception', compact('exception'));
+            return Handler::DONE;
+        });
     }
 
     /**

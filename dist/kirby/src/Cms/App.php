@@ -3,21 +3,23 @@
 namespace Kirby\Cms;
 
 use Kirby\Data\Data;
-use Kirby\Email\PHPMailer as Emailer;
 use Kirby\Exception\ErrorPageException;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\LogicException;
 use Kirby\Exception\NotFoundException;
+use Kirby\Filesystem\Dir;
+use Kirby\Filesystem\F;
 use Kirby\Http\Request;
 use Kirby\Http\Router;
 use Kirby\Http\Server;
+use Kirby\Http\Uri;
 use Kirby\Http\Visitor;
 use Kirby\Session\AutoSession;
+use Kirby\Text\KirbyTag;
+use Kirby\Text\KirbyTags;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\Config;
 use Kirby\Toolkit\Controller;
-use Kirby\Toolkit\Dir;
-use Kirby\Toolkit\F;
 use Kirby\Toolkit\Properties;
 use Throwable;
 
@@ -52,6 +54,7 @@ class App
 
     protected $api;
     protected $collections;
+    protected $core;
     protected $defaultLanguage;
     protected $language;
     protected $languages;
@@ -83,6 +86,8 @@ class App
      */
     public function __construct(array $props = [], bool $setInstance = true)
     {
+        $this->core = new Core($this);
+
         // register all roots to be able to load stuff afterwards
         $this->bakeRoots($props['roots'] ?? []);
 
@@ -224,7 +229,7 @@ class App
     /**
      * Normalizes and globally sets the configured options
      *
-     * @return self
+     * @return $this
      */
     protected function bakeOptions()
     {
@@ -260,11 +265,11 @@ class App
      * Sets the directory structure
      *
      * @param array|null $roots
-     * @return self
+     * @return $this
      */
     protected function bakeRoots(array $roots = null)
     {
-        $roots = array_merge(require dirname(__DIR__, 2) . '/config/roots.php', (array)$roots);
+        $roots = array_merge($this->core->roots(), (array)$roots);
         $this->roots = Ingredients::bake($roots);
         return $this;
     }
@@ -273,7 +278,7 @@ class App
      * Sets the Url structure
      *
      * @param array|null $urls
-     * @return self
+     * @return $this
      */
     protected function bakeUrls(array $urls = null)
     {
@@ -282,7 +287,7 @@ class App
             $urls['index'] = $this->options['url'];
         }
 
-        $urls = array_merge(require $this->root('kirby') . '/config/urls.php', (array)$urls);
+        $urls = array_merge($this->core->urls(), (array)$urls);
         $this->urls = Ingredients::bake($urls);
         return $this;
     }
@@ -325,6 +330,10 @@ class App
     {
         $router = $this->router();
 
+        /**
+         * @todo Closures should not defined statically but
+         * for each instance to avoid this constant setting and unsetting
+         */
         $router::$beforeEach = function ($route, $path, $method) {
             $this->trigger('route:before', compact('route', 'path', 'method'));
         };
@@ -333,7 +342,12 @@ class App
             return $this->apply('route:after', compact('route', 'path', 'method', 'result', 'final'), 'result');
         };
 
-        return $router->call($path ?? $this->path(), $method ?? $this->request()->method());
+        $result = $router->call($path ?? $this->path(), $method ?? $this->request()->method());
+
+        $router::$beforeEach = null;
+        $router::$afterEach  = null;
+
+        return $result;
     }
 
     /**
@@ -342,7 +356,7 @@ class App
      *
      * @param array $props
      * @param bool $setInstance If false, the instance won't be set globally
-     * @return self
+     * @return static
      */
     public function clone(array $props = [], bool $setInstance = true)
     {
@@ -503,6 +517,17 @@ class App
     }
 
     /**
+     * Get access to object that lists
+     * all parts of Kirby core
+     *
+     * @return \Kirby\Cms\Core
+     */
+    public function core()
+    {
+        return $this->core;
+    }
+
+    /**
      * Returns the default language object
      *
      * @return \Kirby\Cms\Language|null
@@ -554,11 +579,14 @@ class App
      *
      * @param mixed $preset
      * @param array $props
-     * @return \Kirby\Email\PHPMailer
+     * @return \Kirby\Email\Email
      */
     public function email($preset = [], array $props = [])
     {
-        return new Emailer((new Email($preset, $props))->toArray(), $props['debug'] ?? false);
+        $debug = $props['debug'] ?? false;
+        $props = (new Email($preset, $props))->toArray();
+
+        return ($this->component('email'))($this, $props, $debug);
     }
 
     /**
@@ -609,7 +637,7 @@ class App
      *
      * @param \Kirby\Cms\App|null $instance
      * @param bool $lazy If `true`, the instance is only returned if already existing
-     * @return self|null
+     * @return static|null
      */
     public static function instance(self $instance = null, bool $lazy = false)
     {
@@ -640,12 +668,11 @@ class App
         // any direct exception will be turned into an error page
         if (is_a($input, 'Throwable') === true) {
             if (is_a($input, 'Kirby\Exception\Exception') === true) {
-                $code    = $input->getHttpCode();
-                $message = $input->getMessage();
+                $code = $input->getHttpCode();
             } else {
-                $code    = $input->getCode();
-                $message = $input->getMessage();
+                $code = $input->getCode();
             }
+            $message = $input->getMessage();
 
             if ($code < 400 || $code > 599) {
                 $code = 500;
@@ -747,8 +774,13 @@ class App
         $data['kirby']  = $data['kirby']  ?? $this;
         $data['site']   = $data['site']   ?? $data['kirby']->site();
         $data['parent'] = $data['parent'] ?? $data['site']->page();
+        $options        = $this->options;
 
-        return KirbyTags::parse($text, $data, $this->options, $this);
+        $text = $this->apply('kirbytags:before', compact('text', 'data', 'options'), 'text');
+        $text = KirbyTags::parse($text, $data, $options);
+        $text = $this->apply('kirbytags:after', compact('text', 'data', 'options'), 'text');
+
+        return $text;
     }
 
     /**
@@ -817,15 +849,26 @@ class App
     /**
      * Returns all available site languages
      *
+     * @param bool
      * @return \Kirby\Cms\Languages
      */
-    public function languages()
+    public function languages(bool $clone = true)
     {
         if ($this->languages !== null) {
-            return clone $this->languages;
+            return $clone === true ? clone $this->languages : $this->languages;
         }
 
         return $this->languages = Languages::load();
+    }
+
+    /**
+     * Access Kirby's part loader
+     *
+     * @return \Kirby\Cms\Loader
+     */
+    public function load()
+    {
+        return new Loader($this);
     }
 
     /**
@@ -995,6 +1038,10 @@ class App
         $parent = $parent ?? $this->site();
 
         if ($page = $parent->find($id)) {
+            /**
+             * We passed a single $id, we can be sure that the result is
+             * @var \Kirby\Cms\Page $page
+             */
             return $page;
         }
 
@@ -1212,7 +1259,7 @@ class App
         }
 
         $registry = $this->extensions('routes');
-        $system   = (include $this->root('kirby') . '/config/routes.php')($this);
+        $system   = $this->core->routes();
         $routes   = array_merge($system['before'], $registry, $system['after']);
 
         return $this->routes = $routes;
@@ -1226,6 +1273,10 @@ class App
      */
     public function session(array $options = [])
     {
+        // never cache responses that depend on the session
+        $this->response()->cache(false);
+        $this->response()->header('Cache-Control', 'no-store', true);
+
         return $this->sessionHandler()->get($options);
     }
 
@@ -1244,7 +1295,7 @@ class App
      * Create your own set of languages
      *
      * @param array|null $languages
-     * @return self
+     * @return $this
      */
     protected function setLanguages(array $languages = null)
     {
@@ -1266,7 +1317,7 @@ class App
      * used for the router
      *
      * @param string|null $path
-     * @return self
+     * @return $this
      */
     protected function setPath(string $path = null)
     {
@@ -1278,7 +1329,7 @@ class App
      * Sets the request
      *
      * @param array|null $request
-     * @return self
+     * @return $this
      */
     protected function setRequest(array $request = null)
     {
@@ -1293,7 +1344,7 @@ class App
      * Create your own set of roles
      *
      * @param array|null $roles
-     * @return self
+     * @return $this
      */
     protected function setRoles(array $roles = null)
     {
@@ -1310,7 +1361,7 @@ class App
      * Sets a custom Site object
      *
      * @param \Kirby\Cms\Site|array|null $site
-     * @return self
+     * @return $this
      */
     protected function setSite($site = null)
     {
@@ -1479,11 +1530,26 @@ class App
      * Returns a system url
      *
      * @param string $type
-     * @return string
+     * @param bool $object If set to `true`, the URL is converted to an object
+     * @return string|\Kirby\Http\Uri
      */
-    public function url(string $type = 'index'): string
+    public function url(string $type = 'index', bool $object = false)
     {
-        return $this->urls->__get($type);
+        $url = $this->urls->__get($type);
+
+        if ($object === true) {
+            if (Url::isAbsolute($url)) {
+                return Url::toObject($url);
+            }
+
+            // index URL was configured without host, use the current host
+            return Uri::current([
+                'path'   => $url,
+                'query'  => null
+            ]);
+        }
+
+        return $url;
     }
 
     /**

@@ -5,7 +5,7 @@ namespace Kirby\Http;
 use Exception;
 use Kirby\Cms\App;
 use Kirby\Exception\InvalidArgumentException;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 use Kirby\Toolkit\Str;
 
 /**
@@ -104,6 +104,13 @@ class Remote
     {
         $defaults = static::$defaults;
 
+        // use the system CA store by default if
+        // one has been configured in php.ini
+        $cainfo = ini_get('curl.cainfo');
+        if (empty($cainfo) === false && is_file($cainfo) === true) {
+            $defaults['ca'] = self::CA_SYSTEM;
+        }
+
         // update the defaults with App config if set;
         // request the App instance lazily
         $app = App::instance(null, true);
@@ -149,7 +156,7 @@ class Remote
     /**
      * Sets up all curl options and sends the request
      *
-     * @return self
+     * @return $this
      */
     public function fetch()
     {
@@ -291,7 +298,7 @@ class Remote
      *
      * @param string $url
      * @param array $params
-     * @return self
+     * @return static
      */
     public static function get(string $url, array $params = [])
     {
@@ -385,7 +392,7 @@ class Remote
      *
      * @param string $url
      * @param array $params
-     * @return self
+     * @return static
      */
     public static function request(string $url, array $params = [])
     {

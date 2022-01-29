@@ -23,13 +23,13 @@ class Fields extends Collection
      *
      * @param string $name
      * @param object|array $field
-     * @return self
+     * @return $this
      */
     public function __set(string $name, $field)
     {
         if (is_array($field) === true) {
             // use the array key as name if the name is not set
-            $field['name'] = $field['name'] ?? $name;
+            $field['name'] ??= $name;
             $field = Field::factory($field['type'], $field, $this);
         }
 
