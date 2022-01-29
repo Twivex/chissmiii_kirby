@@ -1,8 +1,14 @@
 ### Base Stage
 ## Bootstrap from PHP container
-FROM php:7.4-apache as base-stage
+FROM php:8.0-apache as base-stage
 # set default env
-ARG env=production
+ARG ENV=production
+
+# set time zone variable
+ENV TZ=Europe/Berlin
+
+# set localtime
+RUN rm /etc/localtime; ln -s /usr/share/zoneinfo/$TZ /etc/localtime; dpkg-reconfigure -f noninteractive tzdata
 
 # Installing dependencies
 RUN apt-get update \
@@ -17,24 +23,19 @@ RUN apt-get install -y --no-install-recommends \
         zip \
         libzip-dev
 
-###---
-# do we need this?
-# # Install composer
-# RUN curl -sS https://getcomposer.org/installer | \
-#     php -- --install-dir=/usr/local/bin --filename=composer
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-# # Add composer to path
-# ENV PATH="/root/.composer/vendor/bin:${PATH}"
-###---
+RUN chmod +x /usr/local/bin/install-php-extensions && sync && install-php-extensions \
+    curl \
+    dom \
+    gd \
+    intl \
+    mbstring \
+    xml \
+    zip
 
-# Set locales
-# RUN echo "de_DE.UTF-8 UTF-8" >> /etc/locale.gen
-# RUN locale-gen
-
-## Add GIT LFS
-# RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
-# RUN apt-get install git-lfs
-
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # pecl config
 RUN pecl channel-update pecl.php.net
@@ -42,36 +43,39 @@ RUN pecl config-set php_ini /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 RUN pear config-set php_ini /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 
 RUN pecl install zlib zip
-# Add mcrypt via PECL
 
-# RUN rm -rf /var/lib/apt/lists/*
-
-# Copy environment dependent php.ini file
-RUN cp $PHP_INI_DIR/php.ini-$env $PHP_INI_DIR/php.ini
-# COPY ./files/php-bildmeister.ini $PHP_INI_DIR/conf.d
 
 # Install Node JS
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 
-## Copy apache config file to container
-COPY files/apache.conf /etc/apache2/sites-enabled/000-default.conf
+# Copy environment dependent php.ini file
+RUN cp $PHP_INI_DIR/php.ini-$ENV $PHP_INI_DIR/php.ini
+
+## Copy environment dependent apache config file
+COPY files/apache-$ENV.conf /etc/apache2/sites-available/000-default.conf
 
 ## Enable modrewrite and SSL module
+RUN a2enmod headers
 RUN a2enmod rewrite
-RUN a2enmod ssl
 
 WORKDIR /var/www/html/
 
 ### Production Stage
 FROM base-stage as prod-stage
+# Add mcrypt via PECL
 RUN pecl install mcrypt-1.0.3
 RUN docker-php-ext-enable mcrypt
+RUN a2enmod ssl
 
+# copy files
 COPY ./dist ./
+COPY files/prod.htacces ./.htaccess
 
+# install node modules for production
 RUN npm install --only=prod
 RUN npm run build
 
+# webserver user owns the webserver root dir
 RUN chown -R :www-data /var/www/html
 RUN chmod -R 775 /var/www/html
