@@ -7,7 +7,7 @@ services:
       context: ./
       target: base-stage
       args:
-        env: development
+        ENV: development
     container_name: chissmiii_kirby
     command: sh -c "apache2-foreground"
     ports:
