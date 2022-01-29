@@ -35,8 +35,8 @@ RewriteRule ^site/(.*) index.php [L]
 # block direct access to Kirby and the Panel sources
 RewriteRule ^kirby/(.*) index.php [L]
 
-# block all files in the media folder from being accessed directly
-RewriteRule ^media/(.*)$ index.php [L]
+# block all files in the media folder from being accessed directly –> access firewall
+# RewriteRule ^media/(.*)$ index.php [L]
 
 # make site links work
 RewriteCond %{REQUEST_FILENAME} !-f
