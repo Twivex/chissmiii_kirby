@@ -10,7 +10,8 @@
           ->listed()
           ->filter(function ($page) {
             return $page->date()->toDate() > time();
-          });
+          })
+          ->sortBy('date', 'asc');
       ?>
       <?php foreach ($events as $event): ?>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mx-n1">
@@ -55,7 +56,8 @@
         ->listed()
         ->filter(function ($page) {
           return $page->date()->toDate() < time();
-        });
+        })
+        ->sortBy('date', 'desc');
     ?>
     <?php foreach ($events as $event): ?>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 mx-n1">
