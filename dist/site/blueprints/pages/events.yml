@@ -1,2 +1,20 @@
 title: Events
-preset: page
+preset: pages
+options:
+  url: false
+  delete: false
+
+drafts:
+  layout: cardlets
+  extends: sections/events
+  headline: Unveröffentlichte Events
+
+unlisted:
+  layout: cardlets
+  extends: sections/events
+  headline: Ungelistete Events
+
+listed:
+  layout: cardlets
+  extends: sections/events
+  headline: Veröffentlichte Events

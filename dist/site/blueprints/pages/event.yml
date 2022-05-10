@@ -1,5 +1,10 @@
-title: Event Card
+title: Event
 preset: page
+pages: false
+num: date
+options:
+  changeTemplate: false
+  changeStatus: true
 fields:
   description:
     label: Beschreibung
@@ -11,6 +16,7 @@ fields:
     width: 1/2
     type: date
     required: true
+    default: now
     display: DD.MM.YYYY
 
   companion:

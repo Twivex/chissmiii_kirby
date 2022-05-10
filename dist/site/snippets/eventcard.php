@@ -15,6 +15,6 @@
         <li>Essen/Trinken: <?=$fooddrinks?></li>
       <?php endif; ?>
     </ul>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-light">Go somewhere</a>
   </div>
 </div>
