@@ -12,9 +12,9 @@ services:
     command: sh -c "apache2-foreground"
     ports:
       - 8000:80
-      - 80:80
+      # - 80:80
       - 8443:443
-      - 443:443
+      # - 443:443
     networks:
       - chissmiii
     volumes:
