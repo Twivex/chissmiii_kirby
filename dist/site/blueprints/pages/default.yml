@@ -1,9 +1,5 @@
 title: Default Page
 preset: page
-options:
-  changeTemplate:
-    - test
-    - default
 fields:
   secured:
     label: Login erforderlich?
