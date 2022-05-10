@@ -20,6 +20,10 @@ Description | Raspbian GNU/Linux 10 (buster)
 Release | 10
 Codename | buster
 
+### Software/Frameworks
+- Kirby v3.6.6
+- Bootstrap v5.1.3
+
 ## How to Dev
 ### Setup
 `make dev-setup`
