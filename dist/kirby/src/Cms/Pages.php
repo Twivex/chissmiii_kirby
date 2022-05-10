@@ -17,7 +17,7 @@ use Kirby\Exception\InvalidArgumentException;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Pages extends Collection
@@ -205,6 +205,10 @@ class Pages extends Collection
      */
     public function findById(string $id = null)
     {
+        if ($id === null) {
+            return null;
+        }
+
         // remove trailing or leading slashes
         $id = trim($id, '/');
 

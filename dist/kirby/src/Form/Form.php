@@ -18,7 +18,7 @@ use Throwable;
  * @package   Kirby Form
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Form
@@ -375,10 +375,8 @@ class Form
     public function toArray(): array
     {
         $array = [
-            'errors' => $this->errors(),
-            'fields' => $this->fields->toArray(function ($item) {
-                return $item->toArray();
-            }),
+            'errors'  => $this->errors(),
+            'fields'  => $this->fields->toArray(fn ($item) => $item->toArray()),
             'invalid' => $this->isInvalid()
         ];
 

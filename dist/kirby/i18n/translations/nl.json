@@ -157,6 +157,8 @@
 
   "error.template.default.notFound": "Het standaard template bestaat niet",
 
+  "error.unexpected": "Een onverwacht fout heeft plaats gevonden! Schakel debug-modus in voor meer informatie: https://getkirby.com/docs/reference/system/options/debug",
+
   "error.user.changeEmail.permission": "Je hebt geen rechten om het e-mailadres van gebruiker \"{name}\" te wijzigen",
   "error.user.changeLanguage.permission": "Je hebt geen rechten om de taal voor gebruiker \"{name}\" te wijzigen",
   "error.user.changeName.permission": "Je hebt geen rechten om de naam van gebruiker \"{name}\" te wijzigen",

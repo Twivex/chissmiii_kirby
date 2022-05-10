@@ -16,7 +16,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Panel
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class View
@@ -178,15 +178,13 @@ class View
             },
             '$languages' => function () use ($kirby, $multilang): array {
                 if ($multilang === true) {
-                    return $kirby->languages()->values(function ($language) {
-                        return [
-                            'code'      => $language->code(),
-                            'default'   => $language->isDefault(),
-                            'direction' => $language->direction(),
-                            'name'      => $language->name(),
-                            'rules'     => $language->rules(),
-                        ];
-                    });
+                    return $kirby->languages()->values(fn ($language) => [
+                        'code'      => $language->code(),
+                        'default'   => $language->isDefault(),
+                        'direction' => $language->direction(),
+                        'name'      => $language->name(),
+                        'rules'     => $language->rules(),
+                    ]);
                 }
 
                 return [];
@@ -315,12 +313,10 @@ class View
                     'name'      => $translation->name(),
                 ];
             },
-            '$urls' => function () use ($kirby) {
-                return [
-                    'api'  => $kirby->url('api'),
-                    'site' => $kirby->url('index')
-                ];
-            }
+            '$urls' => fn () => [
+                'api'  => $kirby->url('api'),
+                'site' => $kirby->url('index')
+            ]
         ];
     }
 
@@ -401,10 +397,6 @@ class View
      */
     public static function response($data, array $options = [])
     {
-        $kirby = kirby();
-        $area  = $options['area']  ?? [];
-        $areas = $options['areas'] ?? [];
-
         // handle redirects
         if (is_a($data, 'Kirby\Panel\Redirect') === true) {
             return Response::redirect($data->location(), $data->code());

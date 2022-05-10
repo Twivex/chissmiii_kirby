@@ -8,7 +8,6 @@ class ComposerStaticInit949b6354a133bbf3c81dd503bfd714ad
 {
     public static $files = array (
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
-        '04c6c5c2f7095ccf6c481d3e53e1776f' => __DIR__ . '/..' . '/mustangostang/spyc/Spyc.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'f864ae44e8154e5ff6f4eec32f46d37f' => __DIR__ . '/../..' . '/kirby/config/setup.php',
@@ -133,6 +132,7 @@ class ComposerStaticInit949b6354a133bbf3c81dd503bfd714ad
         'Kirby\\Cms\\ContentTranslation' => __DIR__ . '/../..' . '/kirby/src/Cms/ContentTranslation.php',
         'Kirby\\Cms\\Core' => __DIR__ . '/../..' . '/kirby/src/Cms/Core.php',
         'Kirby\\Cms\\Email' => __DIR__ . '/../..' . '/kirby/src/Cms/Email.php',
+        'Kirby\\Cms\\Environment' => __DIR__ . '/../..' . '/kirby/src/Cms/Environment.php',
         'Kirby\\Cms\\Event' => __DIR__ . '/../..' . '/kirby/src/Cms/Event.php',
         'Kirby\\Cms\\Field' => __DIR__ . '/../..' . '/kirby/src/Cms/Field.php',
         'Kirby\\Cms\\Fieldset' => __DIR__ . '/../..' . '/kirby/src/Cms/Fieldset.php',
@@ -335,6 +335,7 @@ class ComposerStaticInit949b6354a133bbf3c81dd503bfd714ad
         'Kirby\\Toolkit\\Component' => __DIR__ . '/../..' . '/kirby/src/Toolkit/Component.php',
         'Kirby\\Toolkit\\Config' => __DIR__ . '/../..' . '/kirby/src/Toolkit/Config.php',
         'Kirby\\Toolkit\\Controller' => __DIR__ . '/../..' . '/kirby/src/Toolkit/Controller.php',
+        'Kirby\\Toolkit\\Date' => __DIR__ . '/../..' . '/kirby/src/Toolkit/Date.php',
         'Kirby\\Toolkit\\Dom' => __DIR__ . '/../..' . '/kirby/src/Toolkit/Dom.php',
         'Kirby\\Toolkit\\Escape' => __DIR__ . '/../..' . '/kirby/src/Toolkit/Escape.php',
         'Kirby\\Toolkit\\Facade' => __DIR__ . '/../..' . '/kirby/src/Toolkit/Facade.php',
@@ -380,6 +381,7 @@ class ComposerStaticInit949b6354a133bbf3c81dd503bfd714ad
         'Psr\\Log\\Test\\DummyTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/DummyTest.php',
         'Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
         'Psr\\Log\\Test\\TestLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/TestLogger.php',
+        'Spyc' => __DIR__ . '/../..' . '/kirby/dependencies/spyc/Spyc.php',
         'Symfony\\Polyfill\\Intl\\Idn\\Idn' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/Idn.php',
         'Symfony\\Polyfill\\Intl\\Idn\\Info' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/Info.php',
         'Symfony\\Polyfill\\Intl\\Idn\\Resources\\unidata\\DisallowedRanges' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/Resources/unidata/DisallowedRanges.php',

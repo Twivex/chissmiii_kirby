@@ -23,7 +23,7 @@ use Throwable;
  * @package   Kirby Filesystem
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Dir
@@ -155,7 +155,7 @@ class Dir
 
         foreach ($items as $item) {
             $root     = $dir . '/' . $item;
-            $entry    = $path !== null ? $path . '/' . $item: $item;
+            $entry    = $path !== null ? $path . '/' . $item : $item;
             $result[] = $entry;
 
             if ($recursive === true && is_dir($root) === true) {
@@ -482,11 +482,14 @@ class Dir
      * Returns a nicely formatted size of all the contents of the folder
      *
      * @param string $dir The path of the directory
+     * @param string|null|false $locale Locale for number formatting,
+     *                                  `null` for the current locale,
+     *                                  `false` to disable number formatting
      * @return mixed
      */
-    public static function niceSize(string $dir)
+    public static function niceSize(string $dir, $locale = null)
     {
-        return F::niceSize(static::size($dir));
+        return F::niceSize(static::size($dir), $locale);
     }
 
     /**
@@ -513,9 +516,7 @@ class Dir
 
         // add absolute paths
         if ($absolute === true) {
-            $result = array_map(function ($item) use ($dir) {
-                return $dir . '/' . $item;
-            }, $result);
+            $result = array_map(fn ($item) => $dir . '/' . $item, $result);
         }
 
         return $result;

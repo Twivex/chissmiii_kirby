@@ -14,7 +14,7 @@ use Kirby\Form\Form;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 trait FileActions
@@ -90,9 +90,11 @@ trait FileActions
      */
     public function changeSort(int $sort)
     {
-        return $this->commit('changeSort', ['file' => $this, 'position' => $sort], function ($file, $sort) {
-            return $file->save(['sort' => $sort]);
-        });
+        return $this->commit(
+            'changeSort',
+            ['file' => $this, 'position' => $sort],
+            fn ($file, $sort) => $file->save(['sort' => $sort])
+        );
     }
 
     /**

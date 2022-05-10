@@ -20,7 +20,7 @@ use Throwable;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Blueprint
@@ -203,12 +203,14 @@ class Blueprint
             return $props;
         }
 
-        try {
-            $mixin = static::find($extends);
-            $mixin = static::extend($mixin);
-            $props = A::merge($mixin, $props, A::MERGE_REPLACE);
-        } catch (Exception $e) {
-            // keep the props unextended if the snippet wasn't found
+        foreach (A::wrap($extends) as $extend) {
+            try {
+                $mixin = static::find($extend);
+                $mixin = static::extend($mixin);
+                $props = A::merge($mixin, $props, A::MERGE_REPLACE);
+            } catch (Exception $e) {
+                // keep the props unextended if the snippet wasn't found
+            }
         }
 
         // remove the extends flag
@@ -287,13 +289,16 @@ class Blueprint
             $file = $kirby->extension('blueprints', $name);
         }
 
+        // callback option can be return array or blueprint file path
+        if (is_callable($file) === true) {
+            $file = $file($kirby);
+        }
+
         // now ensure that we always return the data array
         if (is_string($file) === true && F::exists($file) === true) {
             return static::$loaded[$name] = Data::read($file);
         } elseif (is_array($file) === true) {
             return static::$loaded[$name] = $file;
-        } elseif (is_callable($file) === true) {
-            return static::$loaded[$name] = $file($kirby);
         }
 
         // neither a valid file nor array data

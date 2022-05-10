@@ -20,7 +20,7 @@ use Kirby\Toolkit\V;
  * @package   Kirby Filesystem
  * @author    Nico Hoffmann <nico@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class File
@@ -306,9 +306,11 @@ class File
 
             // determine if any pattern matches the MIME type;
             // once any pattern matches, `$carry` is `true` and the rest is skipped
-            $matches = array_reduce($rules['mime'], function ($carry, $pattern) use ($mime) {
-                return $carry || Mime::matches($mime, $pattern);
-            }, false);
+            $matches = array_reduce(
+                $rules['mime'],
+                fn ($carry, $pattern) => $carry || Mime::matches($mime, $pattern),
+                false
+            );
 
             if ($matches !== true) {
                 throw new Exception([
@@ -370,11 +372,11 @@ class File
     /**
      * Returns the file's last modification time
      *
-     * @param string $format
-     * @param string|null $handler date or strftime
+     * @param string|\IntlDateFormatter|null $format
+     * @param string|null $handler date, intl or strftime
      * @return mixed
      */
-    public function modified(?string $format = null, ?string $handler = null)
+    public function modified($format = null, ?string $handler = null)
     {
         $kirby = $this->kirby();
 
@@ -416,11 +418,14 @@ class File
      * Returns the file size in a
      * human-readable format
      *
+     * @param string|null|false $locale Locale for number formatting,
+     *                                  `null` for the current locale,
+     *                                  `false` to disable number formatting
      * @return string
      */
-    public function niceSize(): string
+    public function niceSize($locale = null): string
     {
-        return F::niceSize($this->root);
+        return F::niceSize($this->root, $locale);
     }
 
     /**

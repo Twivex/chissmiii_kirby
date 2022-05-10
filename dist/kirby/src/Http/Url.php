@@ -10,7 +10,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Http
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Url
@@ -77,13 +77,13 @@ class Url
     /**
      * Tries to fix a broken url without protocol
      *
-     * @param string $url
+     * @param string|null $url
      * @return string
      */
     public static function fix(string $url = null): string
     {
         // make sure to not touch absolute urls
-        return (!preg_match('!^(https|http|ftp)\:\/\/!i', $url)) ? 'http://' . $url : $url;
+        return (!preg_match('!^(https|http|ftp)\:\/\/!i', $url ?? '')) ? 'http://' . $url : $url;
     }
 
     /**
@@ -100,18 +100,18 @@ class Url
      * Returns the url to the executed script
      *
      * @param array $props
-     * @param bool $forwarded
+     * @param bool $forwarded Deprecated! Todo: remove in 3.7.0
      * @return string
      */
     public static function index(array $props = [], bool $forwarded = false): string
     {
-        return Uri::index($props, $forwarded)->toString();
+        return Uri::index($props)->toString();
     }
 
     /**
      * Checks if an URL is absolute
      *
-     * @param string $url
+     * @param string|null $url
      * @return bool
      */
     public static function isAbsolute(string $url = null): bool
@@ -120,14 +120,14 @@ class Url
         //  //example.com/uri
         //  http://example.com/uri, https://example.com/uri, ftp://example.com/uri
         //  mailto:example@example.com, geo:49.0158,8.3239?z=11
-        return preg_match('!^(//|[a-z0-9+-.]+://|mailto:|tel:|geo:)!i', $url) === 1;
+        return $url !== null && preg_match('!^(//|[a-z0-9+-.]+://|mailto:|tel:|geo:)!i', $url) === 1;
     }
 
     /**
      * Convert a relative path into an absolute URL
      *
-     * @param string $path
-     * @param string $home
+     * @param string|null $path
+     * @param string|null $home
      * @return string
      */
     public static function makeAbsolute(string $path = null, string $home = null): string
