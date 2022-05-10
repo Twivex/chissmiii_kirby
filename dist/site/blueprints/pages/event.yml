@@ -1,0 +1,31 @@
+title: Event Card
+preset: page
+fields:
+  description:
+    label: Beschreibung
+    type: textarea
+    size: large
+    required: true
+  date:
+    label: Datum
+    width: 1/2
+    type: date
+    required: true
+    display: DD.MM.YYYY
+
+  companion:
+    label: Anhang
+    width: 1/2
+    type: select
+    options:
+      - "Ja"
+      - "Ja, mit vorheriger Anmeldung"
+      - "Nein"
+  time:
+    label: Uhrzeit
+    width: 1/2
+    type: time
+    display: HH:mm
+  fooddrinks:
+    label: Essen/Trinken
+    type: textarea
