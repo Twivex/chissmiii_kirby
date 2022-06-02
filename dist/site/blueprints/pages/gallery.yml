@@ -1,0 +1,7 @@
+name: Album
+preset: files
+fields:
+  galleries:
+    type: blocks
+    fieldsets:
+      - gallery

@@ -1,0 +1,17 @@
+title: Gallerie
+preset: pages
+
+drafts:
+  layout: cardlets
+  extends: sections/galleries
+  headline: Unveröffentlichte Alben
+
+unlisted:
+  layout: cardlets
+  extends: sections/galleries
+  headline: Ungelistete Alben
+
+listed:
+  layout: cardlets
+  extends: sections/galleries
+  headline: Veröffentlichte Alben
