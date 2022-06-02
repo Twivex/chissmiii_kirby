@@ -50,14 +50,66 @@ $success: #7952b3;
 @import "bootstrap/scss/modal";
 // @import "bootstrap/scss/tooltip";
 // @import "bootstrap/scss/popover";
-// @import "bootstrap/scss/carousel";
+@import "bootstrap/scss/carousel";
 // @import "bootstrap/scss/spinners";
 // @import "bootstrap/scss/offcanvas";
 // @import "bootstrap/scss/placeholders";
 
 @import "bootstrap/scss/helpers"; // TODO doesnt work –> why?
 
-// 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+// 5. Optionally customize utilities API
+$utilities: map-merge(
+  $utilities,
+  (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "width"), "values"),
+          (7: 7%),
+        ),
+      ),
+    ),
+  ),
+);
+$utilities: map-merge(
+  $utilities,
+  (
+    "viewport-height": map-merge(
+      map-get($utilities, "viewport-height"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "viewport-height"), "values"),
+          (
+            10: 10vh,
+            25: 25vh,
+            50: 50vh,
+            75: 75vh,
+          ),
+        ),
+      ),
+    ),
+  ),
+);
+$utilities: map-merge(
+  $utilities,
+  (
+    "border-color": map-merge(
+      map-get($utilities, "border-color"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "border-color"), "values"),
+          ('transparent': rgba(0,0,0,0)),
+        ),
+      ),
+    ),
+  )
+);
+
+// 6. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "bootstrap/scss/utilities/api";
 
-// 6. Add additional custom code here
+// 7. Add additional custom code here
+.bg-no-gradient {
+  background-image: none !important;
+}
