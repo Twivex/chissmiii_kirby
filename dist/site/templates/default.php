@@ -1,8 +1,11 @@
 <?php
   if($page->secured()->toBool() === true && !$kirby->user()) go('/')
 ?>
-<?php snippet('header') ?>
+<?php snippet('globals/header') ?>
+
+<main id="main" class="container">
 
 <h1><?= $page->title()->escape() ?></h1>
 
-<?php snippet('footer') ?>
+</main>
+<?php snippet('globals/footer') ?>

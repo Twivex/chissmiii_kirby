@@ -1,4 +1,4 @@
-<?php snippet('header') ?>
+<?php snippet('globals/header') ?>
 
 <h1><?= $page->title()->html() ?></h1>
 
@@ -20,4 +20,4 @@
   </div>
 </form>
 
-<?php snippet('footer') ?>
+<?php snippet('globals/footer') ?>
