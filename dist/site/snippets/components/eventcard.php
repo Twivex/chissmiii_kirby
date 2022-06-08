@@ -22,8 +22,7 @@
   $additionalContent .= '</ul>';
 
   $cardData = [
-    'imageUrl' => $imageUrl,
-    'imageAlt' => $imageAlt,
+    'image' => $event->coverImg(),
     'title' => $event->title()->escape(),
     'description' => $event->description(),
     'pageUri' => $event->uri(),
