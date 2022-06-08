@@ -1,0 +1,4 @@
+type: pages
+info: "{{ page.role }}"
+template: person
+empty: Keine Person

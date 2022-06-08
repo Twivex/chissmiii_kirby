@@ -1,0 +1,18 @@
+title: Personen
+preset: pages
+icon: 👤
+
+drafts:
+  layout: list
+  extends: sections/persons
+  headline: Unveröffentlichte Personen
+
+unlisted:
+  layout: cards
+  extends: sections/persons
+  headline: Ungelistete Personen
+
+listed:
+  layout: cards
+  extends: sections/persons
+  headline: Veröffentlichte Personen
