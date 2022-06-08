@@ -1,0 +1,21 @@
+title: Gästebuch
+
+sections:
+  drafts:
+    status: draft
+    layout: list
+    extends: sections/gb_entries
+    headline: Unveröffentlichte Einträge
+
+  unlisted:
+    status: unlisted
+    layout: list
+    extends: sections/gb_entries
+    headline: Unveröffentlichte Einträge
+
+
+  listed:
+    status: listed
+    layout: list
+    extends: sections/gb_entries
+    headline: Veröffentlichte Einträge

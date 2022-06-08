@@ -1,0 +1,6 @@
+type: pages
+headline: Einträge
+info: "{{ page.created.toDate('d.m.Y') }}"
+sortBy: created_at desc
+template: gb_entry
+empty: Keine Einträge

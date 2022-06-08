@@ -1,0 +1,29 @@
+title: Gästebuch-Eintrag
+pages: false
+num: date
+options:
+  url: false
+status:
+  draft:
+    label: Entwurf
+    text: Die Seite ist im Entwurfsmodus und ist nur nach Anmeldung oder über den geheimen Link sichtbar
+  listed:
+    label: Öffentlich
+    text: Die Seite ist öffentlich für alle
+
+fields:
+  name:
+    label: Name
+    type: text
+    required: true
+  message:
+    label: Nachricht
+    type: textarea
+    size: large
+    required: true
+  created_at:
+    label: Erstellt am
+    type: date
+    time: true
+    default: now
+    disabled: true
