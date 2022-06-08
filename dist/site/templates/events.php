@@ -9,30 +9,13 @@
     <div class="row">
       <?php snippet('atoms/section_heading', ['heading' => 'Anstehende Events']); ?>
       <!-- <div class="col-4 col-sm-6"> -->
-        <?php
-          $c = 0;
-          $upcomingEvents = $page->children()
-            ->listed()
-            ->filter(function ($page) use ($yesterday) {
-              return $page->date()->toDate() > $yesterday;
-            })
-            ->sortBy('date', 'asc');
-        ?>
+        <?php $c = 0; ?>
         <?php foreach ($upcomingEvents as $event): ?>
           <div class="col-12 col-sm-6 col-md-4 col-lg-3 mx-n1">
             <?php
-              if ($image = $event->image('thumbnail')) {
-                $imageUrl = $image->url();
-                $imageAlt = $image->title();
-              } else {
-                $imageUrl = '/resources/assets/images/event_placeholder.jpg';
-                $imageAlt = $event->title()->escape();
-              }
               snippet('components/eventcard', [
                 'addClass' => (($c + 1) % 3 == 0) ? 'col-4 col-sm-6' : '',
-                'event' => $event,
-                'imageUrl' => $imageUrl,
-                'imageAlt' => $imageAlt,
+                'event' => $event
               ]);
             ?>
           </div>
@@ -50,30 +33,13 @@
   <section class="mb-5">
     <div class="row">
       <?php snippet('atoms/section_heading', ['heading' => 'Vergangene Events']); ?>
-      <?php
-        $c = 0;
-        $pastEvents = $page->children()
-          ->listed()
-          ->filter(function ($page) use ($yesterday) {
-            return $page->date()->toDate() < $yesterday;
-          })
-          ->sortBy('date', 'desc');
-      ?>
+      <?php $c = 0; ?>
       <?php foreach ($pastEvents as $event): ?>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mx-n1">
           <?php
-            if ($image = $event->image('thumbnail')) {
-              $imageUrl = $image->url();
-              $imageAlt = $image->title();
-            } else {
-              $imageUrl = '/resources/assets/images/event_placeholder.jpg';
-              $imageAlt = $event->title()->escape();
-            }
             snippet('components/eventcard', [
               'addClass' => (($c + 1) % 3 == 0) ? 'col-4 col-sm-6' : '',
-              'event' => $event,
-              'imageUrl' => $imageUrl,
-              'imageAlt' => $imageAlt,
+              'event' => $event
             ]);
           ?>
         </div>
