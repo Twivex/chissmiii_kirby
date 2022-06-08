@@ -51,6 +51,7 @@ RUN apt-get install -y nodejs
 
 # Copy environment dependent php.ini file
 RUN cp $PHP_INI_DIR/php.ini-$ENV $PHP_INI_DIR/php.ini
+COPY files/custom-php.ini $PHP_INI_DIR/conf.d/custom-php.ini
 
 ## Copy environment dependent apache config file
 COPY files/apache-$ENV.conf /etc/apache2/sites-available/000-default.conf
