@@ -1,9 +1,50 @@
 title: Site
-preset: pages
-unlisted: true
-templates:
-  - default
-  - error
-  - login
-  - events
-  - galleries
+
+tabs:
+  pages:
+    label: Seiten
+    sections:
+      drafts:
+        headline: Entwürfe
+        type: pages
+        status: draft
+        templates:
+          - default
+          - error
+          - login
+          - events
+          - galleries
+          - persons
+          - guestbook
+
+      unlisted:
+        headline: Ungelistet
+        type: pages
+        status: unlisted
+        templates:
+          - default
+          - error
+          - login
+          - events
+          - galleries
+          - persons
+          - guestbook
+
+      listed:
+        headline: Veröffentlicht
+        type: pages
+        status: listed
+        templates:
+          - default
+          - error
+          - login
+          - events
+          - galleries
+          - persons
+          - guestbook
+  files:
+    extends: tabs/files
+    sections:
+      files:
+        headline: Globale Dateien
+        template: global
