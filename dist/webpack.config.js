@@ -1,12 +1,10 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: [
-    './src/js/_bootstrap.js',
-    './src/js/app.js',
-  ],
+  entry: ["./src/js/_bootstrap.js", "./src/js/app.js"],
   output: {
-    filename: 'app.js',
-    path: path.resolve(__dirname, 'resources/js')
-  }
-}
+    filename: "app.js",
+    path: path.resolve(__dirname, "resources/js"),
+  },
+  devtool: "source-map",
+};
