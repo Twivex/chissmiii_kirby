@@ -1,0 +1,7 @@
+title:
+  query: file.tag
+fields:
+  tag:
+    type: text
+    label: Tag
+    required: true
