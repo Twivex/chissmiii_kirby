@@ -17,7 +17,7 @@
 ?>
 
 <div class="card <?=$additionalClasses?>">
-  <img src="<?=$imageUrl?>" class="card-img-top" alt="<?=$imageAlt?>">
+  <img src="<?=$image->url()?>" srcset="<?=$image->srcset()?>" class="card-img-top" alt="<?=$image->title()?>">
   <div class="card-body">
     <h5 class="card-title"><?=$title?></h5>
     <?php if (isset($description) && !empty($description)): ?>
