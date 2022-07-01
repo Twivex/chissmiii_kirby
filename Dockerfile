@@ -14,25 +14,25 @@ RUN rm /etc/localtime; ln -s /usr/share/zoneinfo/$TZ /etc/localtime; dpkg-reconf
 RUN apt-get update \
     && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends \
-        curl \
-        git \
-        make \
-        less \
-        nano \
-        libmcrypt-dev \
-        zip \
-        libzip-dev
+      curl \
+      git \
+      make \
+      less \
+      nano \
+      libmcrypt-dev \
+      zip \
+      libzip-dev
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && install-php-extensions \
-    curl \
-    dom \
-    gd \
-    intl \
-    mbstring \
-    xml \
-    zip
+      curl \
+      dom \
+      gd \
+      intl \
+      mbstring \
+      xml \
+      zip
 
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -64,18 +64,30 @@ WORKDIR /var/www/html/
 
 ### Production Stage
 FROM base-stage as prod-stage
-# Add mcrypt via PECL
-RUN pecl install mcrypt-1.0.3
-RUN docker-php-ext-enable mcrypt
-RUN a2enmod ssl
+
+# enable SSl encryption for https
+RUN apt-get install -y ssl-cert
+RUN a2enmod ssl \
+ && a2ensite default-ssl
+
+ADD ./files/server.crt /etc/ssl/certs/server.crt
+ADD ./files/server.key /etc/ssl/private/server.key
+ADD ./files/chain.pem /etc/ssl/private/chain.pem
+
+# # Add mcrypt via PECL
+# RUN pecl install mcrypt-1.0.3
+# RUN docker-php-ext-enable mcrypt
+# RUN a2enmod ssl
 
 # copy files
 COPY ./dist ./
-COPY files/prod.htacces ./.htaccess
+COPY files/prod.htaccess ./.htaccess
 
 # install node modules for production
 RUN npm install --only=prod
 RUN npm run build
+RUN rm -r node_modules
+RUN rm -r src
 
 # webserver user owns the webserver root dir
 RUN chown -R :www-data /var/www/html
