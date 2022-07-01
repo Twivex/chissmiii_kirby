@@ -18,6 +18,7 @@ services:
       - chissmiii_kirby_media_vol:/var/www/html/media
       - chissmiii_kirby_accounts_vol:/var/www/html/site/accounts
       - chissmiii_kirby_sessions_vol:/var/www/html/site/sessions
+      - chissmiii_kirby_local_vol:/local
 
 networks:
   chissmiii:
