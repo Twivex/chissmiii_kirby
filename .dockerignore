@@ -1,0 +1,5 @@
+dist/content
+dist/node_modules
+dist/media
+dist/site/accounts
+dist/site/sessions
