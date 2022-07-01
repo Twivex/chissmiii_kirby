@@ -6,7 +6,7 @@ help:
 	@echo "Makefile Instructions:\n" \
 	"build: \$$ docker-compose build\n" \
 	"up: \$$ docker-comose up -d\n" \
-	"prod: \$$ make prod-build prod-up"
+	"prod: \$$ make prod-build prod-up\n" \
 	"prod-build: \$$docker-compose -f docker-compose.prod.yml build\n" \
 	"prod-up: \$$ docker-compose -f docker-compose.prod.yml up -d\n" \
 	"stop: \$$ docker-compose stop\n" \
