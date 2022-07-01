@@ -54,7 +54,7 @@ RUN cp $PHP_INI_DIR/php.ini-$ENV $PHP_INI_DIR/php.ini
 COPY files/custom-php.ini $PHP_INI_DIR/conf.d/custom-php.ini
 
 ## Copy environment dependent apache config file
-COPY files/apache-$ENV.conf /etc/apache2/sites-available/000-default.conf
+COPY files/apache.conf /etc/apache2/sites-available/000-default.conf
 
 ## Enable modrewrite and SSL module
 RUN a2enmod headers
@@ -75,7 +75,6 @@ RUN a2enmod ssl
 
 # copy files
 COPY ./dist ./
-COPY files/prod.htaccess ./.htaccess
 
 # install node modules for production
 RUN npm install --only=prod
