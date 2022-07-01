@@ -56,3 +56,11 @@ volumes:
       device: ${SITE_PATH:-/var/www/chissmiii_vols}/site/sessions
       type: none
       o: bind
+
+  chissmiii_kirby_local_vol:
+    name: chissmiii_kirby_local
+    driver: local
+    driver_opts:
+      device: ${SITE_PATH:-/var/www/chissmiii_vols}/local
+      type: none
+      o: bind
