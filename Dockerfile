@@ -66,13 +66,7 @@ WORKDIR /var/www/html/
 FROM base-stage as prod-stage
 
 # enable SSl encryption for https
-RUN apt-get install -y ssl-cert
-RUN a2enmod ssl \
- && a2ensite default-ssl
-
-ADD ./files/server.crt /etc/ssl/certs/server.crt
-ADD ./files/server.key /etc/ssl/private/server.key
-ADD ./files/chain.pem /etc/ssl/private/chain.pem
+RUN a2enmod ssl
 
 # # Add mcrypt via PECL
 # RUN pecl install mcrypt-1.0.3
