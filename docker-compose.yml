@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   chissmiii-kirby:
-    image: chissmiii_kirby
+    image: chissmiii_kirby:dev
     build:
       context: ./
       target: base-stage

@@ -1,0 +1,58 @@
+version: "3.7"
+
+services:
+  chissmiii-kirby:
+    image: chissmiii_kirby:prod
+    build:
+      context: ./
+    container_name: chissmiii_kirby
+    restart: always
+    command: sh -c "apache2-foreground"
+    ports:
+      - 14080:80
+      - 14443:443
+    networks:
+      - chissmiii
+    volumes:
+      - chissmiii_kirby_content_vol:/var/www/html/content
+      - chissmiii_kirby_media_vol:/var/www/html/media
+      - chissmiii_kirby_accounts_vol:/var/www/html/site/accounts
+      - chissmiii_kirby_sessions_vol:/var/www/html/site/sessions
+
+networks:
+  chissmiii:
+    driver: bridge
+    name: chissmiii_network
+
+volumes:
+  chissmiii_kirby_content_vol:
+    name: chissmiii_kirby_content
+    driver: local
+    driver_opts:
+      device: ${SITE_PATH:-/var/www/chissmiii_vols}/content
+      type: none
+      o: bind
+
+  chissmiii_kirby_media_vol:
+    name: chissmiii_kirby_media
+    driver: local
+    driver_opts:
+      device: ${SITE_PATH:-/var/www/chissmiii_vols}/media
+      type: none
+      o: bind
+
+  chissmiii_kirby_accounts_vol:
+    name: chissmiii_kirby_accounts
+    driver: local
+    driver_opts:
+      device: ${SITE_PATH:-/var/www/chissmiii_vols}/site/accounts
+      type: none
+      o: bind
+
+  chissmiii_kirby_sessions_vol:
+    name: chissmiii_kirby_sessions
+    driver: local
+    driver_opts:
+      device: ${SITE_PATH:-/var/www/chissmiii_vols}/site/sessions
+      type: none
+      o: bind
