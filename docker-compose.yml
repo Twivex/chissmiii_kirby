@@ -12,13 +12,10 @@ services:
     command: sh -c "apache2-foreground"
     ports:
       - 8000:80
-      # - 80:80
-      - 8443:443
-      # - 443:443
     networks:
       - chissmiii
     volumes:
-      - './dist:/var/www/html'
+      - chissmiii_dist_vol:/var/www/html
       # - chissmiii_node_modules_vol:/var/www/html/node_modules
 
 networks:
@@ -26,14 +23,11 @@ networks:
     driver: bridge
     name: chissmiii_network
 
-# volumes:
-  # chissmiii_dist_vol:
-  #   name: chissmiii_dist_src
-  #   driver: local
-  #   driver_opts:
-  #     device: ./dist
-  #     type: none
-  #     o: bind
-
-  # chissmiii_node_modules_vol:
-  #   name: chissmiii_node_modules
+volumes:
+  chissmiii_dist_vol:
+    name: chissmiii_dist_src
+    driver: local
+    driver_opts:
+      device: ./dist
+      type: none
+      o: bind
