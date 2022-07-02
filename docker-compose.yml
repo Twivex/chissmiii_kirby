@@ -8,7 +8,6 @@ services:
     container_name: chissmiii_kirby
     networks:
       - chissmiii
-    command: sh -c "apache2-foreground"
 
 networks:
   chissmiii:
