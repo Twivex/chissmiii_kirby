@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  chissmiii-kirby:
+    build:
+      target: base-stage
+      args:
+        ENV: development
+    ports:
+      - 8000:80
+    volumes:
+      - chissmiii_dist_vol:/var/www/html
+
+volumes:
+  chissmiii_dist_vol:
+    name: chissmiii_dist_src
+    driver: local
+    driver_opts:
+      device: ./dist
+      type: none
+      o: bind
