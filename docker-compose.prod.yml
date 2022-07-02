@@ -52,6 +52,6 @@ volumes:
     name: chissmiii_kirby_node_modules
     driver: local
     driver_opts:
-      device: /var/www/chissmiii_vols/site/node_modules
+      device: /var/www/chissmiii_vols/node_modules
       type: none
       o: bind
