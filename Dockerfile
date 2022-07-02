@@ -65,22 +65,8 @@ WORKDIR /var/www/html/
 ### Production Stage
 FROM base-stage as prod-stage
 
-# enable SSl encryption for https
-RUN a2enmod ssl
-
-# # Add mcrypt via PECL
-# RUN pecl install mcrypt-1.0.3
-# RUN docker-php-ext-enable mcrypt
-# RUN a2enmod ssl
-
 # copy files
 COPY ./dist ./
-
-# install node modules for production
-RUN npm install --only=prod
-RUN npm run build
-RUN rm -r node_modules
-RUN rm -r src
 
 # webserver user owns the webserver root dir
 RUN chown -R :www-data /var/www/html
