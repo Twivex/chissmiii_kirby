@@ -3,42 +3,64 @@ CONTAINER?=chissmiii_kirby
 all: help
 
 help:
-	@echo "Makefile Instructions:\n" \
-	"build: \$$ docker-compose build\n" \
-	"up: \$$ docker-comose up -d\n" \
-	"prod: \$$ make prod-build prod-up\n" \
-	"prod-build: \$$docker-compose -f docker-compose.prod.yml build\n" \
-	"prod-up: \$$ docker-compose -f docker-compose.prod.yml up -d\n" \
+	@echo "Makefile instructions:\n" \
+	"dev-build: \$$ docker-compose -f docker-compose.yml -f docker-compose.dev.yml build\n" \
+	"dev-up: \$$ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d\n" \
+	"dev: dev-build dev-up\n" \
+	"dev-watch: \$$ docker exec -it ${CONTAINER} sh -c \"npm run dev\"\n" \
+	"dev-setup: dev-build dev-up dev-watch\n" \
+	"dev-restart: stop dev-up\n" \
+	"dev-npm-install: \$$ docker exec -it ${CONTAINER} sh -c \"npm install\"\n" \
+	"-------------------------------------------------------------------------------------\n" \
+	"prod-build: \$$ docker-compose -f docker-compose.yml -f docker-compose.prod.yml build\n" \
+	"prod-up: \$$ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d\n" \
+	"prod: prod-build prod-up\n" \
+	"prod-restart: stop prod-up\n" \
+	"prod-npm-install: \$$ docker exec -it ${CONTAINER} sh -c \"npm install --only=prod\"\n" \
+	"-------------------------------------------------------------------------------------\n" \
 	"stop: \$$ docker-compose stop\n" \
-	"restart: \$$ make stop up\n" \
 	"down: \$$ docker-compose down --volumes --rmi all\n" \
-	"enter: \$$ docker exec -it \$$CONTAINER bash\n" \
-	"npm-install: \$$ docker exec -it \$$CONTAINER sh -c \"npm install\"\n" \
-	"dev: \$$ docker exec -it \$$CONTAINER sh -c \"npm run dev\"\n" \
-	"dev-setup: \$$ make build up npm-install dev\n" \
-	"download-content: \$$ rsync -avzP --delete dock@bay:/var/www/chissmiii_content/ ./dist/content/\n" \
-	"upload-content: \$$ rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii_content\n" \
+	"enter: \$$ docker exec -it ${CONTAINER} bash\n" \
+	"-------------------------------------------------------------------------------------\n" \
+	"download-vols: \$$ rsync -avzP --delete dock@bay:/var/www/chissmiii_vol/content/ ./dist/content/ && ...\n" \
+	"upload-vols: \$$ rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii_vols/content/ && ...\n" \
 
-build:
-	docker-compose build
+dev-build:
+	docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
 
-up:
-	docker-compose up -d
+dev-up:
+	docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 
-dev-setup: build up npm-install dev
+dev: dev-build dev-up
+
+dev-watch:
+	docker exec -it ${CONTAINER} sh -c "npm run dev"
+
+dev-setup: dev-build dev-up dev-watch
+
+dev-restart: stop dev-up
+
+dev-npm-install:
+	docker exec -it ${CONTAINER} sh -c "npm install"
 
 prod-build:
-	docker-compose -f docker-compose.prod.yml build
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
 
 prod-up:
-	docker-compose -f docker-compose.prod.yml up -d
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 prod: prod-build prod-up
 
+prod-restart: stop prod-up
+
+prod-npm-install:
+	docker exec -it ${CONTAINER} sh -c "npm install --only=prod"
+
+prod-npm-build:
+	docker exec -it ${CONTAINER} sh -c "npm run build"
+
 stop:
 	docker-compose stop
-
-restart: stop up
 
 down:
 	docker-compose down --volumes --rmi all
@@ -46,14 +68,12 @@ down:
 enter:
 	docker exec -it ${CONTAINER} bash
 
-npm-install:
-	docker exec -it ${CONTAINER} sh -c "npm install"
+download-vols:
+	rsync -avzP --delete dock@bay:/var/www/chissmiii_vol/content/ ./dist/content/ && \
+	rsync -avzP --delete dock@bay:/var/www/chissmiii_vol/media/ ./dist/media/ && \
+	rsync -avzP --delete dock@bay:/var/www/chissmiii_vol/site/accounts/ ./dist/site/accounts/
 
-dev:
-	docker exec -it ${CONTAINER} sh -c "npm run dev"
-
-download-content:
-	rsync -avzP --delete dock@bay:/var/www/chissmiii/dist/content/ ./dist/content/
-
-upload-content:
-	rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii/dist/content/
+upload-vols:
+	rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii_vols/content/ && \
+	rsync -avzP --delete ./dist/media/ dock@bay:/var/www/chissmiii_vols/media/ && \
+	rsync -avzP --delete ./dist/site/accounts/ dock@bay:/var/www/chissmiii_vols/site/accounts/

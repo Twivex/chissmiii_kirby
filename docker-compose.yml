@@ -5,29 +5,12 @@ services:
     image: chissmiii_kirby:dev
     build:
       context: ./
-      target: base-stage
-      args:
-        ENV: development
     container_name: chissmiii_kirby
-    command: sh -c "apache2-foreground"
-    ports:
-      - 8000:80
     networks:
       - chissmiii
-    volumes:
-      - chissmiii_dist_vol:/var/www/html
-      # - chissmiii_node_modules_vol:/var/www/html/node_modules
+    command: sh -c "apache2-foreground"
 
 networks:
   chissmiii:
     driver: bridge
     name: chissmiii_network
-
-volumes:
-  chissmiii_dist_vol:
-    name: chissmiii_dist_src
-    driver: local
-    driver_opts:
-      device: ./dist
-      type: none
-      o: bind
