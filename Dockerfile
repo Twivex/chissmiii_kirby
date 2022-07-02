@@ -61,13 +61,16 @@ RUN a2enmod headers
 RUN a2enmod rewrite
 
 WORKDIR /var/www/html/
+CMD ["apache2-foreground"]
 
 ### Production Stage
 FROM base-stage as prod-stage
 
+COPY ./files/kirby-entrypoint /usr/local/bin/
+RUN chmod +x /usr/local/bin/kirby-entrypoint
+ENV PATH "/usr/local/bin/kirby-entrypoint:${PATH}"
+
 # copy files
 COPY ./dist ./
 
-# webserver user owns the webserver root dir
-RUN chown -R :www-data /var/www/html
-RUN chmod -R 775 /var/www/html
+ENTRYPOINT ["kirby-entrypoint" ]
