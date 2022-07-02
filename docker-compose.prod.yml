@@ -29,7 +29,7 @@ volumes:
     name: chissmiii_kirby_content
     driver: local
     driver_opts:
-      device: ${SITE_PATH:-/var/www/chissmiii_vols}/content
+      device: /var/www/chissmiii_vols/content
       type: none
       o: bind
 
@@ -37,7 +37,7 @@ volumes:
     name: chissmiii_kirby_media
     driver: local
     driver_opts:
-      device: ${SITE_PATH:-/var/www/chissmiii_vols}/media
+      device: /var/www/chissmiii_vols/media
       type: none
       o: bind
 
@@ -45,7 +45,7 @@ volumes:
     name: chissmiii_kirby_accounts
     driver: local
     driver_opts:
-      device: ${SITE_PATH:-/var/www/chissmiii_vols}/site/accounts
+      device: /var/www/chissmiii_vols/site/accounts
       type: none
       o: bind
 
@@ -53,6 +53,6 @@ volumes:
     name: chissmiii_kirby_sessions
     driver: local
     driver_opts:
-      device: ${SITE_PATH:-/var/www/chissmiii_vols}/site/sessions
+      device: /var/www/chissmiii_vols/site/sessions
       type: none
       o: bind
