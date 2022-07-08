@@ -1,7 +1,7 @@
 <?php
 return [
   'routes' => require_once 'routes.php',
-  'home' => 'events',
+  'home' => 'home',
   'debug'  => true,
   'panel' => [
     'language' => 'de'

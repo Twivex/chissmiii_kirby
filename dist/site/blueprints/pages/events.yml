@@ -1,7 +1,4 @@
 title: Events
-options:
-  url: false
-  delete: false
 
 sections:
   drafts:
