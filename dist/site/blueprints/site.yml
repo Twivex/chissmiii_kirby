@@ -10,6 +10,7 @@ tabs:
         status: draft
         templates:
           - default
+          - home
           - error
           - login
           - events
@@ -23,6 +24,7 @@ tabs:
         status: unlisted
         templates:
           - default
+          - home
           - error
           - login
           - events
@@ -36,6 +38,7 @@ tabs:
         status: listed
         templates:
           - default
+          - home
           - error
           - login
           - events
