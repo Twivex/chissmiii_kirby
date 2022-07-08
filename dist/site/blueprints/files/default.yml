@@ -1,5 +1,7 @@
 fields:
   title:
+    label: Titel
     type: text
   description:
+    label: Beschreibung
     type: text
