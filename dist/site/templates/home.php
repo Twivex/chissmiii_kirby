@@ -46,6 +46,15 @@
   </section>
   <!-- EO COUNTDOWN -->
 
+  <section class="mt-5">
+    <div class="row justify-content-center mb-2">
+      <div class="col">
+        <h2 class="fs-2 text-center">To be continued...</h2>
+        <h3 class="fs-1 text-center">Updates folgen!</h3>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <?php snippet('globals/footer') ?>
