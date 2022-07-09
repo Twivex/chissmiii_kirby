@@ -71,7 +71,7 @@ npm-watch:
 	docker exec -it ${CONTAINER} sh -c "npm run dev"
 
 npm-build:
-	docker exec -it ${CONTAINER} sh -c "npm build"
+	docker exec -it ${CONTAINER} sh -c "npm run build"
 
 download-vols:
 	rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/content/ ./dist/content/ && \
