@@ -14,8 +14,8 @@
   ?>
   <section>
     <div class="row justify-content-center mb-2">
-      <div class="col-xs-12 col-sm-6">
-        <h2 class="fs-2 text-center">Save The Date!</h2>
+      <div class="col">
+        <h2 class="fs-2 text-center">Save the Date!</h2>
         <h3 class="fs-1 text-center"><?=$page->countdownTitle()?></h3>
         <h3 class="fs-1 text-center"><?=$targetDate->format('d.m.Y')?></h3>
       </div>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-xs-12 col-sm-6 col-md-3 d-flex gap-3 justify-content-center">
+      <div class="col d-flex gap-3 justify-content-center">
         <div class="d-inline-fex">
           <p class="fs-3">noch</p>
         </div>
