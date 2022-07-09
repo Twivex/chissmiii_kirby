@@ -27,6 +27,12 @@ $font-family-base:       $font-family-sans-serif;
 // Colors
 
 $link-color: #fff;
+$navbar-dark-color: #fff;
+$navbar-dark-hover-color: rgba(#fff, $hover-opacity);
+$btn-close-opacity: 1;
+$btn-close-hover-opacity: $hover-opacity;
+$offcanvas-box-shadow: none;
+
 $theme-color-lightest: #FBB8AB;
 $theme-color-lighter: #FA775E;
 $theme-color-base: #C7604C;
@@ -40,6 +46,12 @@ $light: $theme-color-lightest;
 $dark: $theme-color-darkest;
 $link-hover-color: $theme-color-darkest;
 
+// buttons
+$navbar-toggler-focus-width: 0;
+$navbar-dark-toggler-border-color: transparent;
+$navbar-light-toggler-border-color: transparent;
+$input-btn-focus-width: .1rem;
+
 // 3. Include remainder of required Bootstrap stylesheets
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
@@ -50,7 +62,7 @@ $link-hover-color: $theme-color-darkest;
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
 @import "bootstrap/scss/type";
-// @import "bootstrap/scss/images";
+@import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
 // @import "bootstrap/scss/tables";
@@ -62,22 +74,22 @@ $link-hover-color: $theme-color-darkest;
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
 @import "bootstrap/scss/card";
-// @import "bootstrap/scss/accordion";
+@import "bootstrap/scss/accordion";
 // @import "bootstrap/scss/breadcrumb";
 // @import "bootstrap/scss/pagination";
 // @import "bootstrap/scss/badge";
 // @import "bootstrap/scss/alert";
 // @import "bootstrap/scss/progress";
-// @import "bootstrap/scss/list-group";
+@import "bootstrap/scss/list-group";
 @import "bootstrap/scss/close";
 @import "bootstrap/scss/toasts";
 @import "bootstrap/scss/modal";
-// @import "bootstrap/scss/tooltip";
-// @import "bootstrap/scss/popover";
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
 @import "bootstrap/scss/carousel";
 // @import "bootstrap/scss/spinners";
-// @import "bootstrap/scss/offcanvas";
-// @import "bootstrap/scss/placeholders";
+@import "bootstrap/scss/offcanvas";
+@import "bootstrap/scss/placeholders";
 
 @import "bootstrap/scss/helpers"; // TODO doesnt work –> why?
 
@@ -137,3 +149,12 @@ $utilities: map-merge(
 .bg-no-gradient {
   background-image: none !important;
 }
+
+.card-horizontal img {
+  @extend .rounded-start;
+}
+// @include media-breakpoint-down(sm) {
+//   .card-horizontal img {
+//     @extend .rounded-top;
+//   }
+// }

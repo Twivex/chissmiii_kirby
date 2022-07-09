@@ -1,20 +1,25 @@
-<nav id="menu" class="navbar navbar-expand-sm sticky-top bg-light">
-  <div class="container">
-    <a class="navbar-brand mb-n2 font-decorative" href="/">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav id="menu" class="navbar navbar-dark navbar-expand-sm sticky-top bg-light pt-3">
+  <div class="container-fluid container-sm">
+    <a class="navbar-brand fs-6 mb-n1 font-decorative" href="/"><?=$site->homePage()->title()?></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarContent" aria-labelledby="navbarLabel">
+      <div class="offcanvas-header bg-light text-white">
+        <h5 class="offcanvas-title mb-n1 mt-1" id="navbarLabel">Menü</h5>
+        <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+      <ul class="navbar-nav">
         <?php
           foreach ($site->children()->listed() as $item) :
           // skip secured pages, if not logged in
           if ($item->secured()->toBool() === true && !$kirby->user()) continue;
         ?>
-          <li class="nav-item">
-            <a class="nav-link<?php e($item->isOpen(), ' active') ?>" href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
+          <li class="nav-item ps-sm-3">
+            <a class="nav-link px-2 position-relative<?php e($item->isOpen(), ' active') ?>" href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
           </li>
-        <?php endforeach ?>
+        <?php endforeach; ?>
       </ul>
       <!-- <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
@@ -26,6 +31,7 @@
           <?php endif ?>
         </li>
       </ul> -->
+    </div>
     </div>
   </div>
 </nav>
