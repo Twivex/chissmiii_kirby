@@ -4,9 +4,5 @@
 chown -R :www-data /var/www/html
 chmod -R 775 /var/www/html
 
-if [ -d "/var/www/html/npm_modules" && "$(ls -A /var/www/html/node_modules)" ]
-  npm run build
-fi
-
 # run CMD
 exec "$@"
