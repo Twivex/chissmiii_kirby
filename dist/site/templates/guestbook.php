@@ -1,8 +1,8 @@
 <?php snippet('globals/header') ?>
 
-<main id="main" class="container">
+<main id="main" class="container my-sm-4 py-4">
 
-  <section class="mt-4 mb-5">
+  <section>
     <h1><?=$page->title()?></h1>
     <form data-guestbook="form" action="<?=$page->url()?>" method="POST" class="needs-validation" novalidate>
       <fieldset>
@@ -31,7 +31,7 @@
 
   <hr>
 
-  <section class="mt-5 mb-4" data-guestbook="entries">
+  <section class="mt-4 mb-n3" data-guestbook="entries">
     <?php foreach ($page->children()->sortBy('created_at', 'desc') as $entry) {
       echo $entry->render();
     } ?>
