@@ -22,7 +22,7 @@ help:
 	"down: \$$ docker-compose down --volumes --rmi all\n" \
 	"enter: \$$ docker exec -it ${CONTAINER} bash\n" \
 	"-------------------------------------------------------------------------------------\n" \
-	"download-vols: \$$ rsync -avzP --delete dock@bay:/var/www/chissmiii_vol/content/ ./dist/content/ && ...\n" \
+	"download-vols: \$$ rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/content/ ./dist/content/ && ...\n" \
 	"upload-vols: \$$ rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii_vols/content/ && ...\n" \
 
 dev-build:
@@ -69,9 +69,9 @@ enter:
 	docker exec -it ${CONTAINER} bash
 
 download-vols:
-	rsync -avzP --delete dock@bay:/var/www/chissmiii_vol/content/ ./dist/content/ && \
-	rsync -avzP --delete dock@bay:/var/www/chissmiii_vol/media/ ./dist/media/ && \
-	rsync -avzP --delete dock@bay:/var/www/chissmiii_vol/site/accounts/ ./dist/site/accounts/
+	rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/content/ ./dist/content/ && \
+	rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/media/ ./dist/media/ && \
+	rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/site/accounts/ ./dist/site/accounts/
 
 upload-vols:
 	rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii_vols/content/ && \
