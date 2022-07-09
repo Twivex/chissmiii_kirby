@@ -3,6 +3,7 @@
 <main id="main" class="container">
 
   <section class="mt-4 mb-5">
+    <h1><?=$page->title()?></h1>
     <form data-guestbook="form" action="<?=$page->url()?>" method="POST" class="needs-validation" novalidate>
       <fieldset>
         <div class="mb-3">
