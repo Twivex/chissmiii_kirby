@@ -1,0 +1,12 @@
+.navbar-nav .nav-link.active:before {
+  content: '♥︎';
+  opacity: .6;
+  font-size: $font-size-sm;
+  position: absolute;
+  left: -#{map-get($spacers, 2)};
+  line-height: 1.5rem;
+}
+
+.navbar .offcanvas.show .offcanvas-body .navbar-nav .nav-link {
+  color: $body-color;
+}
