@@ -1,0 +1,29 @@
+.polaroid {
+  background-color: white;
+  box-shadow: 2px 3px 10px darkgrey;
+  display: flex;
+  flex-direction: row;
+  height: 260px;
+  justify-content: center;
+  padding-top: 10px;
+  position: relative;
+  width: 220px;
+
+  > img {
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  &:after {
+    bottom: 0;
+    content: attr(polaroid-caption);
+    display: block;
+    left: 0;
+    margin: 0 auto;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: calc(100% - 20px);
+  }
+}
