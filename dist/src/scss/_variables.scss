@@ -1,24 +1,2 @@
-/* Custom variables */
-//Fonts
-$font-family-serif: "Sacramento";
 
-// Colors
-$theme-color-lightest: #FBB8AB;
-$theme-color-lighter: #FA775E;
-$theme-color-base: #C7604C;
-$theme-color-darker: #7A5A53;
-$theme-color-darkest: #7A3B2F;
-
-/* Overwrite Bootstrap variables */
-// Fonts
-$font-family-sans-serif: "Questrial";
-$font-family-base:       $font-family-sans-serif;
-
-// Colors
-$primary: $theme-color-lighter;
-$econdary: $theme-color-darkest;
-$light: $theme-color-lightest;
-$dark: $theme-color-darkest;
-
-$link-color: #fff;
-$link-hover-color: $theme-color-darkest;
+$main-content-background-color: rgba(255,255,255,.6);

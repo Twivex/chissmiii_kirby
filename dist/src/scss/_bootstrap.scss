@@ -10,11 +10,36 @@ $enable-gradients: true;
 $enable-shadows: true;
 $enable-negative-margins: true;
 
-// Customize some defaults
-$body-color: #333;
-$body-bg: #fff;
 $border-radius: .4rem;
-$success: #7952b3;
+
+//Fonts
+$font-family-serif: "Zapfino";
+
+// Colors
+$body-bg: #fff;
+$body-color: black;
+
+
+/* Overwrite Bootstrap variables */
+// Fonts
+$font-family-sans-serif: "Questrial";
+$font-family-base:       $font-family-sans-serif;
+
+// Colors
+
+$link-color: #fff;
+$theme-color-lightest: #FBB8AB;
+$theme-color-lighter: #FA775E;
+$theme-color-base: #C7604C;
+$theme-color-darker: #7A5A53;
+$theme-color-darkest: #7A3B2F;
+
+// Override variables by values of other variables
+$primary: $theme-color-lighter;
+$econdary: $theme-color-darkest;
+$light: $theme-color-lightest;
+$dark: $theme-color-darkest;
+$link-hover-color: $theme-color-darkest;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "bootstrap/scss/variables";
