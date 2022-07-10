@@ -21,16 +21,6 @@
           </li>
         <?php endforeach; ?>
       </ul>
-      <!-- <ul class="navbar-nav justify-content-end">
-        <li class="nav-item">
-          <?php if ($kirby->user()): ?>
-            <a class="nav-link" href="<?= url('logout') ?>">Logout</a>
-          <?php else: ?>
-            <?php $login = $pages->findBy('uid', 'login'); ?>
-            <a class="nav-link<?php e($login->isOpen(), ' active') ?>" href="<?= $login->url() ?>"><?= $login->title()->html() ?></a>
-          <?php endif ?>
-        </li>
-      </ul> -->
     </div>
     </div>
   </div>
