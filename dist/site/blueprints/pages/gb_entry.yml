@@ -27,3 +27,4 @@ fields:
     time: true
     default: now
     disabled: true
+    display: DD.MM.YYYY
