@@ -3,3 +3,5 @@ sections:
   files:
     type: files
     headline: Dateien
+    layout: cardlets
+    info: "{{ file.title }}"
