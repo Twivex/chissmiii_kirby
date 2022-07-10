@@ -1,6 +1,6 @@
 <nav id="menu" class="navbar navbar-dark navbar-expand-sm sticky-top bg-light pt-3">
   <div class="container-fluid container-sm">
-    <a class="navbar-brand fs-6 mb-n1 font-decorative" href="/"><?=$site->homePage()->title()?></a>
+    <a class="navbar-brand fs-6 mb-n1 font-decorative" href="/"><?=$site->title()?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
