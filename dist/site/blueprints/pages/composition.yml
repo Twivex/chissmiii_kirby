@@ -1,0 +1,19 @@
+title: Komposition
+pages: false
+options:
+  changeTemplate: false
+  changeStatus: true
+  url: false
+
+tabs:
+  content:
+    label: Inhalt
+    sections:
+      elements:
+        layout: list
+        extends: sections/composition_elements
+        headline: Elemente
+
+
+
+  files: tabs/files

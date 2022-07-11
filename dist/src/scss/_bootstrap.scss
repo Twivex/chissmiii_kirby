@@ -26,18 +26,20 @@ $font-family-base:       $font-family-sans-serif;
 
 // Colors
 
+$theme-color-lightest: #FBB8AB;
+$theme-color-lighter: #FA775E;
+$theme-color-base: #C7604C;
+$theme-color-darker: #7A5A53;
+$theme-color-darkest: #7A3B2F;
+
+$border-color: #000;
+
 $link-color: #fff;
 $navbar-dark-color: #fff;
 $navbar-dark-hover-color: rgba(#fff, $hover-opacity);
 $btn-close-opacity: 1;
 $btn-close-hover-opacity: $hover-opacity;
 $offcanvas-box-shadow: none;
-
-$theme-color-lightest: #FBB8AB;
-$theme-color-lighter: #FA775E;
-$theme-color-base: #C7604C;
-$theme-color-darker: #7A5A53;
-$theme-color-darkest: #7A3B2F;
 
 // Override variables by values of other variables
 $primary: $theme-color-lighter;

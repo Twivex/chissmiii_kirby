@@ -1,0 +1,40 @@
+title: Countdown
+pages: false
+
+tabs:
+  content:
+    label: Inhalt
+    columns:
+      main:
+        width: 3/4
+        fields:
+          title:
+            label: Überschrift
+            type: text
+            required: true
+          target_date:
+            label: Datum
+            width: 1/2
+            type: date
+            required: true
+            display: DD.MM.YYYY
+          target_time:
+            label: Uhrzeit
+            width: 1/2
+            type: time
+            display: HH:mm
+          description:
+            label: Beschreibung
+            type: textarea
+      sidebar:
+        width: 1/4
+        fixed: true
+        fields:
+          cover:
+              label: Bild für Countdown
+              type: files
+              layout: cards
+              max: 1
+              back: white
+
+  files: tabs/files

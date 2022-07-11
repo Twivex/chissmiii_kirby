@@ -1,0 +1,36 @@
+title: Timeline-Eintrag
+pages: false
+options:
+  url: false
+
+columns:
+  main:
+    width: 3/4
+    type: fields
+    fields:
+      headline:
+        label: Überschrift
+        type: text
+        required: true
+        width: 3/4
+      tl_date:
+        label: Datum
+        type: date
+        required: true
+        display: DD.MM.YYYY
+        width: 1/4
+      description:
+        label: Beschreibung
+        type: textarea
+        required: true
+
+  sidebar:
+    width: 1/4
+    fields:
+      tl_image:
+        label: Bild
+        type: files
+        layout: cards
+        max: 1
+        back: white
+        required: true
