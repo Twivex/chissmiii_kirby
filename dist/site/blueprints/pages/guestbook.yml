@@ -5,7 +5,7 @@ sections:
     status: draft
     layout: list
     extends: sections/gb_entries
-    headline: Unveröffentlichte Einträge
+    headline: Entworfene Einträge
 
   unlisted:
     status: unlisted
