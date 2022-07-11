@@ -3,3 +3,5 @@ dist/node_modules
 dist/media
 dist/site/accounts
 dist/site/sessions
+dist/resources/css
+dist/resources/js
