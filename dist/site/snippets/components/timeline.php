@@ -4,5 +4,4 @@
     snippet('components/' . $entry->template()->name(), ['data' => $entry]);
   }?>
 </section>
-
 <!-- EO TIMELINE -->
