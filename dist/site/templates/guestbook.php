@@ -33,7 +33,7 @@
 
   <section class="mt-4 mb-n3" data-guestbook="entries">
     <?php foreach ($page->children()->sortBy('created_at', 'desc') as $entry) {
-      echo $entry->render();
+      snippet('components/' . $entry->template()->name(), ['data' => $entry]);
     } ?>
   </section>
 
