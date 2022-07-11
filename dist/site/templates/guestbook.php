@@ -1,9 +1,9 @@
 <?php snippet('globals/header') ?>
 
-<main id="main" class="container my-sm-4 py-4">
+<main id="main" class="container my-sm-4 px-sm-4 py-4">
+  <h1><?=$page->title()?></h1>
 
   <section>
-    <h1><?=$page->title()?></h1>
     <form data-guestbook="form" action="<?=$page->url()?>" method="POST" class="needs-validation" novalidate>
       <fieldset>
         <div class="mb-3">
