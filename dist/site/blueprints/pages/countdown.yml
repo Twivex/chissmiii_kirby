@@ -8,7 +8,7 @@ tabs:
       main:
         width: 3/4
         fields:
-          title:
+          headline:
             label: Überschrift
             type: text
             required: true
