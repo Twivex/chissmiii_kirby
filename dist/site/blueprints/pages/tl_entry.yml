@@ -2,35 +2,45 @@ title: Timeline-Eintrag
 pages: false
 options:
   url: false
+status:
+  draft:
+    label: Entwurf
+    text: Die Seite ist im Entwurfsmodus und ist nur nach Anmeldung oder über den geheimen Link sichtbar
+  listed:
+    label: Öffentlich
+    text: Die Seite ist öffentlich für alle
 
-columns:
-  main:
-    width: 3/4
-    type: fields
-    fields:
-      headline:
-        label: Überschrift
-        type: text
-        required: true
+tabs:
+  content:
+    label: Inhalt
+    columns:
+      main:
         width: 3/4
-      tl_date:
-        label: Datum
-        type: date
-        required: true
-        display: DD.MM.YYYY
-        width: 1/4
-      description:
-        label: Beschreibung
-        type: textarea
-        required: true
+        fields:
+          headline:
+            label: Überschrift
+            type: text
+            required: true
+            width: 3/4
+          tl_date:
+            label: Datum
+            type: text
+            required: true
+            display: DD.MM.YYYY
+            width: 1/4
+          description:
+            label: Beschreibung
+            type: textarea
+            required: true
 
-  sidebar:
-    width: 1/4
-    fields:
-      tl_image:
-        label: Bild
-        type: files
-        layout: cards
-        max: 1
-        back: white
-        required: true
+      sidebar:
+        width: 1/4
+        fields:
+          tl_image:
+            label: Bild
+            type: files
+            layout: cards
+            max: 1
+            back: white
+
+  files: tabs/files
