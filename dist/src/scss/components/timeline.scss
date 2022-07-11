@@ -1,0 +1,135 @@
+.timeline {
+
+  .tl-entry {
+    position: relative;
+
+    &:first-child,
+    &:last-child {
+      &:before {
+        color: $chissmiii-rose;
+        display: flex;
+        left: 50%;
+        position: absolute;
+        text-shadow: 0px 0px 10px darkgrey;
+      }
+    }
+
+    &:first-child:before {
+      content: '♥︎';
+      font-size: 2.5rem;
+      margin-left: -18.5px;
+      top: -25px;
+    }
+
+    &:last-child:before {
+      bottom: -50px;
+      content: '»';
+      font-size: 4rem;
+      margin-left: -11.5px;
+      transform: rotate(90deg);
+    }
+
+    &:after {
+      border-radius: 3px;
+      background-color: $chissmiii-rose;
+      color: $white;
+      content: attr(timeline-date);
+      display: flex;
+      font-size: map-get($font-sizes, 5);
+      padding: 2px 5px;
+      position: absolute;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    .tl-entry {
+      .order-sm-2 {
+        border-left: 3px solid $chissmiii-grey;
+      }
+
+      .tl-text.order-sm-2 {
+        padding-left: $spacer * 4;
+      }
+
+      .tl-image {
+        justify-content: start;
+        padding-left: 1.875rem;
+      }
+
+      .tl-image.order-sm-2 {
+        justify-content: end;
+        padding-right: 1.875rem;
+      }
+
+      .tl-text,
+      .tl-image {
+        padding-top: map-get($spacers, 4);
+        padding-bottom: map-get($spacers, 4);
+      }
+
+      &:first-child {
+        .tl-text,
+        .tl-image {
+          padding-top: 0;
+        }
+      }
+
+      &:last-child {
+        .tl-text,
+        .tl-image {
+          padding-bottom: 0;
+        }
+      }
+
+      &:after {
+        align-self: center;
+        left: 50%;
+        margin-left: -3.32rem;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding-left: map-get($spacers, 4);
+
+    .tl-entry {
+
+      .tl-image {
+        padding-top: map-get($spacers, 5);
+        padding-bottom: map-get($spacers, 3);
+      }
+
+      .tl-text {
+        padding-bottom: map-get($spacers, 5);
+      }
+
+      &:first-child .tl-image {
+        padding-top: $spacer * 7;
+      }
+
+      &:last-child .tl-text {
+        padding-bottom: 0;
+      }
+
+      .order-1,
+      .order-2 {
+        padding-left: map-get($spacers, 4);
+        border-left: 3px solid $chissmiii-grey;
+      }
+
+      &:first-child:before,
+      &:last-child:before {
+        left: 0;
+      }
+
+      &:after {
+        left: unquote("-" + map-get($spacers, 3));
+        top: unquote("-" + map-get($spacers, 3));
+      }
+
+      &:first-child:after {
+        top: map-get($spacers, 5);
+      }
+    }
+  }
+}

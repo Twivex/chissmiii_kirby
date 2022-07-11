@@ -1,0 +1,21 @@
+title: Timeline
+
+sections:
+  drafts:
+    status: draft
+    layout: list
+    extends: sections/tl_entries
+    headline: Unveröffentlichte Einträge
+
+  unlisted:
+    status: unlisted
+    layout: list
+    extends: sections/tl_entries
+    headline: Unveröffentlichte Einträge
+
+
+  listed:
+    status: listed
+    layout: list
+    extends: sections/tl_entries
+    headline: Veröffentlichte Einträge

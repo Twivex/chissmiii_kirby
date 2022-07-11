@@ -11,6 +11,8 @@ tabs:
         templates:
           - default
           - home
+          - timeline
+          - composition
           - error
           - login
           - events
@@ -25,6 +27,8 @@ tabs:
         templates:
           - default
           - home
+          - timeline
+          - composition
           - error
           - login
           - events
@@ -39,6 +43,8 @@ tabs:
         templates:
           - default
           - home
+          - timeline
+          - composition
           - error
           - login
           - events
