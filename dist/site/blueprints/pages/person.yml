@@ -15,12 +15,13 @@ tabs:
           role:
             label: Rolle
             type: text
-            required: true
+          category:
+            label: Kategorie
+            type: text
           description:
             label: Beschreibung
             type: textarea
             size: large
-            required: true
       sidebar:
         width: 1/4
         sticky: true
@@ -31,6 +32,5 @@ tabs:
             layout: cards
             max: 1
             back: white
-            required: true
 
   files: tabs/files
