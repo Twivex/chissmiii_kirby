@@ -1,4 +1,7 @@
-<div class="polaroid" polaroid-caption="<?=$image ? $image->title() : ''?>">
+<?php
+  $caption = $caption ?? ($image ? $image->title() : '');
+?>
+<div class="polaroid" polaroid-caption="<?=$caption?>">
   <?php if ($image): ?>
     <img src="<?=$image->url()?>" srcset="<?=$image->srcset()?>" alt="<?=$image->title()?>">
   <?php else: ?>
