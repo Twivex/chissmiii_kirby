@@ -4,7 +4,7 @@
   $tlClasses[1] = 'order-sm-2';
 ?>
 
-<div class="row tl-entry" timeline-date="<?=$data->tl_date()->toDate('d.m.Y')?>">
+<div class="row tl-entry" timeline-date="<?=$data->tl_date()?>">
 
   <div class="col-xs-12 col-sm-6 order-1 d-flex tl-image <?=$tlClasses[($data->num() + 1) % 2]?>">
     <?php snippet('molecules/polaroid', ['image' => $data->tl_image()->toFile()]); ?>
