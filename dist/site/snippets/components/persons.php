@@ -1,5 +1,5 @@
 <section class="py-4">
-  <div class="row">
+  <div class="row text-center">
     <?php
       $persons = $data->children();
       $personsArray = $persons->toArray();
