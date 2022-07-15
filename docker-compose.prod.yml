@@ -41,10 +41,10 @@ volumes:
       o: bind
 
   chissmiii_kirby_site_vol:
-    name: chissmiii_kirby_accounts
+    name: chissmiii_kirby_site
     driver: local
     driver_opts:
-      device: /var/www/chissmiii/site/
+      device: /var/www/chissmiii/dist/site/
       type: none
       o: bind
 
