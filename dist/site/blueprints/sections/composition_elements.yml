@@ -3,4 +3,5 @@ headline: Elemente
 templates:
   - countdown
   - timeline
+  - persons
 empty: Keine Elemente
