@@ -10,8 +10,8 @@
     }
   }
   $tlClasses = array();
-  $tlClasses[0] = 'order-sm-1';
-  $tlClasses[1] = 'order-sm-2';
+  $tlClasses[0] = 'order-lg-1';
+  $tlClasses[1] = 'order-lg-2';
 ?>
 
 <div class="row tl-entry" timeline-date="<?=$data->tl_date()?>">
@@ -24,10 +24,13 @@
     </div>
   <?php endif; ?>
 
-  <div class="col-xs-12 col-sm-6 order-1 tl-image <?=$tlClasses[($data->num() + 1) % 2]?>">
-    <?php snippet('molecules/polaroid', ['image' => $data->tl_image()->toFile()]); ?>
+  <div class="col-xs-12 col-lg-6 order-1 tl-image <?=$tlClasses[($data->num() + 1) % 2]?>">
+    <?php snippet('molecules/polaroid', [
+      'image' => $data->tl_image()->toFile(),
+      'size' => '300'
+    ]); ?>
   </div>
-  <div class="col-xs-12 col-sm-6 order-2 tl-text <?=$tlClasses[$data->num() % 2]?>">
+  <div class="col-xs-12 col-lg-6 order-2 tl-text <?=$tlClasses[$data->num() % 2]?>">
     <h3><?= $data->headline() ?></h3>
     <?= kt($data->description()) ?>
   </div>
