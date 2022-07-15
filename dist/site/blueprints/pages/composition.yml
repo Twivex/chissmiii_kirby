@@ -9,6 +9,15 @@ tabs:
   content:
     label: Inhalt
     sections:
+      settings:
+        type: fields
+        fields:
+          show_title:
+            label: Titel anzeigen?
+            type: toggle
+            text:
+              - "nein"
+              - "ja"
       elements:
         layout: list
         extends: sections/composition_elements
