@@ -1,43 +1,56 @@
 .timeline {
 
+  .tl-date {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    .tl-date-wrapper {
+      justify-content: center;
+      display: flex;
+      align-self: center;
+      height: 34px;
+      width: 110px;
+
+      > span {
+        background-color: $chissmiii-rose;
+        border-radius: 3px;
+        color: $white;
+        font-size: map-get($font-sizes, 5);
+        padding: 3px 5px 0;
+        text-align: center;
+        display: inline-flex;
+      }
+    }
+  }
+
   .tl-entry {
     position: relative;
 
-    &:first-child,
-    &:last-child {
-      &:before {
-        color: $chissmiii-rose;
-        display: flex;
-        left: 50%;
-        position: absolute;
-        text-shadow: 0px 0px 10px darkgrey;
-      }
+    &:first-child:before,
+    &:last-child:before {   // icons
+      color: $chissmiii-rose;
+      display: flex;
+      left: 50%;
+      position: absolute;
+      text-shadow: 0px 0px 10px darkgrey;
     }
 
-    &:first-child:before {
+    &:first-child:before {  // first icon
       content: '♥︎';
       font-size: 2.5rem;
       margin-left: -18.5px;
       top: -25px;
     }
 
-    &:last-child:before {
+    &:last-child:before { // last icon
       bottom: -50px;
       content: '»';
       font-size: 4rem;
       margin-left: -11.5px;
       transform: rotate(90deg);
-    }
-
-    &:after {
-      border-radius: 3px;
-      background-color: $chissmiii-rose;
-      color: $white;
-      content: attr(timeline-date);
-      display: flex;
-      font-size: map-get($font-sizes, 5);
-      padding: 2px 5px;
-      position: absolute;
     }
   }
 
@@ -47,24 +60,28 @@
         border-left: 3px solid $chissmiii-grey;
       }
 
-      .tl-text.order-sm-2 {
-        padding-left: $spacer * 4;
-      }
-
-      .tl-image {
-        justify-content: start;
-        padding-left: 1.875rem;
-      }
-
-      .tl-image.order-sm-2 {
-        justify-content: end;
-        padding-right: 1.875rem;
-      }
-
       .tl-text,
       .tl-image {
-        padding-top: map-get($spacers, 4);
-        padding-bottom: map-get($spacers, 4);
+        display: flex;
+      }
+
+      .tl-text {
+        flex-direction: column;
+        justify-content: center;
+        padding: map-get($spacers, 4) ($spacer * 4);
+        > * {
+          flex-direction: row;
+        }
+      }
+
+      .tl-image {
+        flex-direction: row;
+        justify-content: center;
+        padding: map-get($spacers, 4) 0;
+
+        > .polaroid {
+          align-self: center;
+        }
       }
 
       &:first-child {
@@ -80,12 +97,6 @@
           padding-bottom: 0;
         }
       }
-
-      &:after {
-        align-self: center;
-        left: 50%;
-        margin-left: -3.32rem;
-      }
     }
   }
 
@@ -93,6 +104,16 @@
     padding-left: map-get($spacers, 4);
 
     .tl-entry {
+
+      .tl-date {
+        justify-content: left;
+
+        .tl-date-wrapper {
+          align-self: flex-start;
+          justify-content: left;
+          margin-left: unquote('-' + map-get($spacers, 4));
+        }
+      }
 
       .tl-image {
         padding-top: map-get($spacers, 5);
@@ -103,6 +124,9 @@
         padding-bottom: map-get($spacers, 5);
       }
 
+      &:first-child .tl-date {
+        padding-top: $spacer * 4;
+      }
       &:first-child .tl-image {
         padding-top: $spacer * 7;
       }
@@ -119,16 +143,7 @@
 
       &:first-child:before,
       &:last-child:before {
-        left: 0;
-      }
-
-      &:after {
-        left: unquote("-" + map-get($spacers, 3));
-        top: unquote("-" + map-get($spacers, 3));
-      }
-
-      &:first-child:after {
-        top: map-get($spacers, 5);
+        left: 0
       }
     }
   }
