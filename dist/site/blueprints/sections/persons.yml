@@ -1,4 +1,4 @@
 type: pages
-info: "{{ page.role }}"
+info: "{{ page.category }} - {{ page.role }}"
 template: person
 empty: Keine Person
