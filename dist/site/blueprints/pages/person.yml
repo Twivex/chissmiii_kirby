@@ -12,6 +12,13 @@ tabs:
       main:
         width: 3/4
         fields:
+          show_title:
+            label: Titel anzeigen?
+            type: toggle
+            default: true
+            text:
+              - "nein"
+              - "ja"
           role:
             label: Rolle
             type: text
