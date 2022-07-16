@@ -8,3 +8,7 @@ body {
 #main {
   background-color: $main-content-background-color;
 }
+
+b, strong {
+  @extend .fw-bold;
+}
