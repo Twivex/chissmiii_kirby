@@ -4,53 +4,22 @@ tabs:
   pages:
     label: Seiten
     sections:
+
       drafts:
         headline: Entwürfe
-        type: pages
         status: draft
-        templates:
-          - default
-          - home
-          - timeline
-          - composition
-          - error
-          - login
-          - events
-          - galleries
-          - persons
-          - guestbook
+        extends: sections/sites
 
       unlisted:
         headline: Ungelistet
-        type: pages
         status: unlisted
-        templates:
-          - default
-          - home
-          - timeline
-          - composition
-          - error
-          - login
-          - events
-          - galleries
-          - persons
-          - guestbook
+        extends: sections/sites
 
       listed:
         headline: Veröffentlicht
-        type: pages
         status: listed
-        templates:
-          - default
-          - home
-          - timeline
-          - composition
-          - error
-          - login
-          - events
-          - galleries
-          - persons
-          - guestbook
+        extends: sections/sites
+
   files:
     extends: tabs/files
     sections:

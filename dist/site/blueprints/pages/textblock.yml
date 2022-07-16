@@ -1,0 +1,44 @@
+title: Textblock
+preset: page
+fields:
+  col_nums:
+    label: Breite
+    type: select
+    default: 12
+    options:
+      12: 12 / 12
+      11: 11 / 12
+      10: 10 / 12
+      9: 9 / 12
+      8: 8 / 12
+      7: 7 / 12
+      6: 6 / 12
+      5: 5 / 12
+      4: 4 / 12
+      3: 3 / 12
+      2: 2 / 12
+      1: 1 / 12
+  direction:
+    label: Textausrichtung
+    type: select
+    options:
+      left: Linksbündig
+      right: Rechtsbündig
+      center: Zentriert
+      block: Blocksatz
+  text_info:
+    label: Info zur Texterstellung
+    type: info
+    text: |
+      Markdown Syntax:
+      \# H1
+      \#\# H2
+      \#\#\# H3
+      \*\*fett\*\*
+      \*kursiv\*
+      (link: https://www.markdownguide.org/cheat-sheet/ text: Cheat Sheet target: _blank)
+  text:
+    label: Text
+    type: textarea
+    size: huge
+
