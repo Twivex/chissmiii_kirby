@@ -2,6 +2,7 @@ type: pages
 headline: Elemente
 templates:
   - countdown
-  - timeline
   - persons
+  - textblock
+  - timeline
 empty: Keine Elemente

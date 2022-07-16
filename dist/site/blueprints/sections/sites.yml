@@ -1,0 +1,13 @@
+type: pages
+empty: Keine Seiten
+templates:
+  - composition
+  - error
+  - events
+  - galleries
+  - guestbook
+  - home
+  - login
+  - persons
+  - textblock
+  - timeline
