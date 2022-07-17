@@ -5,4 +5,5 @@ templates:
   - persons
   - textblock
   - timeline
+  - gmaps
 empty: Keine Elemente
