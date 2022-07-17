@@ -1,10 +1,9 @@
 title: Textblock
-preset: page
 fields:
   col_nums:
     label: Breite
     type: select
-    default: 12
+    default: 12 / 12
     options:
       12: 12 / 12
       11: 11 / 12
