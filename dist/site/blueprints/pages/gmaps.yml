@@ -1,0 +1,51 @@
+title: Google Maps Karte
+
+columns:
+  top_left:
+    width: 1/2
+    fields:
+      headline:
+        label: Überschrift
+        type: text
+  top_right:
+    width: 1/2
+    fields:
+      direction:
+        label: Textausrichtung
+        type: select
+        options:
+          left: Linksbündig
+          right: Rechtsbündig
+          center: Zentriert
+          block: Blocksatz
+
+
+  bottom_left:
+    width: 1/2
+    fields:
+      gmaps_link:
+        label: Google Maps Embed Link
+        type: url
+        required: true
+
+
+  right:
+    width: 1/2
+    fields:
+      col_nums:
+        label: Breite
+        type: select
+        default: 8 / 12
+        options:
+          12: 12 / 12
+          11: 11 / 12
+          10: 10 / 12
+          9: 9 / 12
+          8: 8 / 12
+          7: 7 / 12
+          6: 6 / 12
+          5: 5 / 12
+          4: 4 / 12
+          3: 3 / 12
+          2: 2 / 12
+          1: 1 / 12
