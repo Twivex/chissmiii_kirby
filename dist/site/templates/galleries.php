@@ -9,8 +9,6 @@
     <div class="row">
       <div class="col-12">
         <?php snippet('molecules/img_card_horizontal', [
-          'imgWidth' => '4',
-          'textWidth' => '8',
           'imageUrl' => $galleryPage->images()->first()->url(),
           'imageAlt' => $galleryPage->images()->first()->title(),
           'title' => $galleryPage->title(),
