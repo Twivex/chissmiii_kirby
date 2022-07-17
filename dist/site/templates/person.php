@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-12 col-sm-6">
         <?php
-          snippet('components/' . $page->template()->name(), [ 'data' => $page ]);
+          snippet($page->blueprint()->name(), [ 'data' => $page ]);
         ?>
       </div>
     </div>

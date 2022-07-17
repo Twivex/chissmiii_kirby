@@ -20,14 +20,14 @@
           <?php
             $personGroup = $persons->filterBy('category', $category);
             foreach ($personGroup as $person) {
-              snippet('components/' . $person->template()->name(), [ 'data' => $person ]);
+              snippet('pages/person', [ 'data' => $person ]);
             }
           ?>
         </div>
       <?php endforeach; ?>
     <?php else:
       foreach ($data->children() as $person) {
-        snippet('components/' . $person->template()->name(), [ 'data' => $person ]);
+        snippet('pages/person', [ 'data' => $person ]);
       }
     endif; ?>
   </div>
