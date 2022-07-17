@@ -14,8 +14,10 @@
   }
   $col_nums = substr($data->col_nums(), 0, strpos($data->col_nums(), '/'));
 ?>
-<div class="row justify-content-center">
-  <div class="col-12 col-sm-<?=$col_nums?> <?=$directionClass?>">
-    <?=kt($data->text())?>
+<section class="py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-<?=$col_nums?> <?=$directionClass?>">
+      <?=kt($data->text())?>
+    </div>
   </div>
-</div>
+</section>
