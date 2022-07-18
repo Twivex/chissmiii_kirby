@@ -13,6 +13,5 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento">
   </head>
   <body>
-    <header>
-      <?php snippet('globals/nav') ?>
-    </header>
+    <?php snippet('globals/nav') ?>
+    <?php snippet('globals/bg-img') ?>
