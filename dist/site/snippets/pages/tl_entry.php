@@ -27,7 +27,8 @@
   <div class="col-xs-12 col-lg-6 order-1 tl-image <?=$tlClasses[($data->num() + 1) % 2]?>">
     <?php snippet('molecules/polaroid', [
       'image' => $data->tl_image()->toFile(),
-      'size' => '300'
+      'size' => '300',
+      'alt' => $data->headline()
     ]); ?>
   </div>
   <div class="col-xs-12 col-lg-6 order-2 tl-text <?=$tlClasses[$data->num() % 2]?>">
