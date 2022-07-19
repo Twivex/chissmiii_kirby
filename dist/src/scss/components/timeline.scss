@@ -29,8 +29,9 @@
       }
     }
 
-    .tl-text p {
-      text-align: justify;
+    .tl-text {
+      padding-top: $spacer * 4;;
+      padding-bottom: map-get($spacers, 4)
     }
 
     &:first-child:before,
@@ -60,21 +61,30 @@
 
   @include media-breakpoint-up(lg) {
     .tl-entry {
-      .order-lg-2 {
+      &.tl-entry--alternating .order-lg-2,
+      &.tl-entry--strict .tl-image,
+      &.tl-entry--strict .tl-text {
         border-left: 3px solid $chissmiii-grey;
       }
 
-      .tl-text,
+      .tl-description,
       .tl-image {
         display: flex;
       }
 
-      .tl-text {
+      .tl-description {
         flex-direction: column;
         justify-content: center;
         padding-top: map-get($spacers, 4);
         padding-bottom: map-get($spacers, 4);
 
+        > * {
+          flex-direction: row;
+        }
+      }
+
+      .tl-text,
+      .tl-description {
         &.order-lg-1 {
           padding-left: ($spacer * 4);
           padding-right: ($spacer * 5);
@@ -83,10 +93,6 @@
         &.order-lg-2 {
           padding-left: ($spacer * 5);
           padding-right: ($spacer * 4);
-        }
-
-        > * {
-          flex-direction: row;
         }
       }
 
@@ -101,13 +107,18 @@
       }
 
       &:first-child {
-        .tl-text,
+        .tl-text {
+          padding-top: $spacer * 2.5;
+        }
+
+        .tl-description,
         .tl-image {
           padding-top: 0;
         }
       }
 
       &:last-child {
+        .tl-description,
         .tl-text,
         .tl-image {
           padding-bottom: 0;
@@ -136,7 +147,7 @@
         padding-bottom: map-get($spacers, 3);
       }
 
-      .tl-text {
+      .tl-description {
         padding-bottom: map-get($spacers, 5);
       }
 
@@ -147,7 +158,7 @@
         padding-top: $spacer * 7;
       }
 
-      &:last-child .tl-text {
+      &:last-child .tl-description {
         padding-bottom: 0;
       }
 

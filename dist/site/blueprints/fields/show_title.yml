@@ -1,0 +1,5 @@
+label: Titel anzeigen?
+type: toggle
+text:
+  - "nein"
+  - "ja"

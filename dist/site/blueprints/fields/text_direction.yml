@@ -1,0 +1,8 @@
+label: Textausrichtung
+type: select
+default: center
+options:
+  left: Linksbündig
+  right: Rechtsbündig
+  center: Zentriert
+  block: Blocksatz

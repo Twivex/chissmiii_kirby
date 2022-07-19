@@ -1,5 +1,5 @@
 title: Timeline-Eintrag
-pages: false
+
 status:
   draft:
     label: Entwurf
@@ -13,26 +13,29 @@ tabs:
     label: Inhalt
     columns:
       main:
-        width: 3/4
+        width: 1/2
         fields:
-          headline:
-            label: Überschrift
-            type: text
-            required: true
-            width: 3/4
+          show_title:
+            extends: fields/show_title
+            width: 1/2
+          title_text_direction:
+            extends: fields/text_direction
+            label: Ausrichtung des Titels
+            width: 1/2
           tl_date:
-            label: Datum
+            label: Zeitpunkt
             type: text
             required: true
             display: DD.MM.YYYY
-            width: 1/4
+          description_text_direction:
+            extends: fields/text_direction
+            label: Ausrichtung der Beschreibung
           description:
             label: Beschreibung
             type: textarea
-            required: true
 
       sidebar:
-        width: 1/4
+        width: 1/2
         fields:
           tl_image:
             label: Bild
@@ -40,5 +43,11 @@ tabs:
             layout: cards
             max: 1
             back: white
+          tl_text_text_direction:
+            extends: fields/text_direction
+            label: Ausrichtung der Beschriftung
+          tl_text:
+            label: Beschriftung
+            type: textarea
 
   files: tabs/files

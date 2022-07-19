@@ -1,7 +1,10 @@
 title: Textblock
+icon: 📝
+
 fields:
   col_nums:
     label: Breite
+    width: 1/2
     type: select
     default: 12 / 12
     options:
@@ -17,14 +20,9 @@ fields:
       3: 3 / 12
       2: 2 / 12
       1: 1 / 12
-  direction:
-    label: Textausrichtung
-    type: select
-    options:
-      left: Linksbündig
-      right: Rechtsbündig
-      center: Zentriert
-      block: Blocksatz
+  text_direction:
+    extends: fields/text_direction
+    width: 1/2
   text_info:
     label: Info zur Texterstellung
     type: info
