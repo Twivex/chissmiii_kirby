@@ -5,10 +5,10 @@ templates:
   - error
   - events
   - galleries
+  - gmaps
   - guestbook
   - home
   - login
   - persons
   - textblock
   - timeline
-  - gmaps

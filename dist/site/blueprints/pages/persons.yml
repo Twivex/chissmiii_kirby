@@ -1,18 +1,35 @@
 title: Personen
-preset: pages
 icon: 👤
 
-drafts:
-  layout: list
-  extends: sections/persons
-  headline: Unveröffentlichte Personen
+sections:
+  settings:
+    type: fields
+    fields:
+      show_title:
+        extends: fields/show_title
+        width: 1/2
+      title_text_direction:
+        extends: fields/text_direction
+        width: 1/2
+        label: Ausrichtung des Titels
+      category_text_direction:
+        extends: fields/text_direction
+        label: Ausrichtung der Kategorieüberschrift
 
-unlisted:
-  layout: cards
-  extends: sections/persons
-  headline: Ungelistete Personen
+  drafts:
+    status: draft
+    layout: list
+    extends: sections/persons
+    headline: Unveröffentlichte Personen
 
-listed:
-  layout: cards
-  extends: sections/persons
-  headline: Veröffentlichte Personen
+  unlisted:
+    status: unlisted
+    layout: cards
+    extends: sections/persons
+    headline: Ungelistete Personen
+
+  listed:
+    status: listed
+    layout: cards
+    extends: sections/persons
+    headline: Veröffentlichte Personen

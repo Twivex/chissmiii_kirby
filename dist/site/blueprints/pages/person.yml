@@ -13,22 +13,28 @@ tabs:
         width: 3/4
         fields:
           show_title:
-            label: Titel anzeigen?
-            type: toggle
+            extends: fields/show_title
+            width: 1/2
             default: true
-            text:
-              - "nein"
-              - "ja"
+          title_text_direction:
+            extends: fields/text_direction
+            label: Ausrichtung des Titels
+            width: 1/2
           role:
             label: Rolle
+            width: 1/2
             type: text
           category:
             label: Kategorie
+            width: 1/2
             type: text
+          description_text_direction:
+            extends: fields/text_direction
           description:
             label: Beschreibung
             type: textarea
             size: large
+
       sidebar:
         width: 1/4
         sticky: true
