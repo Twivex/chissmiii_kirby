@@ -30,8 +30,12 @@
     }
 
     .tl-text {
-      padding-top: $spacer * 4;;
-      padding-bottom: map-get($spacers, 4)
+      padding-bottom: map-get($spacers, 4);
+      padding-top: map-get($spacers, 4);
+
+      &--with-title {
+        padding-top: $spacer * 4;
+      }
     }
 
     &:first-child:before,
@@ -67,6 +71,11 @@
         border-left: 3px solid $chissmiii-grey;
       }
 
+      .tl-image + .tl-description {
+
+        justify-content: center;
+      }
+
       .tl-description,
       .tl-image {
         display: flex;
@@ -74,13 +83,8 @@
 
       .tl-description {
         flex-direction: column;
-        justify-content: center;
         padding-top: map-get($spacers, 4);
         padding-bottom: map-get($spacers, 4);
-
-        > * {
-          flex-direction: row;
-        }
       }
 
       .tl-text,
