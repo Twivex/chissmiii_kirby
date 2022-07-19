@@ -44,7 +44,7 @@
     }
 
     &:first-child:before {  // first icon
-      content: '♥︎';
+      content: '\2665';
       font-size: 2.5rem;
       margin-left: -18.5px;
       top: -25px;
@@ -52,7 +52,7 @@
 
     &:last-child:after { // last icon
       bottom: -50px;
-      content: '»';
+      content: '\00BB';
       font-size: 4rem;
       margin-left: -7.5px;
       transform: rotate(90deg);
