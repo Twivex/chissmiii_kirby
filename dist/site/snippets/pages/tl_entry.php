@@ -50,13 +50,13 @@
       <?php snippet('molecules/polaroid', [
         'image' => $data->tl_image()->toFile(),
         'size' => '300',
-        'alt' => $data->headline()
+        'alt' => $data->title()
       ]); ?>
     </div>
   <?php endif; ?>
   <div class="col-xs-12 col-lg-6 tl-description <?=$descriptionOrderClass?> <?=$tlClassTwo?> <?=$descriptionDirectionClass?>">
     <?php if ($data->show_title()->toBool()): ?>
-      <h3 class="<?=$titleDirectionClass?>"><?= $data->headline() ?></h3>
+      <h3 class="<?=$titleDirectionClass?>"><?= $data->title() ?></h3>
     <?php endif; ?>
     <?php if (!$data->description()->isEmpty()) {
       echo kt($data->description());
