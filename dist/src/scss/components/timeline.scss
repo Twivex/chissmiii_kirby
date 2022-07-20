@@ -112,7 +112,11 @@
 
       &:first-child {
         .tl-text {
+          padding-top: 0;
+
+          &--with-title {
           padding-top: $spacer * 2.5;
+        }
         }
 
         .tl-description,
