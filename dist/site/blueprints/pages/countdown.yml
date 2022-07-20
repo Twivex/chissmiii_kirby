@@ -12,6 +12,8 @@ tabs:
             label: Überschrift
             type: text
             required: true
+          show_title:
+            extends: fields/show_title
           target_date:
             label: Datum
             width: 1/2
