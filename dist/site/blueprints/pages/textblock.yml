@@ -2,7 +2,7 @@ title: Textblock
 icon: 📝
 
 fields:
-  col_nums:
+  col_num:
     label: Breite
     width: 1/2
     type: select
