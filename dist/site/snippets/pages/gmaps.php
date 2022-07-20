@@ -17,7 +17,7 @@
 <section class="py-4">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-<?=$col_nums?> <?=$directionClass?>">
-      <?php if ($page->show_title()->toBool()): ?>
+      <?php if ($data->show_title()->toBool()): ?>
         <h2 class="mb-3"><?=$data->title()?></h2>
       <?php endif; ?>
       <iframe
