@@ -20,7 +20,7 @@ Kirby::plugin('chissmiii/custom-field-methods', [
     },
     'optionKey' => function ($field) {
       $blueprintField = $field->model()->blueprint()->field($field->key());
-      if ($blueprintField['type'] === 'select') {
+      if (isset($blueprintField['type']) && $blueprintField['type'] === 'select') {
         $options = $blueprintField['options'];
         $optionKey = array_search($field->value(), $options);
         if ($optionKey !== false) {
