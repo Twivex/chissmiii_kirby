@@ -1,24 +1,11 @@
 <?php
-  $directionClass = '';
-  $classBase = 'text-direction-';
-  if (!empty($direction = $data->direction()->value())) {
-    if ($direction === 'left') {
-      $directionClass = 'text-start';
-    } elseif ($direction === 'right') {
-      $directionClass = 'text-end';
-    } elseif ($direction === 'center') {
-      $directionClass = 'text-center';
-    } elseif ($direction === 'block') {
-      $directionClass = 'text-align-justify';
-    }
-  }
   $col_nums = substr($data->col_nums(), 0, strpos($data->col_nums(), '/'));
 ?>
 <section class="py-4">
   <div class="row justify-content-center">
-    <div class="col-12 col-lg-<?=$col_nums?> <?=$directionClass?>">
+    <div class="col-12 col-lg-<?=$col_nums?>">
       <?php if ($data->show_title()->toBool()): ?>
-        <h2 class="mb-3"><?=$data->title()?></h2>
+        <h2 class="mb-3 <?=$data->title_text_direction()->directionClass()?>"><?=$data->title()?></h2>
       <?php endif; ?>
       <iframe
         style="border:0"

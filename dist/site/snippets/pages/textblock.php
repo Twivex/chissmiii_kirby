@@ -1,10 +1,10 @@
 <?php
   $textDirectionClass = $data->text_direction()->directionClass();
-  $col_nums = substr($data->col_nums(), 0, strpos($data->col_nums(), '/'));
+  $col_num = $data->col_num()->optionKey();
 ?>
 <section class="py-4">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-<?=$col_nums?> <?=$textDirectionClass?>">
+    <div class="col-12 col-sm-<?=$col_num?> <?=$textDirectionClass?>">
       <?=kt($data->text())?>
     </div>
   </div>
