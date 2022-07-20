@@ -12,9 +12,13 @@
       <div class="offcanvas-body">
       <ul class="navbar-nav">
         <?php
-          foreach ($site->children()->listed() as $item) :
+          $navItems = $site->children();
+          if (!$kirby->user()) $navItems = $navItems->listed();
+          foreach ($navItems as $item):
           // skip secured pages, if not logged in
           if ($item->secured()->toBool() === true && !$kirby->user()) continue;
+          // skip error page
+          if ($item->uid() === 'error') continue;
         ?>
           <li class="nav-item ps-sm-3">
             <a class="nav-link px-2 position-relative<?php e($item->isOpen(), ' active') ?>" href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
