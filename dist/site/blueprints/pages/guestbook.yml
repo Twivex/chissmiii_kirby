@@ -7,13 +7,6 @@ sections:
     extends: sections/gb_entries
     headline: Unveröffentlichte Einträge
 
-  unlisted:
-    status: unlisted
-    layout: list
-    extends: sections/gb_entries
-    headline: Ungelistete Einträge
-
-
   listed:
     status: listed
     layout: list
