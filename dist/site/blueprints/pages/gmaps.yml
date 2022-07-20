@@ -2,12 +2,8 @@ title: Google Maps Karte
 
 fields:
   show_title:
+    extends: fields/show_title
     width: 1/2
-    label: Titel anzeigen?
-    type: toggle
-    options:
-      - "nein"
-      - "ja"
 
   direction:
     width: 1/2
