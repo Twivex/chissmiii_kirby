@@ -3,9 +3,9 @@
     <h2 class="<?=$data->title_text_direction()->directionClass()?>"><?=$data->title()?></h2>
   <?php endif; ?>
   <?php foreach ($data->children() as $entry) {
-    $entry = $entry->update([
+    snippet('pages/tl_entry', [
+      'data' => $entry,
       'alternating' => $data->alternating_entries()->toBool()
     ]);
-    snippet('pages/tl_entry', ['data' => $entry]);
   }?>
 </section>

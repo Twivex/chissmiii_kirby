@@ -20,7 +20,7 @@
   $descriptionOrderClass = $isTextEntry ? 'order-1' : 'order-2';
 
   $tlClasses = ['order-lg-1', 'order-lg-2'];
-  if ($data->alternating()->toBool()) {
+  if ($alternating) {
     $tlEntryClassModifier = 'alternating';
     $tlClassOne = $tlClasses[$data->num() % 2];
     $tlClassTwo = $tlClasses[($data->num() + 1) % 2];
