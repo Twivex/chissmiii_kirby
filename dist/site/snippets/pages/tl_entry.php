@@ -10,7 +10,7 @@
     }
   }
 
-  $show_title = $data->show_title()->toBool();
+  $show_title = $show_title ?? $data->show_title()->toBool();
   $titleDirectionClass= $data->title_text_direction()->directionClass();
 
   $isTextEntry = !$data->tl_text()->isEmpty();
@@ -42,7 +42,7 @@
     </div>
   <?php endif; ?>
 
-  <?php if($isTextEntry): ?>
+  <?php if ($isTextEntry): ?>
     <div class="col-xs-12 col-lg-6 tl-text <?= $show_title ? 'tl-text--with-title' : '' ?> order-2 <?=$tlClassOne?> <?=$tlTextDirectionClass?>">
       <?=kt($data->tl_text())?>
     </div>

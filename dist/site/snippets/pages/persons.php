@@ -1,4 +1,5 @@
 <?php
+  $show_title = $show_title ?? $data->show_title()->toBool();
   $titleDirectionClass = $data->title_text_direction()->directionClass();
   $categoryDirectionClass = $data->category_text_direction()->directionClass();
 
@@ -16,7 +17,7 @@
 ?>
 <section class="py-4">
   <div class="row">
-    <?php if ($data->show_title()->toBool()): ?>
+    <?php if ($show_title): ?>
       <h2 class="<?=$titleDirectionClass?>"><?=$data->title()?></h2>
     <?php endif; ?>
     <?php if (!empty($categories)): ?>
