@@ -16,6 +16,6 @@ volumes:
     name: chissmiii_dist_src
     driver: local
     driver_opts:
-      device: ./dist
+      device: /Users/christianunger/projects/_privat/chissmiii/dist
       type: none
       o: bind

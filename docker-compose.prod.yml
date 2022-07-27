@@ -4,7 +4,6 @@ services:
   chissmiii-kirby:
     image: chissmiii_kirby:prod
     restart: unless-stopped
-    command: sh -c "apache2-foreground"
     ports:
       - 14080:80
       - 14443:443
@@ -22,7 +21,7 @@ volumes:
     name: chissmiii_kirby_content
     driver: local
     driver_opts:
-      device: /var/www/chissmiii_vols/content
+      device: /var/www/chissmiii/dist/content
       type: none
       o: bind
 
