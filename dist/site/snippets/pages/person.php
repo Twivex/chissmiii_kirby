@@ -1,10 +1,11 @@
 <?php
+  $show_title = $show_title ?? $data->show_title()->toBool();
   $titleDirectionClass = $data->title_text_direction()->directionClass();
   $descriptionDirectionClass = $data->description_text_direction()->directionClass();
 ?>
 <div class="row justify-content-center mt-4 mt-md-5">
   <div class="col-12 col-md-11 d-flex justify-content-center flex-column">
-    <?php if ($data->show_title()->toBool()): ?>
+    <?php if ($show_title): ?>
       <h3 class="<?=$titleDirectionClass?>"><?=$data->title()?></h3>
     <?php endif; ?>
     <div class="d-flex justify-content-center flex-row">

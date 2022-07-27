@@ -15,3 +15,4 @@
   <body>
     <?php snippet('globals/nav') ?>
     <?php snippet('globals/bg-img') ?>
+    <main id="main" class="container my-sm-4 px-sm-4 py-4">
