@@ -2,16 +2,26 @@ title: Timeline
 icon: 🕖
 
 sections:
+
   settings:
     type: fields
     fields:
+      parent_blueprint:
+        type: hidden
+        default: "{{ page.parent.blueprint.name }}"
+
       show_title:
         extends: fields/show_title
         width: 1/3
+        when:
+          parent_blueprint: "pages/composition"
+
       title_text_direction:
         extends: fields/text_direction
         width: 1/3
         label: Ausrichtung des Titels
+        whenQuery: parent_blueprint != "pages/composition" || show_title
+
       alternating_entries:
         width: 1/3
         label: Abwechselnde ausrichtung? (links, rechts, links, …)
@@ -20,11 +30,13 @@ sections:
           - "nein"
           - "ja"
 
+
   drafts:
     status: draft
     layout: list
     extends: sections/tl_entries
     headline: Unveröffentlichte Einträge
+
 
   listed:
     status: listed

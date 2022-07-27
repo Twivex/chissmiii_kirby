@@ -21,6 +21,8 @@ tabs:
             extends: fields/text_direction
             width: 1/2
             label: Ausrichtung der Überschrift
+            when:
+              show_title: true
 
       elements:
         layout: list
