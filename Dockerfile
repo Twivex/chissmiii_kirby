@@ -66,11 +66,5 @@ CMD ["apache2-foreground"]
 ### Production Stage
 FROM base-stage as prod-stage
 
-COPY ./files/kirby-entrypoint /usr/local/bin/
-RUN chmod +x /usr/local/bin/kirby-entrypoint
-ENV PATH "/usr/local/bin/kirby-entrypoint:${PATH}"
-
 # copy files
 COPY ./dist ./
-
-ENTRYPOINT ["kirby-entrypoint" ]
