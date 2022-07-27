@@ -16,7 +16,6 @@ help:
 	"prod: prod-build prod-up\n" \
 	"prod-restart: stop prod-up\n" \
 	"prod-npm-install: \$$ docker exec -it ${CONTAINER} sh -c \"npm install --only=prod\"\n" \
-	"prod-deploy: prod-build prod-restart prod-npm-install npm-build\n" \
 	"-------------------------------------------------------------------------------------\n" \
 	"stop: \$$ docker-compose stop\n" \
 	"down: \$$ docker-compose down --volumes --rmi all\n" \
@@ -55,8 +54,6 @@ prod-restart: stop prod-up
 
 prod-npm-install:
 	docker exec -it ${CONTAINER} sh -c "npm install --only=prod"
-
-prod-deploy: prod-build prod-restart prod-npm-install npm-build
 
 stop:
 	docker-compose stop
