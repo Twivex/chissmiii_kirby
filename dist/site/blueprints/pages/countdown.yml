@@ -12,8 +12,6 @@ tabs:
             label: Überschrift
             type: text
             required: true
-          show_title:
-            extends: fields/show_title
           target_date:
             label: Datum
             width: 1/2
@@ -25,6 +23,19 @@ tabs:
             width: 1/2
             type: time
             display: HH:mm
+          parent_blueprint:
+            type: hidden
+            default: "{{ page.parent.blueprint.name }}"
+          show_title:
+            extends: fields/show_title
+            width: 1/2
+            when:
+              parent_blueprint: "pages/composition"
+          title_text_direction:
+            extends: fields/text_direction
+            width: 1/2
+            label: Ausrichtung der Überschrift
+            whenQuery: parent_blueprint != "pages/composition" || show_title
           description:
             label: Beschreibung
             type: textarea

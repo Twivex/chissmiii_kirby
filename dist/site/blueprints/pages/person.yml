@@ -20,6 +20,8 @@ tabs:
             extends: fields/text_direction
             label: Ausrichtung des Titels
             width: 1/2
+            when:
+              show_title: true
           role:
             label: Rolle
             width: 1/2

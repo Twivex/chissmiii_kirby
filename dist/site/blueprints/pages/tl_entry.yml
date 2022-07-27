@@ -22,6 +22,8 @@ tabs:
             extends: fields/text_direction
             label: Ausrichtung des Titels
             width: 1/2
+            when:
+              show_title: true
           tl_date:
             label: Zeitpunkt
             type: text
