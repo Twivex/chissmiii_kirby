@@ -2,6 +2,7 @@ type: pages
 empty: Keine Seiten
 templates:
   - composition
+  - countdown
   - error
   - events
   - galleries
