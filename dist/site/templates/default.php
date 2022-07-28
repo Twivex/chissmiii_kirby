@@ -1,6 +1,8 @@
 <?php snippet('globals/header') ?>
 
-<h1 class="<?=$page->title_text_direction()->directionClass()?>"><?=$page->title()?></h1>
+<?php if ($page->parents()->count() === 0): ?>
+  <h1 class="<?=$page->title_text_direction()->directionClass()?>"><?=$page->title()?></h1>
+<?php endif; ?>
 
 <?php
   snippet($page->blueprint()->name(), [
