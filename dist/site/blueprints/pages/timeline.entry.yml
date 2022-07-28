@@ -1,4 +1,8 @@
 title: Timeline-Eintrag
+image:
+  query: false
+  back: white
+
 
 status:
   draft:
@@ -7,6 +11,7 @@ status:
   listed:
     label: Öffentlich
     text: Die Seite ist öffentlich für alle
+
 
 tabs:
   content:

@@ -1,4 +1,7 @@
 title: Events
+image:
+  query: false
+  back: white
 
 sections:
   drafts:
