@@ -66,13 +66,12 @@
   @include media-breakpoint-up(lg) {
     .tl-entry {
       &.tl-entry--alternating .order-lg-2,
-      &.tl-entry--strict .tl-image,
+      &.tl-entry--strict .tl-image ~ .tl-description,
       &.tl-entry--strict .tl-text {
         border-left: 3px solid $chissmiii-grey;
       }
 
       .tl-image + .tl-description {
-
         justify-content: center;
       }
 
@@ -115,8 +114,8 @@
           padding-top: 0;
 
           &--with-title {
-          padding-top: $spacer * 2.5;
-        }
+            padding-top: $spacer * 2.5;
+          }
         }
 
         .tl-description,
