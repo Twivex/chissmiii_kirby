@@ -1,6 +1,10 @@
 title: Gallerie
 preset: pages
 icon: 🌄
+image:
+  query: false
+  back: white
+
 
 drafts:
   layout: cardlets

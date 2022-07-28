@@ -1,5 +1,9 @@
 title: Login
 icon: 🔐
+image:
+  query: false
+  back: white
+
 
 fields:
   alert:

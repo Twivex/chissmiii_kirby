@@ -1,5 +1,9 @@
 title: Default Page
 preset: page
+image:
+  query: false
+  back: white
+
 fields:
   secured:
     label: Login erforderlich?
