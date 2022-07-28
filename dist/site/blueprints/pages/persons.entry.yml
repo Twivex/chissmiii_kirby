@@ -1,5 +1,10 @@
 title: Person
 pages: false
+image:
+  query: false
+  back: white
+
+
 
 options:
   changeTemplate: false

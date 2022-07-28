@@ -1,5 +1,9 @@
 name: Album
 preset: files
+image:
+  query: false
+  back: white
+
 fields:
   galleries:
     type: blocks

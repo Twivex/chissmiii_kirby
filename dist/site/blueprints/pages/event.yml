@@ -1,6 +1,9 @@
 title: Event
 pages: false
 num: date
+image:
+  query: false
+  back: white
 options:
   changeTemplate: false
   changeStatus: true
