@@ -1,5 +1,9 @@
 title: Personen
 icon: 👤
+image:
+  query: false
+  back: white
+
 
 sections:
   settings:

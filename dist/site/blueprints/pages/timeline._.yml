@@ -1,5 +1,9 @@
 title: Timeline
 icon: 🕖
+image:
+  query: false
+  back: white
+
 
 sections:
 

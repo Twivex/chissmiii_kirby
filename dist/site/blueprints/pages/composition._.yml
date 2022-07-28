@@ -1,5 +1,9 @@
 title: Komposition
 icon: 🪢
+image:
+  query: false
+  back: white
+
 
 options:
   changeTemplate: false
