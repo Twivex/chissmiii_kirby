@@ -1,6 +1,6 @@
 <?php
-  $show_title = $show_title ?? $data->show_title->toBool();
-  $titleDirecectionClass = $data->title_text_direction->directionClass();
+  $show_title = $show_title ?? $data->show_title()->toBool();
+  $titleDirecectionClass = $data->title_text_direction()->directionClass();
 ?>
 
 <?php if ($show_title): ?>
