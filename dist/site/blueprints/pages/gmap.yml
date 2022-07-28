@@ -1,4 +1,8 @@
 title: Google Maps Karte
+icon: 🗺
+image:
+  query: false
+  back: white
 
 fields:
   layout_settings: fields/layout_settings_extended
