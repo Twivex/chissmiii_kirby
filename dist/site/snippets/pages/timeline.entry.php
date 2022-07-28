@@ -13,14 +13,14 @@
   $show_title = $show_title ?? $data->show_title()->toBool();
   $titleDirectionClass= $data->title_text_direction()->directionClass();
 
-  $isTextEntry = !$data->tl_text()->isEmpty();
+  $isTextEntry = $data->tl_type()->value() === 'text';
   $tlTextDirectionClass = $data->tl_text_text_direction()->directionClass();
 
   $descriptionDirectionClass = $data->description_text_direction()->directionClass();
   $descriptionOrderClass = $isTextEntry ? 'order-1' : 'order-2';
 
   $tlClasses = ['order-lg-1', 'order-lg-2'];
-  if ($alternating) {
+  if (isset($alternating) && $alternating) {
     $tlEntryClassModifier = 'alternating';
     $tlClassOne = $tlClasses[$data->num() % 2];
     $tlClassTwo = $tlClasses[($data->num() + 1) % 2];

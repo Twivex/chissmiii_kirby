@@ -1,4 +1,0 @@
-type: pages
-info: "{{ page.category }} - {{ page.role }}"
-template: person
-empty: Keine Person

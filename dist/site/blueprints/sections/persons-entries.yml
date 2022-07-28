@@ -1,0 +1,8 @@
+type: pages
+info: "{{ page.category }} - {{ page.role }}"
+template: persons.entry
+empty: Keine Person
+layout: cards
+sortBy: category
+image:
+  query: page.portrait.toFile

@@ -1,21 +1,7 @@
 title: Google Maps Karte
 
 fields:
-  parent_blueprint:
-    type: hidden
-    default: "{{ page.parent.blueprint.name }}"
-
-  show_title:
-    extends: fields/show_title
-    width: 1/2
-    when:
-      parent_blueprint: "pages/composition"
-
-  title_text_direction:
-    extends: fields/text_direction
-    width: 1/2
-    label: Ausrichtung der Überschrift
-    whenQuery: parent_blueprint != "pages/composition" || show_title
+  layout_settings: fields/layout_settings_extended
 
   gmaps_link:
     width: 1/2

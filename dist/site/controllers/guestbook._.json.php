@@ -43,7 +43,11 @@ return function ($kirby, $page) {
         ])
         ->changeStatus('listed');
 
-        $html = page($gbEntry->uri())->render();
+        $html = snippet(
+          'pages/gb_entry',
+          [ 'data' => page($gbEntry->uri()) ],
+          true
+        );
       } catch (Exception $e) {
         $alert = ['Your request failed: ' . $e->getMessage()];
       }
@@ -52,7 +56,7 @@ return function ($kirby, $page) {
     // return data
     return [
       'error' => $alert ?? null,
-      'data' => $data ?? null,
+      'form_data' => $data ?? null,
       'html'  => $html ?? false,
     ];
   }

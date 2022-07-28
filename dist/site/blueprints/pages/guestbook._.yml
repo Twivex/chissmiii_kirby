@@ -1,14 +1,20 @@
 title: Gästebuch
 
 sections:
+  settings:
+    type: fields
+    fields:
+      settings: fields/layout_settings_extended
+
   drafts:
     status: draft
     layout: list
-    extends: sections/gb_entries
+    extends: sections/guestbook-entries
     headline: Unveröffentlichte Einträge
+
 
   listed:
     status: listed
     layout: list
-    extends: sections/gb_entries
+    extends: sections/guestbook-entries
     headline: Veröffentlichte Einträge

@@ -1,0 +1,19 @@
+type: group
+fields:
+  settings:
+    extends: fields/layout_settings
+    fields:
+
+      show_title_info:
+        type: hidden
+
+      show_title:
+        width: 1/2
+
+      title_text_direction:
+        width: 1/2
+        when:
+          show_title: true
+
+      settings_line:
+        type: line

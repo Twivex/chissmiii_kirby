@@ -12,44 +12,58 @@ tabs:
   content:
     label: Inhalt
     columns:
+
       main:
         width: 1/2
         fields:
-          show_title:
-            extends: fields/show_title
-            width: 1/2
-          title_text_direction:
-            extends: fields/text_direction
-            label: Ausrichtung des Titels
-            width: 1/2
-            when:
-              show_title: true
+          layout_settings: fields/layout_settings_basic
+
           tl_date:
             label: Zeitpunkt
             type: text
             required: true
             display: DD.MM.YYYY
+
           description_text_direction:
             extends: fields/text_direction
             label: Ausrichtung der Beschreibung
+
           description:
             label: Beschreibung
             type: textarea
 
+
       sidebar:
         width: 1/2
         fields:
+          tl_type:
+            label: Typ
+            type: radio
+            required: true
+            default: image
+            options:
+              image: Bild
+              text: Text
+
           tl_image:
             label: Bild
             type: files
             layout: cards
             max: 1
             back: white
+            when:
+              tl_type: image
+
           tl_text_text_direction:
             extends: fields/text_direction
             label: Ausrichtung der Beschriftung
+            when:
+              tl_type: text
+
           tl_text:
             label: Beschriftung
             type: textarea
+            when:
+              tl_type: text
 
   files: tabs/files
