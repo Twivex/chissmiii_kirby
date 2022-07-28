@@ -1,5 +1,10 @@
 title: Countdown
 pages: false
+icon: ⏰
+image:
+  query: false
+  back: white
+
 
 tabs:
   content:
