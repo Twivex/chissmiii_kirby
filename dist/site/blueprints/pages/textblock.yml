@@ -1,5 +1,9 @@
 title: Textblock
 icon: 📝
+image:
+  query: false
+  back: white
+
 
 fields:
   col_num:
