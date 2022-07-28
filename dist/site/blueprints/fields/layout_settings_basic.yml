@@ -1,5 +1,6 @@
 type: group
 fields:
+
   settings:
     extends: fields/layout_settings
     fields:
