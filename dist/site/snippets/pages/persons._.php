@@ -4,6 +4,9 @@
   $categoryDirectionClass = $data->category_text_direction()->directionClass();
 
   $persons = $data->children();
+  if (!$kirby->user()) {
+    $persons = $persons->listed();
+  }
   $personsArray = $persons->toArray();
   $allPersonsHaveCategories = array_reduce($personsArray, function($carry, $person) {
     return $carry && isset($person['content']['category']);
@@ -27,14 +30,14 @@
           <?php
             $personGroup = $persons->filterBy('category', $category);
             foreach ($personGroup as $person) {
-              snippet('pages/person', [ 'data' => $person ]);
+              snippet('pages/persons.entry', [ 'data' => $person ]);
             }
           ?>
         </div>
       <?php endforeach; ?>
     <?php else:
       foreach ($data->children() as $person) {
-        snippet('pages/person', [ 'data' => $person ]);
+        snippet('pages/persons.entry', [ 'data' => $person ]);
       }
     endif; ?>
   </div>

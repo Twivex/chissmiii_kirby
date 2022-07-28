@@ -1,0 +1,25 @@
+title: Komposition
+icon: 🪢
+
+options:
+  changeTemplate: false
+  changeStatus: true
+  url: false
+
+tabs:
+  content:
+    label: Inhalt
+    sections:
+
+      settings:
+        type: fields
+        fields:
+          layout_settings: fields/layout_settings_basic
+
+      elements:
+        layout: list
+        extends: sections/composition-entries
+        headline: Elemente
+
+
+  files: tabs/files

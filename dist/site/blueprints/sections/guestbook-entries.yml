@@ -2,5 +2,5 @@ type: pages
 headline: Einträge
 info: "{{ page.created_at.toDate('d.m.Y H:m') }}"
 sortBy: created_at desc
-template: gb_entry
+template: guestbook.entry
 empty: Keine Einträge

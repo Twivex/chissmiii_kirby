@@ -2,5 +2,5 @@ type: pages
 layout: list
 headline: Timeline-Einträge
 info: "{{ page.tl_date }}"
-template: tl_entry
+template: timeline.entry
 empty: Keine Einträge

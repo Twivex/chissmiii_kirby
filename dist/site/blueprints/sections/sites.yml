@@ -1,15 +1,15 @@
 type: pages
 empty: Keine Seiten
 templates:
-  - composition
+  - composition._
   - countdown
   - error
   - events
   - galleries
-  - gmaps
-  - guestbook
+  - gmap
+  - guestbook._
   - home
   - login
-  - persons
+  - persons._
   - textblock
-  - timeline
+  - timeline._

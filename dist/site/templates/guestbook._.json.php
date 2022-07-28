@@ -1,5 +1,5 @@
 <?= $kirby->response()->json([
   'error' => $alert ?? null,
-  'data' => $data ?? null,
+  'form_data' => $form_data ?? null,
   'html'  => $html ?? false,
 ]) ?>

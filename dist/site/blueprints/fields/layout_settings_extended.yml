@@ -1,0 +1,23 @@
+type: group
+fields:
+  settings:
+    extends: fields/layout_settings
+    fields:
+
+      parent_blueprint: fields/parent_blueprint
+
+      show_title_info:
+        width: 1/2
+        whenQuery: parent_blueprint != "pages/composition._"
+
+      show_title:
+        width: 1/2
+        when:
+          parent_blueprint: "pages/composition._"
+
+      title_text_direction:
+        width: 1/2
+        whenQuery: parent_blueprint != "pages/composition._" || show_title
+
+      settings_line:
+        type: line

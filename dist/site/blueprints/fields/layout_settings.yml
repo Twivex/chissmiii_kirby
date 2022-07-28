@@ -1,0 +1,15 @@
+type: group
+fields:
+
+  show_title_info:
+    type: info
+    label: Titel anzeigen?
+    text: Der Titel wird automatisch angezeigt.
+
+  show_title:
+    extends: fields/show_title
+    default: true
+
+  title_text_direction:
+    extends: fields/text_direction
+    label: Ausrichtung des Titels

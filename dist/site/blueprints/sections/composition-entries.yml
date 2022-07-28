@@ -2,8 +2,8 @@ type: pages
 headline: Elemente
 templates:
   - countdown
-  - gmaps
-  - persons
+  - gmap
+  - persons._
   - textblock
-  - timeline
+  - timeline._
 empty: Keine Elemente
