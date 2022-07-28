@@ -1,4 +1,9 @@
 title: Gästebuch
+icon: 📖
+image:
+  query: false
+  back: white
+
 
 sections:
   settings:
