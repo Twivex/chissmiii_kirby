@@ -4,6 +4,7 @@ templates:
   - countdown
   - gmap
   - persons._
+  - songwish._
   - textblock
   - timeline._
 empty: Keine Elemente

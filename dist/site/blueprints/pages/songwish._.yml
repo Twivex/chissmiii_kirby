@@ -1,0 +1,34 @@
+title: Liedwunsch-Formular
+icon: 🎵
+image:
+  query: false
+  back: white
+
+
+sections:
+  settings:
+    type: fields
+    fields:
+      layout_settings:
+        extends: fields/layout_settings_extendable
+        fields:
+
+          cols_count:
+            extends: fields/cols_count
+            width: 1/3
+
+          settings_line:
+            type: line
+
+  drafts:
+    status: draft
+    layout: list
+    extends: sections/songwish-entries
+    headline: Unveröffentlichte Einträge
+
+
+  listed:
+    status: listed
+    layout: list
+    extends: sections/songwish-entries
+    headline: Veröffentlichte Einträge

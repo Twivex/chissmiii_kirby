@@ -11,5 +11,6 @@ templates:
   - home
   - login
   - persons._
+  - songwish._
   - textblock
   - timeline._

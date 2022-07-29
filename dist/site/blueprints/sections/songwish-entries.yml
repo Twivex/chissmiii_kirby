@@ -1,0 +1,6 @@
+type: pages
+headline: Einträge
+info: "{{ page.song_artist }} – {{ page.song_title }}"
+sortBy: created_at desc
+template: songwish.entry
+empty: Keine Einträge
