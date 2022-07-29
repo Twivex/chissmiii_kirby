@@ -9,7 +9,16 @@ sections:
   settings:
     type: fields
     fields:
-      settings: fields/layout_settings_extended
+      layout_settings:
+        extends: fields/layout_settings_extendable
+        fields:
+
+          cols_count:
+            extends: fields/cols_count
+            width: 1/3
+
+          settings_line:
+            type: line
 
   drafts:
     status: draft
