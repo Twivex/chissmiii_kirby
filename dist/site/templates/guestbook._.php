@@ -1,14 +1,7 @@
 <?php snippet('globals/header') ?>
 
-<?php if ($page->parents()->count() === 0): ?>
-  <h1 class="<?=$page->title_text_direction()->directionClass()?>"><?=$page->title()?></h1>
-<?php endif; ?>
-
 <?php
-  snippet('pages/guestbook._', [
-    'show_title' => false,
-    'data' => $page
-  ]);
+  snippet('pages/guestbook._', [ 'data' => $page ]);
 ?>
 
 <?php snippet('globals/footer') ?>
