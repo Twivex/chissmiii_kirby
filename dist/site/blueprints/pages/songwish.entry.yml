@@ -1,0 +1,42 @@
+title: Liedwunsch-Eintrag
+pages: false
+icon: 🖌
+image:
+  query: false
+  back: white
+
+
+options:
+  url: false
+
+status:
+  draft:
+    label: Entwurf
+    text: Die Seite ist im Entwurfsmodus und ist nur nach Anmeldung oder über den geheimen Link sichtbar
+
+  listed:
+    label: Öffentlich
+    text: Die Seite ist öffentlich für alle
+
+
+fields:
+  created_at:
+    type: date
+    label: Erstellt am
+    width: 1/3
+    time: true
+    default: now
+    disabled: true
+    display: DD.MM.YYYY
+
+  song_artist:
+    type: text
+    width: 1/3
+    label: Interpret
+    required: true
+
+  song_title:
+    type: text
+    width: 1/3
+    label: Name des Songs
+    required: true
