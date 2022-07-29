@@ -1,5 +1,8 @@
 title:
   query: file.tag
+image:
+  back: white
+
 fields:
   tag:
     type: text
