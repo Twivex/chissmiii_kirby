@@ -33,19 +33,23 @@ return function ($kirby, $page) {
       // authenticate as almighty
       $kirby->impersonate('kirby');
 
+
       try {
         // store entry as subpage of the current page
         $gbEntry = $page->createChild([
           'slug'     => str::slug($data['name'] . microtime()),
           'draft' => false,
-          'template' => 'gb_entry',
+          'template' => 'guestbook.entry',
           'content'  => $data
         ])
         ->changeStatus('listed');
 
         $html = snippet(
-          'pages/gb_entry',
-          [ 'data' => page($gbEntry->uri()) ],
+          'pages/guestbook.entry',
+          [
+            'data' => page($gbEntry->uri()),
+            'colsCount' => $page->cols_count()->optionKey()
+          ],
           true
         );
       } catch (Exception $e) {
