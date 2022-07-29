@@ -33,7 +33,7 @@ export default class Form {
     this.getElement()
       .querySelectorAll("input, textarea")
       .forEach((el) => {
-        data[el.id] = el.value;
+        data[el.name] = el.value;
       });
 
     if (urlEncoded) {
@@ -60,12 +60,24 @@ export default class Form {
     return this.getElement().getAttribute("action");
   }
 
+  getDataset(name = "") {
+    const elDataset = this.getElement().dataset;
+    if (name.length > 0) {
+      return elDataset[name];
+    }
+    return elDataset;
+  }
+
   disable() {
     this.getElement().querySelector("fieldset").setAttribute("disabled", "");
   }
 
   enable() {
     this.getElement().querySelector("fieldset").removeAttribute("disabled");
+  }
+
+  reset() {
+    this.getElement().reset();
   }
 
   addClass(classname) {
