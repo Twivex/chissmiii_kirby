@@ -1,6 +1,6 @@
 type: pages
 headline: Einträge
 info: "{{ page.song_artist }} – {{ page.song_title }}"
-sortBy: created_at desc
+sortBy: title
 template: songwish.entry
 empty: Keine Einträge
