@@ -1,5 +1,9 @@
 title: Gästebuch-Eintrag
 pages: false
+icon: 🖋
+image:
+  query: false
+  back: white
 num: date
 
 

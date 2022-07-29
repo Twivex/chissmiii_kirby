@@ -1,8 +1,9 @@
 title: Person
 pages: false
+icon: 👤
 image:
-  query: false
   back: white
+  ratio: 1/1
 
 
 
@@ -49,5 +50,6 @@ tabs:
             layout: cards
             max: 1
             back: white
+            ratio: 1/1
 
   files: tabs/files
