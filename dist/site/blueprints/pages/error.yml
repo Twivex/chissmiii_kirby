@@ -1,0 +1,8 @@
+title: Error Seite
+preset: page
+icon: ❌
+image:
+  query: false
+  back: white
+
+fields:
