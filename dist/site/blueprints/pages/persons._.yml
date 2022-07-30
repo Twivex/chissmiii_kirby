@@ -27,12 +27,14 @@ sections:
     layout: list
     extends: sections/persons-entries
     headline: Unveröffentlichte Personen
+    sortBy: category
 
 
   unlisted:
     status: unlisted
     extends: sections/persons-entries
     headline: Ungelistete Personen
+    sortBy: category
 
 
   listed:
