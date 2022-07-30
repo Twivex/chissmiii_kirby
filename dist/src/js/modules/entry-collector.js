@@ -28,7 +28,7 @@ export default class EntryCollector {
 
           if (!error) {
             const alertSuccessTarget = formDataset.entryCollectorAlertSuccess;
-            if (alertSuccessTarget) {
+            if (alertSuccessTarget.length > 0) {
               const alertEl = document.getElementById(alertSuccessTarget);
               alertEl.parentElement.classList.remove("visually-hidden");
               alertEl.parentElement.classList.add("show");
@@ -50,7 +50,7 @@ export default class EntryCollector {
             }
           } else {
             const alertErrorTarget = formDataset.entryCollectorAlertError;
-            if (alertErrorTarget) {
+            if (alertErrorTarget.length > 0) {
               const alertEl = document.getElementById(alertErrorTarget);
               alertEl.innerHTML = error;
               alertEl.parentElement.classList.remove("visually-hidden");
