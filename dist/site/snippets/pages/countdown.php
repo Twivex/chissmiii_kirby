@@ -22,7 +22,10 @@
     </div>
   </div>
   <div class="row justify-content-center mb-2">
-    <?php snippet('molecules/polaroid', ['image' => $data->cover()->toFile()]); ?>
+    <?php snippet('molecules/polaroid', [
+      'image' => $data->cover()->toFile(),
+      'size' => '300'
+    ]); ?>
   </div>
 
   <div class="row justify-content-center">
