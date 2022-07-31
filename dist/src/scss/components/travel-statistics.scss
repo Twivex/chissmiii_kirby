@@ -14,11 +14,6 @@
     }
   }
 
-  @include media-breakpoint-up(md) {  // ≥768px
-    .fi {
-      // font-size: map-get($font-sizes, 1);
-    }
-  }
 
   @include media-breakpoint-up(lg) {  // ≥992px
     .card,
@@ -51,14 +46,3 @@
   }
 
 }
-
-
-/**
-
-Small               sm	≥576px
-Medium              md	≥768px
-Large               lg	≥992px
-Extra large         xl	≥1200px
-Extra extra large   xxl	≥1400px
-
-*/
