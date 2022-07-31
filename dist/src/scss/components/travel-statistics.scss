@@ -1,0 +1,64 @@
+.travel-statistics {
+  .dot,
+  .card {
+    background-color: $travelstatistics-color;
+  }
+
+  .fi {
+    font-size: map-get($font-sizes, 3);
+  }
+
+  @include media-breakpoint-up(sm) {  // ≥576px
+    .fi {
+      font-size: map-get($font-sizes, 2);
+    }
+  }
+
+  @include media-breakpoint-up(md) {  // ≥768px
+    .fi {
+      // font-size: map-get($font-sizes, 1);
+    }
+  }
+
+  @include media-breakpoint-up(lg) {  // ≥992px
+    .card,
+    .img-fluid {
+      height: 132px;
+    }
+    .fi {
+      font-size: map-get($font-sizes, 4);
+    }
+  }
+
+  @include media-breakpoint-up(xl) {  // ≥1200px
+    .card,
+    .img-fluid {
+      height: 162px;
+    }
+    .fi {
+      font-size: map-get($font-sizes, 2);
+    }
+  }
+
+  @include media-breakpoint-up(xxl) { // ≥1400px
+    .card,
+    .img-fluid {
+      height: 194px;
+    }
+    .fi {
+      font-size: map-get($font-sizes, 1);
+    }
+  }
+
+}
+
+
+/**
+
+Small               sm	≥576px
+Medium              md	≥768px
+Large               lg	≥992px
+Extra large         xl	≥1200px
+Extra extra large   xxl	≥1400px
+
+*/
