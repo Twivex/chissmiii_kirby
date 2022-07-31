@@ -5,7 +5,7 @@
   flex-direction: row;
   box-sizing: content-box;
   justify-content: center;
-  padding: 10px 10px 50px;
+  padding: 10px 10px 60px;
   position: relative;
 
   // different sizes
@@ -31,22 +31,27 @@
     height: 500px;
   }
 
-  > img {
+  .figure,
+  .figure-img {
+    margin: 0;
+  }
+
+  .figure-img {
     height: 100%;
     object-fit: cover;
     width: 100%;
   }
 
-  &:after {
-    bottom: 0;
-    content: attr(polaroid-caption);
-    display: block;
-    left: 0;
-    margin: 0 auto;
-    padding: 10px;
-    position: absolute;
-    right: 0;
+  .figure-caption {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    justify-content: center;
     text-align: center;
-    width: calc(100% - 20px);
+
+    p {
+      font-size: 1rem;
+      margin: 0;
+    }
   }
 }

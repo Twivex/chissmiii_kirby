@@ -25,7 +25,7 @@
     <?php endif; ?>
     <?php if (!empty($categories)): ?>
       <?php foreach ($categories as $k => $category): ?>
-        <div class="col-12 col-md-6 <?= $k === 2 ? 'mt-3 mt-md-0' : '' ?>">
+        <div class="col-12 col-lg-6 <?= $k === 2 ? 'mt-3 mt-md-0' : '' ?>">
           <h2 class="pb-3 mb-n4 mb-md-n5 <?=$categoryDirectionClass?>"><?= $category ?></h2>
           <?php
             $personGroup = $persons->filterBy('category', $category);
