@@ -1,10 +1,12 @@
-.navbar-nav .nav-link.active:before {
-  content: '\2665';
+.navbar-nav .nav-link.active:before,
+.navbar-nav .dropdown-item.active:before {
+  content: '\FE0E\2665';
+  font-family: monospace !important;
   opacity: .6;
-  font-size: $font-size-sm;
+  font-size: map-get($font-sizes, 4);
   position: absolute;
-  left: -#{map-get($spacers, 2)};
-  line-height: 1.65rem;
+  left: -.7rem;
+  line-height: map-get($font-sizes, 4);
 }
 
 .navbar .offcanvas.show .offcanvas-body .navbar-nav .nav-link {
