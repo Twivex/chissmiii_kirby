@@ -43,16 +43,18 @@
     &:last-child:after {   // icons
       color: $chissmiii-rose;
       display: flex;
-      left: 50%;
+      justify-content: center;
+      left: 0;
+      margin-left: 1.5px;
       position: absolute;
       text-shadow: 0px 0px 10px darkgrey;
+      width: 100%;
     }
 
     &:first-child:before {  // first icon
       content: '\FE0E\2665';
       font-family: monospace !important;
       font-size: 4.2rem;
-      margin-left: -1.125rem;
       top: -2.625rem;
     }
 
@@ -60,8 +62,7 @@
       bottom: -50px;
       content: '\00BB';
       font-size: 4rem;
-      margin-left: -7.5px;
-      transform: rotate(90deg);
+      transform: rotate(90deg) translate(0px, -6px);
     }
   }
 
@@ -179,7 +180,7 @@
 
       &:first-child:before,
       &:last-child:after {  // icons
-        left: 0
+        left: -50%;
       }
     }
   }
