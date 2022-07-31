@@ -7,6 +7,10 @@
   position: absolute;
   left: -.7rem;
   line-height: map-get($font-sizes, 4);
+
+  @include media-breakpoint-down(md) {
+    color: $theme-color-lightest;
+  }
 }
 
 .navbar .offcanvas.show .offcanvas-body .navbar-nav .nav-link {
