@@ -1,0 +1,42 @@
+title: Reisestatistik
+icon:
+image:
+  query: false
+  back: white
+
+fields:
+  layout_settings: fields/layout_settings_extended
+
+  countries:
+    label: Länder
+    type: number
+    width: 1/4
+
+  world:
+    label: Weltanteil
+    type: number
+    width: 1/4
+
+  flags:
+    label: Flaggen
+    type: relationship
+    width: 1/2
+    options:
+      at: Österreich
+      be: Belgien
+      cz: Tschechien
+      de: Deutschland
+      eg: Ägypten
+      es: Spanien
+      fr: Frankreich
+      gb: Großbritannien
+      gr: Griechenland
+      hu: Ungarn
+      id: Indonesien
+      it: Italien
+      hr: Kroatien
+      ma: Marokko
+      nl: Niederlande
+      pl : Polen
+      tr: Türkei
+      vn: Vietnam

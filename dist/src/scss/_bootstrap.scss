@@ -26,24 +26,63 @@ $font-family-base:        $font-family-sans-serif;
 $font-weight-bold:        600;
 $headings-font-weight:    400;
 
+
 // Colors
 
-$theme-color-lightest: #FBB8AB;
-$theme-color-lighter: #FA775E;
-$theme-color-base: #C7604C;
-$theme-color-darker: #7A5A53;
-$theme-color-darkest: #7A3B2F;
+// -- Theming
+$theme-color-lightest: rgb(251, 184, 171);
+$theme-color-lighter: rgb(250, 119, 94);
+$theme-color-base: rgb(199, 96, 76);
+$theme-color-darker: rgb(122, 90, 83);
+$theme-color-darkest: rgb(122, 59, 47);
 
+// -- Borders
 $border-color: #000;
 
-$form-text-color: var(--bs-body-color);
-
-$link-color: #fff;
-$navbar-dark-color: #fff;
-$navbar-dark-hover-color: rgba(#fff, $hover-opacity);
+// -- Buttons
 $btn-close-opacity: 1;
 $btn-close-hover-opacity: $hover-opacity;
+
+// -- Forms
+$form-text-color: var(--bs-body-color);
+
+// -- Figures
+$figure-caption-color: var(--bs-body-color);
+
+// -- Navs
+$navbar-link-color: #fff;
+$navbar-dark-color: #fff;
+$navbar-dark-hover-color: rgba(#fff, $hover-opacity);
+$navbar-dark-toggler-border-color: transparent;
+$navbar-light-toggler-border-color: transparent;
+
+// -- Dropdowns
+$dropdown-bg:                       rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
+$dropdown-link-color:               $navbar-link-color;
+$dropdown-box-shadow:               none;
+
+$dropdown-link-hover-color:         $dropdown-link-color;
+$dropdown-link-hover-bg:            rgba(#fff, .1);
+
+$dropdown-link-active-color:        $dropdown-link-color;
+$dropdown-link-active-bg:           $dropdown-bg;
+
+
+// Buttons
+$navbar-toggler-focus-width: 0;
+$input-btn-focus-width: .1rem;
+
+
+// Dropdowns
+$dropdown-padding-y: 0;
+$dropdown-border-radius: 0;
+$dropdown-border-width: 0;
+
+
+
+// Etc.
 $offcanvas-box-shadow: none;
+
 
 // Override variables by values of other variables
 $primary: $theme-color-lighter;
@@ -51,12 +90,6 @@ $econdary: $theme-color-darkest;
 $light: $theme-color-lightest;
 $dark: $theme-color-darkest;
 $link-hover-color: $theme-color-darkest;
-
-// buttons
-$navbar-toggler-focus-width: 0;
-$navbar-dark-toggler-border-color: transparent;
-$navbar-light-toggler-border-color: transparent;
-$input-btn-focus-width: .1rem;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "bootstrap/scss/variables";
