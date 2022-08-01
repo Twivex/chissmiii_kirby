@@ -56,16 +56,17 @@ $navbar-dark-hover-color: rgba(#fff, $hover-opacity);
 $navbar-dark-toggler-border-color: transparent;
 $navbar-light-toggler-border-color: transparent;
 
-// -- Dropdowns
-$dropdown-bg:                       rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
-$dropdown-link-color:               $navbar-link-color;
-$dropdown-box-shadow:               none;
+// custom variables (naming convention based on bootstrap variables)
+$navbar-dropdown-bg:                       rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
+$navbar-dropdown-box-shadow:               none;
 
-$dropdown-link-hover-color:         $dropdown-link-color;
-$dropdown-link-hover-bg:            rgba(#fff, .1);
+$navbar-dropdown-link-color:               $navbar-link-color;
 
-$dropdown-link-active-color:        $dropdown-link-color;
-$dropdown-link-active-bg:           $dropdown-bg;
+$navbar-dropdown-link-hover-color:         $navbar-dropdown-link-color;
+$navbar-dropdown-link-hover-bg:            rgba(#fff, .1);
+
+$navbar-dropdown-link-active-color:        $navbar-dropdown-link-color;
+$navbar-dropdown-link-active-bg:           $navbar-dropdown-bg;
 
 
 // Buttons

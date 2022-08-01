@@ -1,0 +1,22 @@
+title: Virtuelle Seite
+icon: 📑
+image:
+  query: false
+  back: white
+
+sections:
+
+  drafts:
+    headline: Entwürfe
+    status: draft
+    extends: sections/sites
+
+  unlisted:
+    headline: Ungelistet
+    status: unlisted
+    extends: sections/sites
+
+  listed:
+    headline: Veröffentlicht
+    status: listed
+    extends: sections/sites

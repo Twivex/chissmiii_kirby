@@ -20,9 +20,30 @@
             // skip error page
             if ($item->uid() === 'error') continue;
         ?>
-          <li class="nav-item ps-sm-3">
-            <a class="nav-link px-2 position-relative<?php e($item->isOpen(), ' active') ?>" href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
-          </li>
+          <?php if ($item->intendedTemplate()->name() === 'virtual_page'): ?>
+
+            <li class="nav-item dropdown ms-md-4">
+              <a class="nav-link dropdown-toggle pe-0 ps-2 position-relative <?php e($item->isOpen(), 'active') ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $item->title()->html() ?>
+              </a>
+              <ul class="dropdown-menu mt-sm-2" aria-labelledby="navbarDropdown">
+                <?php
+                  $subNavItems = $item->children();
+                  if (!$kirby->user()) $subNavItems = $subNavItems->listed();
+                ?>
+                <?php foreach($subNavItems as $subItem): ?>
+                  <li><a class="dropdown-item ps-4 <?php e($subItem->isOpen(), 'active') ?>" href="<?= $subItem->url() ?>" <?php e($subItem->isOpen(), 'aria-current="true"') ?>><?= $subItem->title()->html() ?></a></li>
+                <?php endforeach; ?>
+              </ul>
+            </li>
+
+          <?php else: ?>
+
+            <li class="nav-item ms-md-4">
+              <a class="nav-link pe-0 ps-2 position-relative <?php e($item->isOpen(), 'active') ?>" href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
+            </li>
+          <?php endif; ?>
+
         <?php endforeach; ?>
       </ul>
     </div>

@@ -16,3 +16,44 @@
 .navbar .offcanvas.show .offcanvas-body .navbar-nav .nav-link {
   color: $body-color;
 }
+
+
+.navbar .offcanvas.show .offcanvas-body .navbar-nav {
+  .dropdown-menu,
+  .dropdown-item,
+  .dropdown-item.active,
+  .dropdown-item:hover {
+    background-color: $body-bg;
+    color: $body-color
+  }
+
+  .dropdown-item {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.navbar-nav {
+  .dropdown-menu {
+    background-color: $navbar-dropdown-bg;
+    box-shadow: $navbar-dropdown-box-shadow;
+  }
+
+  .dropdown-item {
+    color: $navbar-dropdown-link-color;
+
+    &:hover {
+      background-color: $navbar-dropdown-link-hover-bg;
+      color: $navbar-dropdown-link-hover-color;
+    }
+
+    &.active {
+      background-color: $navbar-dropdown-link-active-bg;
+      color: $navbar-dropdown-link-active-color;
+
+      &:before {
+        left: map-get($spacers, 2);
+      }
+    }
+  }
+}
