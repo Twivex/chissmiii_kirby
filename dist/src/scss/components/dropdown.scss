@@ -1,0 +1,9 @@
+.dropdown-toggle.show {
+  &:after {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown-item.active {
+  background-image: none;
+}

@@ -14,3 +14,4 @@ templates:
   - songwish._
   - textblock
   - timeline._
+  - virtual_page
