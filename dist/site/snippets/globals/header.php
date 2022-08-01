@@ -2,7 +2,7 @@
   if ($page->secured()->toBool() === true && !$kirby->user()) go('/')
 ?>
 
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
     <title><?=$page->title()?> | <?=$site->title()?></title>
