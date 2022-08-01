@@ -21,6 +21,8 @@ b, strong {
   @extend .fw-bold;
 }
 
-p {
-  hyphens: auto;
+.text-justify {
+  &, p {
+    hyphens: auto;
+  }
 }
