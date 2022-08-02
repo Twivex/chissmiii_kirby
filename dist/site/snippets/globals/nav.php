@@ -1,6 +1,6 @@
 <nav id="menu" class="navbar navbar-dark navbar-expand-md sticky-top bg-light pt-sm-3">
   <div class="container-fluid container-lg">
-    <a class="navbar-brand fs-6 mb-n3 mb-sm-n1 font-decorative" href="/"><?=$site->title()?></a>
+    <a class="navbar-brand fs-6 mb-n3 mb-sm-n1 font-decorative" href="/"><?= $site->title() ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,7 +20,7 @@
             // skip error page
             if ($item->uid() === 'error') continue;
         ?>
-          <?php if ($item->intendedTemplate()->name() === 'virtual_page'): ?>
+          <?php if ($item->intendedTemplate()->name() === 'virtual-page'): ?>
 
             <li class="nav-item dropdown ms-md-4">
               <a class="nav-link dropdown-toggle pe-0 ps-2 position-relative <?php e($item->isOpen(), 'active') ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
