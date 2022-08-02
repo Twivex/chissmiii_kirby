@@ -7,5 +7,5 @@ templates:
   - songwish._
   - textblock
   - timeline._
-  - travel_statistics
+  - travel-statistics
 empty: Keine Elemente

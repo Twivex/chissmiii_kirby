@@ -75,7 +75,7 @@
               sort($flags);
             ?>
             <?php foreach ($flags as $flag): ?>
-              <span class="fi fi-<?=$flag?>"></span>
+              <span class="fi fi-<?= $flag ?>"></span>
             <?php endforeach; ?>
           </div>
         </div>
