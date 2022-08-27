@@ -1,29 +1,16 @@
-<?php
-  $isTopLevel = $data->parents()->count() === 0;
-  $headingLevel = $isTopLevel ? 'h1' : 'h2';
-  $show_title = $isTopLevel ? true : $data->show_title()->toBool();
-  $titleDirectionClass = $data->title_text_direction()->directionClass();
-  $colsCount = $data->cols_count()->optionKey();
-  $colsCountClass = $colsCount ? "col-lg-$colsCount" : '';
-?>
-
-<?php if ($show_title): ?>
-  <div class="row justify-content-center">
-    <div class="col-12 <?=$colsCountClass?>">
-      <<?=$headingLevel?> class="<?=$titleDirectionClass?>"><?=$data->title()?></<?=$headingLevel?>>
-    </div>
-  </div>
-<?php endif; ?>
-
 <section class="mt-4">
+
+  <?php snippet('atoms/section-heading', [ 'data' => $data ]); ?>
+
   <div class="row justify-content-center">
-    <div class="col-12 <?=$colsCountClass?>">
+
+    <div class="col-12 <?= $colsCountClass ?>">
 
       <form
         data-entry-collector
         data-entry-collector-mode="append"
         data-entry-collector-for="guestbook-list"
-        action="<?=$data->url()?>" method="POST"
+        action="<?= $data->url() ?>" method="POST"
         class="needs-validation"
         novalidate
       >
@@ -39,7 +26,7 @@
                   class="form-control"
                   placeholder="Name*"
                   aria-describedby="nameValidation"
-                  value="<?=$form_data['name'] ?? null?>"
+                  value="<?= $form_data['name'] ?? null ?>"
                   required
                 >
                 <label for="name" class="form-label">Name*</label>
@@ -80,21 +67,25 @@
 
         </fieldset>
       </form>
+
     </div>
+
   </div>
+
 </section>
 
 <div class="row justify-content-center">
-  <div class="col-12 <?=$colsCountClass?>">
+  <div class="col-12 <?= $colsCountClass ?>">
     <hr>
   </div>
 </div>
 
 <section id="guestbook-list" class="mt-2">
+
   <?php if (!$data->hasChildren()): ?>
 
     <div class="row justify-content-center">
-      <div class="col-12 <?=$colsCountClass?>">
+      <div class="col-12 <?= $colsCountClass ?>">
         <p class="text-muted">Noch keine Einträge vorhanden.</p>
       </div>
     </div>
@@ -102,11 +93,9 @@
   <?php else: ?>
 
     <?php foreach ($data->children()->sortBy('created_at', 'desc') as $entry) {
-      snippet('pages/guestbook.entry', [
-        'data' => $entry,
-        'colsCount' => $colsCount
-      ]);
+      snippet('pages/guestbook.entry', [ 'data' => $entry ]);
     } ?>
 
   <?php endif; ?>
+
 </section>
