@@ -20,8 +20,8 @@ return function ($kirby, $page) {
     ];
 
     $messages = [
-      'name'  => 'Name is required',
-      'message' => 'Message is required',
+      'name'  => '"Name" ist ein Pflichtfeld.',
+      'message' => '"Nachricht" ist ein Pflichtfeld.',
     ];
 
     // some of the data is invalid

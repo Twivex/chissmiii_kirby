@@ -20,8 +20,8 @@ return function ($kirby, $page) {
     ];
 
     $messages = [
-      'song_artist'  => 'Interpret ist ein Pflichtfeld.',
-      'song_title' => 'Titel ist ein Pflichtfeld',
+      'song_artist'  => '"Interpret" ist ein Pflichtfeld.',
+      'song_title' => '"Titel" ist ein Pflichtfeld',
     ];
 
     // some of the data is invalid
