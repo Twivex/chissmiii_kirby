@@ -10,9 +10,6 @@
     }
   }
 
-  $show_title = $show_title ?? $data->show_title()->toBool();
-  $titleDirectionClass= $data->title_text_direction()->directionClass();
-
   $isTextEntry = $data->tl_type()->value() === 'text';
   $tlTextDirectionClass = $data->tl_text_text_direction()->directionClass();
 
@@ -32,36 +29,45 @@
 
 ?>
 
-<div class="row tl-entry tl-entry--<?=$tlEntryClassModifier?>" timeline-date="<?=$data->tl_date()?>">
+<div class="row tl-entry tl-entry--<?= $tlEntryClassModifier?>" timeline-date="<?=$data->tl_date() ?>">
 
   <?php if (!empty($tl_date)): ?>
     <div class="tl-date">
       <div class="tl-date-wrapper">
-        <span><?=$tl_date?></span>
+        <span><?= $tl_date ?></span>
       </div>
     </div>
   <?php endif; ?>
 
   <?php if ($isTextEntry): ?>
-    <div class="col-xs-12 col-lg-6 tl-text <?= $show_title ? 'tl-text--with-title' : '' ?> order-2 <?=$tlClassOne?> <?=$tlTextDirectionClass?>">
-      <?=kt($data->tl_text())?>
+
+    <div class="col-xs-12 col-lg-6 tl-text <?php e($data->showTitle(), 'tl-text--with-title') ?> order-2 <?= $tlClassOne?> <?=$tlTextDirectionClass ?>">
+      <?= kt($data->tl_text()) ?>
     </div>
+
   <?php else: ?>
-    <div class="col-xs-12 col-lg-6 order-1 tl-image <?=$tlClassOne?>">
+
+    <div class="col-xs-12 col-lg-6 order-1 tl-image <?= $tlClassOne ?>">
       <?php snippet('molecules/polaroid', [
         'image' => $data->tl_image()->toFile(),
         'size' => '300',
         'alt' => $data->title()
       ]); ?>
     </div>
+
   <?php endif; ?>
-  <div class="col-xs-12 col-lg-6 tl-description <?=$descriptionOrderClass?> <?=$tlClassTwo?> <?=$descriptionDirectionClass?>">
-    <?php if ($show_title): ?>
-      <h3 class="<?=$titleDirectionClass?>"><?= $data->title() ?></h3>
+
+  <div class="col-xs-12 col-lg-6 tl-description <?= $descriptionOrderClass?> <?=$tlClassTwo?> <?=$descriptionDirectionClass ?>">
+
+    <?php if ($data->showTitle()): ?>
+      <h3 class="<?= $data->headingTextDirectionClass() ?>"><?= $data->title() ?></h3>
     <?php endif; ?>
-    <?php if (!$data->description()->isEmpty()) {
-      echo kt($data->description());
-    } ?>
+
+    <?php e(
+      $data->description()->isNotEmpty(),
+      kt($data->description())
+    ); ?>
+
   </div>
 
 </div>
