@@ -41,9 +41,6 @@ tabs:
             type: hidden
             default: "{{ page.parent.blueprint.name }}"
 
-          description:
-            label: Beschreibung
-            type: textarea
       sidebar:
         width: 1/4
         fixed: true
