@@ -16,14 +16,14 @@
   $additionalClasses = implode(' ', $additionalClasses);
 ?>
 
-<div class="card <?=$additionalClasses?>">
-  <img src="<?=$image->url()?>" srcset="<?=$image->srcset()?>" class="card-img-top" alt="<?=$image->title()?>">
+<div class="card <?= $additionalClasses ?>">
+  <img src="<?= $image->url()?>" srcset="<?=$image->srcset()?>" class="card-img-top" alt="<?=$image->title() ?>">
   <div class="card-body">
-    <h5 class="card-title"><?=$title?></h5>
+    <h5 class="card-title"><?= $title ?></h5>
     <?php if (isset($description) && !empty($description)): ?>
-      <p class="card-text"><?=kt($description)?></p>
+      <p class="card-text"><?= kt($description) ?></p>
     <?php endif; ?>
     <?php if ($additionalContent) { echo $additionalContent; } ?>
-    <a href="<?=$pageUri?>" class="btn btn-light">Go somewhere</a>
+    <a href="<?= $pageUri ?>" class="btn btn-light">Go somewhere</a>
   </div>
 </div>

@@ -24,13 +24,13 @@
   $additionalImgClasses = implode(' ', $additionalImgClasses);
 ?>
 
-<div class="col-md-6 <?=$additionalClasses?>">
-  <h2 class="h2 my-2"><?=$headline?></h2>
+<div class="col-md-6 <?= $additionalClasses ?>">
+  <h2 class="h2 my-2"><?= $headline ?></h2>
   <?php if (isset($subheadline) && $subheadline->isNotEmpty()): ?>
-    <p class="lead py-1"><?=$subheadline?></p>
+    <p class="lead py-1"><?= $subheadline ?></p>
   <?php endif; ?>
-  <img src="<?=$image->url()?>" srcset="<?=$image->srcset()?>" alt="<?=$headline->escape()?>" class="rounded-circle img-fluid <?=$additionalImgClasses?>">
+  <img src="<?= $image->url()?>" srcset="<?=$image->srcset()?>" alt="<?=$headline->escape()?>" class="rounded-circle img-fluid <?=$additionalImgClasses ?>">
   <?php if (isset($description) && $description->isNotEmpty()): ?>
-      <p class="text py-1 mt-2"><?=kt($description)?></p>
+      <p class="text py-1 mt-2"><?= kt($description) ?></p>
   <?php endif; ?>
 </div>
