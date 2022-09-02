@@ -2,6 +2,7 @@ type: pages
 headline: Elemente
 templates:
   - countdown
+  - contact
   - gmap
   - persons._
   - songwish._

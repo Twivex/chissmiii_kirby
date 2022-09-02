@@ -1,0 +1,8 @@
+type: pages
+headline: Anragen
+info: "{{ page.created_at.toDate('d.m.Y H:m') }}"
+text: "Anfrage von {{ page.name }}"
+create: false
+sortBy: created_at desc
+template: contact.request
+empty: Keine Anfragen
