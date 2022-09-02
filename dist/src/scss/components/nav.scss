@@ -57,3 +57,29 @@
     }
   }
 }
+
+.navbar-dark .navbar-nav.nav-pipe .nav-item:after {
+  color: white;
+}
+
+.navbar-nav.nav-pipe {
+
+  .nav-item {
+
+    display: flex;
+    align-items: baseline;
+
+    &:after {
+      content: '|';
+      line-height: 1.2em;
+      font-size: 1.25rem;
+      font-weight: lighter;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+
+  }
+
+}
