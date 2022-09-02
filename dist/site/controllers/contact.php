@@ -69,7 +69,7 @@ return function ($kirby, $page) {
             'text'   => esc($data['message']),
             'sender' => [
               'name' => esc($data['name']),
-              'mail' => esc($data['mail']),
+              'email' => esc($data['email']),
               'phone' => esc($data['phone']),
             ],
             'entryUri' => $contactEntry->uri()
