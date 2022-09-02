@@ -1,6 +1,7 @@
 export default class Form {
   constructor(formSelector) {
     this.form = document.querySelector(formSelector);
+    this.defaultSubmit = true;
     this.submitListeners = [];
     this.form.addEventListener("submit", (e) => this.formSubmitListener(e));
   }
@@ -88,6 +89,10 @@ export default class Form {
     this.getElement().classList.remove(classname);
   }
 
+  preventDefaultSubmit() {
+    this.defaultSubmit = false;
+  }
+
   onSubmit(listener) {
     this.submitListeners.push(listener);
   }
@@ -124,7 +129,8 @@ export default class Form {
       event.stopPropagation();
     }
 
-    event.preventDefault();
-    return false;
+    if (!this.defaultSubmit) {
+      event.preventDefault();
+    }
   }
 }

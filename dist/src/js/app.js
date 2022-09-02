@@ -1,3 +1,4 @@
+import Form from "./modules/form";
 import EntryCollector from "./modules/entry-collector";
 
 EntryCollector.init();
@@ -17,4 +18,8 @@ document.querySelectorAll("[data-visually-hide]").forEach((el) => {
       targetEl.classList.add("visually-hidden");
     }, 150);
   });
+});
+
+document.querySelectorAll("[data-form]").forEach((form) => {
+  new Form(`#${form.id}`);
 });
