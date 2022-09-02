@@ -22,6 +22,7 @@ fields:
     type: relationship
     width: 1/2
     options:
+      ae: Arabische Emirate
       at: Österreich
       be: Belgien
       cz: Tschechien
@@ -31,10 +32,10 @@ fields:
       fr: Frankreich
       gb: Großbritannien
       gr: Griechenland
+      hr: Kroatien
       hu: Ungarn
       id: Indonesien
       it: Italien
-      hr: Kroatien
       ma: Marokko
       nl: Niederlande
       pl : Polen
