@@ -58,29 +58,29 @@ return function ($kirby, $page) {
 
       /* send e-mail */
 
-      try {
-        $kirby->email([
-          'template' => 'contact',
-          'from'     => 'info@chissmiii.home-webserver.de',
-          'to'       => 'mimi.christian34@gmail.com',
-          'subject'  => 'ChissMiii Website – ' . esc($data['name']) . ' hat eine Anfrage gesendet',
-          'data'     => [
-            'text'   => esc($data['message']),
-            'sender' => [
-              'name' => esc($data['name']),
-              'email' => esc($data['email']),
-              'phone' => esc($data['phone']),
-            ],
-            'entryUri' => $contactEntry->uri()
-          ]
-        ]);
-      } catch (Exception $error) {
-        if (option('debug')) {
-          $alert['error'] = 'The form could not be sent: <strong>' . $error->getMessage() . '</strong>';
-        } else {
-          $alert['error'] = 'The form could not be sent!';
-        }
-      }
+      // try {
+      //   $kirby->email([
+      //     'template' => 'contact',
+      //     'from'     => 'info@chissmiii.home-webserver.de',
+      //     'to'       => 'mimi.christian34@gmail.com',
+      //     'subject'  => 'ChissMiii Website – ' . esc($data['name']) . ' hat eine Anfrage gesendet',
+      //     'data'     => [
+      //       'text'   => esc($data['message']),
+      //       'sender' => [
+      //         'name' => esc($data['name']),
+      //         'email' => esc($data['email']),
+      //         'phone' => esc($data['phone']),
+      //       ],
+      //       'entryUri' => $contactEntry->uri()
+      //     ]
+      //   ]);
+      // } catch (Exception $error) {
+      //   if (option('debug')) {
+      //     $alert['error'] = 'The form could not be sent: <strong>' . $error->getMessage() . '</strong>';
+      //   } else {
+      //     $alert['error'] = 'The form could not be sent!';
+      //   }
+      // }
 
 
 
