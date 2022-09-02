@@ -88,7 +88,7 @@ return function ($kirby, $page) {
 
 
       /* check if everything went fine */
-      if (empty($alert) === true) {
+      if (empty($alert)) {
         $success = 'Vielen Dank für deine Nachricht!';
         $data = [];
       }
