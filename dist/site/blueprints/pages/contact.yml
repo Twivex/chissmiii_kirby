@@ -1,0 +1,36 @@
+title: Kontaktformular
+icon: 📧
+image:
+  query: false
+  back: white
+
+
+sections:
+  settings:
+    type: fields
+    fields:
+      layout_settings:
+        extends: fields/layout_settings_extendable
+        fields:
+
+          cols_count:
+            extends: fields/cols_count
+            width: 1/3
+
+      info:
+        text: Zeigt ein Standard-Kontaktformular an. Alle Anfragen werden hier aufgelistet und per E-Mail an mimi.christian34@gmail.com gesendet.
+
+      content_line:
+        type: line
+
+  unread_requests:
+    headline: Ungelesene Anfragen
+    layout: lits
+    status: draft
+    extends: sections/contact-requests
+
+  read_requests:
+    headline: Gelesene Anfragen
+    layout: list
+    status: unlisted
+    extends: sections/contact-requests

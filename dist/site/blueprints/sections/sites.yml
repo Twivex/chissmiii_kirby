@@ -2,6 +2,7 @@ type: pages
 empty: Keine Seiten
 templates:
   - composition._
+  - contact
   - countdown
   - error
   - events

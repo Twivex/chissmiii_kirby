@@ -1,0 +1,49 @@
+title: Kontaktanfrage
+pages: false
+icon:
+image:
+  query: false
+  back: white
+
+options:
+  url: false
+
+status:
+  draft:
+    label: Ungelesen
+  unlisted:
+    label: Gelesen
+
+fields:
+  name:
+    label: Name
+    type: text
+    width: 1/2
+    disabled: true
+
+  created_at:
+    label: Erstellt am
+    type: date
+    width: 1/2
+    time: true
+    default: now
+    disabled: true
+    display: DD.MM.YYYY
+
+  mail:
+    label: E-Mail
+    type: text
+    width: 1/2
+    disabled: true
+
+  phone:
+    label: Telefon
+    type: tel
+    width: 1/2
+    disabled: true
+
+  message:
+    label: Nachricht
+    type: textarea
+    disabled: true
+    size: large
