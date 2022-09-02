@@ -4,20 +4,21 @@
 
   <div class="row justify-content-center">
 
-    <div class="col-12 <?= $colsCountClass ?>">
+    <div class="col-12 <?= $data->colsCountClass() ?>">
 
       <form
         data-entry-collector
         data-entry-collector-mode="append"
         data-entry-collector-for="guestbook-list"
-        action="<?= $data->url() ?>" method="POST"
+        action="<?= $data->url() ?>"
+        method="POST"
         class="needs-validation"
         novalidate
       >
         <fieldset>
 
-          <div class="row mb-1">
-            <div class="col">
+          <div class="row">
+            <div class="col-12 mb-1">
               <div class="form-floating mb-4">
                 <input
                   type="text"
@@ -34,10 +35,8 @@
                 <div id="nameHelp" class="form-text float-end">Der Name wird für alle sichtbar sein.</div>
               </div>
             </div>
-          </div>
 
-          <div class="row mb-1">
-            <div class="col">
+            <div class="col-12 mb-1">
               <div class="form-floating mb-4">
                 <textarea
                   id="message"
@@ -75,7 +74,7 @@
 </section>
 
 <div class="row justify-content-center">
-  <div class="col-12 <?= $colsCountClass ?>">
+  <div class="col-12 <?= $data->colsCountClass() ?>">
     <hr>
   </div>
 </div>
@@ -85,7 +84,7 @@
   <?php if (!$data->hasChildren()): ?>
 
     <div class="row justify-content-center">
-      <div class="col-12 <?= $colsCountClass ?>">
+      <div class="col-12 <?= $data->colsCountClass() ?>">
         <p class="text-muted">Noch keine Einträge vorhanden.</p>
       </div>
     </div>

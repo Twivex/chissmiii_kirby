@@ -20,7 +20,7 @@
 
           <div class="row align-items-baseline">
             <div class="col align-self-start">
-              <div class="form-floating mb-3">
+              <div class="form-floating mb-4">
                 <input
                   type="text"
                   id="songArtist"
@@ -37,11 +37,11 @@
             </div>
 
             <div class="col-auto align-self-center">
-              <span class="d-flex mb-3 fs-3">–</span>
+              <span class="d-flex mb-4 fs-3">–</span>
             </div>
 
             <div class="col align-self-start">
-              <div class="form-floating mb-3">
+              <div class="form-floating mb-4">
                 <input
                   type="text"
                   id="songTitle"
