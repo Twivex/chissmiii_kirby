@@ -30,7 +30,7 @@ fields:
     disabled: true
     display: DD.MM.YYYY
 
-  mail:
+  email:
     label: E-Mail
     type: text
     width: 1/2
