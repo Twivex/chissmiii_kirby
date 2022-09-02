@@ -5,6 +5,7 @@ export default class EntryCollector {
     const form = new Form(
       `[data-entry-collector-for="${entryCollectorTarget}"]`
     );
+    form.preventDefaultSubmit();
     form.onSubmit((e, form) => {
       this.submitEntry(form);
     });
