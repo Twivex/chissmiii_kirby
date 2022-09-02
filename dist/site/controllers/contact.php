@@ -62,7 +62,6 @@ return function ($kirby, $page) {
         $kirby->email([
           'template' => 'contact',
           'from'     => 'info@chissmiii.home-webserver.de',
-          'replyTo'  => $data['email'],
           'to'       => 'mimi.christian34@gmail.com',
           'subject'  => 'ChissMiii Website – ' . esc($data['name']) . ' hat eine Anfrage gesendet',
           'data'     => [
