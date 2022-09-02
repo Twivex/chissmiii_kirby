@@ -66,7 +66,7 @@ return function ($kirby, $page) {
           'to'       => 'mimi.christian34@gmail.com',
           'subject'  => 'ChissMiii Website – ' . esc($data['name']) . ' hat eine Anfrage gesendet',
           'data'     => [
-            'text'   => esc($data['text']),
+            'text'   => esc($data['message']),
             'sender' => [
               'name' => esc($data['name']),
               'mail' => esc($data['mail']),
