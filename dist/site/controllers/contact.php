@@ -19,7 +19,7 @@ return function ($kirby, $page) {
     $rules = [
       'name' => ['required'],
       'email' => ['email'],
-      'phone' => ['phone'],
+      'phone' => ['number'],
       'message' => ['required']
     ];
 
