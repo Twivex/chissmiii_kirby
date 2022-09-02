@@ -1,12 +1,3 @@
-<?php
-  if (!empty($alert)) {
-    dump($alert);
-  }
-  if (!empty($form_data)) {
-    dump($form_data);
-  }
-?>
-
 <section class="py-4">
 
   <?php snippet('atoms/section-heading', [ 'data' => $data ]); ?>
