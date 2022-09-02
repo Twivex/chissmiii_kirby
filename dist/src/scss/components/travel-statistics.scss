@@ -5,12 +5,12 @@
   }
 
   .fi {
-    font-size: map-get($font-sizes, 3);
+    font-size: 2rem;
   }
 
   @include media-breakpoint-up(sm) {  // ≥576px
     .fi {
-      font-size: map-get($font-sizes, 2);
+      font-size: 2rem;
     }
   }
 
@@ -21,7 +21,7 @@
       height: 132px;
     }
     .fi {
-      font-size: map-get($font-sizes, 4);
+      font-size: 1.3;
     }
   }
 
@@ -31,7 +31,7 @@
       height: 162px;
     }
     .fi {
-      font-size: map-get($font-sizes, 2);
+      font-size: 1.6rem;
     }
   }
 
@@ -41,7 +41,7 @@
       height: 194px;
     }
     .fi {
-      font-size: map-get($font-sizes, 1);
+      font-size: 2.1rem;
     }
   }
 
