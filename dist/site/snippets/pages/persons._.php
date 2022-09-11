@@ -13,9 +13,12 @@
 
   $categories = [];
   if ($allPersonsHaveCategories) {
+    // get all categories
     $categories = $persons->pluck('category');
+    // reduce to unique values
     $categories = array_unique($categories);
-    sort($categories);
+    // reindex array
+    $categories = array_combine(range(0, count($categories) - 1), $categories);
   }
 ?>
 
