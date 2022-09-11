@@ -21,7 +21,16 @@ $body-bg: #fff;
 
 /* Overwrite Bootstrap variables */
 // Fonts
-$font-family-sans-serif:  "Montserrat, sans-serif";
+$font-family-sans-serif:
+  "Montserrat",
+  "Twemoji Mozilla",
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol",
+  "Noto Color Emoji",
+  "EmojiOne Color",
+  "Android Emoji",
+  sans-serif;
 $font-family-base:        $font-family-sans-serif;
 $font-weight-bold:        600;
 $headings-font-weight:    400;
