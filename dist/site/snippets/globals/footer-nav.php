@@ -8,13 +8,13 @@
     <ul class="navbar-nav nav-pipe">
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= $imprintPage->uri() ?>">
+        <a class="nav-link" href="<?= $imprintPage->url() ?>">
           <?= $imprintPage->title()->html() ?>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= $dprgPage->uri() ?>">
+        <a class="nav-link" href="<?= $dprgPage->url() ?>">
           <?= $dprgPage->title()->html() ?>
         </a>
       </li>
