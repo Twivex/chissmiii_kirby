@@ -1,6 +1,6 @@
 type: pages
 headline: Einträge
-info: "{{ page.created_at.toDate('d.m.Y H:m') }}"
+info: "{{ page.created_at.toDate('d.m.Y H:i') }}"
 sortBy: created_at desc
 template: guestbook.entry
 empty: Keine Einträge
