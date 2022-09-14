@@ -1,6 +1,6 @@
 type: pages
 headline: Anragen
-info: "{{ page.created_at.toDate('d.m.Y H:m') }}"
+info: "{{ page.created_at.toDate('d.m.Y H:i') }}"
 text: "Anfrage von {{ page.name }}"
 create: false
 sortBy: created_at desc
