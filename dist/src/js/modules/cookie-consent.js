@@ -102,8 +102,7 @@ export default class CookieConsent {
         acceptRequiredCookies();
         acceptApplicationCookies();
         // acceptStatisticCookies();
-        disclaimerBanner.hide();
-        hideWrapper();
+        location.reload();
       });
 
     document
