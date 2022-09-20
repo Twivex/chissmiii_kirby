@@ -1,6 +1,8 @@
 import Form from "./modules/form";
 import EntryCollector from "./modules/entry-collector";
+import CookieConsent from "./modules/cookie-consent";
 
+CookieConsent.init();
 EntryCollector.init();
 
 document.querySelectorAll("[data-hide]").forEach((el) => {
