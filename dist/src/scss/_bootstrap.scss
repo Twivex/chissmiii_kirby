@@ -39,11 +39,12 @@ $headings-font-weight:    400;
 // Colors
 
 // -- Theming
-$theme-color-lightest: rgb(251, 184, 171);
-$theme-color-lighter: rgb(250, 119, 94);
-$theme-color-base: rgb(199, 96, 76);
-$theme-color-darker: rgb(122, 90, 83);
-$theme-color-darkest: rgb(122, 59, 47);
+// $theme-color-lightest: rgb(251, 184, 171);
+$theme-color-lightest: $chissmiii-rose;
+$theme-color-lighter: #D4AEB5;
+$theme-color-base: #f00;
+$theme-color-darker: $chissmiii-grey;
+$theme-color-darkest: #707070;
 
 // -- Borders
 $border-color: #000;
@@ -54,6 +55,7 @@ $btn-close-hover-opacity: $hover-opacity;
 
 // -- Forms
 $form-text-color: var(--bs-body-color);
+$form-check-label-disabled-opacity: 1;
 
 // -- Figures
 $figure-caption-color: var(--bs-body-color);
@@ -96,7 +98,7 @@ $offcanvas-box-shadow: none;
 
 // Override variables by values of other variables
 $primary: $theme-color-lighter;
-$econdary: $theme-color-darkest;
+$econdary: $theme-color-darker;
 $light: $theme-color-lightest;
 $dark: $theme-color-darkest;
 $link-hover-color: $theme-color-darkest;
