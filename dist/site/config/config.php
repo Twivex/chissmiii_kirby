@@ -8,5 +8,6 @@ return [
   ],
   'auth' => [
     'methods' => ['password', 'password-reset']
-  ]
+  ],
+  'languages' => true
 ];
