@@ -16,7 +16,7 @@
 
 <html lang="de">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title><?= $page->title()?> | <?=$site->title() ?></title>
     <meta name="title=" content="<?= $page->title()?> | <?=$site->title() ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,4 +36,5 @@
   <body>
     <?php snippet('globals/nav') ?>
     <?php snippet('globals/bg-img') ?>
+    <?php snippet('globals/cookie-banner') ?>
     <main id="main" class="container my-sm-4 px-sm-4 py-4">
