@@ -1,0 +1,11 @@
+.form-check.disabled {
+  &, input, label {
+    cursor: not-allowed;
+  }
+}
+
+.form-check {
+  &, input, label {
+    cursor: pointer;
+  }
+}
