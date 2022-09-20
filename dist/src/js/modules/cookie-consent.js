@@ -99,9 +99,9 @@ export default class CookieConsent {
     document
       .getElementById("cookieConsentAccept")
       .addEventListener("click", (e) => {
-        acceptRequiredCookie();
-        acceptApplicationCookie();
-        // acceptStatisticCookie();
+        acceptRequiredCookies();
+        acceptApplicationCookies();
+        // acceptStatisticCookies();
         disclaimerBanner.hide();
         hideWrapper();
       });
