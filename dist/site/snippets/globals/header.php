@@ -42,7 +42,7 @@
       <link rel="apple-touch-icon" sizes="180x180" href="<?= $favicon->resize(180)->url() ?>">
       <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= $favicon->resize(32)->url() ?>">
       <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= $favicon->resize(16)->url() ?>">
-    <php endif; ?>
+    <?php endif; ?>
   </head>
   <body>
     <?php snippet('globals/nav') ?>
