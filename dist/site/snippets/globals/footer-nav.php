@@ -20,7 +20,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href data-cookie-consent="openSettings">
+        <a class="nav-link" tabindex="0" data-cookie-consent="openSettings">
           <?= t('cookie-settings-title') ?>
         </a>
       </li>

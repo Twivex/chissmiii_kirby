@@ -1,6 +1,26 @@
 # Kirby .htaccess
 # revision 2020-06-15
 
+# turns cache on for 1 month
+<IfModule mod_expires.c>
+ ExpiresActive On
+ ExpiresByType image/gif "access plus 1 month"
+ ExpiresByType image/jpeg "access plus 1 month"
+ ExpiresByType image/png "access plus 1 month"
+ ExpiresByType image/x-icon "access plus 1 month"
+</IfModule>
+<ifmodule mod_headers.c>
+ <filesmatch "\\.(ico|jpe?g|png|gif|swf)$">
+  Header set Cache-Control "max-age=2592000, public"
+ </filesmatch>
+ <filesmatch "\\.(css)$">
+  Header set Cache-Control "max-age=604800, public"
+ </filesmatch>
+ <filesmatch "\\.(js)$">
+  Header set Cache-Control "max-age=604800, private"
+ </filesmatch>
+</ifmodule>
+
 # rewrite rules
 <IfModule mod_rewrite.c>
 
