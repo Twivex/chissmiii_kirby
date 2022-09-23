@@ -14,7 +14,7 @@
         <?php
           $navItems = $site->children();
           if (!$kirby->user()) $navItems = $navItems->listed();
-          foreach ($navItems as $item):
+          foreach ($navItems as $key => $item):
             // skip secured pages, if not logged in
             if ($item->secured()->toBool() === true && !$kirby->user()) continue;
             // skip error page
@@ -23,10 +23,10 @@
           <?php if ($item->intendedTemplate()->name() === 'virtual-page'): ?>
 
             <li class="nav-item dropdown ms-md-4">
-              <a class="nav-link dropdown-toggle pe-0 ps-2 position-relative <?php e($item->isOpen(), 'active') ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle pe-0 ps-2 position-relative <?php e($item->isOpen(), 'active') ?>" href="#" id="navbarDropdown<?= ucfirst($key) ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <?= $item->title()->html() ?>
               </a>
-              <ul class="dropdown-menu mt-sm-2" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu mt-sm-2" aria-labelledby="navbarDropdown<?= ucfirst($key) ?>">
                 <?php
                   $subNavItems = $item->children();
                   if (!$kirby->user()) $subNavItems = $subNavItems->listed();

@@ -14,11 +14,11 @@
         class="figure-img"
         src="<?= $image->url() ?>"
         srcset="<?= $image->srcset([
-          "1x" => [ 'width' => $size ],
-          "2x" => [ 'width' => $doubleSize ],
-          "3x" => [ 'width' => $tripleSize ]
+          "${size}w" => [ 'width' => $size ],
+          "${doubleSize}w" => [ 'width' => $doubleSize ],
+          "${tripleSize}w" => [ 'width' => $tripleSize ]
         ]) ?>"
-        sizes="<?= "1x $size, 2x $doubleSize, 3x $tripleSize" ?>"
+        sizes="100vw"
         width="<?= $size ?>"
         height="<?= $size ?>"
         alt="<?= $alt ?? $caption ?>">
