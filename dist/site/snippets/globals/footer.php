@@ -4,5 +4,6 @@
       <?php snippet('globals/footer-nav'); ?>
     </footer>
 
+    <script src="/resources/js/app.js"></script>
   </body>
 </html>
