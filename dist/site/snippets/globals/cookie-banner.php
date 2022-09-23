@@ -41,7 +41,7 @@
               <input class="form-check-input" type="checkbox" value="" id="requiredCookies" checked disabled>
               <label class="form-check-label" for="requiredCookies">
                 <span class="fw-bold"><?= t('cookie-settings-required-title') ?></span>
-                <?= kirbytext(t('cookie-settings-required-text')) ?>
+                <span class="d-inline-block"><?= kirbytextinline(t('cookie-settings-required-text')) ?></span>
               </label>
             </div>
 
@@ -49,9 +49,7 @@
               <input class="form-check-input" type="checkbox" value="" id="applicationCookies" <?= $applicationCookieAccepted ? 'checked' : '' ?>>
               <label class="form-check-label" for="applicationCookies">
                 <span class="fw-bold"><?= t('cookie-settings-application-title') ?></span>
-                <div>
-                  <?= kirbytext(t('cookie-settings-application-text')) ?>
-                </div>
+                <span class="d-inline-block"><?= kirbytextinline(t('cookie-settings-application-text')) ?></span>
               </label>
             </div>
 

@@ -12,7 +12,8 @@
         '1440w' => [ 'width' => 1440 ],
         '2400w' => [ 'width' => 2400 ]
       ]) ?>"
+      sizes="100vw"
     >
-    <img src="<?= $bgImg->url() ?>">
+    <img src="<?= $bgImg->url() ?>" alt="<?= $bgImg ? $bgImg->title() : '' ?>">
   </picture>
 <?php endif; ?>
