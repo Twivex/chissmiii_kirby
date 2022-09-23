@@ -131,12 +131,11 @@ export default class CookieConsent {
         });
       });
 
-    // show disclaimerBanner if necessary
-
-    setTimeout(() => {
-      if (!requiredCookiesStatus) {
+    // show disclaimer banner if necessary
+    if (!requiredCookiesStatus) {
+      setTimeout(() => {
         disclaimerBanner.show();
-      }
-    }, 1000);
+      }, 1000);
+    }
   }
 }
