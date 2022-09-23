@@ -4,7 +4,6 @@
 ?>
 
 <div id="cookieConsent" class="container fixed-bottom p-0 px-2 pb-3 d-none" aria-live="polite" aria-atomic="true">
-  <?php dump($applicationCookieAccepted); ?>
     <div id="cookieConsentBanner" class="toast bg-dark text-white w-100 mw-100" role="alert" data-autohide="false">
         <div class="toast-body p-4 d-flex flex-column">
 
