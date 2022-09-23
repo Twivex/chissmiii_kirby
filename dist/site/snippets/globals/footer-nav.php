@@ -20,9 +20,9 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" tabindex="0" data-cookie-consent="openSettings">
+        <span class="nav-link" tabindex="0" data-cookie-consent="openSettings">
           <?= t('cookie-settings-title') ?>
-        </a>
+        </span>
       </li>
 
     </ul>
