@@ -12,6 +12,12 @@
   if ($appLaunchScreenExists) {
     $appLaunchScreen = $appLaunchScreens->first();
   }
+
+  $favicons = $site->files()->filterBy('tag', 'favicon');
+  $faviconExists = $favicons->count() > 0;
+  if ($faviconExists) {
+    $favicon = $favicons->first();
+  }
 ?>
 
 <html lang="de">
@@ -32,6 +38,11 @@
     <?php endif; ?>
     <meta name="apple-mobile-web-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#fbb8ab">
+    <?php if ($faviconExists): ?>
+      <link rel="apple-touch-icon" sizes="180x180" href="<?= $favicon->resize(180)->url() ?>">
+      <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= $favicon->resize(32)->url() ?>">
+      <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= $favicon->resize(16)->url() ?>">
+    <php endif; ?>
   </head>
   <body>
     <?php snippet('globals/nav') ?>
