@@ -52,7 +52,7 @@
               </label>
             </div>
 
-            <button type="button" class="btn btn-primary" id="cookieConsentSaveSettings">
+            <button type="button" class="btn btn-primary mt-3" id="cookieConsentSaveSettings">
               <?= t('cookie-save-settings') ?>
             </button>
 
