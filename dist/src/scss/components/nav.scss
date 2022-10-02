@@ -56,6 +56,10 @@
       }
     }
   }
+
+  .nav-link:hover {
+    cursor: pointer;
+  }
 }
 
 .navbar-dark .navbar-nav.nav-pipe .nav-item:after {
@@ -64,6 +68,12 @@
 
 .navbar-nav.nav-pipe {
 
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
   .nav-item {
 
     display: flex;
@@ -74,12 +84,15 @@
       line-height: 1.2em;
       font-size: 1.25rem;
       font-weight: lighter;
+            color: $navbar-link-color;
     }
 
     &:last-child:after {
       display: none;
     }
+        }
+      }
 
   }
-
+}
 }
