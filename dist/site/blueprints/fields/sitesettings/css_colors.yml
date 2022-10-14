@@ -1,0 +1,172 @@
+type: group
+fields:
+  shade_tint_variant:
+    label: Shade / Tint Variant
+    width: 1/4
+    type: toggle
+    text:
+      - Shade
+      - Tint
+
+
+  colors_line:
+    type: line
+
+  color_bs_primary:
+    label: Primary
+    width: 1/4
+    type: text
+
+  variant_bs_primary:
+    label: Primary Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_secondary:
+    label: Secondary
+    width: 1/4
+    type: text
+
+  variant_bs_secondary:
+    label: Secondary Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_light:
+    label: Light
+    width: 1/4
+    type: text
+
+  variant_bs_light:
+    label: Light Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_dark:
+    label: Dark
+    width: 1/4
+    type: text
+
+  variant_bs_dark:
+    label: Dark Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_success:
+    label: Success
+    width: 1/4
+    type: text
+
+  variant_bs_success:
+    label: Success Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_info:
+    label: Info
+    width: 1/4
+    type: text
+
+  variant_bs_info:
+    label: Info Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_warning:
+    label: Warning
+    width: 1/4
+    type: text
+
+  variant_bs_warning:
+    label: Warning Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_danger:
+    label: Danger
+    width: 1/4
+    type: text
+
+  variant_bs_danger:
+    label: Danger Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_body_color:
+    label: Body Text
+    width: 1/4
+    type: text
+
+  variant_bs_body_color:
+    label: Body Text Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_body_bg:
+    label: Body Background
+    width: 1/4
+    type: text
+
+  variant_bs_body_bg:
+    label: Body Background Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  custom_colors_line:
+    type: line
+
+  color_cm_primary_contrast:
+    label: Primary Contrast
+    width: 1/4
+    type: text
+
+  variant_cm_primary_contrast:
+    label: Primary Contrast Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_cm_secondary_contrast:
+    label: Secondary Contrast
+    width: 1/4
+    type: text
+
+  variant_cm_secondary_contrast:
+    label: Secondary Contrast Variant
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
