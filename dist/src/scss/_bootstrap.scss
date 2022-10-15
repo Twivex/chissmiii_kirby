@@ -4,7 +4,13 @@
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "bootstrap/scss/functions";
 
+// note: moved import of variables to the top, so they are available in all functions
+@import "bootstrap/scss/variables";
+
 // 2. Include any default variable overrides here
+// enable bootstrap's CSS grid system
+$enable-cssgrid: true;
+
 // Toggle global options
 $enable-gradients: true;
 $enable-shadows: true;
@@ -16,8 +22,6 @@ $border-radius: .4rem;
 $font-family-serif: "Zapfino";
 
 // Colors
-$body-bg: #fff;
-
 
 /* Overwrite Bootstrap variables */
 // Fonts
@@ -39,19 +43,13 @@ $headings-font-weight:    400;
 // Colors
 
 // -- Theming
-// $theme-color-lightest: rgb(251, 184, 171);
-$theme-color-lightest: $chissmiii-rose;
-$theme-color-lighter: #D4AEB5;
-$theme-color-base: #f00;
-$theme-color-darker: $chissmiii-grey;
-$theme-color-darkest: #707070;
 
 // -- Borders
 $border-color: #000;
 
 // -- Buttons
 $btn-close-opacity: 1;
-$btn-close-hover-opacity: $hover-opacity;
+$btn-close-hover-opacity: .75;
 
 // -- Forms
 $form-text-color: var(--bs-body-color);
@@ -61,10 +59,11 @@ $form-check-label-disabled-opacity: 1;
 $figure-caption-color: var(--bs-body-color);
 
 // -- Navs
-$navbar-link-color: #fff;
-$navbar-dark-color: #fff;
-$navbar-dark-hover-color: rgba(#fff, $hover-opacity);
-$navbar-dark-toggler-border-color: transparent;
+$navbar-link-color:                 var(--cm-primary-contrast);
+$navbar-dark-color:                 var(--cm-primary-contrast);
+$navbar-dark-hover-color:           rgba(var(--cm-primary-contrast-rgb), .75);
+$navbar-dark-toggler-icon-bg:       escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"));
+$navbar-dark-toggler-border-color:  transparent;
 $navbar-light-toggler-border-color: transparent;
 
 // custom variables (naming convention based on bootstrap variables)
@@ -74,7 +73,7 @@ $navbar-dropdown-box-shadow:               none;
 $navbar-dropdown-link-color:               $navbar-link-color;
 
 $navbar-dropdown-link-hover-color:         $navbar-dropdown-link-color;
-$navbar-dropdown-link-hover-bg:            rgba(#fff, .1);
+$navbar-dropdown-link-hover-bg:            rgba(white, .1);
 
 $navbar-dropdown-link-active-color:        $navbar-dropdown-link-color;
 $navbar-dropdown-link-active-bg:           $navbar-dropdown-bg;
@@ -91,20 +90,12 @@ $dropdown-border-radius: 0;
 $dropdown-border-width: 0;
 
 
-
 // Etc.
 $offcanvas-box-shadow: none;
 
 
-// Override variables by values of other variables
-$primary: $theme-color-lighter;
-$econdary: $theme-color-darker;
-$light: $theme-color-lightest;
-$dark: $theme-color-darkest;
-$link-hover-color: $theme-color-darkest;
-
 // 3. Include remainder of required Bootstrap stylesheets
-@import "bootstrap/scss/variables";
+// @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
 

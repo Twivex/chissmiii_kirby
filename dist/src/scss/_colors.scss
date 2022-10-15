@@ -1,5 +1,54 @@
-.bg-dark a {
-  &:hover{
-    color: $theme-color-lightest;
+.text {
+  &-primary-contrast {
+    color: var(--cm-primary-contrast);
+  }
+
+  &-secondary-contrast {
+    color: var(--cm-secondary-contrast);
+  }
+}
+
+.link {
+
+  &-primary {
+    color: var(--bs-primary);
+
+    &:hover {
+      color: var(--bs-primary-hover-color);
+    }
+  }
+
+  &-secondary {
+    color: var(--bs-secondary);
+
+    &:hover {
+      color: var(--bs-secondary-hover-color);
+    }
+  }
+
+}
+
+.bg-primary,
+.bg-light {
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & p {
+
+    @extend .text-primary-contrast;
+  }
+}
+
+.bg-secondary,
+.bg-dark {
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & p {
+    @extend .text-secondary-contrast;
   }
 }

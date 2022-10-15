@@ -1,5 +1,19 @@
 $hover-opacity: .75;
-$main-content-background-color: rgba(255,255,255,.8);
-$chissmiii-grey: #B0B0B0;
-$chissmiii-rose: #EEC3CB;
+// $chissmiii-grey: #B0B0B0;
+// $chissmiii-rose: #EEC3CB;
 $travelstatistics-color: #878787;
+
+// define custom variables (fallbacks)
+:root {
+  --cm-primary-contrast: #FFFFFF;
+  --cm-primary-contrast-rgb: 255, 255, 255;
+
+  --cm-secondary-contrast: #FFFFFF;
+  --cm-secondary-contrast-rgb: 255, 255, 255;
+
+  --cm-main-content-bg: #FFFFFF;
+  --cm-main-content-bg-rgb: 255, 255, 255;
+  --cm-main-content-bg-opacity: 1;
+
+  --cm-navigation-active-icon-opacity: 1;
+}

@@ -18,7 +18,7 @@ body {
 }
 
 #main {
-  background-color: $main-content-background-color;
+  background-color: rgba(var(--cm-main-content-bg-rgb), var(--cm-main-content-bg-opacity));
 }
 
 b, strong {
@@ -29,4 +29,8 @@ b, strong {
   &, p {
     hyphens: auto;
   }
+}
+
+a {
+  @extend .link-primary;
 }

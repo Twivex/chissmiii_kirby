@@ -2,19 +2,19 @@
 .navbar-nav .dropdown-item.active:before {
   content: '\FE0E\2665';
   font-family: monospace !important;
-  opacity: .6;
+  opacity: var(--cm-navigation-active-icon-opacity);
   font-size: map-get($font-sizes, 4);
   position: absolute;
   left: -.7rem;
   line-height: map-get($font-sizes, 4);
 
-  @include media-breakpoint-down(md) {
-    color: $theme-color-lightest;
+  @include media-breakpoint-down(lg) {
+    color: var(--bs-light);
   }
 }
 
 .navbar .offcanvas.show .offcanvas-body .navbar-nav .nav-link {
-  color: $body-color;
+  color: var(--bs-body-color);
 }
 
 
@@ -23,8 +23,8 @@
   .dropdown-item,
   .dropdown-item.active,
   .dropdown-item:hover {
-    background-color: $body-bg;
-    color: $body-color
+    background-color: var(--bs-body-color-bg);
+    color: var(--bs-body-color)
   }
 
   .dropdown-item {
@@ -34,6 +34,7 @@
 }
 
 .navbar-nav {
+
   .dropdown-menu {
     background-color: $navbar-dropdown-bg;
     box-shadow: $navbar-dropdown-box-shadow;
@@ -62,10 +63,6 @@
   }
 }
 
-.navbar-dark .navbar-nav.nav-pipe .nav-item:after {
-  color: white;
-}
-
 .navbar-nav.nav-pipe {
 
   @each $breakpoint in map-keys($grid-breakpoints) {
@@ -74,25 +71,26 @@
 
     &#{$infix} {
       @include media-breakpoint-up($next) {
-  .nav-item {
+        .nav-item {
 
-    display: flex;
-    align-items: baseline;
+          display: flex;
+          align-items: baseline;
 
-    &:after {
-      content: '|';
-      line-height: 1.2em;
-      font-size: 1.25rem;
-      font-weight: lighter;
+          &:after {
+            content: '|';
+            line-height: 1.2em;
+            font-size: 1.25rem;
+            font-weight: lighter;
             color: $navbar-link-color;
-    }
+          }
 
-    &:last-child:after {
-      display: none;
-    }
+          &:last-child:after {
+            display: none;
+          }
         }
       }
 
+    }
+
   }
-}
 }
