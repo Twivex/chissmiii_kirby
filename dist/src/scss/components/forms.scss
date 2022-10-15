@@ -9,3 +9,13 @@
     cursor: pointer;
   }
 }
+
+.form-check-input {
+  &:checked {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+  }
+  &:focus {
+    box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width var(--bs-primary-rgb);
+  }
+}

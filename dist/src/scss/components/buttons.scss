@@ -1,11 +1,85 @@
 .btn {
-  &-light {
-    color: $theme-color-darkest;
-  }
   &-primary {
-    color: white !important;
+    color: var(--cm-primary-contrast);
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: var(--bs-primary-hover-bg);
+      border-color: var(--bs-primary-hover-border);
+    }
   }
-  &-outline-primary:hover {
+
+  &-secondary {
+    color: var(--cm-secondary-contrast);
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-secondary);
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: var(--bs-secondary-hover-bg);
+      border-color: var(--bs-secondary-hover-border);
+    }
+  }
+
+
+  &-light {
+    background-color: var(--bs-light);
+    border-color: var(--bs-light);
+    color: var(--bs-dark);
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: var(--bs-light-hover-bg);
+      border-color: var(--bs-light-hover-border);
+    }
+  }
+
+  &-dark {
+    background-color: var(--bs-dark);
+    border-color: var(--bs-dark);
     color: white;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: var(--bs-dark-hover-bg);
+      border-color: var(--bs-dark-hover-border);
+    }
+  }
+
+  &-outline-primary {
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+
+    &:hover,
+    &:active {
+      color: var(--cm-primary-contrast);
+      border-color: var(--bs-primary);
+      background-color: var(--bs-primary);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 $btn-focus-width rgba(var(--bs-primary-rgb), .5);
+    }
+  }
+
+  &-outline-secondary {
+    border-color: var(--bs-secondary);
+    color: var(--bs-secondary);
+
+    &:hover,
+    &:active {
+      color: white;
+      background-color: var(--bs-secondary);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 $btn-focus-width rgba(var(--bs-secondary-rgb), .5);
+    }
   }
 }

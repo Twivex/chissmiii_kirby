@@ -19,7 +19,7 @@
         width: 110px;
 
         > span {
-          background-color: $chissmiii-rose;
+          background-color: var(--bs-light);
           border-radius: 3px;
           color: $white;
           font-size: map-get($font-sizes, 5);
@@ -41,7 +41,7 @@
 
     &:first-child:before,
     &:last-child:after {   // icons
-      color: $chissmiii-rose;
+      color: var(--bs-light);
       display: flex;
       justify-content: center;
       left: 0;
@@ -71,7 +71,7 @@
       &.tl-entry--alternating .order-lg-2,
       &.tl-entry--strict .tl-image ~ .tl-description,
       &.tl-entry--strict .tl-text {
-        border-left: 3px solid $chissmiii-grey;
+        border-left: 3px solid var(--bs-dark);
       }
 
       .tl-image + .tl-description {
@@ -175,7 +175,7 @@
       .order-1,
       .order-2 {
         padding-left: map-get($spacers, 4);
-        border-left: 3px solid $chissmiii-grey;
+        border-left: 3px solid var(--bs-dark);
       }
 
       &:first-child:before,
