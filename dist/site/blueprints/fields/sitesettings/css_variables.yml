@@ -6,7 +6,7 @@ fields:
     width: 1/4
     type: text
 
-  variable_cm_main_content_background_opacity:
+  variable_cm_main_content_bg_opacity:
     label: Main Content Background Opacity
     width: 1/4
     type: text

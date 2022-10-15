@@ -171,12 +171,12 @@ fields:
       - "nein"
       - "ja"
 
-  color_cm_main_content_background_color:
+  color_cm_main_content_bg:
     label: Main Content Background
     width: 1/4
     type: text
 
-  variant_cm_main_content_background_color:
+  variant_cm_main_content_bg:
     label: Main Content Background Variants
     width: 1/4
     type: toggle
