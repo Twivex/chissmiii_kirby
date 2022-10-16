@@ -1,0 +1,22 @@
+.countdown {
+  display: flex;
+  flex: 1 0 0%;
+  flex-direction: row;
+  justify-content: center;
+  gap: map-get($spacers, 3);
+
+  .countdown-element {
+    display: flex;
+    flex-direction: column;
+
+    .countdown-value {
+      font-size: map-get($font-sizes, 3);
+    }
+
+    .countdown-label {
+      letter-spacing: -0.5px;
+      font-size: map-get($font-sizes, 6);
+    }
+  }
+
+}
