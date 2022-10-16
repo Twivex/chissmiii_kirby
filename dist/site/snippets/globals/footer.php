@@ -7,6 +7,9 @@
     <?php snippet('globals/bg-img') ?>
     <?php snippet('globals/cookie-banner') ?>
 
+    <script>
+      const LANGUAGE_CODE = '<?= $kirby->language()->code() ?>';
+    </script>
     <script src="/resources/js/app.js"></script>
   </body>
 </html>
