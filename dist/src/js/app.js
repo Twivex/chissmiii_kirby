@@ -1,6 +1,7 @@
 import Form from "./modules/form";
 import EntryCollector from "./modules/entry-collector";
 import CookieConsent from "./modules/cookie-consent";
+import Countdown from "./modules/countdown";
 
 CookieConsent.init();
 EntryCollector.init();
@@ -24,4 +25,8 @@ document.querySelectorAll("[data-visually-hide]").forEach((el) => {
 
 document.querySelectorAll("[data-form]").forEach((form) => {
   new Form(`#${form.id}`);
+});
+
+document.querySelectorAll("[data-countdown]").forEach((node) => {
+  new Countdown(node);
 });
