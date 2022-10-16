@@ -9,5 +9,6 @@ return [
   'auth' => [
     'methods' => ['password', 'password-reset']
   ],
-  'languages' => true
+  'languages' => true,
+  'languages_json_path' => 'resources/languages/',
 ];
