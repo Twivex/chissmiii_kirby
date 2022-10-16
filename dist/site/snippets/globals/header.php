@@ -36,19 +36,19 @@
     <?php snippet('globals/site-css-variables'); ?>
 
     <?php if ($appIconExists): ?>
-      <link rel="apple-touch-icon" href="<?= $appIcon->url() ?>">
+      <link rel="apple-touch-icon" href="<?= Url::path($appIcon->mediaUrl(), true) ?>">
     <?php endif; ?>
     <meta name="apple-mobile-web-app-title" content="ChissMiii">
     <?php if ($appIconExists): ?>
-      <link rel="apple-touch-startup-image" href="<?= $appLaunchScreen->url() ?>">
+      <link rel="apple-touch-startup-image" href="<?= Url::path($appLaunchScreen->mediaUrl(), true) ?>">
     <?php endif; ?>
     <meta name="apple-mobile-web-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#fbb8ab">
 
     <?php if ($faviconExists): ?>
-      <link rel="apple-touch-icon" sizes="180x180" href="<?= $favicon->resize(180)->url() ?>">
-      <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= $favicon->resize(32)->url() ?>">
-      <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= $favicon->resize(16)->url() ?>">
+      <link rel="apple-touch-icon" sizes="180x180" href="<?= Url::path($favicon->resize(180)->url(), true) ?>">
+      <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= Url::path($favicon->resize(32)->url(), true) ?>">
+      <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= Url::path($favicon->resize(16)->url(), true) ?>">
     <?php endif; ?>
   </head>
   <body>
