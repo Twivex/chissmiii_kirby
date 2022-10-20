@@ -3,6 +3,8 @@ version: "3.7"
 services:
   chissmiii-kirby:
     image: chissmiii_kirby:prod
+    build:
+      dockerfile: Dockerfile.prod
     restart: unless-stopped
     ports:
       - 14080:80
