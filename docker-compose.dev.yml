@@ -1,11 +1,11 @@
 version: "3.7"
 
 services:
-  chissmiii-kirby:
+  kirby:
+    image: chissmiii_kirby:dev
     build:
-      target: base-stage
-      args:
-        ENV: development
+      dockerfile: Dockerfile.dev
+    restart: "no"
     ports:
       - 8000:80
     volumes:
@@ -16,6 +16,6 @@ volumes:
     name: chissmiii_dist_src
     driver: local
     driver_opts:
-      device: /Users/christianunger/projects/_privat/chissmiii/dist
+      device: ./dist
       type: none
       o: bind

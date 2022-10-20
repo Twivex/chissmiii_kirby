@@ -27,6 +27,15 @@ help:
 	"download-vols: \$$ rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/content/ ./dist/content/ && ...\n" \
 	"upload-vols: \$$ rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii_vols/content/ && ...\n" \
 
+docker-build:
+	docker build -t twivex/php-8-kirby-3 .
+
+docker-push:
+	docker push twivex/php-8-kirby-3
+
+docker-pull:
+	docker pull twivex/php-8-kirby-3
+
 dev-build:
 	docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
 

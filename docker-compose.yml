@@ -1,8 +1,7 @@
 version: "3.7"
 
 services:
-  chissmiii-kirby:
-    image: chissmiii_kirby:dev
+  kirby:
     build:
       context: ./
     container_name: chissmiii_kirby

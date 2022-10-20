@@ -1,9 +1,5 @@
-### Base Stage
 ## Bootstrap from PHP container
-FROM php:8.0-apache as base-stage
-# set default env
-ARG ENV=production
-
+FROM php:8.0-apache
 # set time zone variable
 ENV TZ=Europe/Berlin
 
@@ -45,8 +41,6 @@ RUN pecl install zlib zip
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 
-# Copy environment dependent php.ini file
-RUN cp $PHP_INI_DIR/php.ini-$ENV $PHP_INI_DIR/php.ini
 COPY files/custom-php.ini $PHP_INI_DIR/conf.d/custom-php.ini
 
 ## Copy environment dependent apache config file
@@ -58,9 +52,3 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www/html/
 CMD ["apache2-foreground"]
-
-### Production Stage
-FROM base-stage as prod-stage
-
-# copy files
-COPY ./dist ./
