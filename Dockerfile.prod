@@ -1,4 +1,6 @@
-FROM twivex/php-8-kirby-3
+ARG BASE_IMAGE_NAME
+
+FROM twivex/${BASE_IMAGE_NAME}
 
 # Symlink environment dependent php.ini file
 RUN cp -s $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini

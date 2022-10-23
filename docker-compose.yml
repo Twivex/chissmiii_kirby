@@ -4,6 +4,8 @@ services:
   kirby:
     build:
       context: ./
+      args:
+        - BASE_IMAGE_NAME=${BASE_IMAGE_NAME}
     networks:
       - chissmiii
 
