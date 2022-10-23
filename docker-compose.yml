@@ -4,7 +4,6 @@ services:
   kirby:
     build:
       context: ./
-    container_name: chissmiii_kirby
     networks:
       - chissmiii
 
