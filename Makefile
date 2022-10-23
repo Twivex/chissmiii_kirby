@@ -1,90 +1,62 @@
-CONTAINER?=chissmiii_kirby
+include .$(pwd)/.env
+include .$(pwd)/.env-name
 
 all: help
 
 help:
 	@echo "Makefile instructions:\n" \
-	"dev-build: \$$ docker-compose -f docker-compose.yml -f docker-compose.dev.yml build\n" \
-	"dev-up: \$$ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d\n" \
-	"dev: dev-up npm-watch\n" \
-	"dev-setup: dev-build dev-up\n" \
-	"dev-restart: stop dev-up\n" \
-	"dev-npm-install: \$$ docker exec -it ${CONTAINER} sh -c \"npm install\"\n" \
+	"docker-build: \$$ docker buildx build --push --platform=${BUILD_TARGET_PLATFORM} --tag twivex/${BASE_IMAGE_NAME} .\n" \
+	"docker-pull: \$$ docker pull ${BASE_IMAGE_NAME}\n" \
 	"-------------------------------------------------------------------------------------\n" \
-	"prod-build: \$$ docker-compose -f docker-compose.yml -f docker-compose.prod.yml build\n" \
-	"prod-up: \$$ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d\n" \
-	"prod: prod-build prod-up\n" \
-	"prod-restart: stop prod-up\n" \
-	"prod-npm-install: \$$ docker exec -it ${CONTAINER} sh -c \"npm install --only=prod\"\n" \
-	"-------------------------------------------------------------------------------------\n" \
+	"build: \$$ docker-compose -f docker-compose.yml -f docker-compose.{env}.yml build\n" \
+	"up: \$$ docker-compose -f docker-compose.yml -f docker-compose.{env}.yml up -d\n" \
 	"stop: \$$ docker-compose stop\n" \
+	"restart: stop up\n" \
+	"-------------------------------------------------------------------------------------\n" \
+	"dev: up npm-watch env=dev\n" \
+	"deploy: build restart npm-build env=prod\n" \
+	"-------------------------------------------------------------------------------------\n" \
 	"down: \$$ docker-compose down --volumes --rmi all\n" \
-	"enter: \$$ docker exec -it ${CONTAINER} bash\n" \
+	"enter: \$$ docker exec -it ${MAIN_CONTAINER_NAME}-{env} bash\n" \
 	"-------------------------------------------------------------------------------------\n" \
-	"npm-watch: \$$ docker exec -it ${CONTAINER} sh -c \"npm run dev\"\n" \
-	"npm-build: \$$ docker exec -it ${CONTAINER} sh -c \"npm run build\"\n" \
-	"-------------------------------------------------------------------------------------\n" \
-	"download-vols: \$$ rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/content/ ./dist/content/ && ...\n" \
-	"upload-vols: \$$ rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii_vols/content/ && ...\n" \
+	"npm-install: \$$ docker exec -it ${MAIN_CONTAINER_NAME}-{env} sh -c \"npm install\"\n" \
+	"npm-build: \$$ docker exec -it ${MAIN_CONTAINER_NAME}-{env} sh -c \"npm run build\"\n" \
+	"npm-watch : \$$ docker exec -it ${MAIN_CONTAINER_NAME}-{env} sh -c \"npm run dev\"\n" \
 
 docker-build:
-	docker build -t twivex/php-8-kirby-3 .
-
-docker-push:
-	docker push twivex/php-8-kirby-3
+	docker buildx build --push --platform=${BUILD_TARGET_PLATFORM} --tag twivex/${BASE_IMAGE_NAME} .
 
 docker-pull:
-	docker pull twivex/php-8-kirby-3
+	docker pull ${BASE_IMAGE_NAME}
 
-dev-build:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
+build:
+	docker-compose -f docker-compose.yml -f docker-compose.${env}.yml build
 
-dev-up:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
-
-dev: dev-up npm-watch
-
-dev-setup: dev-build dev-up
-
-dev-restart: stop dev-up
-
-dev-npm-install:
-	docker exec -it ${CONTAINER} sh -c "npm install"
-
-prod-build:
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
-
-prod-up:
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
-
-prod: prod-build prod-up
-
-prod-restart: stop prod-up
-
-prod-npm-install:
-	docker exec -it ${CONTAINER} sh -c "npm install --only=prod"
+up:
+	docker-compose -f docker-compose.yml -f docker-compose.${env}.yml up -d
 
 stop:
 	docker-compose stop
+
+restart: stop up
+
+dev:
+	make up npm-watch env=dev
+
+deploy:
+	make build restart npm-build env=prod
 
 down:
 	docker-compose down --volumes --rmi all
 
 enter:
-	docker exec -it ${CONTAINER} bash
+	docker exec -it ${MAIN_CONTAINER_NAME}-${env} bash
 
-npm-watch:
-	docker exec -it ${CONTAINER} sh -c "npm run dev"
+npm-install:
+	docker exec -it ${MAIN_CONTAINER_NAME}-${env} sh -c "npm install"
 
 npm-build:
-	docker exec -it ${CONTAINER} sh -c "npm run build"
+	docker exec -it ${MAIN_CONTAINER_NAME}-${env} sh -c "npm run build"
 
-download-vols:
-	rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/content/ ./dist/content/ && \
-	rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/media/ ./dist/media/ && \
-	rsync -avzP --delete dock@bay:/var/www/chissmiii_vols/site/accounts/ ./dist/site/accounts/
-
-upload-vols:
-	rsync -avzP --delete ./dist/content/ dock@bay:/var/www/chissmiii_vols/content/ && \
-	rsync -avzP --delete ./dist/media/ dock@bay:/var/www/chissmiii_vols/media/ && \
-	rsync -avzP --delete ./dist/site/accounts/ dock@bay:/var/www/chissmiii_vols/site/accounts/
+npm-watch:
+	docker exec -it ${MAIN_CONTAINER_NAME}-${env} sh -c "npm run dev"
