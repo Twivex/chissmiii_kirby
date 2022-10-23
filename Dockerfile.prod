@@ -1,7 +1,7 @@
 FROM twivex/php-8-kirby-3
 
 # Symlink environment dependent php.ini file
-RUN ln -s $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
+RUN cp -s $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
 # copy files
 COPY ./dist ./
