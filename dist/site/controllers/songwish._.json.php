@@ -68,7 +68,7 @@ return function ($kirby, $page) {
 
     // return data
     return [
-      'error' => $alert ?? null,
+      'error' => $alert ?? false,
       'form_data' => $data ?? null,
       'html'  => $html ?? false,
     ];
