@@ -117,7 +117,7 @@ export default class Countdown {
       // calculate remaining time:
       // - start with smallest unit
       // - if substraction is smaller than 0, borrow 1 from the next greater unit
-      // - proceed untill largest unit
+      // - proceed until largest unit
 
       let secondsLeft = targetSeconds - nowSeconds;
       let minutesLeftBorrow = 0;

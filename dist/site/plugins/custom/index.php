@@ -23,10 +23,10 @@ function sass_mix($color_1, $color_2, $weight = null) {
     // combine the current pairs from each source color, according to the specified $weight
     $val = digit2hex(round($v2 + ($v1 - $v2) * ( 1 - $weight)));
 
-    $color .= $val; // concatenate val to our new color string
+    $color .= $val; // concatenate val to new color string
   }
 
-  return $color; // PROFIT!
+  return $color;
 };
 
 Kirby::plugin('chissmiii/custom', [
