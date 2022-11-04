@@ -1,9 +1,14 @@
 .countdown {
-  display: flex;
-  flex: 1 0 0%;
-  flex-direction: row;
-  justify-content: center;
+  display: grid;
   gap: map-get($spacers, 3);
+  grid-template-columns: repeat(3, 0fr);
+  justify-content: center;
+
+  &--with-time {
+    @include media-breakpoint-up(sm) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
 
   .countdown-element {
     display: flex;
