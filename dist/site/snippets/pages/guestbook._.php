@@ -8,7 +8,7 @@
 
       <form
         data-entry-collector
-        data-entry-collector-mode="append"
+        data-entry-collector-mode="prepend"
         data-entry-collector-for="guestbook-list"
         action="<?= $data->url() ?>"
         method="POST"
