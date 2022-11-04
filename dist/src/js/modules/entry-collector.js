@@ -1,4 +1,5 @@
 import Form from "./form";
+import { Alert } from "bootstrap";
 
 export default class EntryCollector {
   constructor(entryCollectorTarget) {
@@ -27,42 +28,85 @@ export default class EntryCollector {
           const { error, html } = JSON.parse(xhr.response);
           const formDataset = form.getDataset();
 
-          if (!error) {
-            const alertSuccessTarget = formDataset.entryCollectorAlertSuccess;
-            if (alertSuccessTarget.length > 0) {
-              const alertEl = document.getElementById(alertSuccessTarget);
-              alertEl.parentElement.classList.remove("visually-hidden");
-              alertEl.parentElement.classList.add("show");
+          const triggerAlert = (
+            alertId,
+            alertContent = null,
+            alertFunction = null
+          ) => {
+            const alertTargetEl = document.getElementById(alertId);
+            const alertEl = alertTargetEl.cloneNode(true);
+            alertEl.id = "";
+            alertTargetEl.parentNode.append(alertEl);
+
+            if (alertEl) {
+              // update content, if necessary
+              if (alertContent != null) {
+                alertEl.getElementsByTagName("span")[0].innerHTML =
+                  alertContent;
+              }
+
+              // show alert
+              const bsAlert = new Alert(alertEl);
+              alertEl.classList.remove("visually-hidden");
               setTimeout(() => {
-                alertEl.parentElement.classList.remove("show");
+                alertEl.classList.add("show");
+              }, 100);
+
+              // setup autohide, if given
+              const alertAutoclose = alertEl.dataset?.alertAutoclose;
+              if (alertAutoclose) {
                 setTimeout(() => {
-                  alertEl.parentElement.classList.add("visually-hidden");
-                }, 150);
-              }, 2000);
+                  bsAlert.close();
+                }, alertAutoclose);
+              }
+
+              // trigger additional function, if given
+              if (alertFunction !== null) {
+                alertFunction();
+              }
+
+              // return true, if alert was triggered
+              return true;
             }
 
-            if (formDataset.entryCollectorMode === "append") {
-              document
-                .getElementById(formDataset.entryCollectorFor)
-                .insertAdjacentHTML("afterbegin", html);
-            } else if (formDataset.entryCollectorMode === "replace") {
-              document.getElementById(formDataset.entryCollectorFor).innerHTML =
-                html;
-            }
+            return false;
+          };
+
+          if (error === false) {
+            const updateTargetContent = () => {
+              const mode = form.getDataset("entryCollectorMode");
+              switch (mode) {
+                case "append":
+                  console.warn("Not implemented yet.");
+                  break;
+
+                case "prepend":
+                  document
+                    .getElementById(formDataset.entryCollectorFor)
+                    .insertAdjacentHTML("afterbegin", html);
+                  break;
+
+                case "replace":
+                  document.getElementById(
+                    formDataset.entryCollectorFor
+                  ).innerHTML = html;
+                  break;
+
+                default:
+              }
+            };
+
+            triggerAlert(
+              form.getDataset("entryCollectorAlertSuccess"),
+              null,
+              updateTargetContent
+            );
           } else {
-            const alertErrorTarget = formDataset.entryCollectorAlertError;
-            if (alertErrorTarget.length > 0) {
-              const alertEl = document.getElementById(alertErrorTarget);
-              alertEl.innerHTML = error;
-              alertEl.parentElement.classList.remove("visually-hidden");
-              alertEl.parentElement.classList.add("show");
-              setTimeout(() => {
-                alertEl.parentElement.classList.remove("show");
-                setTimeout(() => {
-                  alertEl.parentElement.classList.add("visually-hidden");
-                }, 150);
-              }, 2000);
-            } else {
+            const alertTriggered = triggerAlert(
+              form.getDataset("entryCollectorAlertError"),
+              error
+            );
+            if (!alertTriggered) {
               console.warn(error);
             }
           }
