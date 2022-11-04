@@ -9,7 +9,7 @@ return [
     ],
     'name' => 'Deutsch',
     'translations' => array_merge(
-      json_decode(file_get_contents(option('languages_json_path') . 'de.json'), true),
+      json_decode(file_get_contents(option('resource_paths')['languages'] . 'de.json'), true),
       [
         'countdown-remaining' => 'noch',
 
@@ -27,7 +27,11 @@ return [
         'cookie-settings-application-title' => 'Anwendungsbezogene Cookies',
         'cookie-settings-application-text' => 'Um dir eine bestmögliche Nutzung unserer Website zu ermöglichen, nutzen wir (ChissMiii) auf bestimmten Seiten Dienste von Drittanbietern. Damit diese korrekt funktionieren, werden Cookies für die Anbieter YouTube und Google Maps gespeichert. Die dadurch erzeugten Informationen werden ausschließlich pseudonymisiert verarbeitet. Ein Rückschluss auf deine Person ist uns nicht möglich. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. lit. 1 a) DSGVO). Weitere Informationen findest du (link: datenschutzerklarung text: hier).',
         'cookie-save-settings' => 'Einstellungen speichern',
-        'application-cookie-required-text' => 'Dieser Inhalt benötigt anwendungsbezogene Cookies. Diese kannst du hier aktivieren.'
+        'application-cookie-required-text' => 'Dieser Inhalt benötigt anwendungsbezogene Cookies. Diese kannst du hier aktivieren.',
+
+        'image-upload-modal-title' => 'Bild hinzufügen',
+        'image-upload-modal-submit' => 'Hochladen',
+        'image-upload-modal-input-label' => 'Bild(er) auswählen',
       ]
     ),
     'url' => NULL

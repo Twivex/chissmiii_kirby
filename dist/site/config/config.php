@@ -11,4 +11,8 @@ return [
   ],
   'languages' => true,
   'languages_json_path' => 'resources/languages/',
+  'resource_paths' => [
+    'js' => 'resources/js/',
+    'languages' => 'resources/languages/',
+  ],
 ];
