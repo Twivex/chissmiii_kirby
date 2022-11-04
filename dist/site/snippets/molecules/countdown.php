@@ -28,7 +28,7 @@
   }
 ?>
 
-<div class="countdown" data-countdown data-countdown-target="<?=$targetDateTime->format('Y-m-d H:i:s')?>">
+<div class="countdown" data-countdown data-countdown-target="<?=$targetDateTime->format('Y-m-d\TH:i:s')?>">
 
   <?php if ($kirby->language()->code() === 'de'): ?>
     <div class="countdown-element">
