@@ -34,11 +34,11 @@ export default class EntryCollector {
             alertFunction = null
           ) => {
             const alertTargetEl = document.getElementById(alertId);
-            const alertEl = alertTargetEl.cloneNode(true);
-            alertEl.id = "";
-            alertTargetEl.parentNode.append(alertEl);
 
-            if (alertEl) {
+            if (alertTargetEl) {
+              const alertEl = alertTargetEl.cloneNode(true);
+              alertEl.id = "";
+              alertTargetEl.parentNode.append(alertEl);
               // update content, if necessary
               if (alertContent != null) {
                 alertEl.getElementsByTagName("span")[0].innerHTML =
@@ -96,17 +96,14 @@ export default class EntryCollector {
               }
             };
 
-            triggerAlert(
-              form.getDataset("entryCollectorAlertSuccess"),
-              null,
-              updateTargetContent
-            );
+            triggerAlert(form.getDataset("entryCollectorAlertSuccess"));
+            updateTargetContent();
           } else {
-            const alertTriggered = triggerAlert(
+            const errorAlertTriggered = triggerAlert(
               form.getDataset("entryCollectorAlertError"),
               error
             );
-            if (!alertTriggered) {
+            if (!errorAlertTriggered) {
               console.warn(error);
             }
           }
