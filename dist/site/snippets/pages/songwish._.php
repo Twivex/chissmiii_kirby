@@ -84,19 +84,21 @@
 
   <div class="row justify-content-center">
     <div class="col-12 <?= $data->columnsClass() ?>">
-      <div class="alert alert-small alert-success alert-dismissible fade visually-hidden mt-3" role="alert">
-        <span id="songwish-alert-success">Liedwunsch erfolgreich hinzugefügt.</span>
-        <button type="button" class="btn-close" data-visually-hide="alert" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
+      <?= snippet('atoms/alert', [
+        'name' => 'songwish',
+        'type' => 'success',
+        'class' => 'success',
+        'content' => 'Liedwunsch erfolgreich hinzugefügt.',
+        'autoclose' => '3000',
+        ]) ?>
 
-  <div class="row justify-content-center">
-    <div class="col-12 <?= $data->columnsClass() ?>">
-      <div class="alert alert-small alert-danger alert-dismissible fade visually-hidden mt-3" role="alert">
-        <span id="songwish-alert-error">ERROR</span>
-        <button type="button" class="btn-close" data-visually-hide="alert" aria-label="Close"></button>
-      </div>
+      <?= snippet('atoms/alert', [
+        'name' => 'songwish',
+        'type' => 'error',
+        'class' => 'danger',
+        'content' => 'Liedwunsch konnte nicht hinzugefügt werden.',
+        'autoclose' => '3000',
+      ]) ?>
     </div>
   </div>
 
