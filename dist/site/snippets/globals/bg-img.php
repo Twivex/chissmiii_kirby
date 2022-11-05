@@ -1,19 +1,14 @@
-<?php
-  $bgImages = $site->files()->filterBy('tag', 'background');
-  if ($bgImages->count() > 0):
-    $bgImg = $bgImages->first();
-?>
-  <picture class="background-img">
-    <source
-      type="<?= $bgImg->mime() ?>"
-      srcset="<?= $bgImg->srcset([
-        '780w' => [ 'width' => 780 ],
-        '1024w' => [ 'width' => 1024 ],
-        '1440w' => [ 'width' => 1440 ],
-        '2400w' => [ 'width' => 2400 ]
-      ]) ?>"
-      sizes="100vw"
-    >
-    <img src="<?= $bgImg->url() ?>" alt="<?= $bgImg ? $bgImg->title() : '' ?>">
-  </picture>
-<?php endif; ?>
+<picture class="background-img">
+  <source
+    type="<?= $img->mime() ?>"
+    srcset="<?= $img->srcset([
+      '450w' => [ 'width' => 450 * 1.2],
+      '780w' => [ 'width' => 780 * 1.2 ],
+      '1024w' => [ 'width' => 1024 * 1.2 ],
+      '1440w' => [ 'width' => 1440 * 1.2 ],
+      '2400w' => [ 'width' => 2400 * 1.2 ]
+    ]) ?>"
+    sizes="100vw"
+  >
+  <img src="<?= $img->url() ?>" alt="<?= $img ? $img->title() : '' ?>">
+</picture>
