@@ -31,6 +31,10 @@
   }
 }
 
+.navbar-nav .dropdown-item {
+  padding-left: 2 * map-get($spacers, 3);
+}
+
 .navbar .offcanvas.show .offcanvas-body .navbar-nav .nav-link {
   color: var(--bs-body-color);
 }
