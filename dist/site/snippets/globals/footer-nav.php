@@ -1,9 +1,15 @@
 <?php
   $imprintPage = $pages->find('impressum');
   $dprgPage = $pages->find('datenschutzerklarung');
+
+  $navbarStyleClass = '';
+  $navbarStyle = $page->navbar_style()->isNotEmpty() ? $page->navbar_style()->value() : $site->navbar_style()->value();
+  if ($navbarStyle) {
+    $navbarStyleClass = 'navbar-' . $navbarStyle;
+  }
 ?>
 
-<nav id="footer-nav" class="navbar navbar-dark navbar-expand-sm bg-light justify-content-center py-1">
+<nav id="footer-nav" class="navbar <?= $navbarStyleClass ?> navbar-expand-sm bg-light justify-content-center py-1">
   <div class="container-fluid container-lg justify-content-center">
     <ul class="navbar-nav nav-pipe-sm">
 

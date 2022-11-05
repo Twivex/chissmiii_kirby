@@ -1,7 +1,7 @@
 <?php
 
-  // falsse: shade, true: tint
-  if ($site->shade_tint_variant()->toBool()) {
+  // false: shade, true: tint
+  if ($data->shade_tint_variant()->toBool()) {
 
     $hoverVariants = [
       'hover-bg' => [
@@ -45,16 +45,16 @@
   :root {
     <?php
 
-      $colorKeys = array_filter($site->content()->keys(), function ($key) {
+      $colorKeys = array_filter($data->content()->keys(), function ($key) {
         return strpos($key, 'color') === 0;
       });
 
       foreach($colorKeys as $colorKey) {
-        $colorField = $site->content()->get($colorKey);
+        $colorField = $data->content()->get($colorKey);
         if ($colorField->isNotEmpty()) {
           $variantKey = str_replace('color_', 'variant_', $colorKey);
-          $useVariant = $site->content()->get($variantKey)->value();
-          if ($site->content()->get($variantKey)->value() === 'true') {
+          $useVariant = $data->content()->get($variantKey)->value();
+          if ($data->content()->get($variantKey)->value() === 'true') {
             echo $colorField->cssColorVar(true, $hoverVariants);
           } else {
             echo $colorField->cssColorVar(true);
@@ -63,12 +63,12 @@
       }
 
 
-      $variableKeys = array_filter($site->content()->keys(), function ($key) {
+      $variableKeys = array_filter($data->content()->keys(), function ($key) {
         return strpos($key, 'variable') === 0;
       });
 
       foreach($variableKeys as $variableKey) {
-        $variableField = $site->content()->get($variableKey);
+        $variableField = $data->content()->get($variableKey);
         if ($variableField->isNotEmpty()) {
           $variableName = str_replace('variable_', '', $variableKey);
           $variableName = str_replace('_', '-', $variableName);

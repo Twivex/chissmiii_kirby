@@ -1,13 +1,21 @@
-<nav id="menu" class="navbar navbar-dark navbar-expand-lg sticky-top bg-light pt-sm-3">
+<?php
+  $navbarStyleClass = '';
+  $navbarStyle = $page->navbar_style()->isNotEmpty() ? $page->navbar_style()->value() : $site->navbar_style()->value();
+  if ($navbarStyle) {
+    $navbarStyleClass = 'navbar-' . $navbarStyle;
+  }
+?>
+
+<nav id="menu" class="navbar <?= $navbarStyleClass ?> navbar-expand-lg sticky-top bg-light pt-sm-3">
   <div class="container-fluid container-lg">
     <a class="navbar-brand fs-6 mb-n3 mb-sm-n1 font-decorative" href="/"><?= $site->title() ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarContent" aria-labelledby="navbarLabel">
-      <div class="offcanvas-header bg-light text-white">
+      <div class="offcanvas-header bg-light">
         <h5 class="offcanvas-title mb-n1 mt-1 ms-1 ps-2" id="navbarLabel">Menü</h5>
-        <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
       <ul class="navbar-nav">
@@ -32,7 +40,7 @@
                   if (!$kirby->user()) $subNavItems = $subNavItems->listed();
                 ?>
                 <?php foreach($subNavItems as $subItem): ?>
-                  <li><a class="dropdown-item py-2 py-lg-3 ps-4 ps-lg-3 <?php e($subItem->isOpen(), 'active') ?>" href="<?= $subItem->url() ?>" <?php e($subItem->isOpen(), 'aria-current="true"') ?>><?= $subItem->title()->html() ?></a></li>
+                  <li><a class="dropdown-item py-2 py-lg-3 <?php e($subItem->isOpen(), 'active') ?>" href="<?= $subItem->url() ?>" <?php e($subItem->isOpen(), 'aria-current="true"') ?>><?= $subItem->title()->html() ?></a></li>
                 <?php endforeach; ?>
               </ul>
             </li>

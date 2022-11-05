@@ -1,19 +1,19 @@
 <?php
   if ($page->secured()->toBool() === true && !$kirby->user()) go('/');
 
-  $appIcons = $site->files()->filterBy('tag', 'app_icon');
+  $appIcons = $site->files()->filterBy('tags', 'app_icon');
   $appIconExists = $appIcons->count() > 0;
   if ($appIconExists) {
     $appIcon = $appIcons->first();
   }
 
-  $appLaunchScreens = $site->files()->filterBy('tag', 'app_launch_screen');
+  $appLaunchScreens = $site->files()->filterBy('tags', 'app_launch_screen');
   $appLaunchScreenExists = $appLaunchScreens->count() > 0;
   if ($appLaunchScreenExists) {
     $appLaunchScreen = $appLaunchScreens->first();
   }
 
-  $favicons = $site->files()->filterBy('tag', 'favicon');
+  $favicons = $site->files()->filterBy('tags', 'favicon');
   $faviconExists = $favicons->count() > 0;
   if ($faviconExists) {
     $favicon = $favicons->first();
@@ -37,7 +37,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento">
 
-    <?php snippet('globals/site-css-variables'); ?>
+    <?php
+      if ($page->settings_enabled()->toBool() === true) {
+        // use page variables, if possible
+        snippet('globals/css-variables', [ 'data' => $page ]);
+      }
+      else {
+        // default: use site variables
+        snippet('globals/css-variables', [ 'data' => $site ]);
+      }
+    ?>
 
     <?php if ($appIconExists): ?>
       <link rel="apple-touch-icon" href="<?= Url::path($appIcon->mediaUrl(), true) ?>">
