@@ -19,7 +19,7 @@ tabs:
       main:
         width: 3/4
         fields:
-          layout_settings: fields/layout_settings_basic
+          layout_settings: fieldgroups/layout_settings_basic
 
           role:
             label: Rolle

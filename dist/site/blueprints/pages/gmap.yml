@@ -6,7 +6,7 @@ image:
 
 fields:
   layout_settings:
-    extends: fields/layout_settings_extendable
+    extends: fieldgroups/layout_settings_extendable
     fields:
 
       cols_count:

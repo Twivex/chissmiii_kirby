@@ -21,7 +21,7 @@ tabs:
       main:
         width: 1/2
         fields:
-          layout_settings: fields/layout_settings_basic
+          layout_settings: fieldgroups/layout_settings_basic
 
           tl_date:
             label: Zeitpunkt

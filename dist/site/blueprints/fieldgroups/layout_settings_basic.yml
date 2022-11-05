@@ -2,7 +2,7 @@ type: group
 fields:
 
   settings:
-    extends: fields/layout_settings
+    extends: fieldgroups/layout_settings
     fields:
 
       show_title_info:

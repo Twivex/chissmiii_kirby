@@ -10,7 +10,7 @@ sections:
     type: fields
     fields:
       layout_settings:
-        extends: fields/layout_settings_extendable
+        extends: fieldgroups/layout_settings_extendable
         fields:
 
           category_text_direction:

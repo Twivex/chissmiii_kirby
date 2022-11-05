@@ -5,7 +5,7 @@ image:
   back: white
 
 fields:
-  layout_settings: fields/layout_settings_extended
+  layout_settings: fieldgroups/layout_settings_extended
 
   countries:
     label: Länder

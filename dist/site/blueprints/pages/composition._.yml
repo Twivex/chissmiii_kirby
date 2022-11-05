@@ -18,7 +18,7 @@ tabs:
       content_settings:
         type: fields
         fields:
-          layout_settings: fields/layout_settings_basic
+          layout_settings: fieldgroups/layout_settings_basic
 
       elements:
         layout: list

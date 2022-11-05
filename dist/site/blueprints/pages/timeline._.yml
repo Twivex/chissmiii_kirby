@@ -10,7 +10,7 @@ sections:
   settings:
     type: fields
     fields:
-      layout_settings: fields/layout_settings_extendable
+      layout_settings: fieldgroups/layout_settings_extendable
 
       alternating_entries:
         width: 1/3
