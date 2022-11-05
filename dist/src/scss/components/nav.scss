@@ -1,3 +1,20 @@
+.navbar-dark .offcanvas-header .btn-close {
+  @extend .btn-close-white;
+}
+
+.navbar-light,
+.navbar-dark {
+  & .navbar-nav .nav-link,
+  & .navbar-nav .nav-link.active {
+    color: var(--cm-primary-contrast);
+  }
+
+  & .navbar-brand:hover,
+  & .navbar-nav .nav-link:hover {
+    color: rgba(var(--cm-primary-contrast-rgb), .75);
+  }
+}
+
 .navbar-nav .nav-link.active:before,
 .navbar-nav .dropdown-item.active:before {
   content: '\FE0E\2665';
@@ -10,6 +27,7 @@
 
   @include media-breakpoint-down(lg) {
     color: var(--bs-light);
+    opacity: var(--cm-navigation-offcanvas-active-icon-opacity);
   }
 }
 

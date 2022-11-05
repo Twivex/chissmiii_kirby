@@ -60,6 +60,8 @@ $figure-caption-color: var(--bs-body-color);
 
 // -- Navs
 $navbar-link-color:                 var(--cm-primary-contrast);
+$navbar-light-color:                var(--cm-primary-contrast);
+$navbar-light-hover-color:          rgba(var(--cm-primary-contrast-rgb), .75);
 $navbar-dark-color:                 var(--cm-primary-contrast);
 $navbar-dark-hover-color:           rgba(var(--cm-primary-contrast-rgb), .75);
 $navbar-dark-toggler-icon-bg:       escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"));

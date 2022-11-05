@@ -5,27 +5,27 @@
     position: relative;
 
     .tl-date {
+      display: flex;
+      height: 100%;
+      justify-content: center;
       position: absolute;
       width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
 
       .tl-date-wrapper {
-        justify-content: center;
-        display: flex;
         align-self: center;
+        display: flex;
         height: 34px;
+        justify-content: center;
         width: 110px;
 
         > span {
           background-color: var(--bs-light);
           border-radius: 3px;
-          color: $white;
+          color: var(--cm-primary-contrast);
+          display: inline-flex;
           font-size: map-get($font-sizes, 5);
           padding: 3px 5px 0;
           text-align: center;
-          display: inline-flex;
         }
       }
     }
@@ -85,8 +85,8 @@
 
       .tl-description {
         flex-direction: column;
-        padding-top: map-get($spacers, 4);
         padding-bottom: map-get($spacers, 4);
+        padding-top: map-get($spacers, 4);
       }
 
       .tl-text,
