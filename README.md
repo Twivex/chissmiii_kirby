@@ -25,57 +25,13 @@ Codename | buster
 - Bootstrap v5.1.3
 
 ## How to Dev
-### Setup
-`make dev-setup`
-- Build Images
-- Start Containers
-- Install NPM Packages
-- Start Watch
+- create a file `.env-name` with content `env=dev`
+
+### Setup & First start
+- Pull base image: `make docker-pull`
+- Build image, create network + volumes & start container: `make up`
+- Install Node packages: `make npm-install`
+- Start watch: `make npm-watch`
 
 ### Start dev
-`make up dev`
-- Start Containers
-- Start Watch
-
-## How to Deploy
-TODO: add description
-
-## Misc Commands
-`make build`
-
-Build images (force)
-
----
-`make up`
-
-Start containers (Setup network & volumes + build images, if necessary)
-
----
-`make stop`
-
-Stop containers
-
----
-`make restart`
-
-Stop and restart containers
-
----
-`make enter`
-
-Enter the container shell
-
----
-`make down`
-
-Removes everything (containers, images, volumes, networks)
-
----
-`make upload-content`
-
-Copy content from local to pi (Hint: may delete!)
-
----
-`make download-content`
-
-Copy content from pi to local (Hint: may delete!)
+- run `make dev` or run `make up` & run `make npm-watch`
