@@ -30,15 +30,4 @@ tabs:
 
   settings:
     label: Einstellungen
-
-    fields:
-      css_colors_settings_title:
-        type: headline
-        label: CSS Farbvariablen
-      css_colors_settings:
-        extends: fields/sitesettings/css_colors
-      css_variables_settings_title:
-        type: headline
-        label: CSS Variablen
-      css_variables_settings:
-        extends: fields/sitesettings/css_variables
+    extends: fieldgroups/css_settings

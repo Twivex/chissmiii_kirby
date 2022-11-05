@@ -11,11 +11,11 @@ options:
   url: false
 
 tabs:
-  content:
+  content_tab:
     label: Inhalt
     sections:
 
-      settings:
+      content_settings:
         type: fields
         fields:
           layout_settings: fields/layout_settings_basic
@@ -26,4 +26,23 @@ tabs:
         headline: Elemente
 
 
-  files: tabs/files
+  files_tab: tabs/files
+
+  settings_tab:
+    label: Einstellungen
+    sections:
+
+      enable_page_settings:
+        type: fields
+        fields:
+          settings_enabled:
+            label: Seitenspezifische Einstellungen
+            type: toggle
+            width: 1/4
+
+      page_settings:
+        type: fields
+        when:
+          settings_enabled: true
+        fields:
+          css_settings: fieldgroups/css_settings

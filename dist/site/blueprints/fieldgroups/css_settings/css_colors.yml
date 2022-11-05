@@ -8,6 +8,17 @@ fields:
       - Shade
       - Tint
 
+  navbar_style:
+    label: Navbar Style
+    width: 1/4
+    type: toggles
+    options:
+      - text: Kein
+        value:
+      - text: Light
+        value: light
+      - text: Dark
+        value: dark
 
   colors_line:
     type: line
