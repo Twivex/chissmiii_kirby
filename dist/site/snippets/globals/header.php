@@ -1,22 +1,12 @@
 <?php
   if ($page->secured()->toBool() === true && !$kirby->user()) go('/');
 
-  $appIcons = $site->files()->filterBy('tags', 'app_icon');
-  $appIconExists = $appIcons->count() > 0;
-  if ($appIconExists) {
-    $appIcon = $appIcons->first();
-  }
+  $appIcon = $site->app_icon()->toFile();
+  $appLaunchScreen = $site->app_launch_screen()->toFile();
 
-  $appLaunchScreens = $site->files()->filterBy('tags', 'app_launch_screen');
-  $appLaunchScreenExists = $appLaunchScreens->count() > 0;
-  if ($appLaunchScreenExists) {
-    $appLaunchScreen = $appLaunchScreens->first();
-  }
-
-  $favicons = $site->files()->filterBy('tags', 'favicon');
-  $faviconExists = $favicons->count() > 0;
-  if ($faviconExists) {
-    $favicon = $favicons->first();
+  $favicon = $site->favicon()->toFile();
+  if ($page->favicon()->isNotEmpty()) {
+    $favicon = $page->favicon()->toFile();
   }
 ?>
 
@@ -48,20 +38,20 @@
       }
     ?>
 
-    <?php if ($appIconExists): ?>
-      <link rel="apple-touch-icon" href="<?= Url::path($appIcon->mediaUrl(), true) ?>">
+    <?php if ($appIcon): ?>
+      <link rel="apple-touch-icon" href="<?= $appIcon->mediaUrl() ?>">
     <?php endif; ?>
     <meta name="apple-mobile-web-app-title" content="ChissMiii">
-    <?php if ($appIconExists): ?>
-      <link rel="apple-touch-startup-image" href="<?= Url::path($appLaunchScreen->mediaUrl(), true) ?>">
+    <?php if ($appLaunchScreen): ?>
+      <link rel="apple-touch-startup-image" href="<?= $appLaunchScreen->mediaUrl() ?>">
     <?php endif; ?>
     <meta name="apple-mobile-web-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#fbb8ab">
 
-    <?php if ($faviconExists): ?>
-      <link rel="apple-touch-icon" sizes="180x180" href="<?= Url::path($favicon->resize(180)->url(), true) ?>">
-      <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= Url::path($favicon->resize(32)->url(), true) ?>">
-      <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= Url::path($favicon->resize(16)->url(), true) ?>">
+    <?php if ($favicon): ?>
+      <link rel="apple-touch-icon" sizes="180x180" href="<?= $favicon->resize(180)->url() ?>">
+      <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= $favicon->resize(32)->url() ?>">
+      <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= $favicon->resize(16)->url() ?>">
     <?php endif; ?>
   </head>
   <body>

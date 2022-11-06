@@ -5,15 +5,9 @@
     </footer>
 
     <?php
-      $pageBgImages = $page->files()->filterBy('tags', 'background');
+      $pageBgImages = $page->bg_img();
       $siteBgImages = $site->files()->filterBy('tags', 'background');
-      $bgImage = null;
-
-      if ($pageBgImages->count() > 0) {
-        $bgImage = $pageBgImages->first();
-      } elseif ($siteBgImages->count() > 0) {
-        $bgImage = $siteBgImages->first();
-      }
+      $bgImage = $page->bg_img()->isNotEmpty() ? $page->bg_img()->toFile() : $site->bg_img()->toFile();
 
       if ($bgImage !== null) {
         snippet('globals/bg-img', [ 'img' => $bgImage ]);
