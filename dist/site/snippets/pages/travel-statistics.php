@@ -1,12 +1,8 @@
 <?php
-  $images = $site->files()->filterBy('tag', '*=', 'travel_statistics');
-  $countriesImg = $images->filterBy('tag', '*=', 'countries');
-  $worldImg = $images->filterBy('tag', '*=', 'world');
-  $continentsImg = $images->filterBy('tag', '*=', 'continents');
-  if ($countriesImg !== null || $worldImg !== null || $continentsImg !== null):
-    $countriesImg = $countriesImg->first();
-    $worldImg = $worldImg->first();
-    $continentsImg = $continentsImg->first();
+  $countriesImg = $site->ts_countries()->toFile();
+  $globeImg = $site->ts_globe()->toFile();
+  $continentsImg = $site->ts_continents()->toFile();
+  if ($countriesImg !== null || $globeImg !== null || $continentsImg !== null):
 ?>
 
   <section class="py-4 travel-statistics">
@@ -37,7 +33,7 @@
             <figure class="figure position-relative">
               <img
                 class="figure-img img-fluid rounded"
-                src="<?= $worldImg->url() ?>"
+                src="<?= $globeImg->url() ?>"
               >
               <figcaption class="figure-caption bottom-0 d-flex flex-column justify-content-start position-absolute ps-4 pt-4 text-white top-0">
                 <h5 class="fs-4 fw-bold m-0"><?= $data->world() ?>%</h5>
