@@ -1,0 +1,14 @@
+type: fields
+extends: fieldgroups/css_settings
+fields:
+  img_settings_headline:
+    type: headline
+    label: Bilder
+  favicon:
+    extends: fields/one_file
+    label: Favicon
+    width: 1/4
+  bg_img:
+    extends: fields/one_file
+    label: Hintergrundbild
+    width: 1/4

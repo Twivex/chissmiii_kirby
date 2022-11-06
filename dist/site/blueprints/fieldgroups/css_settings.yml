@@ -5,10 +5,8 @@ fields:
   css_colors_settings_title:
     type: headline
     label: CSS Farbvariablen
-  css_colors_settings:
-    extends: fieldgroups/css_settings/css_colors
+  css_colors_settings: fieldgroups/css_settings/css_colors
   css_variables_settings_title:
     type: headline
     label: CSS Variablen
-  css_variables_settings:
-    extends: fieldgroups/css_settings/css_variables
+  css_variables_settings: fieldgroups/css_settings/css_variables

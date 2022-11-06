@@ -1,8 +1,7 @@
 title:
-  query: file.tag
+  query: file.tags
 
 fields:
-  tag:
+  tags:
     type: tags
-    label: Tag
-    required: true
+    label: Tags

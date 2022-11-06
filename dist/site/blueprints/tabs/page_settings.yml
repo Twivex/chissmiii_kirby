@@ -1,0 +1,11 @@
+label: Einstellungen
+sections:
+  enable_page_settings:
+    type: fields
+    fields:
+      settings_enabled:
+        label: Seitenspezifische Einstellungen
+        type: toggle
+        width: 1/4
+
+  page_settings: fieldgroups/page_settings

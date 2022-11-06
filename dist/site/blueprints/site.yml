@@ -30,4 +30,32 @@ tabs:
 
   settings:
     label: Einstellungen
-    extends: fieldgroups/css_settings
+    extends: fieldgroups/page_settings
+    fields:
+      only_globals_line:
+        type: line
+      only_globals_headline:
+        type: headline
+        label: Nur global verfügbare Einstellungen
+      app_icon:
+        extends: fields/one_file
+        label: App Icon
+        width: 1/6
+      app_launch_screen:
+        extends: fields/one_file
+        label: App Startbildschirm
+        width: 1/6
+      gs_line:
+        type: line
+      ts_countries:
+        extends: fields/one_file
+        label: Travel Statistics Countries
+        width: 1/6
+      ts_continents:
+        extends: fields/one_file
+        label: Travel Statistics Continents
+        width: 1/6
+      ts_globe:
+        extends: fields/one_file
+        label: Travel Statistics Globe
+        width: 1/6
