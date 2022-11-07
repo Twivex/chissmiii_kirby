@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   kirby:
-    image: chissmiii_kirby:prod
+    image: ${COMPOSE_PROJECT_NAME}_kirby:prod
     build:
       dockerfile: Dockerfile.prod
     container_name: ${MAIN_CONTAINER_NAME}-prod
@@ -11,67 +11,60 @@ services:
       - 14080:80
       - 14443:443
     volumes:
-      - chissmiii_kirby_content_vol:/var/www/html/content
-      - chissmiii_kirby_media_vol:/var/www/html/media
-      - chissmiii_kirby_node_modules_vol:/var/www/html/node_modules
-      - chissmiii_kirby_site_vol:/var/www/html/site
-      - chissmiii_kirby_accounts_vol:/var/www/html/site/accounts
-      - chissmiii_kirby_sessions_vol:/var/www/html/site/sessions
-      - chissmiii_kirby_src_vol:/var/www/html/src
+      - kirby_content_vol:/var/www/html/content
+      - kirby_media_vol:/var/www/html/media
+      - node_modules_vol:/var/www/html/node_modules
+      - kirby_site_vol:/var/www/html/site
+      - kirby_accounts_vol:/var/www/html/site/accounts
+      - kirby_sessions_vol:/var/www/html/site/sessions
+      - resources_src_vol:/var/www/html/src
 
 volumes:
-  chissmiii_kirby_content_vol:
-    name: chissmiii_kirby_content
+  kirby_content_vol:
     driver: local
     driver_opts:
-      device: /var/www/chissmiii/dist/content
+      device: ${PWD}/dist/content
       type: none
       o: bind
 
-  chissmiii_kirby_media_vol:
-    name: chissmiii_kirby_media
+  kirby_media_vol:
     driver: local
     driver_opts:
-      device: /var/www/chissmiii_vols/media
+      device: ${EXTERNAL_VOLUMES_PATH}/media
       type: none
       o: bind
 
-  chissmiii_kirby_node_modules_vol:
-    name: chissmiii_kirby_node_modules
+  node_modules_vol:
     driver: local
     driver_opts:
-      device: /var/www/chissmiii_vols/node_modules
+      device: ${EXTERNAL_VOLUMES_PATH}/node_modules
       type: none
       o: bind
 
-  chissmiii_kirby_site_vol:
-    name: chissmiii_kirby_site
+  kirby_site_vol:
     driver: local
     driver_opts:
-      device: /var/www/chissmiii/dist/site/
+      device: ${PWD}/dist/site/
       type: none
       o: bind
 
-  chissmiii_kirby_accounts_vol:
-    name: chissmiii_kirby_accounts
+  kirby_accounts_vol:
     driver: local
     driver_opts:
-      device: /var/www/chissmiii_vols/site/accounts
+      device: ${EXTERNAL_VOLUMES_PATH}/site/accounts
       type: none
       o: bind
 
-  chissmiii_kirby_sessions_vol:
-    name: chissmiii_kirby_sessions
+  kirby_sessions_vol:
     driver: local
     driver_opts:
-      device: /var/www/chissmiii_vols/site/sessions
+      device: ${EXTERNAL_VOLUMES_PATH}/site/sessions
       type: none
       o: bind
 
-  chissmiii_kirby_src_vol:
-    name: chissmiii_kirby_src
+  resources_src_vol:
     driver: local
     driver_opts:
-      device: /var/www/chissmiii/dist/src
+      device: ${PWD}/dist/src
       type: none
       o: bind

@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   kirby:
-    image: chissmiii_kirby:dev
+    image: ${COMPOSE_PROJECT_NAME}_kirby:dev
     build:
       dockerfile: Dockerfile.dev
     container_name: ${MAIN_CONTAINER_NAME}-dev
@@ -10,13 +10,13 @@ services:
     ports:
       - 8000:80
     volumes:
-      - chissmiii_dist_vol:/var/www/html
+      - dist_vol:/var/www/html
 
 volumes:
-  chissmiii_dist_vol:
-    name: chissmiii_dist_src
+  dist_vol:
+    name: ${COMPOSE_PROJECT_NAME}_dist_vol
     driver: local
     driver_opts:
-      device: ./dist
+      device: ${PWD}/dist
       type: none
       o: bind
