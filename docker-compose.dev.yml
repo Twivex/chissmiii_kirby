@@ -14,7 +14,6 @@ services:
 
 volumes:
   dist_vol:
-    name: ${COMPOSE_PROJECT_NAME}_dist_vol
     driver: local
     driver_opts:
       device: ${PWD}/dist
