@@ -11,58 +11,58 @@ services:
       - 14080:80
       - 14443:443
     volumes:
-      - kirby_content_vol:/var/www/html/content
-      - kirby_media_vol:/var/www/html/media
-      - node_modules_vol:/var/www/html/node_modules
-      - kirby_site_vol:/var/www/html/site
-      - kirby_accounts_vol:/var/www/html/site/accounts
-      - kirby_sessions_vol:/var/www/html/site/sessions
-      - resources_src_vol:/var/www/html/src
+      - kirby_content:/var/www/html/content
+      - kirby_media:/var/www/html/media
+      - node_modules:/var/www/html/node_modules
+      - kirby_site:/var/www/html/site
+      - kirby_accounts:/var/www/html/site/accounts
+      - kirby_sessions:/var/www/html/site/sessions
+      - resources_src:/var/www/html/src
 
 volumes:
-  kirby_content_vol:
+  kirby_content:
     driver: local
     driver_opts:
       device: ${PWD}/dist/content
       type: none
       o: bind
 
-  kirby_media_vol:
+  kirby_media:
     driver: local
     driver_opts:
       device: ${EXTERNAL_VOLUMES_PATH}/media
       type: none
       o: bind
 
-  node_modules_vol:
+  node_modules:
     driver: local
     driver_opts:
       device: ${EXTERNAL_VOLUMES_PATH}/node_modules
       type: none
       o: bind
 
-  kirby_site_vol:
+  kirby_site:
     driver: local
     driver_opts:
       device: ${PWD}/dist/site/
       type: none
       o: bind
 
-  kirby_accounts_vol:
+  kirby_accounts:
     driver: local
     driver_opts:
       device: ${EXTERNAL_VOLUMES_PATH}/site/accounts
       type: none
       o: bind
 
-  kirby_sessions_vol:
+  kirby_sessions:
     driver: local
     driver_opts:
       device: ${EXTERNAL_VOLUMES_PATH}/site/sessions
       type: none
       o: bind
 
-  resources_src_vol:
+  resources_src:
     driver: local
     driver_opts:
       device: ${PWD}/dist/src

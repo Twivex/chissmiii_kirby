@@ -10,10 +10,10 @@ services:
     ports:
       - 8000:80
     volumes:
-      - dist_vol:/var/www/html
+      - dist:/var/www/html
 
 volumes:
-  dist_vol:
+  dist:
     driver: local
     driver_opts:
       device: ${PWD}/dist
