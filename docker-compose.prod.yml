@@ -34,13 +34,6 @@ volumes:
       type: none
       o: bind
 
-  node_modules:
-    driver: local
-    driver_opts:
-      device: ${EXTERNAL_VOLUMES_PATH}/node_modules
-      type: none
-      o: bind
-
   kirby_site:
     driver: local
     driver_opts:
