@@ -18,6 +18,8 @@ services:
       - kirby_accounts:/var/www/html/site/accounts
       - kirby_sessions:/var/www/html/site/sessions
       - resources_src:/var/www/html/src
+      - resources_dist_js:/var/www/html/resources/js
+      - resources_dist_css:/var/www/html/resources/css
 
 volumes:
   kirby_content:
