@@ -25,6 +25,13 @@ volumes:
 
   node_modules:
 
+  resources_src:
+    driver: local
+    driver_opts:
+      device: ${PWD}/dist/src
+      type: none
+      o: bind
+
   resources_dist_js:
 
   resources_dist_css:
@@ -58,15 +65,3 @@ volumes:
       o: bind
 
   kirby_sessions:
-    driver: local
-    driver_opts:
-      device: ${EXTERNAL_VOLUMES_PATH}/site/sessions
-      type: none
-      o: bind
-
-  resources_src:
-    driver: local
-    driver_opts:
-      device: ${PWD}/dist/src
-      type: none
-      o: bind
