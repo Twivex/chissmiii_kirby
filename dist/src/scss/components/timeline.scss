@@ -17,6 +17,7 @@
         height: 34px;
         justify-content: center;
         width: 110px;
+        z-index: 60;
 
         > span {
           background-color: var(--bs-light);
@@ -30,13 +31,9 @@
       }
     }
 
-    .tl-text {
-      padding-bottom: map-get($spacers, 4);
-      padding-top: map-get($spacers, 4);
-
-      &--with-title {
-        padding-top: $spacer * 4;
-      }
+    .tl-text,
+    .tl-description {
+      z-index: 50;
     }
 
     &:first-child:before,
@@ -49,6 +46,7 @@
       position: absolute;
       text-shadow: 0px 0px 10px darkgrey;
       width: 100%;
+      z-index: 60;
     }
 
     &:first-child:before {  // first icon
@@ -92,13 +90,22 @@
       .tl-text,
       .tl-description {
         &.order-lg-1 {
-          padding-left: ($spacer * 4);
+          padding-left: (4rem);
           padding-right: ($spacer * 5);
         }
 
         &.order-lg-2 {
           padding-left: ($spacer * 5);
-          padding-right: ($spacer * 4);
+          padding-right: (4rem);
+        }
+      }
+
+      .tl-text {
+        padding-bottom: map-get($spacers, 4);
+        padding-top: map-get($spacers, 4);
+
+        &--with-title {
+          padding-top: 4rem;
         }
       }
 
@@ -148,7 +155,7 @@
         .tl-date-wrapper {
           align-self: flex-start;
           justify-content: left;
-          margin-left: unquote('-' + map-get($spacers, 4));
+          margin-left: -2.4rem;
         }
       }
 
@@ -157,15 +164,28 @@
         padding-bottom: map-get($spacers, 3);
       }
 
-      .tl-description {
+      .order-1.tl-description {
+        padding-top: 5px;
+        &--with-title {
+          padding-top: 3px;
+        }
+      }
+
+      .order-2 {
         padding-bottom: map-get($spacers, 5);
       }
 
       &:first-child .tl-date {
-        padding-top: $spacer * 4;
+        padding-top: 4rem;
       }
       &:first-child .tl-image {
         padding-top: $spacer * 7;
+      }
+      &:first-child .order-1.tl-description {
+        padding-top: calc(4rem + 5px);
+        &--with-title {
+          padding-top: calc(4rem + 3px);
+        }
       }
 
       &:last-child .tl-description {
@@ -174,7 +194,7 @@
 
       .order-1,
       .order-2 {
-        padding-left: map-get($spacers, 4);
+        padding-left: map-get($spacers, 5);
         border-left: 3px solid var(--bs-dark);
       }
 
@@ -182,6 +202,12 @@
       &:last-child:after {  // icons
         left: -50%;
       }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .tl-entry .tl-date .tl-date-wrapper {
+      margin-left: -1.9rem;
     }
   }
 }

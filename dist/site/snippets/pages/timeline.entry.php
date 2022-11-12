@@ -57,7 +57,7 @@
 
   <?php endif; ?>
 
-  <div class="col-xs-12 col-lg-6 tl-description <?= $descriptionOrderClass?> <?=$tlClassTwo?> <?=$descriptionDirectionClass ?>">
+  <div class="col-xs-12 col-lg-6 tl-description <?php e($data->showTitle(), 'tl-description--with-title') ?> <?= $descriptionOrderClass?> <?=$tlClassTwo?> <?=$descriptionDirectionClass ?>">
 
     <?php if ($data->showTitle()): ?>
       <h3 class="<?= $data->headingTextDirectionClass() ?>"><?= $data->title() ?></h3>
