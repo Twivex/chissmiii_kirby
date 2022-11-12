@@ -61,6 +61,19 @@ npm-build:
 npm-watch:
 	docker exec -it ${MAIN_CONTAINER_NAME}-${env} sh -c "npm run dev"
 
+git-pull-content:
+	git submodule update --remote --merge dist/content
+
+git-push-content:
+	cd dist/content && \
+	git add . && \
+	git commit -m "updated content" && \
+	git push && \
+	cd ../../ && \
+	git add dist/content && \
+	git commit -m "updated submodule state dist/content" && \
+	git push
+
 fix-permissions:
 	sudo chown -R dock:www-data . && \
 	sudo find /var/www/ -type d -exec chmod 775 {} + && \
