@@ -60,3 +60,8 @@ npm-build:
 
 npm-watch:
 	docker exec -it ${MAIN_CONTAINER_NAME}-${env} sh -c "npm run dev"
+
+fix-permissions:
+	sudo chown -R dock:www-data . && \
+	sudo find /var/www/ -type d -exec chmod 775 {} + && \
+	sudo find /var/www/ -type f -exec chmod 664 {} +
