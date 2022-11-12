@@ -4,7 +4,6 @@
 [submodule "dist/content"]
 	path = dist/content
 	url = git@github.com:Twivex/chissmiii-kirby-content.git
-  fileMode = false
 [submodule "dist/site/plugins/relationship"]
 	path = dist/site/plugins/relationship
 	url = https://github.com/olach/kirby3-relationship.git
