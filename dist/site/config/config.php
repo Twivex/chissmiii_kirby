@@ -14,6 +14,8 @@ return [
   'languages_json_path' => 'resources/languages/',
   'resource_paths' => [
     'js' => 'resources/js/',
+    'css' => 'resources/css/',
+    'ms_css' => 'resources/material-symbols/',
     'languages' => 'resources/languages/',
   ],
 ];
