@@ -1,5 +1,26 @@
+$_tl_line-width: 3px;
+$_tl_padding-left: 2rem;
+
 .timeline {
-  margin: 15px 0;
+  margin: 2.5rem 0 1.5rem;
+  position: relative;
+
+  .symbol {
+    color: var(--bs-light);
+    font-size: 4rem;
+    position: absolute;
+    text-shadow: 0px 0px 10px darkgrey;
+    z-index: 60;
+    left: calc(50% - 32px + (#{$_tl_line-width} / 2));
+
+    &:first-child {
+      top: -26px;
+    }
+
+    &:last-child {
+      bottom: -10px;
+    }
+  }
 
   .tl-entry {
     position: relative;
@@ -8,6 +29,7 @@
       display: flex;
       height: 100%;
       justify-content: center;
+      // margin: 0 0.75rem;
       position: absolute;
       width: 100%;
 
@@ -36,6 +58,10 @@
       z-index: 50;
     }
 
+    &:first-of-type .tl-date {
+      padding-top: 50px;
+    }
+
     &:first-child:before,
     &:last-child:after {   // icons
       color: var(--bs-light);
@@ -62,6 +88,7 @@
       font-size: 4rem;
       transform: rotate(90deg) translate(0px, -6px);
     }
+
   }
 
   @include media-breakpoint-up(lg) {
@@ -69,7 +96,7 @@
       &.tl-entry--alternating .order-lg-2,
       &.tl-entry--strict .tl-image ~ .tl-description,
       &.tl-entry--strict .tl-text {
-        border-left: 3px solid var(--bs-dark);
+        border-left: $_tl_line-width solid var(--bs-dark);
       }
 
       .tl-image + .tl-description {
@@ -90,13 +117,13 @@
       .tl-text,
       .tl-description {
         &.order-lg-1 {
-          padding-left: (4rem);
+          padding-left: 4rem;
           padding-right: ($spacer * 5);
         }
 
         &.order-lg-2 {
           padding-left: ($spacer * 5);
-          padding-right: (4rem);
+          padding-right: 4rem;
         }
       }
 
@@ -145,7 +172,12 @@
   }
 
   @include media-breakpoint-down(lg) {
-    padding-left: map-get($spacers, 4);
+    padding-left: $_tl_padding-left;
+
+    .symbol {
+      // half of icon width in negative + half of padding + half of line width
+      left: calc(-32px + (#{$_tl_padding-left} * .5) + (#{$_tl_line-width} * .5) + .25rem);
+    }
 
     .tl-entry {
 
@@ -165,9 +197,9 @@
       }
 
       .order-1.tl-description {
-        padding-top: 5px;
+        padding-top: map-get($spacers, 5);
         &--with-title {
-          padding-top: 3px;
+          padding-top: 0px;
         }
       }
 
@@ -195,7 +227,7 @@
       .order-1,
       .order-2 {
         padding-left: map-get($spacers, 5);
-        border-left: 3px solid var(--bs-dark);
+        border-left: $_tl_line-width solid var(--bs-dark);
       }
 
       &:first-child:before,
