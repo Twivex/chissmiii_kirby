@@ -35,3 +35,21 @@ Codename | buster
 
 ### Start dev
 - run `make dev` or run `make up` & run `make npm-watch`
+
+## How to Deploy
+
+```
+make deploy
+```
+
+### New node packages?
+- run `make build` to build the image
+- run `make npm-install` to install new packages
+- run `make restart` to restart the container
+- run `make npm-build` to build the assets
+
+Or all in one command:
+
+```
+make build npm-install restart npm-build
+```
