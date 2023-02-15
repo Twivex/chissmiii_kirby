@@ -207,13 +207,13 @@ $_tl_padding-left: 2rem;
         padding-bottom: map-get($spacers, 5);
       }
 
-      &:first-child .tl-date {
+      &:first-of-type .tl-date {
         padding-top: 4rem;
       }
-      &:first-child .tl-image {
+      &:first-of-type .tl-image {
         padding-top: $spacer * 7;
       }
-      &:first-child .order-1.tl-description {
+      &:first-of-type .order-1.tl-description {
         padding-top: calc(4rem + 5px);
         &--with-title {
           padding-top: calc(4rem + 3px);
@@ -240,6 +240,14 @@ $_tl_padding-left: 2rem;
   @include media-breakpoint-down(sm) {
     .tl-entry .tl-date .tl-date-wrapper {
       margin-left: -1.9rem;
+    }
+
+    .tl-entry .tl-image {
+      padding-left: map-get($spacers, 4);
+
+       .polaroid {
+        scale: .8;
+      }
     }
   }
 }

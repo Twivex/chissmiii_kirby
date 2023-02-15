@@ -14,9 +14,9 @@
         class="figure-img"
         src="<?= $image->url() ?>"
         srcset="<?= $image->srcset([
-          "${size}w" => [ 'width' => $size ],
-          "${doubleSize}w" => [ 'width' => $doubleSize ],
-          "${tripleSize}w" => [ 'width' => $tripleSize ]
+          $size . "w" => [ 'width' => $size, 'height' => $size ],
+          $doubleSize . "w" => [ 'width' => $doubleSize, 'height' => $doubleSize ],
+          $tripleSize . "w" => [ 'width' => $tripleSize, 'height' => $tripleSize ]
         ]) ?>"
         sizes="100vw"
         width="<?= $size ?>"
