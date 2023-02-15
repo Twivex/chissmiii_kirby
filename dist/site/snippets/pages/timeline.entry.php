@@ -1,5 +1,6 @@
 <?php
-  $tl_date = !empty($data->tl_date()) ? $data->tl_date() : '';
+  $hasDate = $data->tl_date()->isNotEmpty();
+  $tl_date = $hasDate ? $data->tl_date() : '';
   if (strpos("$tl_date", '.') === 0) {
     if ("$tl_date" === '.') {
       $tl_date = date_create()->format('Y');
@@ -31,7 +32,7 @@
 
 <div class="row tl-entry tl-entry--<?= $tlEntryClassModifier?>" timeline-date="<?=$data->tl_date() ?>">
 
-  <?php if (!empty($tl_date)): ?>
+  <?php if ($hasDate): ?>
     <div class="tl-date">
       <div class="tl-date-wrapper">
         <span><?= $tl_date ?></span>

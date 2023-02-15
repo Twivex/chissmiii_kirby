@@ -26,7 +26,6 @@ tabs:
           tl_date:
             label: Zeitpunkt
             type: text
-            required: true
             display: DD.MM.YYYY
 
           description_text_direction:
