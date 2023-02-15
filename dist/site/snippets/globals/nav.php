@@ -20,8 +20,7 @@
       <div class="offcanvas-body">
       <ul class="navbar-nav">
         <?php
-          $navItems = $site->children();
-          if (!$kirby->user()) $navItems = $navItems->listed();
+          $navItems = $site->children()->listed();
           foreach ($navItems as $key => $item):
             // skip secured pages, if not logged in
             if ($item->secured()->toBool() === true && !$kirby->user()) continue;
