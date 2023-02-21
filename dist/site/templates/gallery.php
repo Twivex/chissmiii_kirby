@@ -2,13 +2,13 @@
 
 <section class="pt-4">
   <?php
+    $lang = $kirby->language();
     $galleryPages = $page->children()->listed();
     foreach ($galleryPages as $galleryPage):
   ?>
     <div class="row">
       <div class="col-12">
         <?php
-          $lang = $kirby->language();
           $galleryUri = $galleryPage->uri();
           $additionalLinks = [];
           if ($galleryPage->uploadable()->toBool()) {
@@ -55,7 +55,7 @@
             'imageAlt' => $imageAlt,
             'title' => $galleryPage->title(),
             'modifiedDate' => $galleryPage->modified('d.m.y'),
-            'pageLinkUri' => $galleryPage->uri(),
+            'pageLinkUri' => "/$lang/".$galleryPage->uri(),
             'pageLinkTitle' => 'Album öffnen',
             'additionalLinks' => $additionalLinks,
             'addClass' => 'mb-4',
