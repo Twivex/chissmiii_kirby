@@ -1,7 +1,6 @@
 <?php snippet('globals/header') ?>
 
 <?php
-  $imagesPath = $page->album_images_path();
   $files = $page->getExtAlbumImages();
 ?>
 
@@ -10,7 +9,7 @@
 
     <?php if ($page->show_indicators()->toBool()): ?>
       <div class="carousel-indicators">
-        <?php for ($i = 0; $i < count($images); $i++): ?>
+        <?php for ($i = 0; $i < count($files); $i++): ?>
           <button type="button" data-bs-target="#carousel-<?= $page->uid()?>" data-bs-slide-to="<?=$i?>" <?= $i === 0 ? 'class="active" aria-current="true"' : ''?> aria-label="Slide <?=$i+1 ?>"></button>
         <?php endfor; ?>
       </div>
