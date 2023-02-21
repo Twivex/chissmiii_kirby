@@ -32,6 +32,7 @@
             ];
           }
           $imageAlt = '';
+          $imageUrl = '';
           $blueprintName = strtolower($galleryPage->intendedTemplate());
           if ($blueprintName === 'album') {
             $firstImage = $galleryPage->images()->first();
@@ -42,8 +43,10 @@
             $images = array_filter($files, function($file) {
               return $file['type'] === 'image';
             });
-            $firstImage = $images[0];
-            $imageUrl = $firstImage['url'];
+            if (isset($images[0])) {
+              $firstImage = $images[0];
+              $imageUrl = $firstImage['url'];
+            }
           }
 
           snippet('molecules/img_card_horizontal', [
