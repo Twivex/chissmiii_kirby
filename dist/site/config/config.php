@@ -18,4 +18,5 @@ return [
     'ms_css' => 'resources/material-symbols/',
     'languages' => 'resources/languages/',
   ],
+  'cloud_path' => $_ENV['CLOUD_PATH'] ?? '/cloud',
 ];
