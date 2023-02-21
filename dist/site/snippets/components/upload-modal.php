@@ -49,7 +49,7 @@
           <fieldset>
 
             <div class="mb-3">
-              <input class="form-control" type="file" accept="image/jpg,image/jpeg,image/png,image/gif,video/mp4,video/avi,video/mpeg,video/mpeg2,video/quicktime,video/webm" id="uploadFile" name="uploadFile" required multiple>
+              <input class="form-control" type="file" accept="image/jpg,image/jpeg,image/png,image/gif,video/mp4,video/avi,video/mpeg,video/mpeg2,video/quicktime,video/webm" id="uploadFile" name="uploadFile[]" required multiple>
             </div>
 
             <div class="visually-hidden">
