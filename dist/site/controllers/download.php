@@ -48,7 +48,7 @@ return function ($kirby, $target) {
       }
 
       foreach(scandir($imagesPath) as $file) {
-        if (preg_match("/\.([jpg|jpeg|png|gif|mp4|webm|mov|mpeg|mpeg2|avi])$/i", $file)) {
+        if (preg_match("/\.(jpg|jpeg|png|gif|mp4|webm|mov|mpeg|mpeg2|avi)$/i", $file)) {
           $zip->addFile($imagesPath . '/' . $file, $file);
         }
       }
