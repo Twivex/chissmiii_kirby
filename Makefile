@@ -44,7 +44,7 @@ dev:
 	make up npm-watch env=dev
 
 deploy:
-	make build restart npm-build env=prod
+	make restart npm-build env=prod
 
 down:
 	docker-compose down --volumes --rmi all
