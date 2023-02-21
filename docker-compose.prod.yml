@@ -20,9 +20,16 @@ services:
       - resources_src:/var/www/html/src
       - resources_dist_js:/var/www/html/resources/js
       - resources_dist_css:/var/www/html/resources/css
-      - ${EXTERNAL_VOLUMES_PATH}/cloud:/cloud:rshared
+      - cloud:/cloud
 
 volumes:
+
+  cloud:
+    driver: local
+    driver_opts:
+      device: /cloud
+      type: none
+      o: bind
 
   node_modules:
 
