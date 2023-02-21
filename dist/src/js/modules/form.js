@@ -11,17 +11,23 @@ export default class Form {
       return this.getElement();
     } else if (propertyName === "data") {
       return this.getData();
+    } else if (propertyName === "formData") {
+      return this.getFormData();
     } else if (propertyName === "method") {
       return this.getMethod();
     } else if (propertyName === "action") {
       return this.getAction();
+    } else if (propertyName === "enctype") {
+      return this.getEnctype();
     }
 
     return {
       element: this.getElement(),
       data: this.getData(),
+      formData: this.getFormData(),
       method: this.getMethod(),
       action: this.getAction(),
+      enctype: this.getEnctype(),
     };
   }
 
@@ -53,12 +59,34 @@ export default class Form {
     return data;
   }
 
+  getFormData() {
+    let data = new FormData();
+
+    this.getElement()
+      .querySelectorAll("input, textarea")
+      .forEach((el) => {
+        if (el.type === "file") {
+          Array.from(el.files).forEach((file) => {
+            data.append(el.name, file);
+          });
+        } else {
+          data.append(el.name, el.value);
+        }
+      });
+
+    return data;
+  }
+
   getMethod() {
     return this.getElement().getAttribute("method");
   }
 
   getAction() {
     return this.getElement().getAttribute("action");
+  }
+
+  getEnctype() {
+    return this.getElement().getAttribute("enctype");
   }
 
   getDataset(name = "") {
@@ -132,5 +160,17 @@ export default class Form {
     if (!this.defaultSubmit) {
       event.preventDefault();
     }
+  }
+
+  addInputChangeListener(name) {
+    const input = this.form.querySelector(`input[name="${name}"]`);
+    const updateFormData = (e) => {
+      if (input.type === "file") {
+        console.log(this);
+        console.log(JSON.stringify(input.files));
+        this.formData.append(name, input.files[0]);
+      }
+    };
+    input.addEventListener("change", updateFormData);
   }
 }

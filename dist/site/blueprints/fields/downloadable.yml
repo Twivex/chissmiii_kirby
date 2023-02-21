@@ -1,0 +1,7 @@
+type: toggle
+width: 1/4
+label: Download erlauben?
+default: false
+text:
+  - "nein"
+  - "ja"

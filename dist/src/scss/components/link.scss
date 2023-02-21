@@ -1,0 +1,30 @@
+.link {
+  &-primary {
+    &:hover,
+    &:focus {
+      color: var(--bs-primary-hover-bg) !important;
+    }
+  }
+
+  &-secondary {
+    &:hover,
+    &:focus {
+      color: var(--bs-secondary-hover-bg) !important;
+    }
+  }
+
+
+  &-light {
+    &:hover,
+    &:focus {
+      color: var(--bs-light-hover-bg) !important;
+    }
+  }
+
+  &-dark {
+    &:hover,
+    &:focus {
+      color: var(--bs-dark-hover-bg) !important;
+    }
+  }
+}

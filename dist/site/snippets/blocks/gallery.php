@@ -1,4 +1,4 @@
-<div id="carousel-<?= $block->id() ?>" class="carousel slide bg-dark" data-bs-interval="false">
+<div id="carousel-<?= $block->id() ?>" class="carousel slide" data-bs-interval="false" data-bs-touch="true">
 
   <?php if ($showIndicators): ?>
     <div class="carousel-indicators">
@@ -11,7 +11,7 @@
   <div class="carousel-inner" style="max-height: 100vh">
     <?php $isFirst = true; ?>
     <?php foreach ($block->images()->toFiles() as $image): ?>
-      <div class="carousel-item <?= $isFirst ? 'active' : '' ?>">
+      <div class="carousel-item <?= $isFirst ? 'active' : '' ?> <?= $image->isPortrait() ? 'bg-black' : '' ?>">
        <div class="d-flex justify-content-center align-items-center m-0" style="height: calc(100vh - 56px)">
          <img src="<?= $image->url() ?>" srcset="<?= $image->srcset()?>" class="d-block mw-100 mh-100" alt="<?=$image->title() ?>">
         </div>

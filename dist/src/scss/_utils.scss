@@ -14,3 +14,18 @@
   top: 0;
   width: 8px;
 }
+
+.object-cover {
+  object-fit: cover;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+// needed for bootstrap svg icons
+.bi {
+  width: 1em;
+  height: 1em;
+  fill: currentcolor;
+}

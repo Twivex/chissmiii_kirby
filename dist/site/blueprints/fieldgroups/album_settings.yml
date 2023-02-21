@@ -1,0 +1,39 @@
+type: group
+
+fields:
+
+  show_controls:
+    type: toggle
+    label: Kontrollelemente anzeigen?
+    width: 1/4
+    default: true
+    text:
+      - "nein"
+      - "ja"
+
+  show_indicators:
+    type: toggle
+    label: Indikatoren anzeigen?
+    width: 1/4
+    default: false
+    text:
+      - "nein"
+      - "ja"
+
+  uploadable:
+    type: toggle
+    label: Uploads erlauben?
+    width: 1/4
+    default: false
+    text:
+      - "nein"
+      - "ja"
+
+  downloadable:
+    type: toggle
+    label: Download erlauben?
+    width: 1/4
+    default: false
+    text:
+      - "nein"
+      - "ja"

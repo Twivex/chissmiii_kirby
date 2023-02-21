@@ -12,13 +12,13 @@
   $additionalClasses = implode(' ', $additionalClasses);
 ?>
 
-<div class="card <?=$additionalClasses?>">
+<div class="card card--horizontal <?=$additionalClasses?>">
   <div class="row g-0">
-    <div class="col-md-<?=$imgWidth?>">
-      <img src="<?=$imageUrl?>" class="img-fluid rounded-start vh-25" alt="<?=$imageAlt?>">
+    <div class="card-image-col col-sm-12 col-md-<?=$imgWidth?>">
+      <img src="<?=$imageUrl?>" class="card-image" alt="<?=$imageAlt?>">
     </div>
-    <div class="col-md-<?=$textWidth?>">
-      <div class="card-body">
+    <div class="card-text-col col-sm-12 col-md-<?=$textWidth?>">
+      <div class="card-body d-flex flex-column h-100">
         <h5 class="card-title"><?=$title?></h5>
         <?php if (isset($description) && !empty($description)): ?>
           <p class="card-text"><?=kt($description)?></p>
@@ -26,7 +26,47 @@
         <?php if (isset($modifiedDate) && !empty($modifiedDate)): ?>
           <p class="card-text"><small class="text-muted">Zuletzt aktualisiert am <?=$modifiedDate?></small></p>
         <?php endif; ?>
-        <a href="<?=$pageLinkUri?>" class="btn btn-light"><?=$pageLinkTitle?></a>
+
+        <div class="d-flex flex-column justify-content-end h-100">
+          <div class="d-flex flex-column flex-sm-row justify-content-between align-items-baseline">
+
+            <a href="<?=$pageLinkUri?>" class="btn btn-light"><?=$pageLinkTitle?></a>
+
+            <?php if (!empty($additionalLinks)): ?>
+              <span class="btn-box align-self-start align-self-sm-end mt-2 mt-sm-0">
+                <?php foreach ($additionalLinks as $link): ?>
+
+                  <?php
+                    if (isset($link['type']) && $link['type'] === 'icon'):
+
+                      snippet('atoms/btn-icon', [
+                        'iconName' => $link['icon'],
+                        'title' => $link['title'],
+                        'url' => $link['uri'],
+                        'attributes' => isset($link['attributes']) ? $link['attributes'] : null,
+                        // 'iconSize' => '',
+                        'additionalClasses' => [ 'link-primary' ],
+                      ]);
+
+                    else:
+                  ?>
+
+                    <a href="<?=$link['uri']?>" class="btn btn-light"
+                      <?php if (isset($link['attributes'])): ?>
+                        <?php foreach ($link['attributes'] as $attr => $value) { echo "$attr=\"$value\""; } ?>
+                      <?php endif; ?>
+                    ><?=$link['title']?></a>
+
+                    <?php endif; ?>
+
+                  <?php endforeach; ?>
+                </span>
+
+            <?php endif; ?>
+
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

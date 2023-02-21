@@ -1,0 +1,10 @@
+title: Externes Album
+fields:
+  settings: fieldgroups/album_settings
+
+  album_images_path:
+    type: text
+    label: Pfad zu den Bildern
+    width: 3/4
+    placeholder: $cloud/{title}
+    default: $cloud/{title}

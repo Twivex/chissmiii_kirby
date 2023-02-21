@@ -1,0 +1,20 @@
+name: Album
+preset: files
+image:
+  query: false
+  back: white
+
+fields:
+  settings:
+    extends: fieldgroups/album_settings
+    fields:
+      uploadable:
+        help: aktuell nicht implementiert
+        default: false
+        disabled: true
+
+  album_images:
+    type: blocks
+    label: Bilder
+    fieldsets:
+      - gallery

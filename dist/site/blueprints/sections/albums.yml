@@ -1,6 +1,8 @@
 type: pages
-headline: Gallerie
+headline: Galerie
 info: "{{ page.date.toDate('d.m.Y') }}"
 sortBy: date asc
-template: gallery
+template:
+  - album
+  - ext_album
 empty: Keine Alben

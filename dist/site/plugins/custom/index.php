@@ -16,12 +16,12 @@ function sass_mix($color_1, $color_2, $weight = null) {
 
   $color = "#";
 
-  for($i = 0; $i <= 5; $i += 2) { // loop through each of the 3 hex pairs—red, green, and blue
-    $v1 = hex2digit(substr($color_1,$i, 2)); // extract the current pairs
+  for ($i = 0; $i <= 5; $i += 2) { // loop through each of the 3 hex pairs—red, green, and blue
+    $v1 = hex2digit(substr($color_1, $i, 2)); // extract the current pairs
     $v2 = hex2digit(substr($color_2, $i, 2));
 
     // combine the current pairs from each source color, according to the specified $weight
-    $val = digit2hex(round($v2 + ($v1 - $v2) * ( 1 - $weight)));
+    $val = digit2hex(round($v2 + ($v1 - $v2) * (1 - $weight)));
 
     $color .= $val; // concatenate val to new color string
   }
@@ -38,8 +38,12 @@ Kirby::plugin('chissmiii/custom', [
     },
 
     'showTitle' => function () {
-      if ($this->blueprint()->field('show_title') !== null) return $this->show_title()->toBool();
-      if ($this->isTopLevel()) return true;
+      if ($this->blueprint()->field('show_title') !== null) {
+        return $this->show_title()->toBool();
+      }
+      if ($this->isTopLevel()) {
+        return true;
+      }
       return false;
     },
 
@@ -56,7 +60,9 @@ Kirby::plugin('chissmiii/custom', [
     },
 
     'columns' => function () {
-      if ($this->cols_count()->isNotEmpty()) return $this->cols_count()->optionKey();
+      if ($this->cols_count()->isNotEmpty()) {
+        return $this->cols_count()->optionKey();
+      }
       return null;
     },
 
@@ -65,7 +71,48 @@ Kirby::plugin('chissmiii/custom', [
         return "col-$size-$cols";
       }
       return '';
-    }
+    },
+
+    'getExtAlbumImages' => function () {
+      if (strtolower($this->intendedTemplate()->name()) === 'ext_album') {
+        $imagesPath = $this->album_images_path()->replacePathVars();
+        $files = [];
+
+        // check if directory exists
+        if (file_exists($imagesPath)) {
+          $imageExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+          $videoExtensions = ['mp4', 'webm', 'mov', 'mpeg', 'mpeg2', 'avi'];
+          $allowedExtensions = array_merge($imageExtensions, $videoExtensions);
+          // get all files in the directory
+          $files = array_reduce(
+            scandir($imagesPath),
+            function ($carry, $file) use ($imagesPath, $allowedExtensions, $imageExtensions) {
+              $filePath = "$imagesPath/$file";
+              // detect file extension
+              $fileExt = pathinfo($filePath, PATHINFO_EXTENSION);
+              $fileExt = strtolower($fileExt);
+              if (in_array($fileExt, $allowedExtensions)) {
+                $carry[] = [
+                  'type' => in_array($fileExt, $imageExtensions) ? 'image' : 'video',
+                  'url' => $filePath,
+                  'ext' => $fileExt,
+                ];
+              }
+              return $carry;
+            },
+            []
+          );
+
+          // sort files by modify date
+          usort($files, function ($a, $b) use ($imagesPath) {
+            return filemtime($a['url']) - filemtime($b['url']);
+          });
+        }
+
+        return $files;
+      }
+      return [];
+    },
 
   ],
 
@@ -102,10 +149,12 @@ Kirby::plugin('chissmiii/custom', [
       return $field->value();
     },
 
-    'cssColorVar' => function($field, $addRgb = false, $variants = []) {
+    'cssColorVar' => function ($field, $addRgb = false, $variants = []) {
       if (strpos($field->key(), 'color') !== false) {
         // abort if field value is empty
-        if (empty($color = $field->value())) return '';
+        if (empty($color = $field->value())) {
+          return '';
+        }
 
         $colorVarsOuput = [];
         $colorVarName = '--';
@@ -140,8 +189,26 @@ Kirby::plugin('chissmiii/custom', [
         // return the list of color vars, separated by newlines
         return implode("\n", $colorVarsOuput) . "\n";
       }
-    }
+    },
 
-  ]
+    'replacePathVars' => function ($field) {
+      if (strpos($field->key(), 'album_images_path') !== false) {
+        $imagesPath = $field->value();
+        $imagesPath = str_replace('$cloud', option('cloud_path'), $imagesPath);
+        $matches = [];
+        $regex = '/\{([a-zA-Z0-9_]+)\}/';
+        $result = preg_match_all($regex, $imagesPath, $matches);
+        if ($result) {
+          foreach ($matches[1] as $match) {
+            $replaceAttr = $field->model()->$match();
+            $replaceValue = $replaceAttr->isNotEmpty() ? $replaceAttr->value() : '';
+            $imagesPath = str_replace('{' . $match . '}', $replaceValue, $imagesPath);
+          }
+        }
+        return $imagesPath;
+      }
+    },
+
+  ],
 
 ]);

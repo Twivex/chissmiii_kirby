@@ -1,0 +1,41 @@
+.card {
+  &--horizontal {
+    .card-image-col {
+      border-bottom-left-radius: $border-radius;
+      border-top-left-radius: $border-radius;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .card-image {
+      max-width: 100%;
+      object-fit: fill;
+      max-height: 300px;
+
+      @include media-breakpoint-up(md) {
+        height: 20vw;
+        max-height: 150px;
+      }
+      @include media-breakpoint-up(lg) {
+        // height: 15vw;
+        max-height: 200px;
+      }
+
+      @include media-breakpoint-up(xl) {
+        // height: 20vw;
+        max-height: 250px;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    &--horizontal {
+      .card-image-col {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+}

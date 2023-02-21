@@ -29,9 +29,8 @@ return [
         'cookie-save-settings' => 'Einstellungen speichern',
         'application-cookie-required-text' => 'Dieser Inhalt benötigt anwendungsbezogene Cookies. Diese kannst du hier aktivieren.',
 
-        'image-upload-modal-title' => 'Bild hinzufügen',
-        'image-upload-modal-submit' => 'Hochladen',
-        'image-upload-modal-input-label' => 'Bild(er) auswählen',
+        'image-upload-modal-title' => 'Upload',
+        'image-upload-modal-submit' => 'Upload starten',
       ]
     ),
     'url' => NULL

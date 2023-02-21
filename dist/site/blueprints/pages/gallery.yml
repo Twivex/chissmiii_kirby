@@ -1,11 +1,22 @@
-name: Album
-preset: files
+title: Galerie
+preset: pages
+icon: 🌄
 image:
   query: false
   back: white
 
-fields:
-  galleries:
-    type: blocks
-    fieldsets:
-      - gallery
+
+drafts:
+  layout: cardlets
+  extends: sections/albums
+  headline: Unveröffentlichte Alben
+
+unlisted:
+  layout: cardlets
+  extends: sections/albums
+  headline: Ungelistete Alben
+
+listed:
+  layout: cardlets
+  extends: sections/albums
+  headline: Veröffentlichte Alben

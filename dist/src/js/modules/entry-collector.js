@@ -41,8 +41,7 @@ export default class EntryCollector {
               alertTargetEl.parentNode.append(alertEl);
               // update content, if necessary
               if (alertContent != null) {
-                alertEl.getElementsByTagName("span")[0].innerHTML =
-                  alertContent;
+                alertEl.getElementsByTagName("div")[0].innerHTML = alertContent;
               }
 
               // show alert

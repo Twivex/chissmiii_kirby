@@ -1,0 +1,32 @@
+.carousel {
+  .carousel-control-prev:after,
+  .carousel-control-next:after {
+    position: absolute;
+    content: '';
+    background-color: rgba($white, 0.5);
+    height: 50px;
+    left: 0;
+    width: 100%;
+  }
+  .carousel-control-prev:after {
+    left: 0;
+  }
+  .carousel-control-next:after {
+    right: 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    .carousel-control-prev:after,
+    .carousel-control-next:after {
+      width: calc(100% - 20px);
+    }
+
+    .carousel-control-prev:after {
+      margin-left: 9px;
+    }
+      .carousel-control-next:after {
+      margin-left: 11px;
+    }
+  }
+
+}
