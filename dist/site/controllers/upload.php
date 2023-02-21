@@ -103,26 +103,26 @@ return function ($kirby, $target) {
 
       foreach ($uploads as $upload) {
         // check for duplicate
-        $duplicates = array_filter($existingFiles, function ($filename) use ($imagesPath, $upload) {
-          // get original safename without prefix
-          $originalSafename = $filename;
-          if (strpos($filename, 'upload') === 0) {
-            $pos              = strpos($filename, '_');
-            $originalSafename = substr($originalSafename, $pos + 1);
-          }
+        // $duplicates = array_filter($existingFiles, function ($filename) use ($imagesPath, $upload) {
+        //   // get original safename without prefix
+        //   $originalSafename = $filename;
+        //   if (strpos($filename, 'upload') === 0) {
+        //     $pos              = strpos($filename, '_');
+        //     $originalSafename = substr($originalSafename, $pos + 1);
+        //   }
 
-          return
-            $originalSafename === F::safeName($upload['name']) &&
-            mime_content_type("$imagesPath/$filename") === $upload['type'] &&
-            filesize("$imagesPath/$filename") === $upload['size'];
-        });
+        //   return
+        //     $originalSafename === F::safeName($upload['name']) &&
+        //     mime_content_type("$imagesPath/$filename") === $upload['type'] &&
+        //     filesize("$imagesPath/$filename") === $upload['size'];
+        // });
 
-        if (count($duplicates) > 0) {
-          Header::status(400);
-          $filename = $upload['name'];
-          $alert = "Die Datei $filename existiert bereits.";
-          break;
-        }
+        // if (count($duplicates) > 0) {
+        //   Header::status(400);
+        //   $filename = $upload['name'];
+        //   $alert = "Die Datei $filename existiert bereits.";
+        //   break;
+        // }
 
         try {
           $name = 'upload' . crc32($upload['name'] . microtime()) . '_' . F::safeName($upload['name']);
