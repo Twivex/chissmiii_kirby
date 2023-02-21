@@ -11,8 +11,10 @@ services:
       - 8000:80
     volumes:
       - dist:/var/www/html
+      - ${EXTERNAL_VOLUMES_PATH}/cloud:/cloud
 
 volumes:
+
   dist:
     driver: local
     driver_opts:
