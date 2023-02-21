@@ -27,7 +27,7 @@ docker-build:
 	docker buildx build --push --platform=${BUILD_TARGET_PLATFORM} --tag twivex/${BASE_IMAGE_NAME} .
 
 docker-pull:
-	docker pull ${BASE_IMAGE_NAME}
+	docker pull twivex/${BASE_IMAGE_NAME}
 
 build:
 	docker-compose -f docker-compose.yml -f docker-compose.${env}.yml build
