@@ -6,7 +6,7 @@ templates:
   - countdown
   - error
   - events
-  - galleries
+  - gallery
   - gmap
   - guestbook._
   - home
