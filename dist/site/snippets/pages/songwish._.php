@@ -89,6 +89,8 @@
         'type' => 'success',
         'class' => 'success',
         'content' => 'Liedwunsch erfolgreich hinzugefügt.',
+        'hidden' => true,
+        'close' => true,
         'autoclose' => '3000',
         ]) ?>
 
@@ -97,6 +99,8 @@
         'type' => 'error',
         'class' => 'danger',
         'content' => 'Liedwunsch konnte nicht hinzugefügt werden.',
+        'hidden' => true,
+        'close' => true,
         'autoclose' => '3000',
       ]) ?>
     </div>
