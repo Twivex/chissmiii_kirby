@@ -8,12 +8,13 @@
     <div class="row">
       <div class="col-12">
         <?php
-
+          $lang = $kirby->language();
+          $galleryUri = $galleryPage->uri();
           $additionalLinks = [];
           if ($galleryPage->uploadable()->toBool()) {
             $additionalLinks[] = [
               'title' => 'Dateien hochladen',
-              'uri' => 'upload/' . $galleryPage->uri(),
+              'uri' => "/$lang/upload/$galleryUri",
               'attributes' => [
                 'data-bs-toggle' => 'modal',
                 'data-bs-target' => '#modal-upload-form',
@@ -25,7 +26,7 @@
               'title' => 'Album herunterladen',
               'type' => 'icon',
               'icon' => 'download_for_offline',
-              'uri' => 'download/' . $galleryPage->uri(),
+              'uri' => "/$lang/download/$galleryUri",
               'attributes' => [
                 'data-download' => 'false',
               ]
