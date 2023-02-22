@@ -1,0 +1,30 @@
+type: fields
+
+
+fields:
+  pages_gallery_settings_title:
+    type: headline
+    label: Galerie Einstellungen
+
+  pages_gallery_description:
+    label: Beschreibung
+    type: textarea
+    size: medium
+
+  pages_gallery_cover:
+    label: Cover
+    type: files
+    multiple: false
+    back: white
+    max: 1
+    layout: cards
+    width: 1/4
+
+  pages_gallery_type:
+    label: Seiten Typ
+    type: text
+    width: 3/4
+
+  line:
+    type: line
+

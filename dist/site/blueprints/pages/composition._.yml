@@ -8,7 +8,6 @@ image:
 options:
   changeTemplate: false
   changeStatus: true
-  url: false
 
 tabs:
   content_tab:

@@ -1,5 +1,8 @@
 label: Einstellungen
 sections:
+
+  pages_gallery_settings: fieldgroups/pages_gallery_settings
+
   enable_page_settings:
     type: fields
     fields:
