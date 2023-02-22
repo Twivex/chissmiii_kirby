@@ -137,8 +137,6 @@ document.querySelectorAll('[data-bs-toggle="modal"]').forEach((node) => {
 
 document.querySelectorAll("[data-download]").forEach((node) => {
   node.addEventListener("click", (e) => {
-    console.log(node);
-    console.log(e.target);
     // node.classList.add("disabled");
     e.preventDefault();
     if (!node.classList.contains("disabled")) {
