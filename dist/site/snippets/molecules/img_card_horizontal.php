@@ -15,12 +15,14 @@
 <div class="card card--horizontal <?=$additionalClasses?>">
   <div class="row g-0">
     <div class="card-image-col col-sm-12 col-md-<?=$imgWidth?>">
-    <?php if (!empty($pageLinkUri)): ?>
-      <a href="<?=$pageLinkUri?>">
-    <?php endif; ?>
-    <img src="<?=$imageUrl?>" class="card-image" alt="<?=$imageAlt?>">
-    <?php if (!empty($pageLinkUri)): ?>
-      </a>
+    <?php if (!empty($imageUrl)): ?>
+      <?php if (!empty($pageLinkUri)): ?>
+        <a href="<?=$pageLinkUri?>">
+      <?php endif; ?>
+        <img src="<?=$imageUrl?>" class="card-image" alt="<?=$imageAlt?>">
+      <?php if (!empty($pageLinkUri)): ?>
+        </a>
+      <?php endif; ?>
     <?php endif; ?>
     </div>
     <div class="card-text-col col-sm-12 col-md-<?=$textWidth?>">
