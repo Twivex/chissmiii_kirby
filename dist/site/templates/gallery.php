@@ -40,7 +40,7 @@
 
           $mediaCountLabel = '<span class="fs-6 text-muted">';
           $mediaCountLabel .= " ($mediaCount Datei";
-          if ($mediaCount > 1) {
+          if ($mediaCount > 1 || $mediaCount === 0) {
             $mediaCountLabel .= 'en';
           }
           $mediaCountLabel .= ')';
