@@ -17,17 +17,33 @@
 
     <div class="carousel-inner" style="max-height: 100vh">
       <?php foreach ($files as $k => $file): ?>
-        <?php $isPortrait = false; ?>
         <div class="carousel-item <?= $k === 0 ? 'active' : '' ?> bg-black">
-        <div class="d-flex justify-content-center align-items-center m-0" style="height: calc(100vh - 56px)">
-          <?php if ($file['type'] === 'image'): ?>
-            <img src="<?= $file['url'] ?>" class="d-page mw-100 mh-100" >
-          <?php elseif ($file['type'] === 'video'): ?>
-            <video class="d-page mw-100 mh-100" controls>
-              <source src="<?= $file['url'] ?>" type="video/mp4">
-            </video>
-          <?php endif; ?>
+
+          <div class="d-flex justify-content-center align-items-center m-0" style="height: calc(100vh - 232px)">
+            <?php if ($file['type'] === 'image'): ?>
+
+              <img src="<?= $file['url'] ?>" class="d-page mw-100 mh-100" >
+
+            <?php elseif ($file['type'] === 'video'): ?>
+
+              <video class="d-page mw-100 mh-100" controls>
+                <source src="<?= $file['url'] ?>" type="video/mp4">
+              </video>
+
+            <?php endif; ?>
+            <?php snippet('atoms/fab', [
+              'title' => 'Album herunterladen',
+              'iconSize' => 'lg',
+              'iconName' => 'download_for_offline',
+              'additionalClasses' => ['fab-br'],
+              'url' => $file['url'],
+              'attributes' => [
+                'data-download' => 'false',
+                'download' => $file['name'],
+              ]
+            ]) ?>
           </div>
+
         </div>
       <?php endforeach; ?>
     </div>

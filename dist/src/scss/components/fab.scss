@@ -1,0 +1,30 @@
+.fab {
+  @extend .btn-icon;
+  position: absolute;
+  z-index: $zindex-sticky;
+
+  &,
+  i {
+    font-size: 3rem;
+  }
+
+  &-tl {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  &-tr {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  &-br {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  &-bl {
+    bottom: 1rem;
+    left: 1rem;
+  }
+}

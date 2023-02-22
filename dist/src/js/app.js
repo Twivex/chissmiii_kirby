@@ -137,8 +137,9 @@ document.querySelectorAll('[data-bs-toggle="modal"]').forEach((node) => {
 
 document.querySelectorAll("[data-download]").forEach((node) => {
   node.addEventListener("click", (e) => {
-    // node.classList.add("disabled");
-    e.preventDefault();
+    if (!node.getAttribute("download")) {
+      e.preventDefault();
+    }
     if (!node.classList.contains("disabled")) {
       const xhr = new XMLHttpRequest();
       let blob;
@@ -154,7 +155,11 @@ document.querySelectorAll("[data-download]").forEach((node) => {
         iconNode.innerText = "downloading";
       };
       xhr.onloadend = function () {
-        if (this.status === 200) {
+        if (
+          this.getResponseHeader("Content-type") ===
+            "application/octet-stream" &&
+          this.status === 200
+        ) {
           let tempEl = document.createElement("a");
           let contentDispostion = xhr.getResponseHeader("Content-Disposition");
           let filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
@@ -169,9 +174,9 @@ document.querySelectorAll("[data-download]").forEach((node) => {
           tempEl.href = window.URL.createObjectURL(blob);
           tempEl.download = filename;
           tempEl.click();
-
-          iconNode.innerText = iconName;
         }
+
+        iconNode.innerText = iconName;
         node.classList.remove("disabled");
         node.dataset.download = false;
       };
