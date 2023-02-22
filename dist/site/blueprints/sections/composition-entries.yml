@@ -2,11 +2,13 @@ type: pages
 headline: Elemente
 templates:
   - countdown
-  - contact
+  - gallery
   - gmap
-  - persons._
+  - contact
   - songwish._
+  - persons._
+  - travel-statistics
+  - pages-gallery
   - textblock
   - timeline._
-  - travel-statistics
 empty: Keine Elemente
