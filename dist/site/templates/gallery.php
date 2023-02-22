@@ -10,18 +10,25 @@
       <div class="col-12">
         <?php
           $title = $galleryPage->title();
-          $imageAlt = $title;
+
           $galleryUri = $galleryPage->uri();
           $modifiedDate = $galleryPage->modified('d.m.Y');
 
+          $imageAlt = '';
           $imageUrl = '';
+          if ($galleryPage->album_cover()->isNotEmpty()) {
+            $imageUrl = $galleryPage->album_cover()->toFile()->url();
+          }
+
           $blueprintName = strtolower($galleryPage->intendedTemplate());
           if ($blueprintName === 'album') {
             $files = $galleryPage->files();
             $mediaCount = $files->count();
             $firstImage = $galleryPage->images()->first();
-            $imageUrl = $firstImage->url();
             $imageAlt = $firstImage->title();
+            if (empty($imageUrl)) {
+              $imageUrl = $firstImage->url();
+            }
           } else if ($blueprintName === 'ext_album') {
             $files = $galleryPage->getAlbumFiles(true);
             $mediaCount = count($files);
@@ -30,12 +37,17 @@
             });
             if (!empty($images)) {
               $firstImage = $images[0];
-              $imageUrl = $firstImage['url'];
               $modifiedDate = filemtime($files[$mediaCount - 1]['path']);
               $mDate = date('d.m.Y', $modifiedDate);
               $mTime = date('H:i', $modifiedDate);
               $modifiedDate = "$mDate um $mTime Uhr";
+              if (empty($imageUrl)) {
+                $imageUrl = $firstImage['url'];
+              }
             }
+          }
+          if (empty($imageAlt)) {
+            $imageAlt = $title;
           }
 
           $mediaCountLabel = '<span class="fs-6 text-muted">';

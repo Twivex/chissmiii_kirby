@@ -13,6 +13,15 @@ fields:
         default: false
         disabled: true
 
+  album_cover:
+    label: Cover
+    type: files
+    multiple: false
+    back: white
+    max: 1
+    layout: cards
+    width: 1/4
+
   album_images:
     type: blocks
     label: Bilder

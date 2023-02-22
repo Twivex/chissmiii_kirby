@@ -5,6 +5,14 @@ fields:
   album_path:
     type: text
     label: Pfad zu den Bildern
-    width: 3/4
     placeholder: $cloud/{title}
     default: $cloud/{title}
+
+  album_cover:
+    label: Cover
+    type: files
+    multiple: false
+    back: white
+    max: 1
+    layout: cards
+    width: 1/4
