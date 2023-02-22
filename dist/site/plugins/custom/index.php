@@ -72,50 +72,7 @@ Kirby::plugin('chissmiii/custom', [
       }
       return '';
     },
-
-    'getExtAlbumImages' => function () {
-      if (strtolower($this->intendedTemplate()->name()) === 'ext_album') {
-        $imagesPath = $this->album_images_path()->replacePathVars();
-        $files = [];
-
-        // check if directory exists
-        if (file_exists($imagesPath)) {
-          $imageExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-          $videoExtensions = ['mp4', 'webm', 'mov', 'mpeg', 'mpeg2', 'avi'];
-          $allowedExtensions = array_merge($imageExtensions, $videoExtensions);
-          // get all files in the directory
-          $files = array_reduce(
-            scandir($imagesPath),
-            function ($carry, $file) use ($imagesPath, $allowedExtensions, $imageExtensions) {
-              $filePath = "$imagesPath/$file";
-              // detect file extension
-              $fileExt = pathinfo($filePath, PATHINFO_EXTENSION);
-              $fileExt = strtolower($fileExt);
-              if (in_array($fileExt, $allowedExtensions)) {
-                $carry[] = [
-                  'type' => in_array($fileExt, $imageExtensions) ? 'image' : 'video',
-                  'url' => $filePath,
-                  'ext' => $fileExt,
-                ];
-              }
-              return $carry;
-            },
-            []
-          );
-
-          // sort files by modify date
-          usort($files, function ($a, $b) use ($imagesPath) {
-            return filemtime($a['url']) - filemtime($b['url']);
-          });
-        }
-
-        return $files;
-      }
-      return [];
-    },
-
   ],
-
 
   'fieldMethods' => [
 
@@ -192,20 +149,20 @@ Kirby::plugin('chissmiii/custom', [
     },
 
     'replacePathVars' => function ($field) {
-      if (strpos($field->key(), 'album_images_path') !== false) {
-        $imagesPath = $field->value();
-        $imagesPath = str_replace('$cloud', option('cloud_path'), $imagesPath);
+      if (strpos($field->key(), 'path') !== false) {
+        $path = $field->value();
+        $path = str_replace('$cloud', option('cloud_path'), $path);
         $matches = [];
         $regex = '/\{([a-zA-Z0-9_]+)\}/';
-        $result = preg_match_all($regex, $imagesPath, $matches);
+        $result = preg_match_all($regex, $path, $matches);
         if ($result) {
           foreach ($matches[1] as $match) {
             $replaceAttr = $field->model()->$match();
             $replaceValue = $replaceAttr->isNotEmpty() ? $replaceAttr->value() : '';
-            $imagesPath = str_replace('{' . $match . '}', $replaceValue, $imagesPath);
+            $path = str_replace('{' . $match . '}', $replaceValue, $path);
           }
         }
-        return $imagesPath;
+        return $path;
       }
     },
 

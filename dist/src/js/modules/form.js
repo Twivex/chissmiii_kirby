@@ -98,11 +98,21 @@ export default class Form {
   }
 
   disable() {
-    this.getElement().querySelector("fieldset").setAttribute("disabled", "");
+    this.getElement()
+      .querySelectorAll("fieldset")
+      .forEach((fieldset) => {
+        fieldset.setAttribute("disabled", "");
+        fieldset.classList.add("disabled");
+      });
   }
 
   enable() {
-    this.getElement().querySelector("fieldset").removeAttribute("disabled");
+    this.getElement()
+      .querySelectorAll("fieldset")
+      .forEach((fieldset) => {
+        fieldset.removeAttribute("disabled");
+        fieldset.classList.remove("disabled");
+      });
   }
 
   reset() {

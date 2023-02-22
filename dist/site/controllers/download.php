@@ -35,22 +35,27 @@ return function ($kirby, $target) {
       }
     } elseif (
       $blueprintName === 'ext_album' &&
-      !empty($imagesPath = $targetPage->album_images_path())
+      !empty($targetPage->album_path())
     ) {
-      $imagesPath = $imagesPath->replacePathVars();
+      $albumPath = $targetPage->getAlbumPath(true);
 
-      // images path is relative to servers document root
-      $imagesPath = $_SERVER['DOCUMENT_ROOT'] . $imagesPath;
-
-      if (!file_exists($imagesPath)) {
-        // TODO error handling
+      if (!file_exists($albumPath)) {
+        Header::status(400);
+        error_log("Album path $albumPath does not exist.");
         exit;
       }
 
-      foreach(scandir($imagesPath) as $file) {
-        if (preg_match("/\.(jpg|jpeg|png|gif|mp4|webm|mov|mpeg|mpeg2|avi)$/i", $file)) {
-          $zip->addFile($imagesPath . '/' . $file, $file);
-        }
+      // get all media files
+      $files = $targetPage->getAlbumFiles();
+
+      if (empty($files)) {
+        Header::status(400);
+        error_log("Album path $albumPath does not contain any media files.");
+        exit;
+      }
+
+      foreach ($files as $file) {
+        $zip->addFile($file['path'], $file['name']);
       }
     }
 

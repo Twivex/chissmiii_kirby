@@ -7,7 +7,7 @@ return function ($kirby, $target) {
 
     // check the honeypot and exit if it has been filled in
     if (empty(get('website')) === false) {
-      go($page->url());
+      go($kirby->page()->url());
       exit;
     }
 
@@ -28,11 +28,6 @@ return function ($kirby, $target) {
     $uploads = $kirby->request()->files()->get('uploadFile');;
 
     $blueprintName = strtolower($targetPage->intendedTemplate());
-
-    // ensure uploads is an array
-    if (isset($uploads['name'])) {
-      $uploads = [$uploads];
-    }
 
     if ($blueprintName === 'album') {
       // authenticate as almighty
@@ -82,28 +77,25 @@ return function ($kirby, $target) {
       }
     } elseif (
       $blueprintName === 'ext_album' &&
-      !empty($imagesPath = $targetPage->album_images_path())
+      !empty($albumPath = $targetPage->album_path())
     ) {
-      $imagesPath = $imagesPath->replacePathVars();
+      $albumPath = $targetPage->getAlbumPath(true);
 
-      // images path is relative to servers document root
-      $imagesPath = $_SERVER['DOCUMENT_ROOT'] . $imagesPath;
-
-      if (!file_exists($imagesPath)) {
-        // TODO error handling
-        error_log("Images path $imagesPath does not exist.");
+      if (!file_exists($albumPath)) {
+        Header::status(400);
+        error_log("Album path $albumPath does not exist.");
         exit;
       }
 
       // fetch existing media files
-      $existingFiles = array_filter(scandir($imagesPath), function ($file) use ($imagesPath) {
-        $fileExtension = pathinfo("$imagesPath/$file", PATHINFO_EXTENSION);
-        return in_array($fileExtension, ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'mov', 'mpeg', 'mpeg2', 'avi']);
-      });
+      // $existingFiles = array_filter(scandir($albumPath), function ($file) use ($albumPath) {
+      //   $fileExtension = pathinfo("$albumPath/$file", PATHINFO_EXTENSION);
+      //   return in_array($fileExtension, ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'mov', 'mpeg', 'mpeg2', 'avi']);
+      // });
 
       foreach ($uploads as $upload) {
         // check for duplicate
-        // $duplicates = array_filter($existingFiles, function ($filename) use ($imagesPath, $upload) {
+        // $duplicates = array_filter($existingFiles, function ($filename) use ($albumPath, $upload) {
         //   // get original safename without prefix
         //   $originalSafename = $filename;
         //   if (strpos($filename, 'upload') === 0) {
@@ -113,8 +105,8 @@ return function ($kirby, $target) {
 
         //   return
         //     $originalSafename === F::safeName($upload['name']) &&
-        //     mime_content_type("$imagesPath/$filename") === $upload['type'] &&
-        //     filesize("$imagesPath/$filename") === $upload['size'];
+        //     mime_content_type("$albumPath/$filename") === $upload['type'] &&
+        //     filesize("$albumPath/$filename") === $upload['size'];
         // });
 
         // if (count($duplicates) > 0) {
@@ -126,7 +118,7 @@ return function ($kirby, $target) {
 
         try {
           $name = 'upload' . crc32($upload['name'] . microtime()) . '_' . F::safeName($upload['name']);
-          move_uploaded_file($upload['tmp_name'], "$imagesPath/$name");
+          move_uploaded_file($upload['tmp_name'], "$albumPath/$name");
         } catch (Exception $e) {
           $alert = 'Error on ' . $upload['name'] . ': ' .$e->getMessage();
         }

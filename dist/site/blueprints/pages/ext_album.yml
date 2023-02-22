@@ -2,7 +2,7 @@ title: Externes Album
 fields:
   settings: fieldgroups/album_settings
 
-  album_images_path:
+  album_path:
     type: text
     label: Pfad zu den Bildern
     width: 3/4

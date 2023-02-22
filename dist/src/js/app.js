@@ -38,7 +38,7 @@ document.querySelectorAll("[data-upload-form]").forEach((form) => {
 
     const xhr = new XMLHttpRequest();
     xhr.onloadend = function () {
-      if (this.readyState === 4 && this.status === 200) {
+      if (this.status === 200) {
         if (xhr.getResponseHeader("content-type").indexOf("json") > -1) {
           const { error, success } = JSON.parse(xhr.response);
           // const formDataset = form.getDataset();
@@ -98,9 +98,9 @@ document.querySelectorAll("[data-upload-form]").forEach((form) => {
             }
           }
           form.reset();
-          form.enable();
         }
       }
+      form.enable();
     };
     xhr.open(form.getMethod(), form.getAction(), true);
     xhr.setRequestHeader("Accept", "application/json");
@@ -156,22 +156,24 @@ document.querySelectorAll("[data-download]").forEach((node) => {
         iconNode.innerText = "downloading";
       };
       xhr.onloadend = function () {
-        let tempEl = document.createElement("a");
-        let contentDispostion = xhr.getResponseHeader("Content-Disposition");
-        let filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-        let matches = filenameRegex.exec(contentDispostion);
-        let filename = "";
+        if (this.status === 200) {
+          let tempEl = document.createElement("a");
+          let contentDispostion = xhr.getResponseHeader("Content-Disposition");
+          let filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+          let matches = filenameRegex.exec(contentDispostion);
+          let filename = "";
 
-        if (matches !== null && matches.length > 1) {
-          filename = matches[1].replace(/['"]/g, "");
+          if (matches !== null && matches.length > 1) {
+            filename = matches[1].replace(/['"]/g, "");
+          }
+          document.body.appendChild(tempEl);
+          tempEl.style = "display: none";
+          tempEl.href = window.URL.createObjectURL(blob);
+          tempEl.download = filename;
+          tempEl.click();
+
+          iconNode.innerText = iconName;
         }
-        document.body.appendChild(tempEl);
-        tempEl.style = "display: none";
-        tempEl.href = window.URL.createObjectURL(blob);
-        tempEl.download = filename;
-        tempEl.click();
-
-        iconNode.innerText = iconName;
         node.classList.remove("disabled");
         node.dataset.download = false;
       };

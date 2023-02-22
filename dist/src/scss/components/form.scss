@@ -1,3 +1,9 @@
+fieldset.disabled {
+  input, label {
+    cursor: not-allowed;
+  }
+}
+
 .form-check.disabled {
   &, input, label {
     cursor: not-allowed;

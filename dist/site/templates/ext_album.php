@@ -1,7 +1,7 @@
 <?php snippet('globals/header') ?>
 
 <?php
-  $files = $page->getExtAlbumImages();
+  $files = $page->getAlbumFiles(true);
 ?>
 
 <section>
