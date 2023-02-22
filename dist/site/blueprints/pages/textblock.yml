@@ -5,32 +5,39 @@ image:
   back: white
 
 
-fields:
-  cols_count:
-    extends: fields/cols_count
-    width: 1/2
+tabs:
+  content_tab:
+    label: Inhalt
+    fields:
+      cols_count:
+        extends: fields/cols_count
+        width: 1/2
 
-  text_direction:
-    extends: fields/text_direction
-    width: 1/2
+      text_direction:
+        extends: fields/text_direction
+        width: 1/2
 
-  settings_line:
-    type: line
+      settings_line:
+        type: line
 
-  text_info:
-    label: Info zur Texterstellung
-    type: info
-    text: |
-      Markdown Syntax:
-      \# H1
-      \#\# H2
-      \#\#\# H3
-      \*\*fett\*\*
-      \*kursiv\*
-      (link: https://www.markdownguide.org/cheat-sheet/ text: Cheat Sheet target: _blank)
+      text_info:
+        label: Info zur Texterstellung
+        type: info
+        text: |
+          Markdown Syntax:
+          \# H1
+          \#\# H2
+          \#\#\# H3
+          \*\*fett\*\*
+          \*kursiv\*
+          (link: https://www.markdownguide.org/cheat-sheet/ text: Cheat Sheet target: _blank)
 
-  text:
-    label: Text
-    type: textarea
-    size: huge
+      text:
+        label: Text
+        type: textarea
+        size: huge
 
+
+  files_tab: tabs/files
+
+  settings_tab: tabs/page_settings
