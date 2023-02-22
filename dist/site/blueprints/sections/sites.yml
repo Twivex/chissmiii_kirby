@@ -1,18 +1,19 @@
 type: pages
 empty: Keine Seiten
 templates:
-  - composition._
-  - contact
   - countdown
   - error
   - events
+  - guestbook._
   - gallery
   - gmap
-  - guestbook._
   - home
+  - composition._
+  - contact
+  - songwish._
   - login
   - persons._
-  - songwish._
+  - pages-gallery
   - textblock
   - timeline._
   - virtual-page
