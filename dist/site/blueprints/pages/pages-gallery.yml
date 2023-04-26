@@ -1,6 +1,5 @@
 title: Seitengalerie
 icon: 🗂️
-preset: pages
 image:
   query: false
   back: white
@@ -9,17 +8,32 @@ options:
   changeTemplate: false
   changeStatus: true
 
-drafts:
-  layout: list
-  extends: sections/sites
-  headline: Unveröffentlichte Seiten
+tabs:
 
-unlisted:
-  layout: list
-  extends: sections/sites
-  headline: Ungelistete Seiten
+  content_tab:
+    label: Inhalt
 
-listed:
-  layout: list
-  extends: sections/sites
-  headline: Veröffentlichte Seiten
+    sections:
+
+      drafts:
+        status: draft
+        layout: list
+        extends: sections/sites
+        headline: Unveröffentlichte Seiten
+
+      unlisted:
+        status: unlisted
+        layout: list
+        extends: sections/sites
+        headline: Ungelistete Seiten
+
+      listed:
+        status: listed
+        layout: list
+        extends: sections/sites
+        headline: Veröffentlichte Seiten
+
+  files_tab: tabs/files
+
+
+  settings_tab: tabs/page_settings
