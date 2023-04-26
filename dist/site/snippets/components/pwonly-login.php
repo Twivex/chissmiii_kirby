@@ -13,6 +13,9 @@
   <fielset>
     <div class="row justify-content-center">
       <div class="col-12 col-sm-12 col-md-5 col-lg-4">
+        <p class="text-center">
+          <?= t('password-protection-disclaimer-' . $page->template()->name()) ?>
+        </p>
         <?php snippet('atoms/alert', [
           'name' => 'pwologin-form',
           'type' => 'error',
