@@ -3,7 +3,7 @@
 <?php
   if ($isSecured = $page->secured()->toBool()) {
     $hasAccess = false;
-    $accessUserEmail = Str::replace($page->title()->lower()->value(), ' ', '-') . '@chissmiii.local';
+    $accessUserEmail = $page->slug() . '@chissmiii.local';
     $user = $kirby->user();
     if (!is_null($user)) {
       $hasAccess = $user->email() === $accessUserEmail || $user->role()->name() === 'admin';
