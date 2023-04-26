@@ -9,7 +9,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $kirby->language() ?>">
   <head>
     <meta charset="UTF-8">
     <title><?= $page->title()?> | <?=$site->title() ?></title>
