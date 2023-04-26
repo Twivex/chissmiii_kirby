@@ -12,8 +12,8 @@
 <html lang="<?= $kirby->language() ?>">
   <head>
     <meta charset="UTF-8">
-    <title><?= $page->title()?> | <?=$site->title() ?></title>
-    <meta name="title=" content="<?= $page->title()?> | <?=$site->title() ?>">
+    <title><?= $page->title() ?> | <?= $site->title() ?></title>
+    <meta name="title" content="<?= $page->title() ?> | <?= $site->title() ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php
