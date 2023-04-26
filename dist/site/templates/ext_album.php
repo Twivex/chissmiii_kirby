@@ -48,7 +48,7 @@
       <?php endforeach; ?>
     </div>
 
-    <?php if ($page->show_controls()->toBool()): ?>
+    <?php if ($page->show_controls()->toBool() && count($files) > 1): ?>
       <button class="carousel-control-prev w-7 bg-no-gradient" type="button" data-bs-target="#carousel-<?= $page->uid() ?>" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
