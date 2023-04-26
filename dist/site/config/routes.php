@@ -44,4 +44,20 @@ return [
       return $response;
     }
   ],
+  [
+    'pattern' => 'pwologin/(:all)',
+    'method' => 'POST',
+    'action' => function($uri) {
+      $kirby = kirby();
+      $response = kirby()->controller(
+        'pwologin',
+        compact(
+          'kirby',
+          'uri'
+        )
+      );
+
+      return $response;
+    }
+  ],
 ];

@@ -31,6 +31,11 @@ return [
 
         'image-upload-modal-title' => 'Upload',
         'image-upload-modal-submit' => 'Upload starten',
+
+        'password' => 'Passwort',
+        'login' => 'Anmelden',
+        'password-invalid-hint' => 'Das Passwort ist ungültig.',
+        'required-field-desc' => '* Pflichtfeld',
       ]
     ),
     'url' => NULL

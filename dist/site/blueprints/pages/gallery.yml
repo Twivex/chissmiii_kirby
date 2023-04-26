@@ -9,6 +9,11 @@ tabs:
   content_tab:
     label: Inhalt
     sections:
+      settings:
+        type: fields
+        fields:
+          pwo_login_settings: fieldgroups/pwo_login_settings
+
       drafts:
         status: draft
         layout: cardlets

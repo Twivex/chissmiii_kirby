@@ -1,9 +1,16 @@
+import { Alert } from "bootstrap";
+
 export default class Form {
   constructor(formSelector) {
     this.form = document.querySelector(formSelector);
-    this.defaultSubmit = true;
+
     this.submitListeners = [];
     this.form.addEventListener("submit", (e) => this.formSubmitListener(e));
+    let isAjaxForm = "formAjax" in this.form.dataset;
+    this.defaultSubmit = !isAjaxForm;
+    if (isAjaxForm) {
+      this.submitListeners.push(this.ajaxSubmit);
+    }
   }
 
   get(propertyName) {
@@ -97,6 +104,10 @@ export default class Form {
     return elDataset;
   }
 
+  hasAlert() {
+    return this.getDataset("formAlert") !== undefined;
+  }
+
   disable() {
     this.getElement()
       .querySelectorAll("fieldset")
@@ -176,11 +187,99 @@ export default class Form {
     const input = this.form.querySelector(`input[name="${name}"]`);
     const updateFormData = (e) => {
       if (input.type === "file") {
-        console.log(this);
-        console.log(JSON.stringify(input.files));
         this.formData.append(name, input.files[0]);
       }
     };
     input.addEventListener("change", updateFormData);
+  }
+
+  ajaxSubmit(event, form) {
+    form.disable();
+
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        form.enable();
+        if (this.status === 200) {
+          if (xhr.getResponseHeader("content-type").indexOf("json") > -1) {
+            const { error, success } = JSON.parse(xhr.response);
+
+            const triggerAlert = (
+              alertId,
+              alertContent = null,
+              alertFunction = null
+            ) => {
+              const alertTargetEl = document.getElementById(alertId);
+
+              if (alertTargetEl) {
+                const alertEl = alertTargetEl.cloneNode(true);
+                alertEl.id = "";
+                alertTargetEl.parentNode.append(alertEl);
+                // update content, if necessary
+                if (alertContent !== null) {
+                  alertEl.getElementsByTagName("div")[0].innerHTML =
+                    alertContent;
+                }
+
+                // show alert
+                const bsAlert = new Alert(alertEl);
+                alertEl.classList.remove("visually-hidden");
+                setTimeout(() => {
+                  alertEl.classList.add("show");
+                }, 100);
+
+                // setup autohide, if given
+                const alertAutoclose = alertEl.dataset?.alertAutoclose;
+                if (alertAutoclose) {
+                  setTimeout(() => {
+                    bsAlert.close();
+                  }, alertAutoclose);
+                }
+
+                // trigger additional function, if given
+                if (alertFunction !== null) {
+                  alertFunction();
+                }
+
+                // return true, if alert was triggered
+                return true;
+              }
+
+              return false;
+            };
+
+            if (error === false) {
+              if (success) {
+                triggerAlert(form.getDataset("formAlertSuccess"), success);
+              }
+
+              let ajaxSuccessFunction = form.getDataset("formAjaxSuccess");
+              if (ajaxSuccessFunction === "reload") {
+                window.location.reload();
+              } else if (ajaxSuccessFunction.startsWith("redirect:")) {
+                window.loclation.replace(ajaxSuccessFunction.substr(9));
+              }
+            } else {
+              const errorAlertTriggered = triggerAlert(
+                form.getDataset("formAlertError"),
+                error
+              );
+              if (!errorAlertTriggered) {
+                console.warn(error);
+              }
+            }
+            form.reset();
+          }
+        }
+      }
+    };
+
+    xhr.onloadend = function () {
+      form.enable();
+    };
+
+    xhr.open(form.getMethod(), form.getAction(), true);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.send(form.getFormData());
   }
 }

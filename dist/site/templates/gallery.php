@@ -1,6 +1,21 @@
 <?php snippet('globals/header') ?>
 
+<?php
+  if ($isSecured = $page->secured()->toBool()) {
+    $hasAccess = false;
+    $accessUserEmail = Str::replace($page->title()->lower()->value(), ' ', '-') . '@chissmiii.local';
+    $user = $kirby->user();
+    if (!is_null($user)) {
+      $hasAccess = $user->email() === $accessUserEmail || $user->role()->name() === 'admin';
+    }
+  }
+?>
+
 <section class="pt-4">
+  <?php if ($isSecured && !$hasAccess):
+    snippet('components/pwonly-login', compact('accessUserEmail'));
+  elseif (!$isSecured || $hasAccess):
+  ?>
   <?php
     $lang = $kirby->language();
     $galleryPages = $page->children()->listed();
@@ -107,5 +122,7 @@
 </section>
 
 <?php snippet('components/upload-modal') ?>
+
+<?php endif; ?>
 
 <?php snippet('globals/footer') ?>
