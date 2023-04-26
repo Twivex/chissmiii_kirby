@@ -27,9 +27,8 @@
   <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
 <?php elseif ($type === 'error') : ?>
   <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Fehler:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-  <div>
 <?php endif; ?>
-  <div><?= $content ?></div>
+  <div><?= isset($content) ? $content : '' ?></div>
   <?php if ($isClosable) : ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   <?php endif; ?>
