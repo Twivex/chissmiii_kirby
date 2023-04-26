@@ -2,14 +2,15 @@
 
 <?php
   $files = $page->getAlbumFiles(true);
+  $fileCount = count($files);
 ?>
 
 <section>
   <div id="carousel-<?= $page->uid() ?>" class="carousel slide" data-bs-interval="false" data-bs-touch="true">
 
-    <?php if ($page->show_indicators()->toBool()): ?>
+    <?php if ($page->show_indicators()->toBool() && $fileCount > 1): ?>
       <div class="carousel-indicators">
-        <?php for ($i = 0; $i < count($files); $i++): ?>
+        <?php for ($i = 0; $i < $fileCount; $i++): ?>
           <button type="button" data-bs-target="#carousel-<?= $page->uid()?>" data-bs-slide-to="<?=$i?>" <?= $i === 0 ? 'class="active" aria-current="true"' : ''?> aria-label="Slide <?=$i+1 ?>"></button>
         <?php endfor; ?>
       </div>
@@ -48,7 +49,7 @@
       <?php endforeach; ?>
     </div>
 
-    <?php if ($page->show_controls()->toBool() && count($files) > 1): ?>
+    <?php if ($page->show_controls()->toBool() && $fileCount > 1): ?>
       <button class="carousel-control-prev w-7 bg-no-gradient" type="button" data-bs-target="#carousel-<?= $page->uid() ?>" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
