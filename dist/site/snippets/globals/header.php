@@ -1,6 +1,4 @@
 <?php
-  if ($page->secured()->toBool() === true && !$kirby->user()) go('/');
-
   $appIcon = $site->app_icon()->toFile();
   $appLaunchScreen = $site->app_launch_screen()->toFile();
 
