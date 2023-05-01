@@ -10,14 +10,21 @@ tabs:
   content:
     label: Inhalt
     columns:
-      main:
-        width: 3/4
+      layout_settings:
+        width: 1/1
         fields:
           settings:
             extends: fieldgroups/layout_settings_extended
             fields:
               title_text_direction:
                 type: hidden
+
+      content_contents:
+        width: 3/4
+        fields:
+          content_headline:
+            type: headline
+            label: Inhalte
 
           headline:
             label: Überschrift
@@ -36,10 +43,6 @@ tabs:
             width: 1/2
             type: time
             display: HH:mm
-
-          parent_blueprint:
-            type: hidden
-            default: "{{ page.parent.blueprint.name }}"
 
       sidebar:
         width: 1/4

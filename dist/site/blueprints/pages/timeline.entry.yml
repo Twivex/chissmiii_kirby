@@ -18,10 +18,16 @@ tabs:
     label: Inhalt
     columns:
 
-      main:
-        width: 1/2
+      layout_settings:
+        width: 1/1
         fields:
           layout_settings: fieldgroups/layout_settings_basic
+
+      left:
+        width: 1/2
+        fields:
+          headline:
+            label: Inhalte
 
           tl_date:
             label: Zeitpunkt
@@ -37,7 +43,7 @@ tabs:
             type: textarea
 
 
-      sidebar:
+      right:
         width: 1/2
         fields:
           tl_type:

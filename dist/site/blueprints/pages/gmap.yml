@@ -13,9 +13,8 @@ fields:
         extends: fields/cols_count
         width: 1/3
 
-      settings_line:
-        type: line
-
+  headline:
+    label: Inhalte
 
   gmaps_link:
     width: 1/2

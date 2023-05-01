@@ -1,6 +1,10 @@
 type: group
 fields:
 
+  layout_settings_headline:
+    type: headline
+    label: Layout
+
   show_title_info:
     type: info
     label: Titel anzeigen?

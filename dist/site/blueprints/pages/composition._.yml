@@ -14,10 +14,17 @@ tabs:
     label: Inhalt
     sections:
 
-      content_settings:
+      layout_settings:
         type: fields
         fields:
           layout_settings: fieldgroups/layout_settings_basic
+
+      elemens_headline:
+        type: fields
+        fields:
+          headline:
+            type: headline
+            label: Inhalte
 
       elements:
         layout: list

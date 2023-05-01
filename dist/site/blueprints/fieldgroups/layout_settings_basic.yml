@@ -15,6 +15,3 @@ fields:
         width: 1/2
         when:
           show_title: true
-
-      settings_line:
-        type: line

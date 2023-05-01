@@ -16,10 +16,16 @@ tabs:
     label: Inhalt
     columns:
 
+      layout_settings:
+        width: 1/1
+        fields:
+          layout_settings: fieldgroups/layout_settings_basic
+
       main:
         width: 3/4
         fields:
-          layout_settings: fieldgroups/layout_settings_basic
+          headline:
+            label: Inhalte
 
           role:
             label: Rolle

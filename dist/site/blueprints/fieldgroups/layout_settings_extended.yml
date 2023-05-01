@@ -19,6 +19,3 @@ fields:
       title_text_direction:
         width: 1/2
         whenQuery: parent_blueprint != "pages/composition._" || show_title
-
-      settings_line:
-        type: line

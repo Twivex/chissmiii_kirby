@@ -17,8 +17,12 @@ sections:
         label: Abwechselnde Ausrichtung? (links, rechts, links, …)
         type: toggle
 
-      settings_line:
-        type: line
+
+  content_headline:
+    type: fields
+    fields:
+      headline:
+        label: Inhalte
 
 
   drafts:

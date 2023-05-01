@@ -7,6 +7,9 @@ image:
 fields:
   layout_settings: fieldgroups/layout_settings_extended
 
+  headline:
+    label: Inhalte
+
   countries:
     label: Länder
     type: number
