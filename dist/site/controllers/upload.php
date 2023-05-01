@@ -81,10 +81,13 @@ return function ($kirby, $target) {
     ) {
       $albumPath = $targetPage->getAlbumPath(true);
 
-      if (!file_exists($albumPath)) {
-        Header::status(400);
-        error_log("Album path $albumPath does not exist.");
-        exit;
+      if (!is_dir($albumPath)) {
+        $albumPathCreated = mkdir($albumPath, 0775, true);
+        if (!$albumPathCreated) {
+          Header::status(400);
+          error_log("Album path $albumPath could not be created.");
+          exit;
+        }
       }
 
       // fetch existing media files
