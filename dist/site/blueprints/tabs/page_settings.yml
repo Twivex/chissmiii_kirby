@@ -11,4 +11,7 @@ sections:
         type: toggle
         width: 1/4
 
-  page_settings: fieldgroups/page_settings
+  page_settings:
+    extends: fieldgroups/page_settings
+    when:
+      settings_enabled: true
