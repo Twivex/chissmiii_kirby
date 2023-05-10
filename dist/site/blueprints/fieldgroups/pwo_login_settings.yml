@@ -15,9 +15,12 @@ fields:
       - "Ja"
 
   pwo_user:
-    label: Benutzer
+    label: Account
     width: 1/4
     type: users
+    default:
+    when:
+      secured: true
     query: kirby.users.filterBy("role", "media")
 
   secured_info:
