@@ -9,10 +9,22 @@ tabs:
   content_tab:
     label: Inhalt
     sections:
-      settings:
+
+      layout_settings:
+        type: fields
+        fields:
+          layout_settings: fieldgroups/layout_settings_extended
+
+      pwo_login_settings:
         type: fields
         fields:
           pwo_login_settings: fieldgroups/pwo_login_settings
+
+      content_headline:
+        type: fields
+        fields:
+          headline:
+            label: Inhalte
 
       drafts:
         status: draft

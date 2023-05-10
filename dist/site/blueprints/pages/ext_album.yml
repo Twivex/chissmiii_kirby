@@ -1,18 +1,29 @@
 title: Externes Album
-fields:
-  settings: fieldgroups/album_settings
 
-  album_path:
-    type: text
-    label: Pfad zu den Bildern
-    placeholder: $cloud/{title}
-    default: $cloud/{title}
+tabs:
+  content:
+    label: Inhalt
+    fields:
 
-  album_cover:
-    label: Cover
-    type: files
-    multiple: false
-    back: white
-    max: 1
-    layout: cards
-    width: 1/4
+      layout_setting: fieldgroups/layout_settings_extended
+
+      pwo_login_settings: fieldgroups/pwo_login_settings
+
+      album_settings: fieldgroups/album_settings
+
+      album_path:
+        type: text
+        label: Pfad zu den Bildern
+        placeholder: $cloud/{slug}
+        default: $cloud/{slug}
+
+      album_cover:
+        label: Cover
+        type: files
+        multiple: false
+        back: white
+        max: 1
+        layout: cards
+        width: 1/4
+
+  files: tabs/files

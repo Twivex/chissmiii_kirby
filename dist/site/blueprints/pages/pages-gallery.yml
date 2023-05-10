@@ -15,6 +15,17 @@ tabs:
 
     sections:
 
+      layout_settings:
+        type: fields
+        fields:
+          layout_settings: fieldgroups/layout_settings_extended
+
+      content_headline:
+        type: fields
+        fields:
+          headline:
+            label: Inhalte
+
       drafts:
         status: draft
         layout: list
