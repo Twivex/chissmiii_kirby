@@ -33,50 +33,141 @@ Kirby::plugin('chissmiii/custom', [
 
   'pageMethods' => [
 
+
     'isTopLevel' => function () {
+
       return $this->parents()->count() === 0;
+
     },
 
-    'showTitle' => function () {
-      if ($this->blueprint()->field('show_title') !== null) {
-        return $this->show_title()->toBool();
+
+    'getSecuredTopLevelPage' => function(): Kirby\Cms\Page | null {
+
+      $pagesToTcheck = $this->parents()->prepend($this)->flip();
+      $securedPages = $pagesToTcheck->filter(function(Kirby\Cms\Page $p) {
+        return $p->secured()->toBool() && $p->pwo_user()->isNotEmpty();
+      });
+
+      return $securedPages->first();
+
+    },
+
+
+    'isSecured' => function () {
+
+      $securedTopLevelPage = $this->getSecuredTopLevelPage();
+      return !is_null($securedTopLevelPage);
+
+    },
+
+
+    'getAccessUser' => function () {
+
+      $securedTopLevelPage = $this->getSecuredTopLevelPage();
+
+      if (!is_null($securedTopLevelPage)) {
+        return $securedTopLevelPage->pwo_user()->toUser();
       }
+
+      return null;
+
+    },
+
+
+    'userHasAccess' => function () {
+
+      $loggedInUser = kirby()->user();
+      $accessUser = $this->getAccessUser();
+
+      return
+        !is_null($loggedInUser) && !is_null($accessUser) &&
+        ($loggedInUser->id() === $accessUser->id() || $loggedInUser->isAdmin());
+
+    },
+
+
+    'parentBlueprint' => function () {
+
+      if ($this->isTopLevel()) {
+        return null;
+      }
+
+      return $this->parent()->blueprint()->name();
+
+    },
+
+
+    'showTitle' => function () {
+
       if ($this->isTopLevel()) {
         return true;
       }
+
+      if (
+        !is_null($this->parentBlueprint()) &&
+        $this->parentBlueprint() !== 'pages/composition._'
+      ) {
+        return true;
+      }
+
+      if ($this->blueprint()->field('show_title') !== null) {
+        return $this->show_title()->toBool();
+      }
+
       return false;
+
     },
+
 
     'headingLevel' => function () {
+
       $headingLevel = $this->isTopLevel() ? '1' : '2';
       return $headingLevel;
+
     },
 
+
     'headingTextDirectionClass' => function () {
+
       if ($this->title_text_direction()->isNotEmpty()) {
         return $this->title_text_direction()->directionClass();
       }
+
       return '';
+
     },
 
+
     'columns' => function () {
+
       if ($this->cols_count()->isNotEmpty()) {
         return $this->cols_count()->optionKey();
       }
+
       return null;
+
     },
 
+
     'columnsClass' => function ($size = 'lg') {
+
       if (!empty($cols = $this->columns())) {
         return "col-$size-$cols";
       }
+
       return '';
+
     },
+
+
   ],
+
 
   'fieldMethods' => [
 
+
     'directionClass' => function ($field) {
+
       $directionClass = '';
       if (strpos($field->key(), 'text_direction') !== false) {
         if (!empty($direction = $field->value())) {
@@ -91,23 +182,36 @@ Kirby::plugin('chissmiii/custom', [
           }
         }
       }
+
       return $directionClass;
+
     },
 
+
     'optionKey' => function ($field) {
+
       $blueprintField = $field->model()->blueprint()->field($field->key());
+
       if (isset($blueprintField['type']) && $blueprintField['type'] === 'select') {
+
         $options = $blueprintField['options'];
         $optionKey = array_search($field->value(), $options);
+
         if ($optionKey !== false) {
           return $optionKey;
         }
+
       }
+
       return $field->value();
+
     },
 
+
     'cssColorVar' => function ($field, $addRgb = false, $variants = []) {
+
       if (strpos($field->key(), 'color') !== false) {
+
         // abort if field value is empty
         if (empty($color = $field->value())) {
           return '';
@@ -145,26 +249,38 @@ Kirby::plugin('chissmiii/custom', [
 
         // return the list of color vars, separated by newlines
         return implode("\n", $colorVarsOuput) . "\n";
+
       }
+
     },
 
+
     'replacePathVars' => function ($field) {
+
       if (strpos($field->key(), 'path') !== false) {
+
         $path = $field->value();
         $path = str_replace('$cloud', option('cloud_path'), $path);
         $matches = [];
         $regex = '/\{([a-zA-Z0-9_]+)\}/';
         $result = preg_match_all($regex, $path, $matches);
+
         if ($result) {
+
           foreach ($matches[1] as $match) {
             $replaceAttr = $field->model()->$match();
             $replaceValue = $replaceAttr->isNotEmpty() ? $replaceAttr->value() : '';
             $path = str_replace('{' . $match . '}', $replaceValue, $path);
           }
+
         }
+
         return $path;
+
       }
+
     },
+
 
   ],
 
