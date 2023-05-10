@@ -1,4 +1,6 @@
-<section class="pt-4">
+<section>
+
+  <?php snippet('atoms/section-heading', [ 'data' => $data ]); ?>
 
   <?php
     $lang = $kirby->language();
@@ -21,6 +23,7 @@
           $showPageLinkBtn = true;
           $pageLinkUri = $subPage->url();
           $pageLinkTitle = "$pageType öffnen";
+          $addClass = 'mb-4';
           $imgWidth = 4;
           $textWidth = 8;
           snippet('molecules/img_card_horizontal', compact(
@@ -31,6 +34,7 @@
             'showPageLinkBtn',
             'pageLinkUri',
             'pageLinkTitle',
+            'addClass',
             'imgWidth',
             'textWidth'
           ));

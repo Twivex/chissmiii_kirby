@@ -1,21 +1,13 @@
 <?php snippet('globals/header') ?>
 
-<?php
-  if ($isSecured = $page->secured()->toBool()) {
-    $hasAccess = false;
-    $accessUserEmail = $page->slug() . '@chissmiii.local';
-    $user = $kirby->user();
-    if (!is_null($user)) {
-      $hasAccess = $user->email() === $accessUserEmail || $user->role()->name() === 'admin';
-    }
-  }
-?>
+<section>
 
-<section class="pt-4">
-  <?php if ($isSecured && !$hasAccess):
-    snippet('components/pwonly-login', compact('accessUserEmail'));
-  elseif (!$isSecured || $hasAccess):
-  ?>
+  <?php if ($page->isSecured() && !$page->userHasAccess()):
+    snippet('components/pwonly-login', ['accessUserEmail' => $page->getAccessUser()->email()]);
+  else: ?>
+
+  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
+
   <?php
     $lang = $kirby->language();
     $galleryPages = $page->children()->listed();
