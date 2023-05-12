@@ -12,10 +12,24 @@ sections:
       layout_settings:
         extends: fieldgroups/layout_settings_extendable
         fields:
-
           cols_count:
             extends: fields/cols_count
             width: 1/3
+
+      songwish_settings_headline:
+        type: headline
+        label: Einstellungen
+
+      group_by:
+        type: select
+        label: Gruppieren nach
+        width: 1/3
+        default: title
+        options:
+          title: Titel
+          date: Datum
+
+
 
 
   content_headline:
