@@ -25,6 +25,7 @@ sections:
         label: Gruppieren nach
         width: 1/3
         default: title
+        required: true
         options:
           title: Titel
           date: Datum
