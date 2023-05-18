@@ -2,5 +2,6 @@ type: pages
 headline: Galerie
 template:
   - ext_album
+  - ext_album2
   - album
 empty: Keine Alben

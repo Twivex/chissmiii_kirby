@@ -13,7 +13,7 @@
 
     <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
 
-    <div id="carousel-<?= $page->uid() ?>" class="carousel slide" data-bs-interval="false" data-bs-touch="true">
+    <div id="carousel-<?= $page->uid() ?>" class="carousel slide" data-bs-interval="false" data-bs-touch="true" data-lazy-load="true">
 
       <?php if ($page->show_indicators()->toBool() && $fileCount > 1): ?>
         <div class="carousel-indicators">
@@ -25,17 +25,17 @@
 
       <div class="carousel-inner" style="max-height: 100vh">
         <?php foreach ($files as $k => $file): ?>
-          <div class="carousel-item <?= $k === 0 ? 'active' : '' ?> bg-black">
+          <div class="carousel-item <?= $k === 0 ? 'active' : '' ?> bg-black" data-carousel-index="<?=$k?>">
 
             <div class="d-flex justify-content-center align-items-center m-0" style="height: calc(100vh - 232px)">
               <?php if ($file['type'] === 'image'): ?>
 
-                <img src="<?= $file['url'] ?>" class="d-page mw-100 mh-100" >
+                <img data-src="<?= $file['url'] ?>" class="d-page mw-100 mh-100" >
 
               <?php elseif ($file['type'] === 'video'): ?>
 
                 <video class="d-page mw-100 mh-100" controls>
-                  <source src="<?= $file['url'] ?>" type="video/mp4">
+                  <source data-src="<?= $file['url'] ?>" type="video/mp4">
                 </video>
 
               <?php endif; ?>

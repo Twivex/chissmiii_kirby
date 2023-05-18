@@ -36,7 +36,7 @@
             if (empty($imageUrl)) {
               $imageUrl = $firstImage->url();
             }
-          } else if ($blueprintName === 'ext_album') {
+          } else if ($blueprintName === 'ext_album' || $blueprintName === 'ext_album2') {
             $files = $galleryPage->getAlbumFiles(true);
             $mediaCount = count($files);
             $images = array_filter($files, function($file) {

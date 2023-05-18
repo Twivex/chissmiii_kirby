@@ -2,6 +2,8 @@ import Form from "./modules/form";
 import EntryCollector from "./modules/entry-collector";
 import CookieConsent from "./modules/cookie-consent";
 import Countdown from "./modules/countdown";
+import MasonryGallery from "./modules/masonry-gallery";
+import Slider from "./modules/slider";
 import { Alert } from "bootstrap";
 
 CookieConsent.init();
@@ -112,17 +114,9 @@ document.querySelectorAll("[data-countdown]").forEach((node) => {
   new Countdown(node);
 });
 
-// auto pause videos in carousel on sliding
-document.querySelectorAll(".carousel").forEach((node) => {
-  node.addEventListener("slide.bs.carousel", (e) => {
-    let activeItem = node.querySelector(".carousel-item.active");
-    let video = activeItem.querySelector("video");
-
-    if (video) {
-      video.pause();
-    }
-  });
-});
+document
+  .querySelectorAll(".carousel:not([data-slider-init='true'])")
+  .forEach((node) => new Slider(node));
 
 document.querySelectorAll('[data-bs-toggle="modal"]').forEach((node) => {
   if (node.dataset.bsTarget === "#modal-upload-form") {
@@ -186,3 +180,7 @@ document.querySelectorAll("[data-download]").forEach((node) => {
     }
   });
 });
+
+document
+  .querySelectorAll(".mm-masonry")
+  .forEach((container) => new MasonryGallery(container));

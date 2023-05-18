@@ -16,6 +16,7 @@ return [
     'js' => 'resources/js/',
     'css' => 'resources/css/',
     'ms_css' => 'resources/material-symbols/',
+    'mm_masonry_css' => 'resources/mm-masonry/css/',
     'languages' => 'resources/languages/',
   ],
   'cloud_path' => $_ENV['CLOUD_PATH'] ?? '/cloud',

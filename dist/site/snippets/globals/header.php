@@ -16,14 +16,14 @@
     <meta name="title" content="<?= $page->title() ?> | <?= $site->title() ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <?= css(option('resource_paths')['ms_css'] . 'rounded.css') ?>
+    <?= css(option('resource_paths')['mm_masonry_css'] . 'mm-masonry.css') ?>
+
     <?php
       $stylesPath = option('resource_paths')['css'] . 'style.css';
       $stylesMod = md5('T' . filemtime($stylesPath));
+      echo css("$stylesPath?mod=$stylesMod");
     ?>
-
-    <?= css(option('resource_paths')['ms_css'] . 'rounded.css') ?>
-
-    <?= css("$stylesPath?mod=$stylesMod") ?>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento">
