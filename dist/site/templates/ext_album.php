@@ -39,17 +39,22 @@
                 </video>
 
               <?php endif; ?>
-              <?php snippet('atoms/fab', [
-                'title' => 'Album herunterladen',
-                'iconSize' => 'lg',
-                'iconName' => 'download_for_offline',
-                'additionalClasses' => ['fab-br'],
-                'url' => $file['url'],
-                'attributes' => [
-                  'data-download' => 'false',
-                  'download' => $file['name'],
-                ]
-              ]) ?>
+
+              <?php
+                if ($page->downloadable()->toBool()) {
+                  snippet('atoms/fab', [
+                    'title' => 'Album herunterladen',
+                    'iconSize' => 'lg',
+                    'iconName' => 'download_for_offline',
+                    'additionalClasses' => ['fab-br'],
+                    'url' => $file['url'],
+                    'attributes' => [
+                      'data-download' => 'false',
+                      'download' => $file['name'],
+                    ],
+                  ]);
+                }
+              ?>
             </div>
 
           </div>

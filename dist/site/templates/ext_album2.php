@@ -18,13 +18,17 @@
 
       <?php foreach ($files as $k => $file): ?>
 
-        <?php if ($file['type'] === 'image'): ?>
-          <div class="mm-masonry__item cursor-pointer" data-gallery-index="<?= $k ?>">
-            <img class="mm-masonry__img img-fluid pb-sm-4" data-src="<?= htmlspecialchars($file['url']) ?>" />
-          </div>
-        <?php elseif ($file['type'] === 'video'): ?>
-          <!-- TODO implement videos -->
-        <?php endif; ?>
+        <div class="mm-masonry__item cursor-pointer" data-gallery-index="<?= $k ?>">
+          <?php if ($file['type'] === 'image'): ?>
+
+            <img class="mm-masonry__img img-fluid pb-sm-4" data-src="<?= $file['url'])?>" />
+
+          <?php elseif ($file['type'] === 'video'): ?>
+
+              <!-- TODO implement videos -->
+
+            <?php endif; ?>
+        </div>
 
       <?php endforeach; ?>
 
@@ -62,17 +66,22 @@
                   </video>
 
                 <?php endif; ?>
-                <?php snippet('atoms/fab', [
-                  'title' => 'Album herunterladen',
-                  'iconSize' => 'lg',
-                  'iconName' => 'download_for_offline',
-                  'additionalClasses' => ['fab-br'],
-                  'url' => $file['url'],
-                  'attributes' => [
-                    'data-download' => 'false',
-                    'download' => $file['name'],
-                  ]
-                ]) ?>
+
+                <?php
+                  if ($page->downloadable()->toBool()) {
+                    snippet('atoms/fab', [
+                      'title' => 'Album herunterladen',
+                      'iconSize' => 'lg',
+                      'iconName' => 'download_for_offline',
+                      'additionalClasses' => ['fab-br'],
+                      'url' => $file['url'],
+                      'attributes' => [
+                        'data-download' => 'false',
+                        'download' => $file['name'],
+                      ],
+                    ]);
+                  }
+                ?>
               </div>
 
             </div>
