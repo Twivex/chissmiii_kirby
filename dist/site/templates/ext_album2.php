@@ -21,7 +21,7 @@
         <div class="mm-masonry__item cursor-pointer" data-gallery-index="<?= $k ?>">
           <?php if ($file['type'] === 'image'): ?>
 
-            <img class="mm-masonry__img img-fluid pb-sm-4" data-src="<?= $file['url'])?>" />
+            <img class="mm-masonry__img img-fluid pb-sm-4" data-src="<?= $file['url']?>" />
 
           <?php elseif ($file['type'] === 'video'): ?>
 
