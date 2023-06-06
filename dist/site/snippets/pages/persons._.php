@@ -8,7 +8,7 @@
   $personsArray = $persons->toArray();
 
   $allPersonsHaveCategories = array_reduce($personsArray, function($carry, $person) {
-    return $carry && isset($person['content']['category']);
+    return $carry && isset($person['content']['category']) && !empty($person['content']['category']);
   }, true);
 
   $categories = [];
