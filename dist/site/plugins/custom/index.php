@@ -35,8 +35,9 @@ Kirby::plugin('chissmiii/custom', [
 
 
     'isTopLevel' => function () {
-
-      return $this->parents()->count() === 0 || ($this->parents()->count() === 1 && $this->parents()->first()->blueprint()->name() === 'pages/composition._');
+      return
+        $this->parents()->count() === 0 ||
+        ($this->parents()->count() === 1 && $this->parents()->first()->blueprint()->name() === 'pages/virtual-page');
 
     },
 
