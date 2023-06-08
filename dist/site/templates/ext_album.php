@@ -34,8 +34,8 @@
 
               <?php elseif ($file['type'] === 'video'): ?>
 
-                <video class="d-page mw-100 mh-100" controls>
-                  <source data-src="<?= $file['url'] ?>" type="video/mp4">
+                <video class="d-page mw-100 mh-100" controls preload="metadata">
+                  <source src="<?= $file['url'] ?>" type="video/mp4">
                 </video>
 
               <?php endif; ?>
