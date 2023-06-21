@@ -38,7 +38,7 @@
             <h4 class="fs-5"><?= t('cookie-settings-title') ?></h4>
             <?= kirbytext(t('cookie-settings-text')) ?>
 
-            <div class="form-check disabled">
+            <div class="form-check form-switch disabled">
               <input class="form-check-input" type="checkbox" value="" id="requiredCookies" checked disabled>
               <label class="form-check-label" for="requiredCookies">
                 <span class="text fw-bold"><?= t('cookie-settings-required-title') ?></span>
@@ -46,7 +46,7 @@
               </label>
             </div>
 
-            <div class="form-check">
+            <div class="form-check form-switch ">
               <input class="form-check-input" type="checkbox" value="" id="applicationCookies" <?= $applicationCookieAccepted ? 'checked' : '' ?>>
               <label class="form-check-label" for="applicationCookies">
                 <span class="text fw-bold"><?= t('cookie-settings-application-title') ?></span>
