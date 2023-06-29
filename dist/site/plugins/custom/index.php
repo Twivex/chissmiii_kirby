@@ -210,44 +210,76 @@ Kirby::plugin('chissmiii/custom', [
 
 
     'cssColorVar' => function ($field, $addRgb = false, $variants = []) {
+      $fieldKey = $field->key();
+      $isSelectVar = strpos($fieldKey, 'select') !== false;
+      $isColorVar = strpos($fieldKey, 'color') !== false;
 
-      if (strpos($field->key(), 'color') !== false) {
+      if ($isSelectVar || $isColorVar) {
+
+        $fieldValue = $field->value();
 
         // abort if field value is empty
-        if (empty($color = $field->value())) {
+        if (empty($fieldValue)) {
           return '';
         }
 
         $colorVarsOuput = [];
-        $colorVarName = '--';
 
-        // use field key as var name, stripping out 'color_' prefix and replacing underscores with dashes
-        $colorVarName .= str_replace('color_', '', $field->key());
-        $colorVarName = str_replace('_', '-', $colorVarName);
+        if ($isSelectVar) {
+          // variable is a color select, so get the selected color variable
+          $colorVarName = '--' . str_replace('select_', '', $fieldKey);
+          $colorVarName = str_replace('_', '-', $colorVarName);
+          $selectedColorVar = '--' . str_replace('color_', '', $fieldValue);
+          $selectedColorVar = str_replace('_', '-', $selectedColorVar);
 
-        // add color var to the list
-        array_push($colorVarsOuput, "$colorVarName: $color;");
+          array_push($colorVarsOuput, "$colorVarName: var($selectedColorVar);");
 
-        // if rgb variant is requested, add it to the list
-        if ($addRgb) {
-          $colorHex = str_replace('#', '', $color);
-          $rgbColors = [
-            hex2digit(substr($colorHex, 0, 2)),
-            hex2digit(substr($colorHex, 2, 2)),
-            hex2digit(substr($colorHex, 4, 2)),
-          ];
-          $rgbColorsString = implode(', ', $rgbColors);
-          array_push($colorVarsOuput, "$colorVarName-rgb: $rgbColorsString;");
-        }
-
-        // if variants are requested, add them to the list
-        if (!empty($variants)) {
-          foreach ($variants as $variantName => $variant) {
-            $variantColor = sass_mix($color, $variant['color'], $variant['weight']);
-            array_push($colorVarsOuput, "$colorVarName-$variantName: $variantColor;");
+          // if rgb variant is requested, add the rgb variant of the selected variable to the list
+          if ($addRgb) {
+            array_push($colorVarsOuput, "$colorVarName-rgb: var($selectedColorVar-rgb);");
           }
-        }
 
+          // if variants are requests, add variants of the selected variable to the list
+          if (!empty($variants)) {
+            foreach (array_keys($variants) as $variantName) {
+              array_push(
+                $colorVarsOuput,
+                "$colorVarName-$variantName: var($selectedColorVar-$variantName);"
+              );
+            }
+          }
+
+        } elseif ($isColorVar) {
+          $color = $fieldValue;
+
+          // use field key as var name, stripping out 'color_' prefix and replacing underscores with dashes
+          $colorVarName = '--' . str_replace('color_', '', $fieldKey);
+          $colorVarName = str_replace('_', '-', $colorVarName);
+
+          // add color var to the list
+          array_push($colorVarsOuput, "$colorVarName: $color;");
+
+          // if rgb variant is requested, add it to the list
+          if ($addRgb) {
+            $colorHex = str_replace('#', '', $color);
+            $rgbColors = [
+              hex2digit(substr($colorHex, 0, 2)),
+              hex2digit(substr($colorHex, 2, 2)),
+              hex2digit(substr($colorHex, 4, 2)),
+            ];
+            $rgbColorsString = implode(', ', $rgbColors);
+            array_push($colorVarsOuput, "$colorVarName-rgb: $rgbColorsString;");
+          }
+
+          // if variants are requested, add them to the list
+          if (!empty($variants)) {
+            foreach ($variants as $variantName => $variant) {
+              $variantColor = sass_mix($color, $variant['color'], $variant['weight']);
+              array_push($colorVarsOuput, "$colorVarName-$variantName: $variantColor;");
+            }
+          }
+
+        }
         // return the list of color vars, separated by newlines
         return implode("\n", $colorVarsOuput) . "\n";
 

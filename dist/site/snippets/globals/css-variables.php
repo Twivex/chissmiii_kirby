@@ -62,6 +62,26 @@
         }
       }
 
+      $selectColorsKeys = array_filter($data->content()->keys(), function ($key) {
+        return strpos($key, 'select') === 0;
+      });
+
+      foreach($selectColorsKeys as $selectColorKey) {
+        $selectColorField = $data->content()->get($selectColorKey);
+        if ($selectColorField->isEmpty()) {
+          $selectColorField = $selectColorField->value('color_bs_primary');
+        }
+        $colorKey = $selectColorField->value();
+        $variantKey = str_replace('color_', 'variant_', $colorKey);
+        $useVariant = $data->content()->get($variantKey)->value();
+        if ($data->content()->get($variantKey)->value() === 'true') {
+          echo $selectColorField->cssColorVar(false, $hoverVariants);
+        } else {
+          echo $selectColorField->cssColorVar(false);
+        }
+
+      }
+
 
       $variableKeys = array_filter($data->content()->keys(), function ($key) {
         return strpos($key, 'variable') === 0;

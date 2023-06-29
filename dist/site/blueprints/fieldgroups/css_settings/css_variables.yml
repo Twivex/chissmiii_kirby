@@ -7,7 +7,7 @@ fields:
     type: text
 
   variable_cm_navigation_offcanvas_active_icon_opacity:
-    label: Navigation Active Icon Opacity
+    label: Navigation Offcanvas Active Icon Opacity
     width: 1/4
     type: text
 
