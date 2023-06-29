@@ -203,7 +203,6 @@ fields:
     width: 1/4
     type: select
     default: color_bs_primary
-    required: true
     options:
       color_bs_primary: Primary (default)
       color_bs_secondary: Secondary
