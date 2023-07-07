@@ -17,7 +17,7 @@
 
   &-secondary {
     &, &:disabled {
-      color: var(--cm-secondary-contrast);
+      color: var(--cm-secondary-contrast) !important;
       background-color: var(--bs-secondary);
       border-color: var(--bs-secondary);
     }
