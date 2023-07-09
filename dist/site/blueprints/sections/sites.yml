@@ -6,6 +6,8 @@ templates:
   - events
   - guestbook._
   - gallery
+  - ext_album
+  - ext_album2
   - gmap
   - home
   - composition._
