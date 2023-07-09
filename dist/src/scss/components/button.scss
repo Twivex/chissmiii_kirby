@@ -1,7 +1,7 @@
 .btn {
   &-primary {
     &, &:disabled {
-      color: var(--cm-primary-contrast);
+      color: var(--cm-primary-contrast) !important;
       background-color: var(--bs-primary);
       border-color: var(--bs-primary);
     }
