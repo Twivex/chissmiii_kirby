@@ -3,6 +3,8 @@ headline: Elemente
 templates:
   - countdown
   - gallery
+  - ext_album
+  - ext_album2
   - gmap
   - contact
   - songwish._
