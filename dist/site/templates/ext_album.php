@@ -11,7 +11,13 @@
     snippet('components/pwonly-login', ['accessUserEmail' => $page->getAccessUser()->email()]);
   else: ?>
 
-    <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
+    <?php
+      $parentTitle = $page->parent()->title();
+      if ($parentTitle) {
+        $page = $page->changeTitle($parentTitle . ' - ' . $page->title());
+      }
+      snippet('atoms/section-heading', [ 'data' => $page ]);
+    ?>
 
     <div id="carousel-<?= $page->uid() ?>" class="carousel slide" data-bs-interval="false" data-bs-touch="true" data-lazy-load="true">
 

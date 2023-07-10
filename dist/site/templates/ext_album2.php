@@ -12,7 +12,13 @@
     snippet('components/pwonly-login', ['accessUserEmail' => $page->getAccessUser()->email()]);
   else: ?>
 
-    <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
+    <?php
+      $parentTitle = $page->parent()->title();
+      if ($parentTitle) {
+        $page = $page->changeTitle($parentTitle . ' - ' . $page->title());
+      }
+      snippet('atoms/section-heading', [ 'data' => $page ]);
+    ?>
 
     <div class="mm-masonry" data-target-modal="#modal-gallery-slider-<?= $uid ?>" data-target-carousel="#carousel-<?= $uid ?>">
 
