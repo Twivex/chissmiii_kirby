@@ -14,7 +14,7 @@
     <?php
       $parentTitle = $page->parent()->title();
       if ($parentTitle) {
-        $page = $page->changeTitle($parentTitle . ' - ' . $page->title());
+        $page = $page->changeTitle($parentTitle . ' – ' . $page->title());
       }
       snippet('atoms/section-heading', [ 'data' => $page ]);
     ?>
