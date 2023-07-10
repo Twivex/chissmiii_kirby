@@ -21,6 +21,7 @@ services:
       - resources_dist_js:/var/www/html/resources/js
       - resources_dist_css:/var/www/html/resources/css
       - cloud:/cloud
+      - thumbnails:/var/www/html/thumbnails
 
 volumes:
 
@@ -28,6 +29,13 @@ volumes:
     driver: local
     driver_opts:
       device: /cloud
+      type: none
+      o: bind
+
+  thumbnails:
+    driver: local
+    driver_opts:
+      device: ${EXTERNAL_VOLUMES_PATH}/thumbnails
       type: none
       o: bind
 
