@@ -6,13 +6,17 @@
   }
   $hTag .= ">";
   $hTagClose = "</h$hL>";
+  $title = $data->title();
+  if (isset($showParentTitle) && $showParentTitle) {
+    $title = $data->parent()->title() . ' – ' . $title;
+  }
 ?>
 
 <?php if ($data->showTitle()): ?>
   <div class="row justify-content-center">
     <div class="col-12 <?= $data->columnsClass() ?>">
       <?= $hTag ?>
-        <?= $data->title() ?>
+        <?= $title ?>
       <?= $hTagClose ?>
     </div>
   </div>

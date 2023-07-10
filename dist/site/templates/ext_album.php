@@ -12,11 +12,10 @@
   else: ?>
 
     <?php
-      $parentTitle = $page->parent()->title();
-      if ($parentTitle) {
-        $page = $page->changeTitle($parentTitle . ' – ' . $page->title());
-      }
-      snippet('atoms/section-heading', [ 'data' => $page ]);
+      snippet('atoms/section-heading', [
+        'data' => $page,
+        'showParentTitle' => $page->parent() !== null,
+      ]);
     ?>
 
     <div id="carousel-<?= $page->uid() ?>" class="carousel slide" data-bs-interval="false" data-bs-touch="true" data-lazy-load="true">
