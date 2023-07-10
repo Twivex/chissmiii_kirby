@@ -4,6 +4,8 @@
   $files = $page->getAlbumFiles(true);
   $fileCount = count($files);
   $uid = $page->uid();
+  $imgPlaceholderImage = $site->files()->filterBy('tags','img_placeholder')->first();
+  $videoPlaceholderImage = $site->files()->filterBy('tags','video_placeholder')->first();
 ?>
 
 <section>
@@ -23,17 +25,40 @@
 
       <?php foreach ($files as $k => $file): ?>
 
-        <div class="mm-masonry__item cursor-pointer" data-gallery-index="<?= $k ?>">
-          <?php if ($file['type'] === 'image'): ?>
+        <?php if ($file['type'] === 'image'): ?>
 
-            <img class="mm-masonry__img img-fluid pb-sm-4" data-src="<?= $file['url']?>" />
+          <div
+            class="mm-masonry__item cursor-pointer position-relative"
+            style="--w: <?=$imgPlaceholderImage->width()?>; --h: <?=$imgPlaceholderImage->height()?>;"
+            data-gallery-index="<?= $k ?>">
 
-          <?php elseif ($file['type'] === 'video'): ?>
+            <img
+            class="mm-masonry__img img-fluid pb-sm-4"
+            src="<?= $imgPlaceholderImage->url() ?>"
+            data-src="/thumbnail?file=<?= $file['url'] ?>"
+            />
+          </div>
 
-              <!-- TODO implement videos -->
+        <?php elseif ($file['type'] === 'video'): ?>
 
-            <?php endif; ?>
-        </div>
+          <div
+            class="mm-masonry__item cursor-pointer position-relative"
+            style="--w: <?=$videoPlaceholderImage->width()?>; --h: <?=$videoPlaceholderImage->height()?>;"
+            data-gallery-index="<?= $k ?>">
+
+            <div data-show-on-loaded class="d-none position-absolute top-50 start-50">
+              <i class="material-symbols-rounded material-sybmols-outline text-white fs-extreme-large mt-n50pz ms-n50pz">videocam</i>
+            </div>
+
+            <img
+              class="mm-masonry__img img-fluid pb-sm-4"
+              src="<?= $videoPlaceholderImage->url() ?>"
+              data-src="/thumbnail?file=<?= $file['url'] ?>"
+            />
+
+          </div>
+
+        <?php endif; ?>
 
       <?php endforeach; ?>
 

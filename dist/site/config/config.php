@@ -20,4 +20,7 @@ return [
     'languages' => 'resources/languages/',
   ],
   'cloud_path' => $_ENV['CLOUD_PATH'] ?? '/cloud',
+  'thumbnail_path' => $_ENV['THUMBNAIL_PATH'] ?? '/thumbnails',
+  'thumbnail_width' => 600,
+  'thumbnail_height' => 900,
 ];
