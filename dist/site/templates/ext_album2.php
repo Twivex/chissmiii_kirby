@@ -13,11 +13,10 @@
   else: ?>
 
     <?php
-      $parentTitle = $page->parent()->title();
-      if ($parentTitle) {
-        $page = $page->changeTitle($parentTitle . ' – ' . $page->title());
-      }
-      snippet('atoms/section-heading', [ 'data' => $page ]);
+      snippet('atoms/section-heading', [
+        'data' => $page,
+        'showParentTitle' => $page->parent() !== null,
+      ]);
     ?>
 
     <div class="mm-masonry" data-target-modal="#modal-gallery-slider-<?= $uid ?>" data-target-carousel="#carousel-<?= $uid ?>">
