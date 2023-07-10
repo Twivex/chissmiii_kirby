@@ -25,8 +25,10 @@ return function ($kirby, $file) {
   }
 
   $videoPath = $_SERVER['DOCUMENT_ROOT'] . '/' . $filepath;
+  $videoPathForShell = escapeshellarg($videoPath);
+  $thumbnailFilepathForShell = escapeshellarg($thumbnailFilepath);
   // Generate thumbnail using FFmpeg
-  $ffmpegCommand = "ffmpeg -i $videoPath -ss 00:00:1 -vframes 1 $thumbnailFilepath";
+  $ffmpegCommand = "ffmpeg -i $videoPathForShell -ss 00:00:1 -vframes 1 $thumbnailFilepathForShell";
   exec($ffmpegCommand);
 
 
