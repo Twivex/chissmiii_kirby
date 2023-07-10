@@ -60,4 +60,33 @@ return [
       return $response;
     }
   ],
+  [
+    'pattern' => 'thumbnail',
+    'method' => 'GET',
+    'action' => function () {
+      $kirby = kirby();
+      $file = get('file');
+
+      if (empty($file) || !file_exists($file)) {
+        Header::status(404);
+        go('error');
+      }
+
+      $controller = 'video_thumbnail';
+
+      // differ between image and video
+      if (in_array(mime_content_type($file), ['image/jpeg', 'image/png', 'image/gif'])) {
+        $controller = 'thumbnail';
+      }
+      $response = kirby()->controller(
+        $controller,
+        compact(
+          'kirby',
+          'file'
+        )
+      );
+
+      return $response;
+    }
+],
 ];

@@ -13,9 +13,19 @@ $enable-cssgrid: true;
 
 // Toggle global options
 $enable-gradients: true;
-$enable-shadows: true;
+$enable-shadows: false;
 $enable-negative-margins: true;
 
+$spacers: map-merge(
+  (
+    '25px': 25%,
+    '50pz': 50%,
+    '75pz': 75%,
+    '100pz': 100%
+  ),
+  $spacers
+);
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);
 $border-radius: .4rem;
 
 //Fonts
@@ -54,8 +64,10 @@ $btn-close-opacity: 1;
 $btn-close-hover-opacity: .75;
 
 // -- Forms
+$input-btn-focus-box-shadow: none;
 $form-text-color: var(--bs-body-color);
 $form-check-label-disabled-opacity: 1;
+$input-focus-border-color: rgba(black, 0.25);
 
 // -- Figures
 $figure-caption-color: var(--bs-body-color);

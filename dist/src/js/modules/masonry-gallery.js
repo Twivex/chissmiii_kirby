@@ -13,9 +13,7 @@ export default class MasonryGallery {
   }
 
   getUnloadedItems() {
-    return this.items.filter(
-      (item) => !item.querySelector(".mm-masonry__img").getAttribute("src")
-    );
+    return this.items.filter((item) => !item.dataset?.loaded);
   }
 
   initImages() {
@@ -24,6 +22,9 @@ export default class MasonryGallery {
       image.addEventListener("load", () => {
         item.style.setProperty("--w", image.naturalWidth);
         item.style.setProperty("--h", image.naturalHeight);
+        item.querySelectorAll("[data-show-on-loaded]").forEach((el) => {
+          el.classList.remove("d-none");
+        });
       });
     });
 
@@ -55,6 +56,7 @@ export default class MasonryGallery {
       .querySelectorAll('[data-src="' + image.dataset.src + '"]')
       .forEach((image) => {
         image.setAttribute("src", image.dataset.src);
+        item.dataset.loaded = true;
       });
   }
 
