@@ -1,5 +1,7 @@
 <?php
 
+use Kirby\Http\Header;
+
 return [
   [
     'pattern' => 'logout',
@@ -65,11 +67,11 @@ return [
     'method' => 'GET',
     'action' => function () {
       $kirby = kirby();
-      $file = get('file');
+      $file = urldecode(get('file'));
 
       if (empty($file) || !file_exists($file)) {
         Header::status(404);
-        go('error');
+        return;
       }
 
       $controller = 'video_thumbnail';

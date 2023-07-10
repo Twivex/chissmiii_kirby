@@ -35,7 +35,7 @@
             <img
             class="mm-masonry__img img-fluid pb-sm-4"
             src="<?= $imgPlaceholderImage->url() ?>"
-            data-src="/thumbnail?file=<?= $file['url'] ?>"
+            data-src="/thumbnail?file=<?= urlencode($file['url']) ?>"
             />
           </div>
 
@@ -53,7 +53,7 @@
             <img
               class="mm-masonry__img img-fluid pb-sm-4"
               src="<?= $videoPlaceholderImage->url() ?>"
-              data-src="/thumbnail?file=<?= $file['url'] ?>"
+              data-src="/thumbnail?file=<?= urlencode($file['url']) ?>"
             />
 
           </div>
