@@ -19,6 +19,14 @@ RUN apt-get install -y --no-install-recommends \
       zip \
       libzip-dev
 
+RUN apt-get install --assume-yes --no-install-recommends --quiet \
+    build-essential \
+    libmagickwand-dev \
+    ffmpeg
+
+ RUN apt-get clean all
+
+# Install PHP extensions
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && install-php-extensions \
@@ -26,8 +34,8 @@ RUN chmod +x /usr/local/bin/install-php-extensions && sync && install-php-extens
       intl \
       zip
 
-RUN apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN pecl install imagick \
+ && docker-php-ext-enable imagick
 
 # pecl config
 RUN pecl channel-update pecl.php.net
@@ -35,7 +43,6 @@ RUN pecl config-set php_ini /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 RUN pear config-set php_ini /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 
 RUN pecl install zlib zip
-
 
 # Install Node JS
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
