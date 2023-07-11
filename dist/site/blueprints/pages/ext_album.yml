@@ -30,3 +30,5 @@ tabs:
         width: 1/4
 
   files: tabs/files
+
+  settings_tab: tabs/page_settings
