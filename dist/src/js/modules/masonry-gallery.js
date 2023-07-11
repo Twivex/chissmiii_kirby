@@ -30,7 +30,7 @@ export default class MasonryGallery {
 
     // initially load first 12 images
     this.getUnloadedItems()
-      .slice(0, 12)
+      .slice(0, 24)
       .forEach((item) => this.loadImage(item));
 
     const firstItemDimensions = this.items[0].getBoundingClientRect();
@@ -42,7 +42,7 @@ export default class MasonryGallery {
     window.addEventListener("scroll", () => {
       this.getUnloadedItems().forEach((item) => {
         const itemDimensions = item.getBoundingClientRect();
-        const limit = window.innerHeight + estimatedMaxRowHeight * 3;
+        const limit = window.innerHeight + estimatedMaxRowHeight * 6;
         if (itemDimensions.top < limit && itemDimensions.bottom > 0) {
           this.loadImage(item);
         }
