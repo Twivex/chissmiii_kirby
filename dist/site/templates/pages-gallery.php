@@ -1,6 +1,13 @@
+<?php
+  $isInjected = isset($injected) && $injected === true;
+  if (!$isInjected) {
+    snippet('globals/header');
+  }
+?>
+
 <section>
 
-  <?php snippet('atoms/section-heading', [ 'data' => $data ]); ?>
+  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
 
   <?php
     $lang = $kirby->language();
@@ -44,3 +51,9 @@
 
   <?php endforeach ?>
 </section>
+
+<?php
+  if (!$isInjected) {
+    snippet('globals/footer');
+  }
+?>

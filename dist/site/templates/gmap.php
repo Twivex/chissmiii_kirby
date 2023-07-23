@@ -1,13 +1,18 @@
 <?php
+  $isInjected = isset($injected) && $injected === true;
+  if (!$isInjected) {
+    snippet('globals/header');
+  }
+
   $applicationCookieAccepted = isset($_COOKIE['cookie-consent-application']) && $_COOKIE['cookie-consent-application'] == 1;
 ?>
 
 <section class="py-4">
 
-  <?php snippet('atoms/section-heading', [ 'data' => $data ]); ?>
+  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
 
   <div class="row justify-content-center mb-4">
-    <div class="col-12 <?= $data->columnsClass() ?>">
+    <div class="col-12 <?= $page->columnsClass() ?>">
 
       <?php if($applicationCookieAccepted): ?>
 
@@ -21,7 +26,7 @@
           frameborder="0"
           width="100%"
           height="550px"
-          src="<?= $data->gmaps_link() ?>"
+          src="<?= $page->gmaps_link() ?>"
         ></iframe>
 
       <?php else: ?>
@@ -38,3 +43,9 @@
     </div>
   </div>
 </section>
+
+<?php
+  if (!$isInjected) {
+    snippet('globals/footer');
+  }
+?>

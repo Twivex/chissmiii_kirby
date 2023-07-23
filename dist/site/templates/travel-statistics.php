@@ -1,4 +1,9 @@
 <?php
+  $isInjected = isset($injected) && $injected === true;
+  if (!$isInjected) {
+    snippet('globals/header');
+  }
+
   $countriesImg = $site->ts_countries()->toFile();
   $globeImg = $site->ts_globe()->toFile();
   $continentsImg = $site->ts_continents()->toFile();
@@ -7,7 +12,7 @@
 
   <section class="py-4 travel-statistics">
 
-    <?php snippet('atoms/section-heading', [ 'data' => $data ]); ?>
+    <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
 
     <div class="row">
 
@@ -23,7 +28,7 @@
                 src="<?= $countriesImg->url() ?>"
               >
               <figcaption class="figure-caption bottom-0 d-flex flex-column justify-content-start position-absolute ps-4 pt-4 text-white top-0">
-                <h5 class="fs-4 fw-bold m-0"><?= $data->countries() ?></h5>
+                <h5 class="fs-4 fw-bold m-0"><?= $page->countries() ?></h5>
                 <p class="fs-5">Länder</p>
               </figcaption>
             </figure>
@@ -36,7 +41,7 @@
                 src="<?= $globeImg->url() ?>"
               >
               <figcaption class="figure-caption bottom-0 d-flex flex-column justify-content-start position-absolute ps-4 pt-4 text-white top-0">
-                <h5 class="fs-4 fw-bold m-0"><?= $data->world() ?>%</h5>
+                <h5 class="fs-4 fw-bold m-0"><?= $page->world() ?>%</h5>
                 <p class="fs-5">der Welt</p>
               </figcaption>
             </figure>
@@ -70,7 +75,7 @@
         <div class="card border-0">
           <div class="card-body d-flex flex-row flex-wrap gap-2">
             <?php
-              $flags = $data->flags()->split();
+              $flags = $page->flags()->split();
               sort($flags);
             ?>
             <?php foreach ($flags as $flag): ?>
@@ -84,3 +89,9 @@
   </section>
 
 <?php endif; ?>
+
+<?php
+  if (!$isInjected) {
+    snippet('globals/footer');
+  }
+?>

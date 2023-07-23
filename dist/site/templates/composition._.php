@@ -1,9 +1,20 @@
-<?php snippet('globals/header') ?>
+<?php
+  $isInjected = isset($injected) && $injected === true;
+  if (!$isInjected) {
+    snippet('globals/header');
+  }
 
-<?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
+  snippet('atoms/section-heading', [ 'data' => $page ]);
 
-<?php foreach($children as $child) {
-  snippet($child->blueprint()->name(), [ 'data' => $child ]);
-} ?>
+  $injected = true;
+  $data = compact('site', 'kirby', 'injected');
 
-<?php snippet('globals/footer') ?>
+  foreach($page->visibleChildren() as $child) {
+    $data['page'] = $child;
+    echo $child->template()->render($data);
+  }
+
+  if (!$isInjected) {
+    snippet('globals/footer');
+  }
+?>

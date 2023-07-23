@@ -1,10 +1,13 @@
 <?php
-  $categoryDirectionClass = $data->category_text_direction()->directionClass();
-
-  $persons = $data->children();
-  if (!$kirby->user()) {
-    $persons = $persons->listed();
+  $isInjected = isset($injected) && $injected === true;
+  if (!$isInjected) {
+    snippet('globals/header');
   }
+?>
+
+<?php
+  $categoryDirectionClass = $page->category_text_direction()->directionClass();
+  $persons = $page->visibleChildren();
   $personsArray = $persons->toArray();
 
   $allPersonsHaveCategories = array_reduce($personsArray, function($carry, $person) {
@@ -20,11 +23,14 @@
     // reindex array
     $categories = array_combine(range(0, count($categories) - 1), $categories);
   }
+
+  $injected = true;
+  $data = compact('site', 'kirby', 'injected');
 ?>
 
 <section class="py-4">
 
-  <?php snippet('atoms/section-heading', [ 'data' => $data ]); ?>
+  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
 
   <div class="row">
 
@@ -36,7 +42,8 @@
           <?php
             $personGroup = $persons->filterBy('category', $category);
             foreach ($personGroup as $person) {
-              snippet('pages/persons.entry', [ 'data' => $person ]);
+              $data['page'] = $person;
+              echo $person->template()->render($data);
             }
           ?>
         </div>
@@ -44,8 +51,9 @@
 
     <?php else: ?>
 
-      <?php foreach ($data->children() as $person) {
-        snippet('pages/persons.entry', [ 'data' => $person ]);
+      <?php foreach ($persons as $person) {
+          $data['page'] = $person;
+          echo $person->template()->render($data);
       } ?>
 
     <?php endif; ?>
@@ -53,3 +61,9 @@
   </div>
 
 </section>
+
+<?php
+  if (!$isInjected) {
+    snippet('globals/footer');
+  }
+?>
