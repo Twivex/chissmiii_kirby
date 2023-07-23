@@ -22,7 +22,7 @@ class Block extends Item
 {
 	use HasMethods;
 
-	public const ITEMS_CLASS = '\Kirby\Cms\Blocks';
+	public const ITEMS_CLASS = Blocks::class;
 
 	/**
 	 * @var \Kirby\Cms\Content
@@ -72,6 +72,13 @@ class Block extends Item
 	public function __construct(array $params)
 	{
 		parent::__construct($params);
+
+		// @deprecated import old builder format
+		// @todo block.converter remove eventually
+		// @codeCoverageIgnoreStart
+		$params = BlockConverter::builderBlock($params);
+		$params = BlockConverter::editorBlock($params);
+		// @codeCoverageIgnoreEnd
 
 		if (isset($params['type']) === false) {
 			throw new InvalidArgumentException('The block type is missing');

@@ -62,7 +62,10 @@ class Field extends Component
 	public function __construct(string $type, array $attrs = [], ?Fields $formFields = null)
 	{
 		if (isset(static::$types[$type]) === false) {
-			throw new InvalidArgumentException('The field type "' . $type . '" does not exist');
+			throw new InvalidArgumentException([
+				'key'  => 'field.type.missing',
+				'data' => ['name' => $attrs['name'] ?? '-', 'type' => $type]
+			]);
 		}
 
 		if (isset($attrs['model']) === false) {
@@ -399,7 +402,7 @@ class Field extends Component
 			if ($formFields !== null) {
 				foreach ($this->when as $field => $value) {
 					$field      = $formFields->get($field);
-					$inputValue = $field !== null ? $field->value() : '';
+					$inputValue = $field?->value() ?? '';
 
 					// if the input data doesn't match the requested `when` value,
 					// that means that this field is not required and can be saved

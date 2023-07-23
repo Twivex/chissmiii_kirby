@@ -1,7 +1,15 @@
-<?php snippet('globals/header') ?>
-
 <?php
-  snippet($page->blueprint()->name(), [ 'data' => $page ]);
-?>
+  $isInjected = isset($injected) && $injected === true;
+  if (!$isInjected) {
+    snippet('globals/main', slots: true);
+  }
 
-<?php snippet('globals/footer') ?>
+
+  snippet($page->blueprint()->name(), [ 'data' => $page ]);
+
+
+  if (!$isInjected) {
+    endsnippet();
+  }
+
+?>

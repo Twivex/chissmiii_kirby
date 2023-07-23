@@ -6,7 +6,8 @@ use Kirby\Blueprint\Collection;
 use Kirby\Cms\ModelWithContent;
 
 /**
- * Options
+ * Collection of possible options for
+ * select fields, radio fields, etc.
  *
  * @package   Kirby Option
  * @author    Bastian Allgeier <bastian@getkirby.com>
@@ -30,16 +31,16 @@ class Options extends Collection
 		$collection = new static();
 
 		foreach ($items as $key => $option) {
+			// convert an associative value => text array into props;
 			// skip if option is already an array of option props
 			if (
 				is_array($option) === false ||
 				array_key_exists('value', $option) === false
 			) {
-				if (is_string($key) === true) {
-					$option = ['value' => $key, 'text' => $option];
-				} else {
-					$option = ['value' => $option];
-				}
+				$option = match (true) {
+					is_string($key) => ['value' => $key, 'text' => $option],
+					default         => ['value' => $option]
+				};
 			}
 
 			$option = Option::factory($option);

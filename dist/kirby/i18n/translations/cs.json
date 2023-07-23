@@ -1,5 +1,5 @@
 {
-	"account.changeName": "Přejmenovat",
+	"account.changeName": "Přejmenovat uživatele",
 	"account.delete": "Smazat účet",
 	"account.delete.confirm": "Opravdu chcete smazat svůj účet? Budete okamžitě odhlášeni. Účet nemůže být zpětně obnoven.",
 
@@ -72,9 +72,12 @@
 	"error.blocks.min.singular": "Musíte přidat alespoň jeden blok",
 	"error.blocks.validation": "V poli \"{field}\" v bloku {index} je při použití \"{fieldset}\" typu chyba",
 
+	"error.cache.type.invalid": "Neplatný typ cache \"{type}\"",
+
 	"error.email.preset.notFound": "Nelze nalézt emailové přednastavení \"{name}\"",
 
 	"error.field.converter.invalid": "Neplatný konvertor \"{converter}\"",
+	"error.field.type.missing": "Pole \"{ name }\": Typ pole \"{ type }\" neexistuje",
 
 	"error.file.changeName.empty": "Toto jméno nesmí být prázdné",
 	"error.file.changeName.permission": "Nemáte povoleno změnit jméno souboru \"{filename}\"",
@@ -289,6 +292,7 @@
 	"field.pages.empty": "Nebyly zatím vybrány žádné stránky",
 
 	"field.structure.delete.confirm": "Opravdu chcete smazat tento z\u00e1znam?",
+	"field.structure.delete.confirm.all": "Opravdu chcete smazat všechny záznamy?",
 	"field.structure.empty": "Zat\u00edm nejsou \u017e\u00e1dn\u00e9 z\u00e1znamy.",
 
 	"field.users.empty": "Nebyli zatím vybráni žádní uživatelé",
@@ -318,7 +322,7 @@
 	"installation.issues.headline": "Panel nelze nainstalovat",
 	"installation.issues.mbstring": "Je vyžadováno rozšíření<code>MB String</code>",
 	"installation.issues.media": "Složka<code>/media</code> neexistuje, nebo nemá povolený zápis",
-	"installation.issues.php": "Ujistěte se, že používáte<code>PHP 7+</code>",
+	"installation.issues.php": "Ujistěte se, že používáte<code>PHP 8+</code>",
 	"installation.issues.server": "Kirby vyžaduje<code>Apache</code>, <code>Nginx</code> nebo<code>Caddy</code>",
 	"installation.issues.sessions": "Složka<code>/site/sessions</code> neexistuje, nebo nemá povolený zápis",
 
@@ -349,6 +353,8 @@
 	"license.manage": "Spravovat licence",
 	"license.register.help": "Licenční kód jste po zakoupení obdrželi na email. Vložte prosím kód a zaregistrujte Vaší kopii.",
 	"license.register.label": "Zadejte prosím licenční kód",
+	"license.register.domain": "Vaše licence bude zaregistrována na <strong>{host}</strong>.",
+	"license.register.local": "Chystáte se registrovat licenci na Vaší lokální doméně <strong>{host}</strong>. Pokud bude tato stránka nasazena na veřejnou doménu, registrujte prosím licenci až tam. Pokud je {host} opravdu doménou, na které si přejete licenci registrovat, pokračujte prosím dále.",
 	"license.register.success": "Děkujeme Vám za podporu Kirby",
 	"license.unregistered": "Toto je neregistrovaná kopie Kirby",
 	"license.unregistered.label": "Neregistrovaný",
@@ -382,7 +388,7 @@
 	"login.toggleText.password-reset.email": "Zapomenuté heslo?",
 	"login.toggleText.password-reset.email-password": "← Zpět na přihlášení",
 
-	"logout": "Odhl\u00e1sit se",
+	"logout": "Odhlásit se",
 
 	"menu": "Menu",
 	"meridiem": "AM/PM",
@@ -454,7 +460,7 @@
 	"paste": "Vložit",
 	"paste.after": "Vložit za",
 	"pixel": "Pixel",
-	"plugin": "Plugin",
+	"plugin": "Doplňek",
 	"plugins": "Doplňky",
 	"prev": "Předchozí",
 	"preview": "Náhled",
@@ -494,24 +500,24 @@
 
 	"stats.empty": "Žádná hlášení",
 	"system.issues.content": "Složka content je zřejmě přístupná zvenčí",
-	"system.issues.eol.kirby": "Your installed Kirby version has reached end-of-life and will not receive further security updates",
-	"system.issues.eol.plugin": "Your installed version of the { plugin } plugin is has reached end-of-life and will not receive further security updates",
+	"system.issues.eol.kirby": "Instalovaná verze Kirby dosáhla konce životnosti a nebude již dále dostávat bezpečnostní aktualizace",
+	"system.issues.eol.plugin": "Instalovaná verze doplňku { plugin } dosáhla konce životnosti a nebude již dále dostávat bezpečnostní aktualizace",
 	"system.issues.debug": "Debug mode musí být v produkci vypnutý",
 	"system.issues.git": "Složka .git je zřejmě přístupná zvenčí",
-	"system.issues.https": "Při všechny stránky doporučujeme používat protokol HTTPS",
+	"system.issues.https": "Pro všechny stránky doporučujeme používat protokol HTTPS",
 	"system.issues.kirby": "Složka kirby je zřejmě přístupná zvenčí",
 	"system.issues.site": "Složka site je zřejmě přístupná zvenčí",
-	"system.issues.vulnerability.kirby": "Your installation might be affected by the following vulnerability ({ severity } severity): { description }",
-	"system.issues.vulnerability.plugin": "Your installation might be affected by the following vulnerability in the { plugin } plugin ({ severity } severity): { description }",
-	"system.updateStatus": "Update status",
-	"system.updateStatus.error": "Could not check for updates",
-	"system.updateStatus.not-vulnerable": "No known vulnerabilities",
-	"system.updateStatus.security-update": "Free security update { version } available",
-	"system.updateStatus.security-upgrade": "Upgrade { version } with security fixes available",
-	"system.updateStatus.unreleased": "Unreleased version",
-	"system.updateStatus.up-to-date": "Up to date",
-	"system.updateStatus.update": "Free update { version } available",
-	"system.updateStatus.upgrade": "Upgrade { version } available",
+	"system.issues.vulnerability.kirby": "Vaše instalace může být ovlivněna následující zranitelností (stupeň vážnosti - { severity }): { description }",
+	"system.issues.vulnerability.plugin": "Vaše instalace může být ovlivněna následující zranitelností v doplňku { plugin } (stupeň vážnosti - { severity }): { description }",
+	"system.updateStatus": "Status aktualizací",
+	"system.updateStatus.error": "Nepodařilo se zkontrolovat aktualizace",
+	"system.updateStatus.not-vulnerable": "Žádné známé zranitelnosti",
+	"system.updateStatus.security-update": "Je dostupná bezplatná bezpečnostní aktualizace { version }",
+	"system.updateStatus.security-upgrade": "Je dostupný upgrade { version } s bezpečnostními opravami",
+	"system.updateStatus.unreleased": "Nevydaná verze",
+	"system.updateStatus.up-to-date": "Aktuální",
+	"system.updateStatus.update": "Je dostupná bezplatná nová verze { version }",
+	"system.updateStatus.upgrade": "Je dostupný upgrade na verzi { version }",
 
 	"title": "Název",
 	"template": "\u0160ablona",
@@ -578,9 +584,9 @@
 	"users": "Uživatelé",
 
 	"version": "Verze Kirby",
-	"version.current": "Current version",
-	"version.latest": "Latest version",
-	"versionInformation": "Version information",
+	"version.current": "Současná verze",
+	"version.latest": "Poslední verze",
+	"versionInformation": "Informace o verzi",
 
 	"view.account": "V\u00e1\u0161 \u00fa\u010det",
 	"view.installation": "Instalace",

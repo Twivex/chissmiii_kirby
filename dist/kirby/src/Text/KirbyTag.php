@@ -2,6 +2,7 @@
 
 namespace Kirby\Text;
 
+use AllowDynamicProperties;
 use Closure;
 use Kirby\Cms\App;
 use Kirby\Cms\File;
@@ -19,7 +20,11 @@ use Kirby\Uuid\Uuid;
  * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
+ *
+ * @todo remove the following psalm suppress when PHP >= 8.2 required
+ * @psalm-suppress UndefinedAttributeClass
  */
+#[AllowDynamicProperties]
 class KirbyTag
 {
 	public static array $aliases = [];
@@ -143,6 +148,7 @@ class KirbyTag
 
 		return $this->kirby()->file($path, null, true);
 	}
+
 	/**
 	 * Returns the current Kirby instance
 	 */

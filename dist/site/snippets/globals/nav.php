@@ -21,9 +21,10 @@
       <ul class="navbar-nav">
         <?php
           $navItems = $site->children()->listed();
+          $navItems = $navItems->filter(function ($item) {
+            return $item->userHasAccess();
+          });
           foreach ($navItems as $key => $item):
-            // skip secured pages, if not logged in
-            if ($item->secured()->toBool() === true && !$kirby->user()) continue;
             // skip error page
             if ($item->uid() === 'error') continue;
         ?>
@@ -35,8 +36,10 @@
               </a>
               <ul class="dropdown-menu mt-sm-2" aria-labelledby="navbarDropdown<?= ucfirst($key) ?>">
                 <?php
-                  $subNavItems = $item->children();
-                  if (!$kirby->user()) $subNavItems = $subNavItems->listed();
+                  $subNavItems = $item->visibleChildren();
+                  $subNavItems = $subNavItems->filter(function ($item) {
+                    return $item->userHasAccess();
+                  });
                 ?>
                 <?php foreach($subNavItems as $subItem): ?>
                   <li><a class="dropdown-item py-2 py-lg-3 <?php e($subItem->isOpen(), 'active') ?>" href="<?= $subItem->url() ?>" <?php e($subItem->isOpen(), 'aria-current="true"') ?>><?= $subItem->title()->html() ?></a></li>

@@ -6,7 +6,7 @@
  */
 if (
 	version_compare(PHP_VERSION, '8.0.0', '>=') === false ||
-	version_compare(PHP_VERSION, '8.2.0', '<')  === false
+	version_compare(PHP_VERSION, '8.3.0', '<')  === false
 ) {
 	die(include __DIR__ . '/views/php.php');
 }
@@ -16,11 +16,15 @@ if (is_file($autoloader = dirname(__DIR__) . '/vendor/autoload.php')) {
 	 * Always prefer a site-wide Composer autoloader
 	 * if it exists, it means that the user has probably
 	 * installed additional packages
+	 *
+	 * @psalm-suppress MissingFile
 	 */
 	include $autoloader;
 } elseif (is_file($autoloader = __DIR__ . '/vendor/autoload.php')) {
 	/**
 	 * Fall back to the local autoloader if that exists
+	 *
+	 * @psalm-suppress MissingFile
 	 */
 	include $autoloader;
 } else {

@@ -18,6 +18,7 @@ use Kirby\Http\Router;
 use Kirby\Http\Uri;
 use Kirby\Http\Visitor;
 use Kirby\Session\AutoSession;
+use Kirby\Template\Snippet;
 use Kirby\Text\KirbyTag;
 use Kirby\Text\KirbyTags;
 use Kirby\Toolkit\A;
@@ -363,8 +364,8 @@ class App
 	 * by name. All relevant dependencies are
 	 * automatically injected
 	 *
-	 * @param string $name
-	 * @return \Kirby\Cms\Collection|null
+	 * @return \Kirby\Toolkit\Collection|null
+	 * @todo 5.0 Add return type declaration
 	 */
 	public function collection(string $name)
 	{
@@ -378,12 +379,10 @@ class App
 
 	/**
 	 * Returns all user-defined collections
-	 *
-	 * @return \Kirby\Cms\Collections
 	 */
-	public function collections()
+	public function collections(): Collections
 	{
-		return $this->collections = $this->collections ?? new Collections();
+		return $this->collections ??= new Collections();
 	}
 
 	/**
@@ -481,28 +480,23 @@ class App
 
 	/**
 	 * Try to find a controller by name
-	 *
-	 * @param string $name
-	 * @param string $contentType
-	 * @return \Kirby\Toolkit\Controller|null
 	 */
-	protected function controllerLookup(string $name, string $contentType = 'html')
+	protected function controllerLookup(string $name, string $contentType = 'html'): Controller|null
 	{
 		if ($contentType !== null && $contentType !== 'html') {
 			$name .= '.' . $contentType;
 		}
 
-		// controller on disk
-		if ($controller = Controller::load($this->root('controllers') . '/' . $name . '.php')) {
+		// controller from site root
+		$controller   = Controller::load($this->root('controllers') . '/' . $name . '.php');
+		// controller from extension
+		$controller ??= $this->extension('controllers', $name);
+
+		if ($controller instanceof Controller) {
 			return $controller;
 		}
 
-		// registry controller
-		if ($controller = $this->extension('controllers', $name)) {
-			if ($controller instanceof Controller) {
-				return $controller;
-			}
-
+		if ($controller !== null) {
 			return new Controller($controller);
 		}
 
@@ -559,12 +553,10 @@ class App
 
 	/**
 	 * Returns the default language object
-	 *
-	 * @return \Kirby\Cms\Language|null
 	 */
-	public function defaultLanguage()
+	public function defaultLanguage(): Language|null
 	{
-		return $this->defaultLanguage = $this->defaultLanguage ?? $this->languages()->default();
+		return $this->defaultLanguage ??= $this->languages()->default();
 	}
 
 	/**
@@ -581,22 +573,21 @@ class App
 
 	/**
 	 * Detect the preferred language from the visitor object
-	 *
-	 * @return \Kirby\Cms\Language
 	 */
-	public function detectedLanguage()
+	public function detectedLanguage(): Language|null
 	{
 		$languages = $this->languages();
 		$visitor   = $this->visitor();
 
-		foreach ($visitor->acceptedLanguages() as $lang) {
-			if ($language = $languages->findBy('locale', $lang->locale(LC_ALL))) {
+		foreach ($visitor->acceptedLanguages() as $acceptedLang) {
+			$closure = fn ($language) => $language->locale(LC_ALL) === $acceptedLang->locale();
+			if ($language = $languages->filter($closure)?->first()) {
 				return $language;
 			}
 		}
 
-		foreach ($visitor->acceptedLanguages() as $lang) {
-			if ($language = $languages->findBy('code', $lang->code())) {
+		foreach ($visitor->acceptedLanguages() as $acceptedLang) {
+			if ($language = $languages->findBy('code', $acceptedLang->code())) {
 				return $language;
 			}
 		}
@@ -928,11 +919,15 @@ class App
 			return $this->defaultLanguage();
 		}
 
+		// if requesting a non-default language,
+		// find it but don't cache it
 		if ($code !== null) {
 			return $this->languages()->find($code);
 		}
 
-		return $this->language = $this->language ?? $this->defaultLanguage();
+		// otherwise return language set by `AppTranslation::setCurrentLanguage`
+		// or default language
+		return $this->language ??= $this->defaultLanguage();
 	}
 
 	/**
@@ -1025,7 +1020,7 @@ class App
 	 */
 	public function nonce(): string
 	{
-		return $this->nonce = $this->nonce ?? base64_encode(random_bytes(20));
+		return $this->nonce ??= base64_encode(random_bytes(20));
 	}
 
 	/**
@@ -1274,6 +1269,11 @@ class App
 		// set the current locale
 		$this->setCurrentLanguage($language);
 
+		// directly prevent path with incomplete content representation
+		if (Str::endsWith($path, '.') === true) {
+			return null;
+		}
+
 		// the site is needed a couple times here
 		$site = $this->site();
 
@@ -1345,7 +1345,7 @@ class App
 	 */
 	public function response()
 	{
-		return $this->response = $this->response ?? new Responder();
+		return $this->response ??= new Responder();
 	}
 
 	/**
@@ -1355,7 +1355,7 @@ class App
 	 */
 	public function roles()
 	{
-		return $this->roles = $this->roles ?? Roles::load($this->root('roles'));
+		return $this->roles ??= Roles::load($this->root('roles'));
 	}
 
 	/**
@@ -1554,31 +1554,13 @@ class App
 	}
 
 	/**
-	 * Returns the Environment object
-	 * @deprecated 3.7.0 Use `$kirby->environment()` instead
-	 *
-	 * @return \Kirby\Http\Environment
-	 * @deprecated Will be removed in Kirby 3.9.0
-	 * @todo Remove in 3.9.0
-	 * @codeCoverageIgnore
-	 */
-	public function server()
-	{
-		// @codeCoverageIgnoreStart
-		Helpers::deprecated('$kirby->server() has been deprecated and will be removed in Kirby 3.9.0. Use $kirby->environment() instead.');
-		// @codeCoverageIgnoreEnd
-
-		return $this->environment();
-	}
-
-	/**
 	 * Initializes and returns the Site object
 	 *
 	 * @return \Kirby\Cms\Site
 	 */
 	public function site()
 	{
-		return $this->site = $this->site ?? new Site([
+		return $this->site ??= new Site([
 			'errorPageId' => $this->options['error'] ?? 'error',
 			'homePageId'  => $this->options['home']  ?? 'home',
 			'kirby'       => $this,
@@ -1599,7 +1581,9 @@ class App
 
 		if ($options === false) {
 			return $text;
-		} elseif (is_array($options) === false) {
+		}
+
+		if (is_array($options) === false) {
 			$options = [];
 		}
 
@@ -1618,21 +1602,24 @@ class App
 	 * Uses the snippet component to create
 	 * and return a template snippet
 	 *
-	 * @param mixed $name
 	 * @param array|object $data Variables or an object that becomes `$item`
 	 * @param bool $return On `false`, directly echo the snippet
-	 * @return string|null
 	 * @psalm-return ($return is true ? string : null)
 	 */
-	public function snippet($name, $data = [], bool $return = true): string|null
+	public function snippet(string|array|null $name, $data = [], bool $return = true, bool $slots = false): Snippet|string|null
 	{
 		if (is_object($data) === true) {
 			$data = ['item' => $data];
 		}
 
-		$snippet = ($this->component('snippet'))($this, $name, array_merge($this->data, $data));
+		$snippet = ($this->component('snippet'))(
+			$this,
+			$name,
+			array_merge($this->data, $data),
+			$slots
+		);
 
-		if ($return === true) {
+		if ($return === true || $slots === true) {
 			return $snippet;
 		}
 
@@ -1647,7 +1634,7 @@ class App
 	 */
 	public function system()
 	{
-		return $this->system = $this->system ?? new System($this);
+		return $this->system ??= new System($this);
 	}
 
 	/**
@@ -1655,7 +1642,7 @@ class App
 	 * and return the Template object
 	 *
 	 * @internal
-	 * @return \Kirby\Cms\Template
+	 * @return \Kirby\Template\Template
 	 * @param string $name
 	 * @param string $type
 	 * @param string $defaultType
@@ -1771,7 +1758,7 @@ class App
 	public static function version(): string|null
 	{
 		try {
-			return static::$version = static::$version ?? Data::read(dirname(__DIR__, 2) . '/composer.json')['version'] ?? null;
+			return static::$version ??= Data::read(dirname(__DIR__, 2) . '/composer.json')['version'] ?? null;
 		} catch (Throwable) {
 			throw new LogicException('The Kirby version cannot be detected. The composer.json is probably missing or not readable.');
 		}
@@ -1794,6 +1781,6 @@ class App
 	 */
 	public function visitor()
 	{
-		return $this->visitor = $this->visitor ?? new Visitor();
+		return $this->visitor ??= new Visitor();
 	}
 }

@@ -72,9 +72,12 @@
 	"error.blocks.min.singular": "Du måste lägga till minst ett block",
 	"error.blocks.validation": "Det finns ett fel i fältet \"{field}\" i block {index} med blocktypen \"{fieldset}\"",
 
+	"error.cache.type.invalid": "Invalid cache type \"{type}\"",
+
 	"error.email.preset.notFound": "E-postförinställningen \"{name}\" kan inte hittas",
 
 	"error.field.converter.invalid": "Ogiltig omvandlare \"{converter}\"",
+	"error.field.type.missing": "Field \"{ name }\": The field type \"{ type }\" does not exist",
 
 	"error.file.changeName.empty": "Namnet får inte vara tomt",
 	"error.file.changeName.permission": "Du har inte behörighet att ändra namnet på \"{filename}\"",
@@ -289,6 +292,7 @@
 	"field.pages.empty": "Inga sidor valda än",
 
 	"field.structure.delete.confirm": "Vill du verkligen radera denna rad?",
+	"field.structure.delete.confirm.all": "Do you really want to delete all entries?",
 	"field.structure.empty": "Inga poster än",
 
 	"field.users.empty": "Inga användare valda än",
@@ -318,7 +322,7 @@
 	"installation.issues.headline": "Panelen kan inte installeras",
 	"installation.issues.mbstring": "Tillägget <code>MB String</code> krävs",
 	"installation.issues.media": "Mappen <code>/media</code> finns inte eller är inte skrivbar",
-	"installation.issues.php": "Se till att du använder <code>PHP 7+</code>",
+	"installation.issues.php": "Se till att du använder <code>PHP 8+</code>",
 	"installation.issues.server": "Kirby kräver <code>Apache</code>, <code>Nginx</code> eller <code>Caddy</code>",
 	"installation.issues.sessions": "Mappen <code>/site/sessions</code> finns inte eller är inte skrivbar",
 
@@ -349,6 +353,8 @@
 	"license.manage": "Hantera dina licenser",
 	"license.register.help": "Du fick din licenskod via e-post efter inköpet. Kopiera och klistra in den för att registrera licensen.",
 	"license.register.label": "Ange din licenskod",
+	"license.register.domain": "Your license will be registered to <strong>{host}</strong>.",
+	"license.register.local": "You are about to register your license for your local domain <strong>{host}</strong>. If this site will be deployed to a public domain, please register it there instead. If {host} is the domain you want to license Kirby to, please continue.",
 	"license.register.success": "Tack för att du stödjer Kirby",
 	"license.unregistered": "Detta är en oregistrerad demo av Kirby",
 	"license.unregistered.label": "Oregistrerad",
@@ -503,7 +509,7 @@
 	"system.issues.site": "Mappen site verkar vara exponerad",
 	"system.issues.vulnerability.kirby": "Din installation kan vara påverkad av följande sårbarhet ({ severity } allvarlighetsgrad): { description }",
 	"system.issues.vulnerability.plugin": "Din installation kan vara påverkad av följande sårbarhet i tillägget { plugin } ({ severity } allvarlighetsgrad): { description }",
-	"system.updateStatus": "Uppdatera status",
+	"system.updateStatus": "Uppdateringsstatus",
 	"system.updateStatus.error": "Det gick inte att söka efter uppdateringar",
 	"system.updateStatus.not-vulnerable": "Inga kända sårbarheter",
 	"system.updateStatus.security-update": "Gratis säkerhetsuppdatering { version } tillgänglig",
@@ -579,7 +585,7 @@
 
 	"version": "Version",
 	"version.current": "Aktuell version",
-	"version.latest": "Senaste versionen",
+	"version.latest": "Senaste version",
 	"versionInformation": "Versionsinformation",
 
 	"view.account": "Ditt konto",

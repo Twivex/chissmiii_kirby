@@ -72,9 +72,12 @@
 	"error.blocks.min.singular": "Vous devez ajouter au moins un bloc",
 	"error.blocks.validation": "Il y a une erreur sur le champ \"{field}\" du bloc {index} utilisant le type de bloc \"{fieldset}\"",
 
+	"error.cache.type.invalid": "Type de cache incorrect \"{type}\"",
+
 	"error.email.preset.notFound": "La configuration de courriel « {name} » n’a pu être trouvé ",
 
 	"error.field.converter.invalid": "Convertisseur « {converter} » incorrect",
+	"error.field.type.missing": "Champ \"{ name }\" : Le type de champ \"{ type }\" n’existe pas",
 
 	"error.file.changeName.empty": "Le nom ne peut être vide",
 	"error.file.changeName.permission": "Vous n’êtes pas autorisé à modifier le nom de « {filename} »",
@@ -289,6 +292,7 @@
 	"field.pages.empty": "Pas encore de page sélectionnée",
 
 	"field.structure.delete.confirm": "Voulez-vous vraiment supprimer cette ligne ?",
+	"field.structure.delete.confirm.all": "Voulez-vous vraiment supprimer toutes les entrées ?",
 	"field.structure.empty": "Pas encore d’entrée",
 
 	"field.users.empty": "Pas encore d’utilisateur sélectionné",
@@ -318,7 +322,7 @@
 	"installation.issues.headline": "Le Panel ne peut être installé",
 	"installation.issues.mbstring": "L’extension <code>MB String</code> est requise",
 	"installation.issues.media": "Le dossier <code>/media</code> n’existe pas ou n’est pas accessible en écriture",
-	"installation.issues.php": "Veuillez utiliser <code>PHP 7+</code>",
+	"installation.issues.php": "Veuillez utiliser <code>PHP 8+</code>",
 	"installation.issues.server": "Kirby requiert <code>Apache</code>, <code>Nginx</code> ou <code>Caddy</code>",
 	"installation.issues.sessions": "Le dossier <code>/site/sessions</code> n’existe pas ou n’est pas accessible en écriture",
 
@@ -349,6 +353,8 @@
 	"license.manage": "Gérer vos licences",
 	"license.register.help": "Vous avez reçu votre numéro de licence par courriel après l'achat. Veuillez le copier et le coller ici pour l'enregistrer.",
 	"license.register.label": "Veuillez saisir votre numéro de licence",
+	"license.register.domain": "Votre licence sera enregistrée pour <strong>{host}</strong>.",
+	"license.register.local": "Vous êtes sur le point d’enregistrer votre licence pour votre domaine local <strong>{host}</strong>. Si votre site sera déployé sur un domaine publique, veuillez plutôt l’y l’enregistrer. Si {host} est le domaine pour lequel vous voulez enregistrer Kirby, veuillez continuer.",
 	"license.register.success": "Merci pour votre soutien à Kirby",
 	"license.unregistered": "Ceci est une démo non enregistrée de Kirby",
 	"license.unregistered.label": "Non enregistré",
@@ -382,7 +388,7 @@
 	"login.toggleText.password-reset.email": "Mot de passe oublié ?",
 	"login.toggleText.password-reset.email-password": "← Retour à la connexion",
 
-	"logout": "Se déconnecter",
+	"logout": "Déconnexion",
 
 	"menu": "Menu",
 	"meridiem": "AM/PM",

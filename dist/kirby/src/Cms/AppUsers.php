@@ -31,7 +31,7 @@ trait AppUsers
 	 */
 	public function auth()
 	{
-		return $this->auth = $this->auth ?? new Auth($this);
+		return $this->auth ??= new Auth($this);
 	}
 
 	/**
@@ -60,16 +60,13 @@ trait AppUsers
 		}
 
 		try {
-			// TODO: switch over in 3.9.0 to
-			// return $callback($userAfter);
-			$proxy = new AppUsersImpersonateProxy($this);
-			return $callback->call($proxy, $userAfter);
+			return $callback($userAfter);
 		} catch (Throwable $e) {
 			throw $e;
 		} finally {
 			// ensure that the impersonation is *always* reset
 			// to the original value, even if an error occurred
-			$auth->impersonate($userBefore !== null ? $userBefore->id() : null);
+			$auth->impersonate($userBefore?->id());
 		}
 	}
 

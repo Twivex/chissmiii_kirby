@@ -19,7 +19,14 @@ use Kirby\Toolkit\Str;
  */
 class Fieldsets extends Items
 {
-	public const ITEM_CLASS = '\Kirby\Cms\Fieldset';
+	public const ITEM_CLASS = Fieldset::class;
+
+	/**
+	 * All registered fieldsets methods
+	 *
+	 * @var array
+	 */
+	public static $methods = [];
 
 	protected static function createFieldsets($params)
 	{

@@ -33,6 +33,16 @@ Kirby::plugin('chissmiii/custom', [
 
   'pageMethods' => [
 
+    'visibleChildren' => function () {
+      if ($this->kirby()->user() && $this->kirby()->user()->isAdmin()) {
+        $children = $this->children()->published();
+      } else {
+        $children = $this->children()->listed();
+      }
+
+      return $children;
+    },
+
 
     'isTopLevel' => function () {
       return
@@ -81,8 +91,10 @@ Kirby::plugin('chissmiii/custom', [
       $accessUser = $this->getAccessUser();
 
       return
-        !is_null($loggedInUser) && !is_null($accessUser) &&
-        ($loggedInUser->id() === $accessUser->id() || $loggedInUser->isAdmin());
+        is_null($accessUser) ||
+        !is_null($loggedInUser) && (
+          $loggedInUser->isAdmin() || $loggedInUser->id() === $accessUser->id()
+        );
 
     },
 
