@@ -76,7 +76,7 @@ return function ($kirby, $target) {
         }
       }
     } elseif (
-      $blueprintName === 'ext_album' &&
+      $blueprintName === 'ext_album' || $blueprintName === 'ext_album2' &&
       !empty($albumPath = $targetPage->album_path())
     ) {
       $albumPath = $targetPage->getAlbumPath(true);
@@ -95,6 +95,11 @@ return function ($kirby, $target) {
       //   $fileExtension = pathinfo("$albumPath/$file", PATHINFO_EXTENSION);
       //   return in_array($fileExtension, ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'mov', 'mpeg', 'mpeg2', 'avi']);
       // });
+
+      if (count($uploads) > 20) {
+        Header::status(400);
+        $alert = 'Du kannst maximal 20 Dateien auf einmal hochladen.';
+      }
 
       foreach ($uploads as $upload) {
         // check for duplicate
