@@ -172,15 +172,21 @@ class File extends ModelWithContent
 	 * other content.
 	 *
 	 * @internal
-	 * @param array $data
-	 * @param string|null $languageCode
-	 * @return array
 	 */
-	public function contentFileData(array $data, string $languageCode = null): array
-	{
-		return A::append($data, [
-			'template' => $this->template(),
-		]);
+	public function contentFileData(
+		array $data,
+		string $languageCode = null
+	): array {
+		// only add the template in, if the $data array
+		// doesn't explicitly unsets it
+		if (
+			array_key_exists('template', $data) === false &&
+			$template = $this->template()
+		) {
+			$data['template'] = $template;
+		}
+
+		return $data;
 	}
 
 	/**
@@ -295,11 +301,7 @@ class File extends ModelWithContent
 
 		$template = $this->template();
 
-		if (isset($readable[$template]) === true) {
-			return $readable[$template];
-		}
-
-		return $readable[$template] = $this->permissions()->can('read');
+		return $readable[$template] ??= $this->permissions()->can('read');
 	}
 
 	/**

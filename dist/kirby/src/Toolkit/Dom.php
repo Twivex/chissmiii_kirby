@@ -8,11 +8,11 @@ use DOMDocument;
 use DOMDocumentType;
 use DOMElement;
 use DOMNode;
+use DOMNodeList;
 use DOMProcessingInstruction;
 use DOMText;
 use DOMXPath;
 use Kirby\Cms\App;
-use Kirby\Exception\Exception;
 use Kirby\Exception\InvalidArgumentException;
 
 /**
@@ -122,20 +122,16 @@ class Dom
 
 	/**
 	 * Returns the HTML body if one exists
-	 *
-	 * @return \DOMElement|null
 	 */
-	public function body()
+	public function body(): DOMElement|null
 	{
 		return $this->body ??= $this->query('/html/body')[0] ?? null;
 	}
 
 	/**
 	 * Returns the document object
-	 *
-	 * @return \DOMDocument
 	 */
-	public function document()
+	public function document(): DOMDocument
 	{
 		return $this->doc;
 	}
@@ -143,9 +139,6 @@ class Dom
 	/**
 	 * Extracts all URLs wrapped in a url() wrapper. E.g. for style attributes.
 	 * @internal
-	 *
-	 * @param string $value
-	 * @return array
 	 */
 	public static function extractUrls(string $value): array
 	{
@@ -170,12 +163,12 @@ class Dom
 	 * Checks for allowed attributes according to the allowlist
 	 * @internal
 	 *
-	 * @param \DOMAttr $attr
-	 * @param array $options
 	 * @return true|string If not allowed, an error message is returned
 	 */
-	public static function isAllowedAttr(DOMAttr $attr, array $options)
-	{
+	public static function isAllowedAttr(
+		DOMAttr $attr,
+		array $options
+	): bool|string {
 		$allowedTags = $options['allowedTags'];
 
 		// check if the attribute is in the list of global allowed attributes
@@ -218,12 +211,12 @@ class Dom
 	 * Checks for allowed attributes according to the global allowlist
 	 * @internal
 	 *
-	 * @param \DOMAttr $attr
-	 * @param array $options
 	 * @return true|string If not allowed, an error message is returned
 	 */
-	public static function isAllowedGlobalAttr(DOMAttr $attr, array $options)
-	{
+	public static function isAllowedGlobalAttr(
+		DOMAttr $attr,
+		array $options
+	): bool|string {
 		$allowedAttrs = $options['allowedAttrs'];
 
 		if ($allowedAttrs === true) {
@@ -256,12 +249,12 @@ class Dom
 	 * Checks if the URL is acceptable for URL attributes
 	 * @internal
 	 *
-	 * @param string $url
-	 * @param array $options
 	 * @return true|string If not allowed, an error message is returned
 	 */
-	public static function isAllowedUrl(string $url, array $options)
-	{
+	public static function isAllowedUrl(
+		string $url,
+		array $options
+	): bool|string {
 		$url = Str::lower($url);
 
 		// allow empty URL values
@@ -393,8 +386,6 @@ class Dom
 	 * Otherwise DOMDocument won't be available and the Dom cannot
 	 * work at all.
 	 *
-	 * @return bool
-	 *
 	 * @codeCoverageIgnore
 	 */
 	public static function isSupported(): bool
@@ -404,9 +395,6 @@ class Dom
 
 	/**
 	 * Returns the XML or HTML markup contained in the node
-	 *
-	 * @param \DOMNode $node
-	 * @return string
 	 */
 	public function innerMarkup(DOMNode $node): string
 	{
@@ -425,20 +413,19 @@ class Dom
 	 * the allowed namespaces
 	 * @internal
 	 *
-	 * @param array $list
-	 * @param \DOMNode $node
 	 * @param array $options See `Dom::sanitize()`
 	 * @param \Closure|null Comparison callback that returns whether the expected and real name match
 	 * @return string|false Matched name in the list or `false`
 	 */
-	public static function listContainsName(array $list, DOMNode $node, array $options, Closure|null $compare = null)
-	{
+	public static function listContainsName(
+		array $list,
+		DOMNode $node,
+		array $options,
+		Closure|null $compare = null
+	): string|false {
 		$allowedNamespaces = $options['allowedNamespaces'];
 		$localName         = $node->localName;
-
-		if ($compare === null) {
-			$compare = fn ($expected, $real): bool => $expected === $real;
-		}
+		$compare         ??= fn ($expected, $real): bool => $expected === $real;
 
 		// if the configuration does not define namespace URIs or if the
 		// currently checked node is from the special `xml:` namespace
@@ -477,13 +464,19 @@ class Dom
 			}
 
 			// try if we can find an exact namespaced match
-			if ($namespaceUri === $node->namespaceURI && $compare($itemLocal, $localName) === true) {
+			if (
+				$namespaceUri === $node->namespaceURI &&
+				$compare($itemLocal, $localName) === true
+			) {
 				return $item;
 			}
 
 			// also try to match the fully-qualified name
 			// if the document doesn't define the namespace
-			if ($node->namespaceURI === null && $compare($item, $node->nodeName) === true) {
+			if (
+				$node->namespaceURI === null &&
+				$compare($item, $node->nodeName) === true
+			) {
 				return $item;
 			}
 		}
@@ -493,9 +486,6 @@ class Dom
 
 	/**
 	 * Removes a node from the document
-	 *
-	 * @param \DOMNode $node
-	 * @return void
 	 */
 	public static function remove(DOMNode $node): void
 	{
@@ -505,12 +495,12 @@ class Dom
 	/**
 	 * Executes an XPath query in the document
 	 *
-	 * @param string $query
 	 * @param \DOMNode|null $node Optional context node for relative queries
-	 * @return \DOMNodeList|false
 	 */
-	public function query(string $query, ?DOMNode $node = null)
-	{
+	public function query(
+		string $query,
+		DOMNode|null $node = null
+	): DOMNodeList|false {
 		return (new DOMXPath($this->doc))->query($query, $node);
 	}
 
@@ -605,7 +595,6 @@ class Dom
 	 *                        is exported with an XML declaration/
 	 *                        full HTML markup even if the input
 	 *                        didn't have them
-	 * @return string
 	 */
 	public function toString(bool $normalize = false): string
 	{
@@ -626,9 +615,6 @@ class Dom
 	/**
 	 * Removes a node from the document but keeps its children
 	 * by moving them one level up
-	 *
-	 * @param \DOMNode $node
-	 * @return void
 	 */
 	public static function unwrap(DOMNode $node): void
 	{
@@ -651,7 +637,6 @@ class Dom
 	 * @param bool $normalize If set to `true`, the document
 	 *                        is exported with full HTML markup
 	 *                        even if the input didn't have it
-	 * @return string
 	 */
 	protected function exportHtml(bool $normalize = false): string
 	{
@@ -660,7 +645,7 @@ class Dom
 		$metaTag = $this->doc->createElement('meta');
 		$metaTag->setAttribute('http-equiv', 'Content-Type');
 		$metaTag->setAttribute('content', 'text/html; charset=utf-8');
-		$metaTag->setAttribute('id', $metaId = Str::random(10));
+		$metaTag->setAttribute('id', Str::random(10));
 		$this->doc->insertBefore($metaTag, $this->doc->documentElement);
 
 		if (
@@ -691,11 +676,13 @@ class Dom
 	 * @param bool $normalize If set to `true`, the document
 	 *                        is exported with an XML declaration
 	 *                        even if the input didn't have it
-	 * @return string
 	 */
 	protected function exportXml(bool $normalize = false): string
 	{
-		if (Str::contains($this->code, '<?xml ', true) === false && $normalize === false) {
+		if (
+			Str::contains($this->code, '<?xml ', true) === false &&
+			$normalize === false
+		) {
 			// the input didn't contain an XML declaration;
 			// only return child nodes, which omits it
 			$result = [];
@@ -709,9 +696,7 @@ class Dom
 		// ensure that the document is encoded as UTF-8
 		// unless a different encoding was specified in
 		// the input or before exporting
-		if ($this->doc->encoding === null) {
-			$this->doc->encoding = 'UTF-8';
-		}
+		$this->doc->encoding ??= 'UTF-8';
 
 		return trim($this->doc->saveXML());
 	}
@@ -719,13 +704,14 @@ class Dom
 	/**
 	 * Sanitizes an attribute
 	 *
-	 * @param \DOMAttr $attr
 	 * @param array $options See `Dom::sanitize()`
 	 * @param array $errors Array to store additional errors in by reference
-	 * @return void
 	 */
-	protected function sanitizeAttr(DOMAttr $attr, array $options, array &$errors): void
-	{
+	protected function sanitizeAttr(
+		DOMAttr $attr,
+		array $options,
+		array &$errors
+	): void {
 		$element = $attr->ownerElement;
 		$name    = $attr->nodeName;
 		$value   = $attr->value;
@@ -767,13 +753,14 @@ class Dom
 	/**
 	 * Sanitizes the doctype
 	 *
-	 * @param \DOMDocumentType $doctype
 	 * @param array $options See `Dom::sanitize()`
 	 * @param array $errors Array to store additional errors in by reference
-	 * @return void
 	 */
-	protected function sanitizeDoctype(DOMDocumentType $doctype, array $options, array &$errors): void
-	{
+	protected function sanitizeDoctype(
+		DOMDocumentType $doctype,
+		array $options,
+		array &$errors
+	): void {
 		try {
 			$this->validateDoctype($doctype, $options);
 		} catch (InvalidArgumentException $e) {
@@ -785,13 +772,14 @@ class Dom
 	/**
 	 * Sanitizes a single DOM element and its attribute
 	 *
-	 * @param \DOMElement $element
 	 * @param array $options See `Dom::sanitize()`
 	 * @param array $errors Array to store additional errors in by reference
-	 * @return void
 	 */
-	protected function sanitizeElement(DOMElement $element, array $options, array &$errors): void
-	{
+	protected function sanitizeElement(
+		DOMElement $element,
+		array $options,
+		array &$errors
+	): void {
 		$name = $element->nodeName;
 
 		// check defined namespaces (`xmlns` attributes);
@@ -867,13 +855,14 @@ class Dom
 	/**
 	 * Sanitizes a single XML processing instruction
 	 *
-	 * @param \DOMProcessingInstruction $pi
 	 * @param array $options See `Dom::sanitize()`
 	 * @param array $errors Array to store additional errors in by reference
-	 * @return void
 	 */
-	protected function sanitizePI(DOMProcessingInstruction $pi, array $options, array &$errors): void
-	{
+	protected function sanitizePI(
+		DOMProcessingInstruction $pi,
+		array $options,
+		array &$errors
+	): void {
 		$name = $pi->nodeName;
 
 		// check for allow-listed processing instructions
@@ -889,15 +878,18 @@ class Dom
 	/**
 	 * Validates the document type
 	 *
-	 * @param \DOMDocumentType $doctype
 	 * @param array $options See `Dom::sanitize()`
-	 * @return void
 	 *
 	 * @throws \Kirby\Exception\InvalidArgumentException If the doctype is not valid
 	 */
-	protected function validateDoctype(DOMDocumentType $doctype, array $options): void
-	{
-		if (empty($doctype->publicId) === false || empty($doctype->systemId) === false) {
+	protected function validateDoctype(
+		DOMDocumentType $doctype,
+		array $options
+	): void {
+		if (
+			empty($doctype->publicId) === false ||
+			empty($doctype->systemId) === false
+		) {
 			throw new InvalidArgumentException('The doctype must not reference external files');
 		}
 

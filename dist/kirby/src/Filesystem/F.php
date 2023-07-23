@@ -514,12 +514,33 @@ class F
 			static::remove($newRoot);
 		}
 
-		// actually move the file if it exists
-		if (rename($oldRoot, $newRoot) !== true) {
-			return false;
+		$directory = dirname($newRoot);
+
+		// create the parent directory if it does not exist
+		if (is_dir($directory) === false) {
+			Dir::make($directory, true);
 		}
 
-		return true;
+		// atomically moving the file will only work if
+		// source and target are on the same filesystem
+		if (stat($oldRoot)['dev'] === stat($directory)['dev']) {
+			// same filesystem, we can move the file
+			return rename($oldRoot, $newRoot) === true;
+		}
+
+		// @codeCoverageIgnoreStart
+		// not the same filesystem; we need to copy
+		// the file and unlink the source afterwards
+		if (copy($oldRoot, $newRoot) === true) {
+			return unlink($oldRoot) === true;
+		}
+
+		// copying failed, ensure the new root isn't there
+		// (e.g. if the file could be created but there's no
+		// more remaining disk space to write its contents)
+		static::remove($newRoot);
+		return false;
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**

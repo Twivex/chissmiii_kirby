@@ -72,9 +72,12 @@
 	"error.blocks.min.singular": "Lisää vähintään yksi lohko",
 	"error.blocks.validation": "There's an error on the \"{field}\" field in block {index} using the \"{fieldset}\" block type",
 
+	"error.cache.type.invalid": "Invalid cache type \"{type}\"",
+
 	"error.email.preset.notFound": "Nimellä \"{name}\" ja kyseisellä verkkotunnuksella ei löydy sähköpostiosoitetta",
 
 	"error.field.converter.invalid": "Muunnin \"{converter}\" ei kelpaa",
+	"error.field.type.missing": "Field \"{ name }\": The field type \"{ type }\" does not exist",
 
 	"error.file.changeName.empty": "Nimi ei voi olla tyhjä",
 	"error.file.changeName.permission": "Sinulla ei ole oikeutta muuttaa tiedoston \"{filename}\" nimeä",
@@ -289,6 +292,7 @@
 	"field.pages.empty": " Sivuja ei ole vielä valittu",
 
 	"field.structure.delete.confirm": "Haluatko varmasti poistaa tämän rivin?",
+	"field.structure.delete.confirm.all": "Do you really want to delete all entries?",
 	"field.structure.empty": "Rivejä ei ole vielä lisätty",
 
 	"field.users.empty": "Käyttäjiä ei ole vielä valittu",
@@ -318,7 +322,7 @@
 	"installation.issues.headline": "Paneelia ei voida asentaa",
 	"installation.issues.mbstring": "<code>MB String</code>-laajennos on pakollinen",
 	"installation.issues.media": "<code>/media</code> -kansio ei ole olemassa tai siihen ei voi kirjoittaa",
-	"installation.issues.php": "Varmista että <code>PHP 7+</code> on käytössä",
+	"installation.issues.php": "Varmista että <code>PHP 8+</code> on käytössä",
 	"installation.issues.server": "Kirby tarvitsee jonkun seuraavista: <code>Apache</code>, <code>Nginx</code> tai <code>Caddy</code>",
 	"installation.issues.sessions": "<code>/site/sessions</code> -kansio ei ole olemassa tai siihen ei voi kirjoittaa",
 
@@ -349,6 +353,8 @@
 	"license.manage": "Hallinnoi lisenssejäsi",
 	"license.register.help": "Lisenssiavain on lähetetty oston jälkeen sähköpostiisi. Kopioi ja liitä avain tähän.",
 	"license.register.label": "Anna lisenssiavain",
+	"license.register.domain": "Your license will be registered to <strong>{host}</strong>.",
+	"license.register.local": "You are about to register your license for your local domain <strong>{host}</strong>. If this site will be deployed to a public domain, please register it there instead. If {host} is the domain you want to license Kirby to, please continue.",
 	"license.register.success": "Kiitos kun tuet Kirbyä",
 	"license.unregistered": "Tämä on rekisteröimätön demo Kirbystä",
 	"license.unregistered.label": "Rekisteröimätön",

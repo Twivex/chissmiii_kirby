@@ -4,6 +4,7 @@ namespace Kirby\Cms;
 
 use Closure;
 use Kirby\Exception\DuplicateException;
+use Kirby\Filesystem\Asset;
 use Kirby\Filesystem\Dir;
 use Kirby\Filesystem\F;
 use Kirby\Filesystem\Mime;
@@ -45,6 +46,7 @@ trait AppPlugins
 		// other plugin types
 		'api' => [],
 		'areas' => [],
+		'assetMethods' => [],
 		'authChallenges' => [],
 		'blockMethods' => [],
 		'blockModels' => [],
@@ -140,14 +142,22 @@ trait AppPlugins
 	protected function extendAreas(array $areas): array
 	{
 		foreach ($areas as $id => $area) {
-			if (isset($this->extensions['areas'][$id]) === false) {
-				$this->extensions['areas'][$id] = [];
-			}
-
+			$this->extensions['areas'][$id] ??= [];
 			$this->extensions['areas'][$id][] = $area;
 		}
 
 		return $this->extensions['areas'];
+	}
+
+	/**
+	 * Registers additional asset methods
+	 *
+	 * @param array $methods
+	 * @return array
+	 */
+	protected function extendAssetMethods(array $methods): array
+	{
+		return $this->extensions['assetMethods'] = Asset::$methods = array_merge(Asset::$methods, $methods);
 	}
 
 	/**
@@ -388,9 +398,7 @@ trait AppPlugins
 	protected function extendHooks(array $hooks): array
 	{
 		foreach ($hooks as $name => $callbacks) {
-			if (isset($this->extensions['hooks'][$name]) === false) {
-				$this->extensions['hooks'][$name] = [];
-			}
+			$this->extensions['hooks'][$name] ??= [];
 
 			if (is_array($callbacks) === false) {
 				$callbacks = [$callbacks];

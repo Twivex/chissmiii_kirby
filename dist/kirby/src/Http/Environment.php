@@ -152,7 +152,7 @@ class Environment
 	 */
 	public function detect(array $options = null, array $info = null): array
 	{
-		$info ??= $_SERVER;
+		$info  ??= $_SERVER;
 		$options = array_merge([
 			'cli'     => null,
 			'allowed' => null
@@ -195,7 +195,7 @@ class Environment
 	 * Sets the host name, port, path and protocol from the
 	 * fixed list of allowed URLs
 	 */
-	protected function detectAllowed(array|string|object $allowed): void
+	protected function detectAllowed(array|string $allowed): void
 	{
 		$allowed = A::wrap($allowed);
 
@@ -377,8 +377,8 @@ class Environment
 				$data['https'] = $this->detectHttpsProtocol($fields['proto']);
 			}
 
-			if ($data['port'] === null && $data['https'] === true) {
-				$data['port'] = 443;
+			if ($data['https'] === true) {
+				$data['port'] ??= 443;
 			}
 
 			$data['for'] = $parts['for'] ?? null;
@@ -922,7 +922,7 @@ class Environment
 	protected function sanitizeScriptPath(string|null $scriptPath = null): string
 	{
 		$scriptPath ??= '';
-		$scriptPath = trim($scriptPath);
+		$scriptPath   = trim($scriptPath);
 
 		// skip all the sanitizing steps if the path is empty
 		if ($scriptPath === '') {

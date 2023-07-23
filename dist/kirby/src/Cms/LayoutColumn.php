@@ -19,7 +19,7 @@ class LayoutColumn extends Item
 {
 	use HasMethods;
 
-	public const ITEMS_CLASS = '\Kirby\Cms\LayoutColumns';
+	public const ITEMS_CLASS = LayoutColumns::class;
 
 	/**
 	 * @var \Kirby\Cms\Blocks
@@ -41,6 +41,7 @@ class LayoutColumn extends Item
 		parent::__construct($params);
 
 		$this->blocks = Blocks::factory($params['blocks'] ?? [], [
+			'field'  => $this->field,
 			'parent' => $this->parent
 		]);
 

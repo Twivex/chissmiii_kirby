@@ -57,16 +57,17 @@ trait HasFiles
 	 * Creates a new file
 	 *
 	 * @param array $props
+	 * @param bool $move If set to `true`, the source will be deleted
 	 * @return \Kirby\Cms\File
 	 */
-	public function createFile(array $props)
+	public function createFile(array $props, bool $move = false)
 	{
 		$props = array_merge($props, [
 			'parent' => $this,
 			'url'    => null
 		]);
 
-		return File::create($props);
+		return File::create($props, $move);
 	}
 
 	/**
@@ -94,7 +95,7 @@ trait HasFiles
 
 		// find by global UUID
 		if (Uuid::is($filename, 'file') === true) {
-			return Uuid::for($filename, $this->files())->model();
+			return Uuid::for($filename, $this->$in())->model();
 		}
 
 		if (strpos($filename, '/') !== false) {

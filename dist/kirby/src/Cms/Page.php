@@ -96,7 +96,7 @@ class Page extends ModelWithContent
 	 * The template, that should be loaded
 	 * if it exists
 	 *
-	 * @var \Kirby\Cms\Template
+	 * @var \Kirby\Template\Template
 	 */
 	protected $intendedTemplate;
 
@@ -143,7 +143,7 @@ class Page extends ModelWithContent
 	/**
 	 * The intended page template
 	 *
-	 * @var \Kirby\Cms\Template
+	 * @var \Kirby\Template\Template
 	 */
 	protected $template;
 
@@ -504,7 +504,7 @@ class Page extends ModelWithContent
 	 * Returns the template that should be
 	 * loaded if it exists.
 	 *
-	 * @return \Kirby\Cms\Template
+	 * @return \Kirby\Template\Template
 	 */
 	public function intendedTemplate()
 	{
@@ -777,11 +777,7 @@ class Page extends ModelWithContent
 
 		$template = $this->intendedTemplate()->name();
 
-		if (isset($readable[$template]) === true) {
-			return $readable[$template];
-		}
-
-		return $readable[$template] = $this->permissions()->can('read');
+		return $readable[$template] ??= $this->permissions()->can('read');
 	}
 
 	/**
@@ -1064,8 +1060,23 @@ class Page extends ModelWithContent
 
 			$kirby->data = $this->controller($data, $contentType);
 
+			// trigger before hook and apply for `data`
+			$kirby->data = $kirby->apply('page.render:before', [
+				'contentType' => $contentType,
+				'data'        => $kirby->data,
+				'page'        => $this
+			], 'data');
+
 			// render the page
 			$html = $template->render($kirby->data);
+
+			// trigger after hook and apply for `html`
+			$html = $kirby->apply('page.render:after', [
+				'contentType' => $contentType,
+				'data'        => $kirby->data,
+				'html'        => $html,
+				'page'        => $this
+			], 'html');
 
 			// cache the result
 			$response = $kirby->response();
@@ -1085,7 +1096,7 @@ class Page extends ModelWithContent
 	/**
 	 * @internal
 	 * @param mixed $type
-	 * @return \Kirby\Cms\Template
+	 * @return \Kirby\Template\Template
 	 * @throws \Kirby\Exception\NotFoundException If the content representation cannot be found
 	 */
 	public function representation($type)
@@ -1266,13 +1277,13 @@ class Page extends ModelWithContent
 	public function slug(string $languageCode = null): string
 	{
 		if ($this->kirby()->multilang() === true) {
-			if ($languageCode === null) {
-				$languageCode = $this->kirby()->languageCode();
-			}
-
+			$languageCode      ??= $this->kirby()->languageCode();
 			$defaultLanguageCode = $this->kirby()->defaultLanguage()->code();
 
-			if ($languageCode !== $defaultLanguageCode && $translation = $this->translations()->find($languageCode)) {
+			if (
+				$languageCode !== $defaultLanguageCode &&
+				$translation = $this->translations()->find($languageCode)
+			) {
 				return $translation->slug() ?? $this->slug;
 			}
 		}
@@ -1302,7 +1313,7 @@ class Page extends ModelWithContent
 	/**
 	 * Returns the final template
 	 *
-	 * @return \Kirby\Cms\Template
+	 * @return \Kirby\Template\Template
 	 */
 	public function template()
 	{

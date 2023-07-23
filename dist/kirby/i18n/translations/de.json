@@ -1,7 +1,7 @@
 {
 	"account.changeName": "Deinen Namen ändern",
 	"account.delete": "Deinen Account löschen",
-	"account.delete.confirm": "Willst du deinen Account wirklich löschen? Du wirst sofort danach abgemeldet. Dein Account kann nicht wieder hergestellt werden. ",
+	"account.delete.confirm": "Willst du deinen Account wirklich löschen? Du wirst sofort danach abgemeldet. Dein Account kann nicht wieder hergestellt werden.",
 
 	"add": "Hinzuf\u00fcgen",
 	"author": "Autor",
@@ -72,9 +72,12 @@
 	"error.blocks.min.singular": "Bitte füge mindestens einen Block hinzu",
 	"error.blocks.validation": "Fehler im \"{field}\" Feld in Block {index} mit dem Block Typ \"{fieldset}\"",
 
+	"error.cache.type.invalid": "Ungültiger Cachetyp: \"{type}\"",
+
 	"error.email.preset.notFound": "Die E-Mailvorlage \"{name}\" wurde nicht gefunden",
 
 	"error.field.converter.invalid": "Ungültiger Konverter:  \"{converter}\"",
+	"error.field.type.missing": "Feld \"{ name }\": Der Feldtyp \"{ type }\" existiert nicht",
 
 	"error.file.changeName.empty": "Bitte gib einen Namen an",
 	"error.file.changeName.permission": "Du darfst den Dateinamen von \"{filename}\" nicht ändern",
@@ -107,7 +110,7 @@
 	"error.language.name": "Bitte gib einen gültigen Namen für die Sprache an",
 	"error.language.notFound": "Die Sprache konnte nicht gefunden werden",
 
-	"error.layout.validation.block": "Fehler im \"{field}\" Feld in Block {blockIndex} mit dem Block Typ \"{fieldset}\" in Layout {layoutIndex}",
+	"error.layout.validation.block": "Fehler im \"{field}\" Feld in Block {blockIndex} mit dem Blocktyp \"{fieldset}\" in Layout {layoutIndex}",
 	"error.layout.validation.settings": "Fehler in den Einstellungen von Layout {index}",
 
 	"error.license.format": "Bitte gib einen gültigen Lizenzschlüssel ein",
@@ -162,7 +165,7 @@
 
 	"error.template.default.notFound": "Die \"Default\"-Vorlage existiert nicht",
 
-	"error.unexpected": "Ein unerwarteter Fehler ist aufgetreten. Aktiviere den Debug Modus für weitere Informationen: https://getkirby.com/docs/reference/system/options/debug",
+	"error.unexpected": "Ein unerwarteter Fehler ist aufgetreten. Aktiviere den Debug-Modus für weitere Informationen: https://getkirby.com/docs/reference/system/options/debug",
 
 	"error.user.changeEmail.permission": "Du kannst die E-Mailadresse für den Account \"{name}\" nicht ändern",
 	"error.user.changeLanguage.permission": "Du kannst die Sprache für den Account \"{name}\" nicht ändern",
@@ -289,6 +292,7 @@
 	"field.pages.empty": "Keine Seiten ausgewählt",
 
 	"field.structure.delete.confirm": "Willst du diesen Eintrag wirklich l\u00f6schen?",
+	"field.structure.delete.confirm.all": "Möchtest du wirklich alle Einträge löschen?",
 	"field.structure.empty": "Es bestehen keine Eintr\u00e4ge.",
 
 	"field.users.empty": "Keine Accounts ausgewählt",
@@ -318,7 +322,7 @@
 	"installation.issues.headline": "Das Panel kann nicht installiert werden",
 	"installation.issues.mbstring": "Die <code>MB String</code> Erweiterung wird benötigt",
 	"installation.issues.media": "Der <code>/media</code> Ordner ist nicht beschreibbar",
-	"installation.issues.php": "Bitte verwende <code>PHP 7+</code>",
+	"installation.issues.php": "Bitte verwende <code>PHP 8+</code>",
 	"installation.issues.server": "Kirby benötigt <code>Apache</code>, <code>Nginx</code> or <code>Caddy</code>",
 	"installation.issues.sessions": "<code>/site/sessions</code> ist nicht beschreibbar",
 
@@ -349,6 +353,8 @@
 	"license.manage": "Verwalte deine Lizenzen",
 	"license.register.help": "Den Lizenzcode findest du in der Bestätigungsmail zu deinem Kauf. Bitte kopiere und füge ihn ein, um Kirby zu registrieren.",
 	"license.register.label": "Bitte gib deinen Lizenzcode ein",
+	"license.register.domain": "Deine Lizenz wird unter der Domain <strong>{host}</strong> registriert",
+	"license.register.local": "Du bist dabei, deine Lizenz unter der lokalen Domain <strong>{host}</strong> zu registrieren. Wenn diese Seite  unter einer anderen Domain veröffentlicht werden soll, registriere die Lizenz statt dessen bitte dort. Wenn du {host} als Domain verwenden möchtest, fahre bitte fort. ",
 	"license.register.success": "Vielen Dank für deine Unterstützung",
 	"license.unregistered": "Dies ist eine unregistrierte Kirby-Demo",
 	"license.unregistered.label": "Unregistriert",

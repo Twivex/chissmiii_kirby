@@ -109,9 +109,7 @@ class Form
 			$input = array_merge($values, $input);
 
 			foreach ($input as $key => $value) {
-				if (isset($this->values[$key]) === false) {
-					$this->values[$key] = $value;
-				}
+				$this->values[$key] ??= $value;
 			}
 		}
 	}
@@ -326,9 +324,7 @@ class Form
 			return $fields;
 		}
 
-		if ($language === null) {
-			$language = $kirby->language()->code();
-		}
+		$language ??= $kirby->language()->code();
 
 		if ($language !== $kirby->defaultLanguage()->code()) {
 			foreach ($fields as $fieldName => $fieldProps) {
