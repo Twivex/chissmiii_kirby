@@ -302,7 +302,7 @@ Kirby::plugin('chissmiii/custom', [
 
           foreach ($matches[1] as $match) {
             $replaceAttr = $field->model()->$match();
-            $replaceValue = $replaceAttr->isNotEmpty() ? $replaceAttr->value() : '';
+            $replaceValue = !empty($replaceAttr) ? $replaceAttr : '';
             $path = str_replace('{' . $match . '}', $replaceValue, $path);
           }
 
