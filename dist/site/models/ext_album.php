@@ -1,5 +1,7 @@
 <?php
 
+use Kirby\Cms\Page;
+
 class ExtAlbumPage extends Page {
 
   public function getAlbumPath($absolute = false) {
@@ -38,7 +40,7 @@ class ExtAlbumPage extends Page {
             // detect file extension
             $fileExt = pathinfo($filePath, PATHINFO_EXTENSION);
             $fileExt = strtolower($fileExt);
-            if (in_array($fileExt, $allowedExtensions)) {
+            if (strpos($file, '.') > 0 && in_array($fileExt, $allowedExtensions)) {
               $carry[] = [
                 'name' => $file,
                 'type' => in_array($fileExt, $imageExtensions) ? 'image' : 'video',
