@@ -38,7 +38,7 @@ class ExtAlbum2Page extends Page {
             // detect file extension
             $fileExt = pathinfo($filePath, PATHINFO_EXTENSION);
             $fileExt = strtolower($fileExt);
-            if (strpos('.', $file) > 0 && in_array($fileExt, $allowedExtensions)) {
+            if (strpos($file, '.') > 0 && in_array($fileExt, $allowedExtensions)) {
               $carry[] = [
                 'name' => $file,
                 'type' => in_array($fileExt, $imageExtensions) ? 'image' : 'video',
