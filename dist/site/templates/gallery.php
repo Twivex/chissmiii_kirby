@@ -43,7 +43,7 @@
               return $file['type'] === 'image';
             });
             if (!empty($images)) {
-              $firstImage = $images[0];
+              $firstImage = array_shift($images);
               $modifiedDate = filemtime($files[$mediaCount - 1]['path']);
               $mDate = date('d.m.Y', $modifiedDate);
               $mTime = date('H:i', $modifiedDate);
