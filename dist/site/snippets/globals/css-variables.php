@@ -46,14 +46,13 @@
     <?php
 
       $colorKeys = array_filter($data->content()->keys(), function ($key) {
-        return strpos($key, 'color') === 0;
+        return strpos($key, 'color') === 0 || strpos($key, 'gradient_color') === 0;
       });
 
       foreach($colorKeys as $colorKey) {
         $colorField = $data->content()->get($colorKey);
         if ($colorField->isNotEmpty()) {
           $variantKey = str_replace('color_', 'variant_', $colorKey);
-          $useVariant = $data->content()->get($variantKey)->value();
           if ($data->content()->get($variantKey)->value() === 'true') {
             echo $colorField->cssColorVar(true, $hoverVariants);
           } else {
@@ -73,7 +72,6 @@
         }
         $colorKey = $selectColorField->value();
         $variantKey = str_replace('color_', 'variant_', $colorKey);
-        $useVariant = $data->content()->get($variantKey)->value();
         if ($data->content()->get($variantKey)->value() === 'true') {
           echo $selectColorField->cssColorVar(false, $hoverVariants);
         } else {

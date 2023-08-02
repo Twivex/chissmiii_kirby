@@ -20,6 +20,30 @@ fields:
       - text: Dark
         value: dark
 
+  global_style_variables_line:
+    type: line
+
+  gradient color_bs_gradient_deg:
+    label: Gradient (deg)
+    width: 1/4
+    type: range
+    min: 0
+    max: 360
+    tooltip:
+      after: °
+
+  gradient_color_bs_gradient_from:
+    label: Gradient (from)
+    width: 1/4
+    type: colors
+    alpha: true
+
+  gradient_color_bs_gradient_to:
+    label: Gradient (to)
+    width: 1/4
+    type: colors
+    alpha: true
+
   colors_line:
     type: line
 
