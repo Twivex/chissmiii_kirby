@@ -61,18 +61,15 @@ npm-build:
 npm-watch:
 	docker exec -it ${MAIN_CONTAINER_NAME}-${env} sh -c "npm run dev"
 
-git-pull-content:
-	git submodule update --remote --merge dist/content
+pull-content-2dev:
+	ssh dock@bay "cd /ext_storage/kirby-content && git add . && git commit -m \"updated content\" && git push"; \
+	cd ${EXTERNAL_VOLUMES_PATH}/kirby-content && git pull; \
+	rsync -avzP --delete --include="*/" --include="*.mp4" --exclude="*" dock@bay:/ext_storage/kirby-content/ ${EXTERNAL_VOLUMES_PATH}/kirby-content/
 
-git-push-content:
-	cd dist/content && \
-	git add . && \
-	git commit -m "updated content" && \
-	git push && \
-	cd ../../ && \
-	git add dist/content && \
-	git commit -m "updated submodule state dist/content" && \
-	git push
+push-content-2bay:
+	cd ${EXTERNAL_VOLUMES_PATH}/kirby-content && \
+	git add . && git commit -m "updated content" && git push; \
+	rsync -avzP --delete --include="*/" --include="*.mp4" --exclude="*" ${EXTERNAL_VOLUMES_PATH}/kirby-content/ dock@bay:/ext_storage/kirby-content/
 
 fix-permissions:
 	sudo chown -R dock:www-data . && \
