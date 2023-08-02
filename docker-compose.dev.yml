@@ -12,6 +12,7 @@ services:
     volumes:
       - dist:/var/www/html
       - ${EXTERNAL_VOLUMES_PATH}/cloud:/cloud
+      - ${EXTERNAL_VOLUMES_PATH}/kirby-content:/var/www/html/content
 
 volumes:
 
