@@ -1,9 +1,6 @@
 [submodule "dist/site/plugins/k3-whenquery"]
 	path = dist/site/plugins/k3-whenquery
 	url = https://github.com/rasteiner/k3-whenquery.git
-[submodule "dist/content"]
-	path = dist/content
-	url = git@github.com:Twivex/chissmiii-kirby-content.git
 [submodule "dist/site/plugins/relationship"]
 	path = dist/site/plugins/relationship
 	url = https://github.com/olach/kirby3-relationship.git
