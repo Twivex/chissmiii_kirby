@@ -7,7 +7,14 @@
     <?php
       $pageBgImages = $page->bg_img();
       $siteBgImages = $site->files()->filterBy('tags', 'background');
-      $bgImage = $page->bg_img()->isNotEmpty() ? $page->bg_img()->toFile() : $site->bg_img()->toFile();
+      if ($page->settings_enabled()->toBool()) {
+        $source = $pageM;
+      } elseif ($page->parents()->count() > 0 && $page->parent()->settings_enabled()->toBool()) {
+        $source = $page->parent();
+      } else {
+        $source = $site;
+      }
+      $bgImage = $source->bg_img()->toFile();
 
       if ($bgImage !== null) {
         snippet('globals/bg-img', [ 'img' => $bgImage ]);

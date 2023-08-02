@@ -1,6 +1,14 @@
 <?php
   $navbarStyleClass = '';
-  $navbarStyle = $page->navbar_style()->isNotEmpty() ? $page->navbar_style()->value() : $site->navbar_style()->value();
+  if ($page->settings_enabled()->toBool()) {
+    $source = $pageM;
+  } elseif ($page->parents()->count() > 0 && $page->parent()->settings_enabled()->toBool()) {
+    $source = $page->parent();
+  } else {
+    $source = $site;
+  }
+
+  $navbarStyle = $source->navbar_style()->value();
   if ($navbarStyle) {
     $navbarStyleClass = 'navbar-' . $navbarStyle;
   }

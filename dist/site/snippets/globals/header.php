@@ -30,13 +30,14 @@
 
     <?php
       if ($page->settings_enabled()->toBool() === true) {
-        // use page variables, if possible
-        snippet('globals/css-variables', [ 'data' => $page ]);
+        $source = $page;
+      } elseif ($page->parents()->count() > 0 && $page->parent()->settings_enabled()->toBool() === true) {
+        $source = $page->parent();
+      } else {
+        $source = $site;
       }
-      else {
-        // default: use site variables
-        snippet('globals/css-variables', [ 'data' => $site ]);
-      }
+
+      snippet('globals/css-variables', compact('source'));
     ?>
 
     <?php if ($appIcon): ?>
