@@ -1,7 +1,7 @@
 <?php
   $navbarStyleClass = '';
   if ($page->settings_enabled()->toBool()) {
-    $source = $pageM;
+    $source = $page;
   } elseif ($page->parents()->count() > 0 && $page->parent()->settings_enabled()->toBool()) {
     $source = $page->parent();
   } else {
