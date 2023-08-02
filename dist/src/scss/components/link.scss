@@ -2,14 +2,14 @@
   &-primary {
     &:hover,
     &:focus {
-      color: var(--bs-primary-hover-bg) !important;
+      color: var(--bs-primary-hover-bg);
     }
   }
 
   &-secondary {
     &:hover,
     &:focus {
-      color: var(--bs-secondary-hover-bg) !important;
+      color: var(--bs-secondary-hover-bg);
     }
   }
 
@@ -17,14 +17,14 @@
   &-light {
     &:hover,
     &:focus {
-      color: var(--bs-light-hover-bg) !important;
+      color: var(--bs-light-hover-bg);
     }
   }
 
   &-dark {
     &:hover,
     &:focus {
-      color: var(--bs-dark-hover-bg) !important;
+      color: var(--bs-dark-hover-bg);
     }
   }
 }

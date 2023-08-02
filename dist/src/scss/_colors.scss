@@ -1,19 +1,19 @@
 a {
-  color: var(--cm-link-color) !important;
+  color: var(--cm-link-color);
 
   &:hover,
   &:focus {
-    color: var(--cm-link-hover-color) !important;
+    color: var(--cm-link-hover-color);
   }
 }
 
 .text {
   &-primary-contrast {
-    color: var(--cm-primary-contrast) !important;
+    color: var(--cm-primary-contrast);
   }
 
   &-secondary-contrast {
-    color: var(--cm-secondary-contrast) !important;
+    color: var(--cm-secondary-contrast);
   }
 }
 
@@ -29,11 +29,11 @@ a {
   }
 
   &-primary-contrast {
-    color: var(--cm-primary-contrast) !important;
+    color: var(--cm-primary-contrast);
 
     &:focus,
     &:hover {
-      color: var(--cm-primary-contrast-hover-color) !important;
+      color: var(--cm-primary-contrast-hover-color);
     }
   }
 
