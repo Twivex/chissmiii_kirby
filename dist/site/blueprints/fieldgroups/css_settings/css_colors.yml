@@ -26,7 +26,7 @@ fields:
   color_bs_primary:
     label: Primary
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_primary:
     label: Primary Variants
@@ -39,7 +39,7 @@ fields:
   color_bs_secondary:
     label: Secondary
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_secondary:
     label: Secondary Variants
@@ -52,7 +52,7 @@ fields:
   color_bs_light:
     label: Light
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_light:
     label: Light Variants
@@ -65,7 +65,7 @@ fields:
   color_bs_dark:
     label: Dark
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_dark:
     label: Dark Variants
@@ -78,7 +78,7 @@ fields:
   color_bs_success:
     label: Success
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_success:
     label: Success Variants
@@ -91,7 +91,7 @@ fields:
   color_bs_info:
     label: Info
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_info:
     label: Info Variants
@@ -104,7 +104,7 @@ fields:
   color_bs_warning:
     label: Warning
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_warning:
     label: Warning Variants
@@ -117,7 +117,7 @@ fields:
   color_bs_danger:
     label: Danger
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_danger:
     label: Danger Variants
@@ -130,7 +130,7 @@ fields:
   color_bs_body_color:
     label: Body Text
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_body_color:
     label: Body Text Variants
@@ -143,7 +143,7 @@ fields:
   color_bs_body_bg:
     label: Body Background
     width: 1/4
-    type: text
+    type: colors
 
   variant_bs_body_bg:
     label: Body Background Variants
@@ -159,7 +159,7 @@ fields:
   color_cm_primary_contrast:
     label: Primary Contrast
     width: 1/4
-    type: text
+    type: colors
 
   variant_cm_primary_contrast:
     label: Primary Contrast Variants
@@ -172,7 +172,7 @@ fields:
   color_cm_secondary_contrast:
     label: Secondary Contrast
     width: 1/4
-    type: text
+    type: colors
 
   variant_cm_secondary_contrast:
     label: Secondary Contrast Variants
@@ -185,7 +185,7 @@ fields:
   color_cm_main_content_bg:
     label: Main Content Background
     width: 1/4
-    type: text
+    type: colors
 
   variant_cm_main_content_bg:
     label: Main Content Background Variants
@@ -199,7 +199,7 @@ fields:
     type: line
 
   select_cm_link_color:
-    label: Link Color
+    label: Link colors
     width: 1/4
     type: select
     default: color_bs_primary

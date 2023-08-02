@@ -7,3 +7,6 @@
 [submodule "dist/site/plugins/relationship"]
 	path = dist/site/plugins/relationship
 	url = https://github.com/olach/kirby3-relationship.git
+[submodule "dist/site/plugins/colors"]
+	path = dist/site/plugins/colors
+	url = https://github.com/hananils/kirby-colors.git
