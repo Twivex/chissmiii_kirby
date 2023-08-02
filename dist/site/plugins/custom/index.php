@@ -223,10 +223,12 @@ Kirby::plugin('chissmiii/custom', [
 
     'cssColorVar' => function ($field, $addRgb = false, $variants = []) {
       $fieldKey = $field->key();
-      $isSelectVar = strpos($fieldKey, 'select') !== false;
-      $isColorVar = strpos($fieldKey, 'color') !== false;
+      $isSelectVar = strpos($fieldKey, 'select') === 0;
+      $isColorVar = strpos($fieldKey, 'color') === 0;
+      $isGradientColorVar = strpos($fieldKey, 'gradient_color') === 0;
+      $isFromColor = substr($fieldKey, -4, 4) === 'from';
 
-      if ($isSelectVar || $isColorVar) {
+      if ($isSelectVar || $isColorVar || $isGradientColorVar && $isFromColor) {
 
         $fieldValue = $field->value();
 
@@ -291,6 +293,24 @@ Kirby::plugin('chissmiii/custom', [
             }
           }
 
+        } elseif ($isGradientColorVar) {
+          // use field key as var name, stripping out 'color_' prefix and replacing underscores with dashes
+          $colorVarName = '--' . str_replace('gradient_color_', '', $fieldKey);
+          $colorVarName = str_replace('_from', '', $colorVarName);
+          $colorVarName = str_replace('_', '-', $colorVarName);
+          $toField = $field->parent()->content()->get(str_replace('from', 'to', $fieldKey));
+          if ($toField->isNotEmpty()) {
+            $fromColorRgba = $field->toColor('rgb');
+            $toColorRgba = $toField->toColor('rgb');
+            $degField = $field->parent()->content()->get(str_replace('from', 'deg', $fieldKey));
+            if ($degField->isNotEmpty()) {
+              $deg = $degField->value() . 'deg';
+            } else {
+              $deg = '180deg';
+            }
+            $gradient = "linear-gradient($deg, $fromColorRgba, $toColorRgba)";
+            array_push($colorVarsOuput, "$colorVarName: $gradient;");
+          }
         }
         // return the list of color vars, separated by newlines
         return implode("\n", $colorVarsOuput) . "\n";
