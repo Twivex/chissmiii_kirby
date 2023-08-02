@@ -27,7 +27,7 @@ volumes:
   cloud:
     driver: local
     driver_opts:
-      device: /cloud
+      device: /ext_storage/cloud
       type: none
       o: bind
 
@@ -47,7 +47,7 @@ volumes:
   kirby_content:
     driver: local
     driver_opts:
-      device: ${PWD}/dist/content
+      device: /ext_storage/kirby-content
       type: none
       o: bind
 
