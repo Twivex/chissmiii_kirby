@@ -1,3 +1,15 @@
+.navbar#menu:after{
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1000%;
+  background-color: var(--bs-light);
+  z-index: 0;
+  top: -1000%;
+}
+
 .navbar-dark .offcanvas-header .btn-close {
   @extend .btn-close-white;
 }
