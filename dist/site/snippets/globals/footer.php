@@ -1,3 +1,4 @@
+      </div>
     </main>
 
     <footer class="position-sticky top-100">
@@ -13,11 +14,6 @@
         $source = $page->parent();
       } else {
         $source = $site;
-      }
-      $bgImage = $source->bg_img()->toFile();
-
-      if ($bgImage !== null) {
-        snippet('globals/bg-img', [ 'img' => $bgImage ]);
       }
     ?>
 

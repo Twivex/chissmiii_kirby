@@ -1,0 +1,5 @@
+extends: fields/one_file
+query: site.files
+uploads:
+  parent: site
+  template: global

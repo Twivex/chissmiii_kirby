@@ -92,7 +92,11 @@
         if ($variableField->isNotEmpty()) {
           $variableName = str_replace('variable_', '', $variableKey);
           $variableName = str_replace('_', '-', $variableName);
-          $variableValue = $variableField->value();
+          if (strpos($variableKey, 'img') !== false && $variableField->toFile()->exists()) {
+            $variableValue = "url({$variableField->toFile()->url()})";
+          } else {
+            $variableValue = $variableField->value();
+          }
           echo "--$variableName: $variableValue;";
         }
       }

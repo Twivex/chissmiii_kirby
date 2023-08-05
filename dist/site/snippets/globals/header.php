@@ -58,4 +58,5 @@
   </head>
   <body>
     <?php snippet('globals/nav') ?>
-    <main id="main" class="container my-sm-4 px-sm-4 py-4">
+    <main id="main" class="py-sm-4">
+      <div class="content-wrapper">

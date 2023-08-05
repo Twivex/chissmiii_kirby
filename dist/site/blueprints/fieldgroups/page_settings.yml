@@ -8,8 +8,7 @@ fields:
     extends: fields/one_file
     label: Favicon
     width: 1/4
-  bg_img:
-    extends: fields/one_file
+  variable_cm_bg_img:
+    extends: fields/global_file
     label: Hintergrundbild
     width: 1/4
-    query: site.files

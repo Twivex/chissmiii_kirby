@@ -2,22 +2,16 @@ body {
   min-height: 100vh;
 }
 
-.background-img {
-  left: 0;
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  z-index: -1;
-
-  > img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
+#main {
+  background-image: var(--cm-bg-img);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-#main {
+.content-wrapper {
+  @extend .container, .px-sm-4, .py-4;
   background-color: rgba(var(--cm-main-content-bg-rgb), var(--cm-main-content-bg-opacity));
 }
 
