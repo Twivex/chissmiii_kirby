@@ -2,17 +2,9 @@ body {
   min-height: 100vh;
 }
 
-#main {
-  background-image: var(--cm-bg-img);
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
 #main::before {
   background-image: var(--cm-bg-img);
-  background-position: center;
+  background-position: top;
   background-size: cover;
   bottom: 0;
   content: '';
