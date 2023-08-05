@@ -27,7 +27,7 @@ return [
         'cookie-settings-application-title' => 'Anwendungsbezogene Cookies',
         'cookie-settings-application-text' => 'Um dir eine bestmögliche Nutzung unserer Website zu ermöglichen, nutzen wir (ChissMiii) auf bestimmten Seiten Dienste von Drittanbietern. Damit diese korrekt funktionieren, werden Cookies für die Anbieter YouTube und Google Maps gespeichert. Die dadurch erzeugten Informationen werden ausschließlich pseudonymisiert verarbeitet. Ein Rückschluss auf deine Person ist uns nicht möglich. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. lit. 1 a) DSGVO). Weitere Informationen findest du (link: datenschutzerklarung text: hier).',
         'cookie-save-settings' => 'Einstellungen speichern',
-        'application-cookie-required-text' => 'Dieser Inhalt benötigt anwendungsbezogene Cookies. Diese kannst du hier aktivieren.',
+        'application-cookie-required-text' => 'Dieser Inhalt benötigt anwendungsbezogene Cookies. Diese kannst du hier aktivieren:',
 
         'image-upload-modal-title' => 'Upload',
         'image-upload-modal-submit' => 'Upload starten',
