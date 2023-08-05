@@ -12,3 +12,4 @@ fields:
     extends: fields/one_file
     label: Hintergrundbild
     width: 1/4
+    query: site.files
