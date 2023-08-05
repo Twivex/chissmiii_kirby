@@ -10,6 +10,22 @@ body {
   background-attachment: fixed;
 }
 
+#main::before {
+  background-image: var(--cm-bg-img);
+  background-position: center;
+  background-size: cover;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  z-index: -10;
+}
+
 .content-wrapper {
   @extend .container, .px-sm-4, .py-4;
   background-color: rgba(var(--cm-main-content-bg-rgb), var(--cm-main-content-bg-opacity));
