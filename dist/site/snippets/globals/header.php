@@ -51,6 +51,8 @@
       <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= $faviconFile->resize(32)->url() ?>">
       <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= $faviconFile->resize(16)->url() ?>">
     <?php endif; ?>
+
+    <link rel="manifest" href="/resources/manifest.json">
   </head>
   <body>
     <?php snippet('globals/nav') ?>

@@ -1,0 +1,54 @@
+type: object
+fields:
+  name:
+    label: Name
+    type: text
+  short_name:
+    label: Short Name
+    type: text
+  id:
+    label: ID
+    type: text
+  id_info:
+    type: info
+    label: ID Info
+    text: |
+      A string that uniquely identifies this PWA against others that may be hosted on the same origin. If it's not set, the Start URL will be used as a fallback value. Keep in mind that by changing the Start URL in the future (such as when changing a query string value) you may be removing the browser's ability to detect that a PWA is already installed.
+  scrope:
+    label: Scope
+    type: text
+    default: '/'
+  start_url:
+    label: Start URL
+    type: text
+    default: '/'
+  theme_color:
+    label: Theme Color
+    type: select
+    default: color_bs_light
+    options:
+      color_bs_primary: Primary
+      color_bs_secondary: Secondary
+      color_bs_light: Light (default)
+      color_bs_dark: Dark
+  background_color:
+    label: Background Color
+    type: colors
+    default: '#ffffff'
+  display:
+    type: select
+    label: Display
+    default: browser
+    options:
+      browser: Browser
+      standalone: Standalone
+      fullscreen: Fullscreen
+      minimal-ui: Minimal UI
+  orientation:
+    type: select
+    label: Orientation
+    default: portrait
+    options:
+      portrait: Portrait
+      landscape: Landscape
+

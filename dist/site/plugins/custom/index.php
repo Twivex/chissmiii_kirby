@@ -1,4 +1,7 @@
 <?php
+
+use Kirby\Filesystem\F;
+
 function digit2hex(int $digit) {
   $hex = dechex($digit);
   return strlen($hex) < 2 ? '0' . $hex : $hex;
@@ -348,5 +351,34 @@ Kirby::plugin('chissmiii/custom', [
 
 
   ],
+
+
+  'hooks' => [
+
+    'site.update:after' => function (Kirby\Cms\Site $newSite, Kirby\Cms\Site $oldSite) {
+
+      static $MANIFEST_PATH = 'resources/manifest.json';
+
+      // retrieve set manifest data
+      $manifest = $newSite->manifest()->toObject();
+      $manifestArr = $manifest->toArray();
+
+      // set color values to hex
+      $backgroundColor = $manifest->background_color();
+      $manifestArr['background_color'] = $backgroundColor->isNotEmpty() ? $backgroundColor->toColor('hex') : '#ffffff';
+      if ($manifest->theme_color()->isNotEmpty()) {
+        $themeColorVarName = $manifest->theme_color()->value();
+        $themeColor = $newSite->content()->get($themeColorVarName);
+        $manifestArr['theme_color'] = $themeColor->isNotEmpty() ? $themeColor->toColor('hex') : '#ffffff';
+      }
+
+      // store manifest data in JSON file
+      $manifestJson = json_encode($manifestArr, JSON_PRETTY_PRINT);
+      F::write($MANIFEST_PATH, $manifestJson);
+
+    },
+
+  ],
+
 
 ]);

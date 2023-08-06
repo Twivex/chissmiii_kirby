@@ -6,3 +6,4 @@
 .env-name
 dist/resources/css
 dist/resources/js
+dist/resources/manifest.json

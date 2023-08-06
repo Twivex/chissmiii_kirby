@@ -45,7 +45,11 @@ tabs:
         extends: fields/one_file
         label: App Startbildschirm
         width: 1/6
-      gs_line:
+      manifest:
+        extends: fields/manifest
+        label: Manifest
+        width: 1/4
+      ts_line:
         type: line
       ts_countries:
         extends: fields/one_file
