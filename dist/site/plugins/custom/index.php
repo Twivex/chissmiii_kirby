@@ -372,6 +372,18 @@ Kirby::plugin('chissmiii/custom', [
         $manifestArr['theme_color'] = $themeColor->isNotEmpty() ? $themeColor->toColor('hex') : '#ffffff';
       }
 
+      if ($newSite->app_icon()->isNotEmpty()) {
+        $appIconFile = $newSite->app_icon()->toFile();
+        $sizes = [192, 384, 512];
+        $manifestArr['icons'] = array_map(function($size) use($appIconFile) {
+          return [
+            'src' => $appIconFile->resize($size)->url(),
+            'sizes' => $size . 'x' . $size,
+            'type' => $appIconFile->mime(),
+          ];
+        }, $sizes);
+      }
+
       $manifestArr = array_filter($manifestArr, function ($value) {
         return !empty($value);
       });
