@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title><?= $page->title() ?> | <?= $site->title() ?></title>
     <meta name="title" content="<?= $page->title() ?> | <?= $site->title() ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?= css(option('resource_paths')['ms_css'] . 'rounded.css') ?>
     <?= css(option('resource_paths')['mm_masonry_css'] . 'mm-masonry.css') ?>
