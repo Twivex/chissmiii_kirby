@@ -1,20 +1,10 @@
-<?php
-  $appIcon = $site->app_icon()->toFile();
-  $appLaunchScreen = $site->app_launch_screen()->toFile();
-
-  $favicon = $site->favicon()->toFile();
-  if ($page->favicon()->isNotEmpty()) {
-    $favicon = $page->favicon()->toFile();
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="<?= $kirby->language() ?>">
   <head>
     <meta charset="UTF-8">
     <title><?= $page->title() ?> | <?= $site->title() ?></title>
     <meta name="title" content="<?= $page->title() ?> | <?= $site->title() ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
     <?= css(option('resource_paths')['ms_css'] . 'rounded.css') ?>
     <?= css(option('resource_paths')['mm_masonry_css'] . 'mm-masonry.css') ?>
@@ -38,22 +28,28 @@
       }
 
       snippet('globals/css-variables', compact('source'));
+
+      $appIcon = $site->app_icon();
+      $appLaunchScreen = $site->app_launch_screen();
+
+      $favicon = $source->favicon();
     ?>
 
-    <?php if ($appIcon): ?>
-      <link rel="apple-touch-icon" href="<?= $appIcon->mediaUrl() ?>">
+    <?php if ($appIcon->isNotEmpty() && ($appIconFile = $appIcon->toFile())->exists()): ?>
+      <link rel="apple-touch-icon" sizes="180x180" href="<?= $appIconFile->resize(180)->url() ?>">
     <?php endif; ?>
+
     <meta name="apple-mobile-web-app-title" content="ChissMiii">
-    <?php if ($appLaunchScreen): ?>
-      <link rel="apple-touch-startup-image" href="<?= $appLaunchScreen->mediaUrl() ?>">
+    <?php if ($appLaunchScreen->isNotEmpty() && ($appLaunchScreenFile = $appLaunchScreen->toFile())->exists()): ?>
+      <link rel="apple-touch-startup-image" href="<?= $appLaunchScreenFile->url() ?>">
     <?php endif; ?>
+
     <meta name="apple-mobile-web-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#fbb8ab">
 
-    <?php if ($favicon): ?>
-      <link rel="apple-touch-icon" sizes="180x180" href="<?= $favicon->resize(180)->url() ?>">
-      <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= $favicon->resize(32)->url() ?>">
-      <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= $favicon->resize(16)->url() ?>">
+    <?php if ($favicon->isNotEmpty() && ($faviconFile = $favicon->toFile())->exists()): ?>
+      <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= $faviconFile->resize(32)->url() ?>">
+      <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= $faviconFile->resize(16)->url() ?>">
     <?php endif; ?>
   </head>
   <body>
