@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento">
 
+    <?php if (file_exists($kirby->root('index') . '/resources/manifest.json')): ?>
+      <link rel="manifest" href="/resources/manifest.json">
+    <?php endif; ?>
+
     <?php
       if ($page->settings_enabled()->toBool() === true) {
         $source = $page;
@@ -50,6 +54,10 @@
         name="apple-mobile-web-app-status-bar-style"
         content="<?= $source->color_bs_light()->toColor('hex') ?>"
       >
+      <meta
+        name="theme-color"
+        content="<?= $source->color_bs_light()->toColor('hex') ?>"
+      >
     <?php endif; ?>
 
     <?php if ($favicon->isNotEmpty() && ($faviconFile = $favicon->toFile())->exists()): ?>
@@ -66,8 +74,6 @@
         href="<?= $faviconFile->resize(16)->url() ?>"
       >
     <?php endif; ?>
-
-    <link rel="manifest" href="/resources/manifest.json">
   </head>
   <body>
     <?php snippet('globals/nav') ?>
