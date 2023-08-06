@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento">
 
-    <?php if (file_exists($kirby->root('index') . '/resources/manifest.json')): ?>
-      <link rel="manifest" href="/resources/manifest.json">
+    <?php if (file_exists($kirby->root('index') . '/content/manifest.json')): ?>
+      <link rel="manifest" href="/resources/manifest.webmanifest">
     <?php endif; ?>
 
     <?php
@@ -33,32 +33,8 @@
 
       snippet('globals/css-variables', compact('source'));
 
-      $appIcon = $site->app_icon();
-      $appLaunchScreen = $site->app_launch_screen();
-
       $favicon = $source->favicon();
     ?>
-
-    <?php if ($appIcon->isNotEmpty() && ($appIconFile = $appIcon->toFile())->exists()): ?>
-      <link rel="apple-touch-icon" sizes="180x180" href="<?= $appIconFile->resize(180)->url() ?>">
-    <?php endif; ?>
-
-    <meta name="apple-mobile-web-app-title" content="ChissMiii">
-    <?php if ($appLaunchScreen->isNotEmpty() && ($appLaunchScreenFile = $appLaunchScreen->toFile())->exists()): ?>
-      <link rel="apple-touch-startup-image" href="<?= $appLaunchScreenFile->url() ?>">
-    <?php endif; ?>
-
-    <meta name="apple-mobile-web-capable" content="yes">
-    <?php if ($source->color_bs_light()->isNotEmpty()): ?>
-      <meta
-        name="apple-mobile-web-app-status-bar-style"
-        content="<?= $source->color_bs_light()->toColor('hex') ?>"
-      >
-      <meta
-        name="theme-color"
-        content="<?= $source->color_bs_light()->toColor('hex') ?>"
-      >
-    <?php endif; ?>
 
     <?php if ($favicon->isNotEmpty() && ($faviconFile = $favicon->toFile())->exists()): ?>
       <link
@@ -74,6 +50,13 @@
         href="<?= $faviconFile->resize(16)->url() ?>"
       >
     <?php endif; ?>
+
+    <style>
+      link[rel="manifest"] {
+        --pwacompat-splash-font: 24px 'The Seasons';
+      }
+    </style>
+
   </head>
   <body>
     <?php snippet('globals/nav') ?>

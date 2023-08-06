@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
+    pwacompat: "./node_modules/pwacompat/pwacompat.min.js",
     app: "./src/js/app.js",
   },
   output: {
