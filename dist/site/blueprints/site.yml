@@ -38,11 +38,11 @@ tabs:
         type: headline
         label: Nur global verfügbare Einstellungen
       app_icon:
-        extends: fields/one_file
+        extends: fields/global_file
         label: App Icon
         width: 1/6
       app_launch_screen:
-        extends: fields/one_file
+        extends: fields/global_file
         label: App Startbildschirm
         width: 1/6
       manifest:
