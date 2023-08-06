@@ -45,11 +45,26 @@
     <?php endif; ?>
 
     <meta name="apple-mobile-web-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#fbb8ab">
+    <?php if ($source->color_bs_light()->isNotEmpty()): ?>
+      <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="<?= $source->color_bs_light()->toColor('hex') ?>"
+      >
+    <?php endif; ?>
 
     <?php if ($favicon->isNotEmpty() && ($faviconFile = $favicon->toFile())->exists()): ?>
-      <link rel="shortcut icon" type="image/png" sizes="32x32" href="<?= $faviconFile->resize(32)->url() ?>">
-      <link rel="shortcut icon" type="image/png" sizes="16x16" href="<?= $faviconFile->resize(16)->url() ?>">
+      <link
+        rel="shortcut icon"
+        type="image/png"
+        sizes="32x32"
+        href="<?= $faviconFile->resize(32)->url() ?>"
+      >
+      <link
+        rel="shortcut icon"
+        type="image/png"
+        sizes="16x16"
+        href="<?= $faviconFile->resize(16)->url() ?>"
+      >
     <?php endif; ?>
 
     <link rel="manifest" href="/resources/manifest.json">
