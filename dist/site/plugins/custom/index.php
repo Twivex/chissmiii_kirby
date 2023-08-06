@@ -357,7 +357,7 @@ Kirby::plugin('chissmiii/custom', [
 
     'site.update:after' => function (Kirby\Cms\Site $newSite, Kirby\Cms\Site $oldSite) {
 
-      static $MANIFEST_PATH = 'resources/manifest.json';
+      static $MANIFEST_PATH = 'content/manifest.json';
 
       // retrieve set manifest data
       $manifest = $newSite->manifest()->toObject();
