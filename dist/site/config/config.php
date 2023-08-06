@@ -15,6 +15,7 @@ return [
   'resource_paths' => [
     'js' => 'resources/js/',
     'css' => 'resources/css/',
+    'fonts' => 'resources/fonts/',
     'ms_css' => 'resources/material-symbols/',
     'mm_masonry_css' => 'resources/mm-masonry/css/',
     'languages' => 'resources/languages/',
