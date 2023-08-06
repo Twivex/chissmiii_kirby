@@ -372,6 +372,10 @@ Kirby::plugin('chissmiii/custom', [
         $manifestArr['theme_color'] = $themeColor->isNotEmpty() ? $themeColor->toColor('hex') : '#ffffff';
       }
 
+      $manifestArr = array_filter($manifestArr, function ($value) {
+        return !empty($value);
+      });
+
       // store manifest data in JSON file
       $manifestJson = json_encode($manifestArr, JSON_PRETTY_PRINT);
       F::write($MANIFEST_PATH, $manifestJson);
