@@ -46,7 +46,7 @@
   .dropdown-item.active,
   .dropdown-item:hover {
     background-color: var(--bs-body-color-bg);
-    color: var(--bs-body-color)
+    color: $nearly-black;
   }
 
   .dropdown-item {
