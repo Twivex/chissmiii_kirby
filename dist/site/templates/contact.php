@@ -5,7 +5,7 @@
   }
 ?>
 
-<section class="py-4">
+<section>
 
   <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
 
