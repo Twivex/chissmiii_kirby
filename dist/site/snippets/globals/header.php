@@ -48,6 +48,13 @@
       $favicon = $source->favicon();
     ?>
 
+    <?php if ($source->color_bs_light()->isNotEmpty()): ?>
+      <meta
+        name="theme-color"
+        content="<?= $source->color_bs_navbar_color()->toColor('hex') ?>"
+      >
+    <?php endif; ?>
+
     <?php if ($favicon->isNotEmpty() && ($faviconFile = $favicon->toFile())->exists()): ?>
       <link
         rel="shortcut icon"
