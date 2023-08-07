@@ -26,3 +26,7 @@ fieldset.disabled {
     box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width var(--bs-primary-rgb);
   }
 }
+
+.form-floating label {
+  color: $nearly-black;
+}
