@@ -36,13 +36,13 @@
     &, &:disabled {
       background-color: var(--bs-light);
       border-color: var(--bs-light);
-      color: var(--bs-dark);
+      color: var(--cm-light-contrast);
     }
 
     &:hover,
     &:active,
     &:focus {
-      color: var(--bs-dark) !important;
+      color: var(--cm-light-contrast) !important;
       background-color: var(--bs-light-hover-bg);
       border-color: var(--bs-light-hover-border);
     }
@@ -52,7 +52,7 @@
     &, &:disabled {
       background-color: var(--bs-dark);
       border-color: var(--bs-dark);
-      color: white;
+      color: var(--cm-dark-contrast);
     }
 
     &:hover,

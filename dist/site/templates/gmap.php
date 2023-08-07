@@ -31,8 +31,8 @@
 
       <?php else: ?>
 
-        <div class="d-flex flex-column align-items-center justify-content-center bg-dark p-3" style="width: 100%; height: 550px;">
-          <p class="text-center text-white"><?= t('application-cookie-required-text') ?></p>
+        <div class="d-flex flex-column align-items-center justify-content-center bg-secondary p-3" style="width: 100%; height: 550px;">
+          <p class="text-center"><?= t('application-cookie-required-text') ?></p>
           <button type="button" class="btn btn-primary" data-cookie-consent="openSettings">
             <?= t('cookie-settings-title') ?>
           </button>

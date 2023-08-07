@@ -14,16 +14,18 @@
   }
 ?>
 
-<nav id="menu" class="navbar <?= $navbarStyleClass ?> navbar-expand-lg sticky-top bg-light pt-sm-3">
+<nav id="menu" class="navbar <?= $navbarStyleClass ?> navbar-expand-lg sticky-top pt-sm-3">
   <div class="container-fluid container-lg">
     <a class="navbar-brand fs-6 mb-n3 mb-sm-n1 font-decorative" href="/"><?= $site->title() ?></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-toggler btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="material-symbols-rounded">menu</i>
+    </a>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarContent" aria-labelledby="navbarLabel">
-      <div class="offcanvas-header bg-light">
+      <div class="offcanvas-header">
         <h5 class="offcanvas-title mb-n1 mt-1 ms-1 ps-2" id="navbarLabel">Menü</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <a type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close">
+          <i class="material-symbols-rounded">close</i>
+        </a>
       </div>
       <div class="offcanvas-body">
       <ul class="navbar-nav">

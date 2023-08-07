@@ -4,6 +4,9 @@
   }
 }
 
-.dropdown-item.active {
-  background-image: none;
+.dropdown-item {
+  &.active,
+  &:hover {
+    background-image: none;
+  }
 }

@@ -15,6 +15,14 @@ a {
   &-secondary-contrast {
     color: var(--cm-secondary-contrast);
   }
+
+  &-light-contrast {
+    color: var(--cm-light-contrast);
+  }
+
+  &-dark-contrast {
+    color: var(--cm-dark-contrast);
+  }
 }
 
 .link {
@@ -55,10 +63,45 @@ a {
     }
   }
 
+  &-light {
+    color: var(--bs-light);
+
+    &:focus,
+    &:hover {
+      color: var(--bs-light-hover-color);
+    }
+  }
+
+  &-light-contrast {
+    color: var(--cm-light-contrast);
+
+    &:focus,
+    &:hover {
+      color: var(--cm-light-contrast-hover-color);
+    }
+  }
+
+  &-dark {
+    color: var(--bs-dark);
+
+    &:focus,
+    &:hover {
+      color: var(--bs-dark-hover-color);
+    }
+  }
+
+  &-dark-contrast {
+    color: var(--cm-dark-contrast);
+
+    &:focus,
+    &:hover {
+      color: var(--cm-dark-contrast-hover-color);
+    }
+  }
+
 }
 
-.bg-primary,
-.bg-light {
+.bg-primary {
   & h1,
   & h2,
   & h3,
@@ -74,8 +117,7 @@ a {
   }
 }
 
-.bg-secondary,
-.bg-dark {
+.bg-secondary {
   & h1,
   & h2,
   & h3,
@@ -88,5 +130,37 @@ a {
 
   & a {
     @extend .link-secondary-contrast;
+  }
+}
+
+.bg-light {
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & p,
+  & .text {
+    @extend .text-light-contrast;
+  }
+
+  & a {
+    @extend .link-light-contrast;
+  }
+}
+
+.bg-dark {
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & p,
+  & .text {
+    @extend .text-dark-contrast;
+  }
+
+  & a {
+    @extend .link-dark-contrast;
   }
 }

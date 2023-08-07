@@ -1,3 +1,7 @@
+.navbar {
+  background-color: $navbar-color;
+}
+
 .navbar-dark .offcanvas-header .btn-close {
   @extend .btn-close-white;
 }
@@ -6,12 +10,12 @@
 .navbar-dark {
   & .navbar-nav .nav-link,
   & .navbar-nav .nav-link.active {
-    color: var(--cm-primary-contrast);
+    // color: var(--cm-primary-contrast);
   }
 
   & .navbar-brand:hover,
   & .navbar-nav .nav-link:hover {
-    color: rgba(var(--cm-primary-contrast-rgb), .75);
+    // color: rgba(var(--cm-primary-contrast-rgb), .75);
   }
 }
 
@@ -26,27 +30,42 @@
   line-height: map-get($font-sizes, 4);
 
   @include media-breakpoint-down(lg) {
-    color: var(--bs-light);
+    // color: var(--bs-light);
     opacity: var(--cm-navigation-offcanvas-active-icon-opacity);
   }
 }
 
 .navbar-nav .dropdown-item {
   padding-left: 2 * map-get($spacers, 3);
+  padding-right: 2 * map-get($spacers, 3);
 }
 
 .navbar .offcanvas.show .offcanvas-body .navbar-nav .nav-link {
-  color: $nearly-black;
+  // color: $nearly-black;
 }
 
+.navbar .offcanvas.show {
+  background-color: $nav-offcanvas-bg-color;
+}
+
+.navbar .offcanvas-header {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid $navbar-link-color;
+}
+
+.navbar .navbar-brand,
+.navbar .btn-icon,
+.navbar .offcanvas-title {
+  color: $navbar-link-color;
+}
 
 .navbar .offcanvas.show .offcanvas-body .navbar-nav {
   .dropdown-menu,
   .dropdown-item,
   .dropdown-item.active,
   .dropdown-item:hover {
-    background-color: var(--bs-body-color-bg);
-    color: $nearly-black;
+    // background-color: var(--bs-body-color-bg);
+    // color: $nearly-black;
   }
 
   .dropdown-item {

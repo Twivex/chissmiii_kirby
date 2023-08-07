@@ -5,13 +5,21 @@ $travelstatistics-color: #878787;
 
 $nearly-black: #212529;
 
-// define custom variables (fallbacks)
 :root {
+  --bs-bg-opacity: 1;
+
+  // define custom variables (fallbacks)
   --cm-primary-contrast: #FFFFFF;
   --cm-primary-contrast-rgb: 255, 255, 255;
 
   --cm-secondary-contrast: #FFFFFF;
   --cm-secondary-contrast-rgb: 255, 255, 255;
+
+  --cm-light-contrast: #FFFFFF;
+  --cm-light-contrast-rgb: 255, 255, 255;
+
+  --cm-dark-contrast: #000000;
+  --cm-dark-contrast-rgb: 0, 0, 0;
 
   --cm-main-content-bg: #FFFFFF;
   --cm-main-content-bg-rgb: 255, 255, 255;

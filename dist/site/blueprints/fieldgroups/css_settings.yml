@@ -4,9 +4,308 @@ fields:
 
   css_colors_settings_title:
     type: headline
-    label: CSS Farbvariablen
-  css_colors_settings: fieldgroups/css_settings/css_colors
-  css_variables_settings_title:
-    type: headline
     label: CSS Variablen
-  css_variables_settings: fieldgroups/css_settings/css_variables
+
+  shade_tint_variant:
+    label: Shade / Tint Variants
+    width: 1/4
+    type: toggle
+    text:
+      - Shade
+      - Tint
+
+  navbar_style:
+    label: Navbar Style
+    width: 1/4
+    type: toggles
+    options:
+      - text: Kein
+        value:
+      - text: Light
+        value: light
+      - text: Dark
+        value: dark
+
+  global_style_variables_line:
+    type: line
+
+  gradient_color_bs_gradient_deg:
+    label: Gradient (deg)
+    width: 1/4
+    type: range
+    min: 0
+    max: 360
+    tooltip:
+      after: °
+
+  gradient_color_bs_gradient_from:
+    label: Gradient (from)
+    width: 1/4
+    type: colors
+    alpha: true
+
+  gradient_color_bs_gradient_to:
+    label: Gradient (to)
+    width: 1/4
+    type: colors
+    alpha: true
+
+  colors_line:
+    type: line
+
+  color_bs_primary:
+    label: Primary
+    width: 1/4
+    type: colors
+
+  variant_bs_primary:
+    label: Primary Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_secondary:
+    label: Secondary
+    width: 1/4
+    type: colors
+
+  variant_bs_secondary:
+    label: Secondary Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_light:
+    label: Light
+    width: 1/4
+    type: colors
+
+  variant_bs_light:
+    label: Light Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_dark:
+    label: Dark
+    width: 1/4
+    type: colors
+
+  variant_bs_dark:
+    label: Dark Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_success:
+    label: Success
+    width: 1/4
+    type: colors
+
+  variant_bs_success:
+    label: Success Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_info:
+    label: Info
+    width: 1/4
+    type: colors
+
+  variant_bs_info:
+    label: Info Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_warning:
+    label: Warning
+    width: 1/4
+    type: colors
+
+  variant_bs_warning:
+    label: Warning Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_danger:
+    label: Danger
+    width: 1/4
+    type: colors
+
+  variant_bs_danger:
+    label: Danger Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_body_color:
+    label: Body Text
+    width: 1/4
+    type: colors
+
+  variant_bs_body_color:
+    label: Body Text Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_body_bg:
+    label: Body Background
+    width: 1/4
+    type: colors
+
+  variant_bs_body_bg:
+    label: Body Background Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  custom_colors_line:
+    type: line
+
+  color_cm_primary_contrast:
+    label: Primary Contrast
+    width: 1/4
+    type: colors
+
+  variant_cm_primary_contrast:
+    label: Primary Contrast Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_cm_secondary_contrast:
+    label: Secondary Contrast
+    width: 1/4
+    type: colors
+
+  variant_cm_secondary_contrast:
+    label: Secondary Contrast Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_cm_light_contrast:
+    label: Light Contrast
+    width: 1/4
+    type: colors
+
+  variant_cm_light_contrast:
+    label: Light Contrast Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_cm_dark_contrast:
+    label: Dark Contrast
+    width: 1/4
+    type: colors
+
+  variant_cm_dark_contrast:
+    label: Dark Contrast Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  color_cm_main_content_bg:
+    label: Main Content Background
+    width: 1/4
+    type: colors
+
+  variant_cm_main_content_bg:
+    label: Main Content Background Variants
+    width: 1/4
+    type: toggle
+    text:
+      - "nein"
+      - "ja"
+
+  variable_cm_main_content_bg_opacity:
+    label: Main Content Background Opacity
+    width: 1/4
+    type: text
+
+  select_colors_line:
+    type: line
+
+  select_cm_link_color:
+    label: Link Color
+    width: 1/4
+    type: select
+    default: color_bs_primary
+    options:
+      color_bs_primary: Primary (default)
+      color_bs_secondary: Secondary
+      color_bs_light: Light
+      color_bs_dark: Dark
+
+  navigation_colors_line:
+    type: line
+
+  color_bs_nav_link_color:
+    label: Navigation Link Color
+    width: 1/4
+    type: colors
+
+  variant_bs_nav_link_color:
+    label: Navigation Link Color Variants
+    width: 1/4
+    type: toggle
+    default: 1
+    text:
+      - "nein"
+      - "ja"
+
+  color_bs_navbar_color:
+    label: Navigation Background Color
+    width: 1/4
+    type: colors
+
+  color_cm_navigation_offcanvas_bg_color:
+    label: Navigation Offcanvas Background Color
+    width: 1/4
+    type: colors
+
+  opacity_settings_line:
+    type: line
+
+  variable_cm_navigation_active_icon_opacity:
+    label: Navigation Active Icon Opacity
+    width: 1/4
+    type: text
+
+  variable_cm_navigation_offcanvas_active_icon_opacity:
+    label: Navigation Offcanvas Active Icon Opacity
+    width: 1/4
+    type: text

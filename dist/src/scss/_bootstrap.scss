@@ -73,26 +73,37 @@ $input-focus-border-color: rgba(black, 0.25);
 $figure-caption-color: var(--bs-body-color);
 
 // -- Navs
-$navbar-link-color:                 var(--cm-primary-contrast);
-$navbar-light-color:                var(--cm-primary-contrast);
-$navbar-light-hover-color:          rgba(var(--cm-primary-contrast-rgb), .75);
-$navbar-dark-color:                 var(--cm-primary-contrast);
-$navbar-dark-hover-color:           rgba(var(--cm-primary-contrast-rgb), .75);
+$navbar-color:                      rgba(var(--bs-navbar-color-rgb), var(--bs-bg-opacity));
+
+$navbar-link-color:                 var(--bs-nav-link-color);
+$navbar-link-active-color:          $navbar-link-color;
+
+$navbar-light-color:                $navbar-link-color;
+$navbar-light-active-color:         $navbar-link-active-color;
+$navbar-light-hover-color:          rgba(var(--bs-nav-link-color-rgb), .75);
+
+$navbar-dark-color:                 $navbar-link-color;
+$navbar-dark-active-color:          $navbar-link-active-color;
+$navbar-dark-hover-color:           rgba(var(--bs-nav-link-color-rgb), .75);
+
 $navbar-dark-toggler-icon-bg:       escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"));
+
 $navbar-dark-toggler-border-color:  transparent;
 $navbar-light-toggler-border-color: transparent;
 
 // custom variables (naming convention based on bootstrap variables)
-$navbar-dropdown-bg:                       rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
+$navbar-dropdown-bg:                       var(--bs-navbar-color);
 $navbar-dropdown-box-shadow:               none;
 
 $navbar-dropdown-link-color:               $navbar-link-color;
 
-$navbar-dropdown-link-hover-color:         $navbar-dropdown-link-color;
-$navbar-dropdown-link-hover-bg:            rgba(white, .1);
+$navbar-dropdown-link-hover-color:         $navbar-light-hover-color;
+$navbar-dropdown-link-hover-bg:            $navbar-dropdown-bg;
 
-$navbar-dropdown-link-active-color:        $navbar-dropdown-link-color;
+$navbar-dropdown-link-active-color:        $navbar-light-active-color;
 $navbar-dropdown-link-active-bg:           $navbar-dropdown-bg;
+
+$nav-offcanvas-bg-color:                   var(--cm-navigation-offcanvas-bg-color, $navbar-color);
 
 
 // Buttons
@@ -108,6 +119,7 @@ $dropdown-border-width: 0;
 
 // Etc.
 $offcanvas-box-shadow: none;
+$offcanvas-border-width: 0;
 
 
 // 3. Include remainder of required Bootstrap stylesheets

@@ -9,7 +9,7 @@
   }
 ?>
 
-<nav id="footer-nav" class="navbar <?= $navbarStyleClass ?> navbar-expand-sm bg-light justify-content-center py-1">
+<nav id="footer-nav" class="navbar <?= $navbarStyleClass ?> navbar-expand-sm justify-content-center py-1">
   <div class="container-fluid container-lg justify-content-center">
     <ul class="navbar-nav nav-pipe-sm">
 
