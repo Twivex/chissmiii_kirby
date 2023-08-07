@@ -1,6 +1,7 @@
 title: Site
 
 tabs:
+
   pages:
     label: Seiten
 
@@ -21,6 +22,7 @@ tabs:
         status: listed
         extends: sections/sites
 
+
   files:
     extends: tabs/files
     sections:
@@ -28,37 +30,37 @@ tabs:
         headline: Globale Dateien
         template: global
 
+
   settings:
     label: Einstellungen
     extends: fieldgroups/page_settings
     fields:
+
       only_globals_line:
         type: line
+
       only_globals_headline:
         type: headline
         label: Nur global verfügbare Einstellungen
-      app_icon:
-        extends: fields/global_file
-        label: App Icon
-        width: 1/6
-      app_launch_screen:
-        extends: fields/global_file
-        label: App Startbildschirm
-        width: 1/6
+
       manifest:
         extends: fields/manifest
         label: Manifest
-        width: 1/4
+        width: 1/3
+
       ts_line:
         type: line
+
       ts_countries:
         extends: fields/one_file
         label: Travel Statistics Countries
         width: 1/6
+
       ts_continents:
         extends: fields/one_file
         label: Travel Statistics Continents
         width: 1/6
+
       ts_globe:
         extends: fields/one_file
         label: Travel Statistics Globe
