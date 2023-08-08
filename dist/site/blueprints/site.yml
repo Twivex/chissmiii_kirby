@@ -36,9 +36,6 @@ tabs:
     extends: fieldgroups/page_settings
     fields:
 
-      only_globals_line:
-        type: line
-
       only_globals_headline:
         type: headline
         label: Nur global verfügbare Einstellungen

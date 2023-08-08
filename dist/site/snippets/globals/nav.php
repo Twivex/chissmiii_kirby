@@ -16,7 +16,15 @@
 
 <nav id="menu" class="navbar <?= $navbarStyleClass ?> navbar-expand-lg sticky-top pt-sm-3">
   <div class="container-fluid container-lg">
-    <a class="navbar-brand fs-6 mb-n3 mb-sm-n1 font-decorative" href="/"><?= $site->title() ?></a>
+    <?php if ($source->logo_type()->value() === 'text'): ?>
+      <a class="navbar-brand fs-6 mb-n3 mb-sm-n1 font-decorative" href="<?= $site->url() ?>">
+        <?= $source->logo_text()->value() ?>
+      </a>
+    <?php elseif($source->logo_type()->value() === 'image' && ($logoImageFile = $source->logo_image()->toFile())->exists()): ?>
+      <a href="<?= $site->url() ?>">
+        <img class="mt-n2 me-3" src="<?= $logoImageFile->resize(50)->url() ?>" alt="<?= $site->title() ?>">
+      </a>
+    <?php endif; ?>
     <a class="navbar-toggler btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <i class="material-symbols-rounded">menu</i>
     </a>

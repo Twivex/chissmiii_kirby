@@ -1,13 +1,45 @@
 type: fields
 extends: fieldgroups/css_settings
 fields:
+
+  logo_settings_headline:
+    type: headline
+    label: Logo
+
+  logo_type:
+    label: Logo Typ
+    type: radio
+    width: 1/6
+    required: true
+    default: text
+    options:
+      text: Text
+      image: Bild
+
+  logo_text:
+    label: Logo Text
+    type: text
+    width: 1/6
+    placeholder: Homepage
+    when:
+      logo_type: text
+
+  logo_image:
+    extends: fields/global_file
+    label: Logo Bild
+    width: 1/6
+    when:
+      logo_type: image
+
   img_settings_headline:
     type: headline
     label: Bilder
+
   favicon:
     extends: fields/global_file
     label: Favicon
     width: 1/6
+
   variable_cm_bg_img:
     extends: fields/global_file
     label: Hintergrundbild
