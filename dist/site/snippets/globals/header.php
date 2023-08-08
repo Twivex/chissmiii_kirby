@@ -48,7 +48,7 @@
       $favicon = $source->favicon();
     ?>
 
-    <?php if ($source->color_bs_light()->isNotEmpty()): ?>
+    <?php if ($source->color_bs_navbar_color()->isNotEmpty()): ?>
       <meta
         name="theme-color"
         content="<?= $source->color_bs_navbar_color()->toColor('hex') ?>"
@@ -57,13 +57,13 @@
 
     <?php if ($favicon->isNotEmpty() && ($faviconFile = $favicon->toFile())->exists()): ?>
       <link
-        rel="shortcut icon"
+        rel="icon"
         type="image/png"
         sizes="32x32"
         href="<?= $faviconFile->resize(32)->url() ?>"
       >
       <link
-        rel="shortcut icon"
+        rel="icon"
         type="image/png"
         sizes="16x16"
         href="<?= $faviconFile->resize(16)->url() ?>"
@@ -72,7 +72,7 @@
 
     <style>
       link[rel="manifest"] {
-        --pwacompat-splash-font: 24px 'The Seasons';
+        --pwacompat-splash-font: 28px Verdana;
       }
     </style>
 

@@ -19,9 +19,12 @@
 
     <?php snippet('globals/cookie-banner') ?>
 
+    <script src="/resources/lib/pwacompat.min.js" async></script>
+
     <script>
       const LANGUAGE_CODE = '<?= $kirby->language()->code() ?>';
     </script>
+
     <?php
       // retrieve all js files from js resource path
       $jsBasepath = option('resource_paths')['js'];
