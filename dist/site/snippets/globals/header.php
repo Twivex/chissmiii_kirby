@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento">
 
     <?php if (file_exists($kirby->root('index') . '/content/manifest.json')): ?>
-      <link rel="manifest" href="/resources/manifest.webmanifest">
+      <link rel="manifest" href="<?= $site->url('') ?>/resources/manifest.webmanifest">
     <?php endif; ?>
 
     <?php

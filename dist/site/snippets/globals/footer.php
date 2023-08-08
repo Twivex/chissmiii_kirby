@@ -19,7 +19,7 @@
 
     <?php snippet('globals/cookie-banner') ?>
 
-    <script src="/resources/lib/pwacompat.min.js" async></script>
+    <script src="<?= $site->url('') ?>/<?= option('resource_paths')['pwacompat'] ?>pwacompat.min.js" async></script>
 
     <script>
       const LANGUAGE_CODE = '<?= $kirby->language()->code() ?>';
