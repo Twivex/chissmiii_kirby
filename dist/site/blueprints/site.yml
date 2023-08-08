@@ -43,6 +43,11 @@ tabs:
         type: headline
         label: Nur global verfügbare Einstellungen
 
+      app_icon:
+        extends: fields/global_file
+        label: App Icon
+        width: 1/4
+
       manifest:
         extends: fields/manifest
         label: Manifest
