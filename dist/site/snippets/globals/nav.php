@@ -22,7 +22,7 @@
       </a>
     <?php elseif($source->logo_type()->value() === 'image' && ($logoImageFile = $source->logo_image()->toFile())->exists()): ?>
       <a href="<?= $site->url() ?>">
-        <img class="mt-n2 me-3" src="<?= $logoImageFile->resize(50)->url() ?>" alt="<?= $site->title() ?>">
+        <img class="mt-n2 me-3" src="<?= $logoImageFile->resize(150)->url() ?>" height="50" alt="<?= $site->title() ?>">
       </a>
     <?php endif; ?>
     <a class="navbar-toggler btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
