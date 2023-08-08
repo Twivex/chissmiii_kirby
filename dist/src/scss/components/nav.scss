@@ -44,8 +44,16 @@
   // color: $nearly-black;
 }
 
-.navbar .offcanvas.show {
+.navbar .offcanvas {
   background-color: $nav-offcanvas-bg-color;
+}
+
+@each $breakpoint, $size in $grid-breakpoints {
+  .navbar-expand-#{$breakpoint} .offcanvas {
+    @include media-breakpoint-up($breakpoint) {
+      background-color: transparent;
+    }
+  }
 }
 
 .navbar .offcanvas-header {
