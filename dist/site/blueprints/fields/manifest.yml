@@ -22,15 +22,6 @@ fields:
     label: Start URL
     type: text
     default: '/'
-  theme_color:
-    label: Theme Color
-    type: select
-    default: color_bs_light
-    options:
-      color_bs_primary: Primary
-      color_bs_secondary: Secondary
-      color_bs_light: Light (default)
-      color_bs_dark: Dark
   background_color:
     label: Background Color
     type: colors

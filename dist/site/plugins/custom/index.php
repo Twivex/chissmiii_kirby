@@ -366,9 +366,8 @@ Kirby::plugin('chissmiii/custom', [
       // set color values to hex
       $backgroundColor = $manifest->background_color();
       $manifestArr['background_color'] = $backgroundColor->isNotEmpty() ? $backgroundColor->toColor('hex') : '#ffffff';
-      if ($manifest->theme_color()->isNotEmpty()) {
-        $themeColorVarName = $manifest->theme_color()->value();
-        $themeColor = $newSite->content()->get($themeColorVarName);
+      if ($newSite->color_bs_navbar_color()->isNotEmpty()) {
+        $themeColor = $newSite->color_bs_navbar_color();
         $manifestArr['theme_color'] = $themeColor->isNotEmpty() ? $themeColor->toColor('hex') : '#ffffff';
       }
 
