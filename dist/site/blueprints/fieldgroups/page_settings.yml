@@ -9,7 +9,7 @@ fields:
   logo_type:
     label: Logo Typ
     type: radio
-    width: 1/6
+    width: 1/4
     default: text
     options:
       text: Text
@@ -18,7 +18,7 @@ fields:
   logo_text:
     label: Logo Text
     type: text
-    width: 1/6
+    width: 1/3
     placeholder: Homepage
     when:
       logo_type: text
@@ -26,7 +26,7 @@ fields:
   logo_image:
     extends: fields/global_file
     label: Logo Bild
-    width: 1/6
+    width: 1/3
     when:
       logo_type: image
 
@@ -37,17 +37,21 @@ fields:
   favicon:
     extends: fields/global_file
     label: Favicon
-    width: 1/6
+    width: 1/3
 
   variable_cm_bg_img:
     extends: fields/global_file
     label: Hintergrundbild
-    width: 1/6
+    width: 1/3
+
+  page_layout_settings_headline:
+    type: headline
+    label: Layout
 
   disable_navigation:
     type: toggle
     label: Navigation ausblenden
-    width: 1/6
+    width: 1/4
     text:
       - Nein
       - Ja
