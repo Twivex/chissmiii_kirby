@@ -386,7 +386,7 @@ Kirby::plugin('chissmiii/custom', [
       }
 
       $manifestArr = array_filter($manifestArr, function ($value) {
-        return !empty($value);
+        return strlen($value) > 0;
       });
 
       // store manifest data in JSON file
