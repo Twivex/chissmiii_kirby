@@ -43,3 +43,11 @@ fields:
     extends: fields/global_file
     label: Hintergrundbild
     width: 1/6
+
+  disable_navigation:
+    type: toggle
+    label: Navigation ausblenden
+    width: 1/6
+    text:
+      - Nein
+      - Ja

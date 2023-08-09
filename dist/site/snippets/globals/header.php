@@ -78,6 +78,13 @@
 
   </head>
   <body>
-    <?php snippet('globals/nav') ?>
+
+    <?php if (
+      $source->settings_enabled()->toBool() === false ||
+      $source->disable_navigation()->toBool() === false
+    ): ?>
+      <?php snippet('globals/nav') ?>
+    <?php endif; ?>
+
     <main id="main" class="py-sm-4">
       <div class="content-wrapper">

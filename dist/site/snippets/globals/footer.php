@@ -1,9 +1,24 @@
       </div>
     </main>
 
-    <footer class="position-sticky top-100">
-      <?php snippet('globals/footer-nav'); ?>
-    </footer>
+    <?php
+      if ($page->settings_enabled()->toBool() === true) {
+        $source = $page;
+      } elseif ($page->parents()->count() > 0 && $page->parent()->settings_enabled()->toBool() === true) {
+        $source = $page->parent();
+      } else {
+        $source = $site;
+      }
+    ?>
+
+    <?php if (
+      $source->settings_enabled()->toBool() === false ||
+      $source->disable_navigation()->toBool() === false
+    ): ?>
+      <footer class="position-sticky top-100">
+        <?php snippet('globals/footer-nav'); ?>
+      </footer>
+    <?php endif; ?>
 
     <?php
       $pageBgImages = $page->bg_img();
