@@ -73,8 +73,11 @@
 
       foreach($selectColorsKeys as $selectColorKey) {
         $selectColorField = $source->content()->get($selectColorKey);
-        if ($selectColorField->isEmpty()) {
-          $selectColorField = $selectColorField->value('color_bs_primary');
+        if (
+          $selectColorField->isEmpty() &&
+          isset(($fieldDefinition = $source->blueprint()->field($selectColorKey))['default'])
+        ) {
+          $selectColorField = $selectColorField->value($fieldDefinition['default']);
         }
         $colorKey = $selectColorField->value();
         $variantKey = str_replace('color_', 'variant_', $colorKey);
