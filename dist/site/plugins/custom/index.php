@@ -243,26 +243,32 @@ Kirby::plugin('chissmiii/custom', [
         $colorVarsOuput = [];
 
         if ($isSelectVar) {
-          // variable is a color select, so get the selected color variable
           $colorVarName = '--' . str_replace('select_', '', $fieldKey);
           $colorVarName = str_replace('_', '-', $colorVarName);
-          $selectedColorVar = '--' . str_replace('color_', '', $fieldValue);
-          $selectedColorVar = str_replace('_', '-', $selectedColorVar);
 
-          array_push($colorVarsOuput, "$colorVarName: var($selectedColorVar);");
+          if (strpos($fieldValue, '$') === 0) {
+            array_push($colorVarsOuput, $colorVarName . ': #{' . $fieldValue . '}');
+          } else {
+            // variable is a color select, so get the selected color variable
 
-          // if rgb variant is requested, add the rgb variant of the selected variable to the list
-          if ($addRgb) {
-            array_push($colorVarsOuput, "$colorVarName-rgb: var($selectedColorVar-rgb);");
-          }
+            $selectedColorVar = '--' . str_replace('color_', '', $fieldValue);
+            $selectedColorVar = str_replace('_', '-', $selectedColorVar);
 
-          // if variants are requests, add variants of the selected variable to the list
-          if (!empty($variants)) {
-            foreach (array_keys($variants) as $variantName) {
-              array_push(
-                $colorVarsOuput,
-                "$colorVarName-$variantName: var($selectedColorVar-$variantName);"
-              );
+            array_push($colorVarsOuput, "$colorVarName: var($selectedColorVar);");
+
+            // if rgb variant is requested, add the rgb variant of the selected variable to the list
+            if ($addRgb) {
+              array_push($colorVarsOuput, "$colorVarName-rgb: var($selectedColorVar-rgb);");
+            }
+
+            // if variants are requests, add variants of the selected variable to the list
+            if (!empty($variants)) {
+              foreach (array_keys($variants) as $variantName) {
+                array_push(
+                  $colorVarsOuput,
+                  "$colorVarName-$variantName: var($selectedColorVar-$variantName);"
+                );
+              }
             }
           }
 
