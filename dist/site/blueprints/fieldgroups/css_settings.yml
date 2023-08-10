@@ -270,6 +270,31 @@ fields:
       color_bs_light: Light
       color_bs_dark: Dark
 
+  select_cm_text_muted:
+    label: Muted Text Color
+    width: 1/4
+    type: select
+    default: $gray-600
+    options:
+      color_bs_primary: Primary
+      color_bs_secondary: Secondary
+      color_bs_light: Light
+      color_bs_dark: Dark
+      color_cm_primary_contrast: Primary Contrast
+      color_cm_secondary_contrast: Secondary Contrast
+      color_cm_light_contrast: Light Contrast
+      color_cm_dark_contrast: Dark Contrast
+      $gray-100: Gray 100
+      $gray-200: Gray 200
+      $gray-300: Gray 300
+      $gray-400: Gray 400
+      $gray-500: Gray 500
+      $gray-600: Gray 600 (default)
+      $gray-700: Gray 700
+      $gray-800: Gray 800
+      $gray-900: Gray 900
+
+
   navigation_colors_line:
     type: line
 
