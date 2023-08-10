@@ -31,9 +31,7 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarContent" aria-labelledby="navbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title mb-n1 mt-1 ms-1 ps-2" id="navbarLabel">Menü</h5>
-        <a type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close">
-          <i class="material-symbols-rounded">close</i>
-        </a>
+        <?php snippet('atoms/close-button', [ 'target' => 'offcanvas' ]) ?>
       </div>
       <div class="offcanvas-body">
       <ul class="navbar-nav">
@@ -49,10 +47,10 @@
           <?php if ($item->intendedTemplate()->name() === 'virtual-page'): ?>
 
             <li class="nav-item dropdown ms-1 ms-lg-4">
-              <a class="nav-link dropdown-toggle pe-0 ps-2 position-relative <?php e($item->isOpen(), 'active') ?>" href="#" id="navbarDropdown<?= ucfirst($key) ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle pe-0 ps-2 position-relative <?php e($item->isOpen(), 'active show') ?>" href="#" id="navbarDropdown<?= ucfirst($key) ?>" role="button" data-bs-toggle="dropdown" aria-expanded="<?php e($item->isOpen(), 'true', 'false') ?>">
                 <?= $item->title()->html() ?>
               </a>
-              <ul class="dropdown-menu mt-sm-2" aria-labelledby="navbarDropdown<?= ucfirst($key) ?>">
+              <ul class="dropdown-menu mt-sm-2 <?php e($item->isOpen(), 'show',) ?>" aria-labelledby="navbarDropdown<?= ucfirst($key) ?>">
                 <?php
                   $subNavItems = $item->visibleChildren();
                   $subNavItems = $subNavItems->filter(function ($item) {
