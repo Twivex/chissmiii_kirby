@@ -18,7 +18,7 @@ $enable-negative-margins: true;
 
 $spacers: map-merge(
   (
-    '25px': 25%,
+    '25pz': 25%,
     '50pz': 50%,
     '75pz': 75%,
     '100pz': 100%
@@ -26,7 +26,6 @@ $spacers: map-merge(
   $spacers
 );
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);
-$border-radius: .4rem;
 
 //Fonts
 $font-family-serif: "Zapfino";
