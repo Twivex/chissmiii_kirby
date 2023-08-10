@@ -21,6 +21,8 @@ body {
 .content-wrapper {
   @extend .container, .px-sm-4, .py-4;
   background-color: rgba(var(--cm-main-content-bg-rgb), var(--cm-main-content-bg-opacity));
+  border: 1px solid transparent;
+  border-radius: $border-radius;
 }
 
 b, strong {
