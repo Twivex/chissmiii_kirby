@@ -74,17 +74,28 @@ return [
         return;
       }
 
-      $controller = 'video_thumbnail';
-
-      // differ between image and video
-      if (in_array(mime_content_type($file), ['image/jpeg', 'image/png', 'image/gif'])) {
-        $controller = 'thumbnail';
+      $width = get('width');
+      if (!empty($width) && is_numeric($width)) {
+        $width = intval($width);
+        $width = $width > 0 ? $width : null;
+      } else {
+        $width = null;
       }
+
+      $height = get('height');
+      if (!empty($height) && is_numeric($height)) {
+        $height = intval($height);
+        $height = $height > 0 ? $height : null;
+      } else {
+        $height = null;
+      }
+
       $response = kirby()->controller(
-        $controller,
+        'thumbnail',
         compact(
-          'kirby',
-          'file'
+          'file',
+          'width',
+          'height'
         )
       );
 
