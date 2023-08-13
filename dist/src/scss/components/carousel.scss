@@ -1,31 +1,23 @@
 .carousel {
-  .carousel-control-prev:after,
-  .carousel-control-next:after {
-    position: absolute;
-    content: '';
-    background-color: rgba($white, 0.5);
-    height: 50px;
-    left: 0;
-    width: 100%;
-  }
-  .carousel-control-prev:after {
-    left: 0;
-  }
-  .carousel-control-next:after {
-    right: 0;
-  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    box-sizing: content-box;
+    opacity: 1;
+    width: $carousel-fullscreen-control-width;
 
-  @include media-breakpoint-up(lg) {
-    .carousel-control-prev:after,
-    .carousel-control-next:after {
-      width: calc(100% - 20px);
+    &:after {
+      position: absolute;
+      content: '';
+      background-color: $white;
+      height: 100%;
+      width: 100%;
+      transition: opacity 0.25s ease;
+      opacity: $carousel-control-opacity;
     }
 
-    .carousel-control-prev:after {
-      margin-left: 9px;
-    }
-      .carousel-control-next:after {
-      margin-left: 11px;
+    &:hover:after,
+    &:focus:after {
+      opacity: $carousel-control-hover-opacity;
     }
   }
 

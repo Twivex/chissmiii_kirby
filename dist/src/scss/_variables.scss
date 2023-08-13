@@ -5,6 +5,18 @@ $travelstatistics-color: #878787;
 
 $nearly-black: #212529;
 
+$carousel-fullscreen-control-width: 6%;
+$carousel-control-opacity: 0.2;
+$carousel-control-hover-opacity: 0.4;
+
+$carousel-image-indicator-img-max-height: 80px;
+$carousel-image-indicator-img-max-width: 120px;
+$carousel-image-indicator-scrollbar-width: 6px;
+$carousel-image-indicator-height: calc(
+  #{$carousel-image-indicator-img-max-height} +
+  #{$carousel-image-indicator-scrollbar-width}
+);
+
 :root {
   --bs-bg-opacity: 1;
 

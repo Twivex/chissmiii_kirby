@@ -75,9 +75,8 @@ export default class MasonryGallery {
   }
 
   initModal() {
-    const modal = new Modal(
-      document.querySelector(this.container.dataset.targetModal)
-    );
+    const modalEl = document.querySelector(this.container.dataset.targetModal);
+    const modal = new Modal(modalEl);
     const slider = new Slider(
       document.querySelector(this.container.dataset.targetCarousel)
     );
@@ -87,7 +86,12 @@ export default class MasonryGallery {
       item.addEventListener("click", () => {
         slider.goToSlide(galleryIndex);
         modal.show();
+        slider.scrollIndicators({ to: galleryIndex });
       });
+    });
+
+    modalEl.addEventListener("hide.bs.modal", (e) => {
+      slider.pauseVideo();
     });
   }
 }

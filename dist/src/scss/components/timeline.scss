@@ -226,7 +226,8 @@ $_tl_padding-left: 2rem;
 
       .order-1,
       .order-2 {
-        padding-left: map-get($spacers, 5);
+        padding-left: map-get($spacers, 4);
+        padding-right: map-get($spacers, 4);
         border-left: $_tl_line-width solid var(--bs-dark);
       }
 
