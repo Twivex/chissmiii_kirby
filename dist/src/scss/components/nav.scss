@@ -3,7 +3,7 @@
 }
 
 .navbar-dark .offcanvas-header .btn-close {
-  @extend .btn-close-white;
+  filter: none;
 }
 
 .navbar-nav .nav-link.active:before,

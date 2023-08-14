@@ -149,6 +149,10 @@
 
       animation: flickerAnimation 2s infinite;
     }
+
+    &.btn-close {
+      background: none;
+    }
   }
 
   &-box {

@@ -26,7 +26,7 @@
       </a>
     <?php endif; ?>
     <a class="navbar-toggler btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="material-symbols-rounded">menu</i>
+      <i class="material-symbols-rounded material-symbols-large">menu</i>
     </a>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarContent" aria-labelledby="navbarLabel">
       <div class="offcanvas-header">

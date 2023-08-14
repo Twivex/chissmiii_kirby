@@ -6,11 +6,6 @@
 
     .modal-header {
       @extend .fixed-top;
-
-      .btn-close {
-        // remove background -> use material symbol instead
-        background: none;
-      }
     }
 
     .modal-footer {
