@@ -115,12 +115,15 @@ Kirby::plugin('chissmiii/custom', [
 
     'showTitle' => function () {
 
-      if ($this->blueprint()->field('show_title') !== null) {
-        return $this->show_title()->toBool();
+      if (
+        $this->isTopLevel() &&
+        $this->title() !== 'Home'
+      ) {
+        return true;
       }
 
-      if ($this->isTopLevel()) {
-        return true;
+      if ($this->blueprint()->field('show_title') !== null) {
+        return $this->show_title()->toBool();
       }
 
       if (

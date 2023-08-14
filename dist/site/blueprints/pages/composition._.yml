@@ -17,7 +17,13 @@ tabs:
       layout_settings:
         type: fields
         fields:
-          layout_settings: fieldgroups/layout_settings_basic
+          layout_settings: fieldgroups/layout_settings_extended
+
+      pwo_login_settings:
+        type: fields
+        fields:
+          pwo_login_settings: fieldgroups/pwo_login_settings
+
 
       elemens_headline:
         type: fields
@@ -26,10 +32,23 @@ tabs:
             type: headline
             label: Inhalte
 
-      elements:
-        layout: list
+      drafts:
+        status: draft
         extends: sections/composition-entries
-        headline: Elemente
+        headline: Unveröffentlichte Elemente
+        layout: list
+
+      unlidted:
+        status: unlisted
+        extends: sections/composition-entries
+        headline: Ungelistete Elemente
+        layout: list
+
+      listed:
+        status: listed
+        extends: sections/composition-entries
+        headline: Veröffentlichte Elemente
+        layout: list
 
 
   files_tab: tabs/files

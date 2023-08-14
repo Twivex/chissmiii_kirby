@@ -1,11 +1,13 @@
 type: pages
 headline: Elemente
+info: "{{ page.blueprint.title }}"
 templates:
   - countdown
-  - gallery
-  - ext_album
+  # - gallery
+  # - ext_album
   - ext_album2
   - gmap
+  - composition._
   - contact
   - songwish._
   - persons._

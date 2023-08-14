@@ -4,6 +4,11 @@ image:
   query: false
   back: white
 
+options:
+  changeTemplate:
+    - composition._
+  changeStatus: true
+
 tabs:
 
   content_tab:
