@@ -49,13 +49,17 @@
                   <?php
                     if (isset($link['type']) && $link['type'] === 'icon'):
 
+                      $additionalIconClasses = isset($link['additionalClasses']) ? $link['additionalClasses'] : [];
+                      $additionalIconClasses[] = 'btn-primary';
+                      $additionalIconClasses[] = 'ms-2';
+
                       snippet('atoms/btn-icon', [
                         'iconName' => $link['icon'],
                         'title' => $link['title'],
                         'url' => $link['uri'],
                         'attributes' => isset($link['attributes']) ? $link['attributes'] : null,
-                        // 'iconSize' => '',
-                        'additionalClasses' => [ 'link-primary' ],
+                        'iconSize' => isset($link['iconSize']) ? $link['iconSize'] : null,
+                        'additionalClasses' => $additionalIconClasses,
                       ]);
 
                     else:

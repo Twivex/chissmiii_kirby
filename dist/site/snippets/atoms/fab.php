@@ -1,6 +1,6 @@
 <a
   class="fab <?=!empty($additionalClasses) ? implode(' ', $additionalClasses) : '' ?>"
-  <?php if ($attributes): ?>
+  <?php if (isset($attributes)): ?>
     <?php foreach ($attributes as $attr => $value) { echo "$attr=\"$value\""; } ?>
   <?php endif; ?>
   <?php if (isset($url) && !empty($url)): ?>
@@ -9,4 +9,4 @@
   <?php if (isset($title) && !empty($title)): ?>
     title="<?= $title ?>"
   <?php endif; ?>
-><i class="material-symbols-rounded <?= isset($iconSize) ? "ms-$iconSize" : ''?>"><?= $iconName ?></i></a>
+><i class="material-symbols-rounded <?= isset($iconSize) ? "material-symbols-$iconSize" : ''?>"><?= $iconName ?></i></a>
