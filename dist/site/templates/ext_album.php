@@ -7,16 +7,18 @@
 
 <section>
 
+  <?php
+    snippet('atoms/section-heading', [
+      'data' => $page,
+      'showParentTitle' => $page->parent() !== null,
+    ]);
+  ?>
+
   <?php if ($page->isSecured() && !$page->userHasAccess()):
     snippet('components/pwonly-login', ['accessUserEmail' => $page->getAccessUser()->email()]);
   else: ?>
 
-    <?php
-      snippet('atoms/section-heading', [
-        'data' => $page,
-        'showParentTitle' => $page->parent() !== null,
-      ]);
-    ?>
+
 
     <div id="carousel-<?= $page->uid() ?>" class="carousel slide" data-bs-interval="false" data-bs-touch="true" data-lazy-load="true">
 
@@ -49,7 +51,7 @@
                 if ($page->downloadable()->toBool()) {
                   snippet('atoms/fab', [
                     'title' => 'Album herunterladen',
-                    'iconSize' => 'lg',
+                    'iconSize' => 'large',
                     'iconName' => 'download_for_offline',
                     'additionalClasses' => ['fab-br'],
                     'url' => $file['url'],

@@ -1,7 +1,7 @@
 <?php
   $isInjected = isset($injected) && $injected === true;
   if (!$isInjected) {
-    snippet('globals/main', slots: true);
+    snippet('globals/header');
   }
 
 
@@ -9,7 +9,7 @@
 
 
   if (!$isInjected) {
-    endsnippet();
+    snippet('globals/footer');
   }
 
 ?>

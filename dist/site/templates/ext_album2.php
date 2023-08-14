@@ -1,6 +1,7 @@
 <?php snippet('globals/header') ?>
 
 <?php
+  $isInjected = isset($injected) && $injected === true;
   $files = $page->getAlbumFiles(true);
   $fileCount = count($files);
   $uid = $page->uid();
@@ -10,16 +11,16 @@
 
 <section>
 
-  <?php if ($page->isSecured() && !$page->userHasAccess()):
-    snippet('components/pwonly-login', ['accessUserEmail' => $page->getAccessUser()->email()]);
-  else: ?>
-
     <?php
       snippet('atoms/section-heading', [
         'data' => $page,
-        'showParentTitle' => $page->parent() !== null,
+        'showParentTitle' => $page->parent() !== null
       ]);
     ?>
+
+  <?php if ($page->isSecured() && !$page->userHasAccess()):
+    snippet('components/pwonly-login', ['accessUserEmail' => $page->getAccessUser()->email()]);
+  else: ?>
 
     <div class="mm-masonry" data-target-modal="#modal-gallery-slider-<?= $uid ?>" data-target-carousel="#carousel-<?= $uid ?>">
 

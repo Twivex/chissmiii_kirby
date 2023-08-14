@@ -1,12 +1,11 @@
 <?php snippet('globals/header') ?>
 
 <section>
+  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
 
   <?php if ($page->isSecured() && !$page->userHasAccess()):
     snippet('components/pwonly-login', ['accessUserEmail' => $page->getAccessUser()->email()]);
   else: ?>
-
-  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
 
   <?php
     $lang = $kirby->language();
