@@ -62,11 +62,16 @@ $headings-font-weight:    400;
 // -- Borders
 $border-color: #000;
 $border-radius: 0.25rem;
-$card-border-radius: $border-radius;
 
 // -- Buttons
 $btn-close-opacity: 1;
 $btn-close-hover-opacity: .75;
+
+// -- Cards
+$card-border-radius: $border-radius;
+$card-bg: var(--cm-card-bg);
+$card-color: var(--cm-card-color);
+
 
 // -- Forms
 $input-btn-focus-box-shadow: none;
