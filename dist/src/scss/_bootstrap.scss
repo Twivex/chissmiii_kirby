@@ -30,6 +30,12 @@ $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);
 //Fonts
 $font-family-serif: "Zapfino";
 
+// custom variables (naming convention based on bootstrap variables)
+$icon-font-size-base: $font-size-base * 1.5;
+$icon-font-size-sm: $font-size-sm * 1.5;
+$icon-font-size-lg: $font-size-lg * 2;
+$icon-font-size-xl: $font-size-lg * 3.2;
+
 // Colors
 
 /* Overwrite Bootstrap variables */

@@ -1,12 +1,6 @@
 .fab {
-  @extend .btn-icon;
-  position: absolute;
+  @extend .btn, .btn-icon, .btn-circled;
   z-index: $zindex-sticky;
-
-  &,
-  i {
-    font-size: 3rem;
-  }
 
   &-tl {
     top: 1rem;

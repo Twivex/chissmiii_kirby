@@ -317,6 +317,15 @@ fields:
     width: 1/4
     type: colors
 
+  variant_bs_navbar_color:
+    label: Navigation Background Color Variants
+    width: 1/4
+    type: toggle
+    default: 1
+    text:
+      - "nein"
+      - "ja"
+
   color_cm_navigation_offcanvas_bg_color:
     label: Navigation Offcanvas Background Color
     width: 1/4

@@ -58,7 +58,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: white !important;
+      color: var(--cm-dark-contrast) !important;
       background-color: var(--bs-dark-hover-bg);
       border-color: var(--bs-dark-hover-border);
     }
@@ -90,7 +90,7 @@
 
     &:hover,
     &:active {
-      color: white;
+      color: var(--cm-secondary-contrast);
       background-color: var(--bs-secondary);
     }
 
@@ -99,12 +99,29 @@
     }
   }
 
+  &-nav {
+    &, &:disabled {
+      background-color: var(--bs-navbar-color);
+      border-color: var(--bs-navbar-color);
+      color: var(--bs-nav-link-color);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: var(--bs-nav-link-color);
+      background-color: var(--bs-navbar-color-hover-bg);
+      border-color: var(--bs-navbar-color-hover-border);
+    }
+  }
+
   &-primary,
   &-secondary,
   &-light,
   &-dark,
   &-outline-primary,
-  &-outline-secondary {
+  &-outline-secondary,
+  &-nav {
     &:disabled,
     &.disabled {
       filter: grayscale(0.6);
@@ -112,12 +129,10 @@
   }
 
   &-icon {
-    display: inline-block;
-    line-height: 0;
 
-    &, i {
-      font-size: $btn-font-size * 2.5;
-    }
+    display: inline-block;
+    font-size: $icon-font-size-lg;
+    line-height: 0;
 
     &:disabled,
     &.disabled {
@@ -150,6 +165,31 @@
     @include media-breakpoint-up(sm) {
       justify-content: auto;
       width: auto;
+    }
+  }
+
+  &-circled {
+    border-radius: 50%;
+    padding: 3px;
+
+
+
+    &.btn-icon .material-symbols {
+      &-rounded {
+        font-size: calc(#{$icon-font-size-base} - 8px);
+      }
+
+      &-small {
+        font-size: calc(#{$icon-font-size-sm} - 8px);
+      }
+
+      &-large {
+        font-size: calc(#{$icon-font-size-lg} - 8px);
+      }
+
+      &-xlarge {
+        font-size: calc(#{$icon-font-size-xl} - 8px);
+      }
     }
   }
 }
