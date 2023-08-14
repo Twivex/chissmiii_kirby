@@ -84,8 +84,9 @@
             $additionalLinks[] = [
               'title' => 'Album herunterladen',
               'type' => 'icon',
-              'icon' => 'download_for_offline',
+              'icon' => 'download',
               'uri' => "/$lang/download/$galleryUri",
+              'additionalClasses' => ['btn-circled'],
               'attributes' => [
                 'data-download' => 'false',
               ]
