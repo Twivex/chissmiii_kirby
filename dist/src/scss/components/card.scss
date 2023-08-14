@@ -43,7 +43,7 @@
 
   .btn-box .btn-secondary {
     &, &:disabled {
-      color: var(--cm-card-secondary-action-color, var(--bs-secondary));
+      color: var(--cm-card-secondary-action-color, var(--bs-secondary-contrast));
       background-color: var(--cm-card-secondary-action-btn, var(--bs-secondary));
       border-color: var(--cm-card-secondary-action-btn, var(--bs-secondary));
     }
@@ -51,9 +51,9 @@
     &:hover,
     &:active,
     &:focus {
-      color: var(--cm-card-secondary-action-color, var(--bs-secondary));
-      background-color: var(--cm-card-secondary-action-btn-hover-bg);
-      border-color: var(--cm-card-secondary-action-btn-hover-border);
+      color: var(--cm-card-secondary-action-color, var(--cm-secondary-contrast));
+      background-color: var(--cm-card-secondary-action-btn-hover-bg, var(--bs-secondary-hover-bg));
+      border-color: var(--cm-card-secondary-action-btn-hover-border, var(--bs-secondary-hover-border));
     }
   }
 }
