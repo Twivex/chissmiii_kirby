@@ -361,14 +361,14 @@ fields:
       $gray-800: Gray 800
       $gray-900: Gray 900 (default)
 
-  select_cm_card_secondary_action_color:
-    label: Card Secondary Action Button Text
+  select_cm_card_secondary_action_btn:
+    label: Card Secondary Action Button Background
     width: 1/4
     type: select
     default: $gray-900
     options:
       color_bs_primary: Primary
-      color_bs_secondary: Secondary
+      color_bs_secondary: Secondary (default)
       color_bs_light: Light
       color_bs_dark: Dark
       color_cm_primary_contrast: Primary Contrast
@@ -387,8 +387,8 @@ fields:
       $gray-800: Gray 800
       $gray-900: Gray 900 (default)
 
-  select_cm_card_secondary_action_btn:
-    label: Card Secondary Action Button Background
+  select_cm_card_secondary_action_color:
+    label: Card Secondary Action Button Text
     width: 1/4
     type: select
     default: $gray-900
@@ -398,7 +398,7 @@ fields:
       color_bs_light: Light
       color_bs_dark: Dark
       color_cm_primary_contrast: Primary Contrast
-      color_cm_secondary_contrast: Secondary Contrast
+      color_cm_secondary_contrast: Secondary Contrast (default)
       color_cm_light_contrast: Light Contrast
       color_cm_dark_contrast: Dark Contrast
       color_bs_body_bg: Body Background
