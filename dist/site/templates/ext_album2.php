@@ -46,8 +46,8 @@
             style="--w: <?=$videoPlaceholderImage->width()?>; --h: <?=$videoPlaceholderImage->height()?>;"
             data-gallery-index="<?= $k ?>">
 
-            <div data-show-on-loaded class="d-none position-absolute top-50 start-50">
-              <i class="material-symbols-rounded material-sybmols-outline text-white fs-extreme-large mt-n50pz ms-n50pz">videocam</i>
+            <div data-show-on-loaded class="d-none d-flex position-absolute top-0 left-0 w-100 h-100 bg-dimmed justify-content-center align-items-center">
+              <i class="material-symbols-rounded material-sybmols-outline text-white fs-extreme-large">videocam</i>
             </div>
 
             <img
@@ -70,7 +70,7 @@
       'id' => 'modal-gallery-slider-' . $uid,
       'size' => 'fullscreen',
     ], slots: true); ?>
-      <div id="carousel-<?= $uid ?>" class="carousel slide" data-bs-interval="false" data-bs-touch="true" data-lazy-load="true" data-slider-init="true">
+      <div id="carousel-<?= $uid ?>" class="carousel slide <?= $page->show_indicators()->toBool() ? 'has-indicators' : '' ?>" data-bs-interval="false" data-bs-touch="true" data-lazy-load="true" data-slider-init="true">
 
         <div class="carousel-inner">
           <?php foreach ($files as $k => $file): ?>
@@ -143,7 +143,7 @@
 
                   <?php elseif ($file['type'] === 'video'): ?>
 
-                    <div data-show-on-loaded class="d-none d-flex position-absolute top-0 left-0 w-100 h-100 justify-content-center align-items-center">
+                    <div data-show-on-loaded class="d-none d-flex position-absolute top-0 left-0 w-100 h-100 bg-dimmed justify-content-center align-items-center">
                       <i class="material-symbols-rounded material-sybmols-outline text-white fs-1">videocam</i>
                     </div>
 
