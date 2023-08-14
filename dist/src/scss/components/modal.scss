@@ -78,9 +78,22 @@
         max-width: 100%;
         object-fit: contain;
       }
+      video {
+        max-height: 100%;
+      }
 
-      div:has(video) {
-        margin: 0 $carousel-fullscreen-control-width;
+      .has-video {
+        > div {
+          height: calc(100% - 72px * 2);
+        }
+        &:before,
+        &:after {
+          content: '';
+          display: block;
+          max-width: $carousel-fullscreen-control-max-width;
+          min-width: $carousel-fullscreen-control-min-width;
+          width: $carousel-fullscreen-control-width;
+        }
       }
     }
 

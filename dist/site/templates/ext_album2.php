@@ -89,7 +89,7 @@
             <?php foreach ($files as $k => $file): ?>
               <div class="carousel-item <?= $k === 0 ? 'active' : '' ?>" data-carousel-index="<?=$k?>">
 
-                <div class="d-flex h-100 justify-content-center">
+                <div class="d-flex h-100 justify-content-center align-items-center <?= $file['type'] === 'video' ? 'has-video' : '' ?>">
                   <?php if ($file['type'] === 'image'): ?>
 
                     <img
@@ -98,16 +98,16 @@
                     >
 
                   <?php elseif ($file['type'] === 'video'): ?>
-
-                    <video
-                      preload="metadata"
-                      poster="/thumbnail?file=<?= urlencode($file['url']) ?>"
-                      controls>
-                      <source
-                      src="<?= $file['url'] ?>"
-                      type="video/mp4">
-                    </video>
-
+                    <div class="d-flex align-items-center">
+                      <video
+                        preload="metadata"
+                        poster="/thumbnail?file=<?= urlencode($file['url']) ?>"
+                        controls>
+                        <source
+                        src="<?= $file['url'] ?>"
+                        type="video/mp4">
+                      </video>
+                    </div>
                   <?php endif; ?>
                 </div>
 
