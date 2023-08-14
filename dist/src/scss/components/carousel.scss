@@ -4,6 +4,8 @@
     box-sizing: content-box;
     opacity: 1;
     width: $carousel-fullscreen-control-width;
+    max-width: $carousel-fullscreen-control-max-width;
+    min-width: $carousel-fullscreen-control-min-width;
 
     &:after {
       position: absolute;
