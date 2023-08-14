@@ -256,46 +256,6 @@ fields:
     width: 1/4
     type: text
 
-  select_colors_line:
-    type: line
-
-  select_cm_link_color:
-    label: Link Color
-    width: 1/4
-    type: select
-    default: color_bs_primary
-    options:
-      color_bs_primary: Primary (default)
-      color_bs_secondary: Secondary
-      color_bs_light: Light
-      color_bs_dark: Dark
-
-  select_cm_text_muted:
-    label: Muted Text Color
-    width: 1/4
-    type: select
-    default: $gray-600
-    options:
-      color_bs_primary: Primary
-      color_bs_secondary: Secondary
-      color_bs_light: Light
-      color_bs_dark: Dark
-      color_cm_primary_contrast: Primary Contrast
-      color_cm_secondary_contrast: Secondary Contrast
-      color_cm_light_contrast: Light Contrast
-      color_cm_dark_contrast: Dark Contrast
-      color_bs_body_bg: Body Background
-      color_bs_body_color: Body Text
-      $gray-100: Gray 100
-      $gray-200: Gray 200
-      $gray-300: Gray 300
-      $gray-400: Gray 400
-      $gray-500: Gray 500
-      $gray-600: Gray 600 (default)
-      $gray-700: Gray 700
-      $gray-800: Gray 800
-      $gray-900: Gray 900
-
   navigation_colors_line:
     type: line
 
@@ -331,6 +291,19 @@ fields:
     label: Navigation Offcanvas Background Color
     width: 1/4
     type: colors
+
+  opacity_settings_line:
+    type: line
+
+  variable_cm_navigation_active_icon_opacity:
+    label: Navigation Active Icon Opacity
+    width: 1/4
+    type: text
+
+  variable_cm_navigation_offcanvas_active_icon_opacity:
+    label: Navigation Offcanvas Active Icon Opacity
+    width: 1/4
+    type: text
 
   card_settings_line:
     type: line
@@ -440,15 +413,42 @@ fields:
       $gray-800: Gray 800
       $gray-900: Gray 900 (default)
 
-  opacity_settings_line:
+  select_colors_line:
     type: line
 
-  variable_cm_navigation_active_icon_opacity:
-    label: Navigation Active Icon Opacity
+  select_cm_link_color:
+    label: Link Color
     width: 1/4
-    type: text
+    type: select
+    default: color_bs_primary
+    options:
+      color_bs_primary: Primary (default)
+      color_bs_secondary: Secondary
+      color_bs_light: Light
+      color_bs_dark: Dark
 
-  variable_cm_navigation_offcanvas_active_icon_opacity:
-    label: Navigation Offcanvas Active Icon Opacity
+  select_cm_text_muted:
+    label: Muted Text Color
     width: 1/4
-    type: text
+    type: select
+    default: $gray-600
+    options:
+      color_bs_primary: Primary
+      color_bs_secondary: Secondary
+      color_bs_light: Light
+      color_bs_dark: Dark
+      color_cm_primary_contrast: Primary Contrast
+      color_cm_secondary_contrast: Secondary Contrast
+      color_cm_light_contrast: Light Contrast
+      color_cm_dark_contrast: Dark Contrast
+      color_bs_body_bg: Body Background
+      color_bs_body_color: Body Text
+      $gray-100: Gray 100
+      $gray-200: Gray 200
+      $gray-300: Gray 300
+      $gray-400: Gray 400
+      $gray-500: Gray 500
+      $gray-600: Gray 600 (default)
+      $gray-700: Gray 700
+      $gray-800: Gray 800
+      $gray-900: Gray 900
