@@ -86,7 +86,6 @@ export default class MasonryGallery {
       item.addEventListener("click", () => {
         slider.goToSlide(galleryIndex);
         modal.show();
-        slider.scrollIndicators({ to: galleryIndex });
       });
     });
 
