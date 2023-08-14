@@ -37,6 +37,7 @@ return [
         'password-invalid-hint' => 'Das Passwort ist ungültig.',
         'required-field-desc' => '* Pflichtfeld',
         'password-protection-disclaimer-gallery' => 'Diese Bilder sind nicht für die Öffentlichkeit zugänglich. Wenn du an dem Tag dabei warst, kannst du dich mit dem Passwort anmelden.',
+        'password-protection-disclaimer-ext_album2' => 'Diese Bilder sind nicht für die Öffentlichkeit zugänglich. Wenn du an dem Tag dabei warst, kannst du dich mit dem Passwort anmelden.',
       ]
     ),
     'url' => NULL
