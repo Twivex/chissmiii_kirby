@@ -23,6 +23,7 @@ body {
   background-color: rgba(var(--cm-main-content-bg-rgb), var(--cm-main-content-bg-opacity));
   border: 0px solid transparent;
   border-radius: $border-radius;
+  position: relative;
 }
 
 b, strong {
@@ -37,12 +38,7 @@ b, strong {
 
 a {
   @extend .link-primary;
-}
-
-section {
-  height: 100%;
-  position: relative;
-}
+}}
 
 .section-headline {
   justify-content: center;
