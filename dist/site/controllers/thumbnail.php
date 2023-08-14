@@ -14,12 +14,21 @@ return function ($file, $width = null, $height = null) {
 
   function createThumbnailImage($file, $width = null, $height = null, $returnFile = false) {
     $filepath = ltrim($file, '/');
+
+    // default thumbnail path for images
+    $thumbnailFilepath = $filepath;
+
+    // update thumbnail path for videos
     if (isVideoFile($filepath)) {
       $filename = pathinfo($filepath, PATHINFO_FILENAME);
       $pathToFile = dirname($filepath);
-      $filepath = $pathToFile . '/' . $filename . '.jpg';
+      $thumbnailFilepath = $pathToFile . '/' . $filename . '.jpg';
     }
-    $thumbnailFilepath = $_SERVER['DOCUMENT_ROOT'] . option('thumbnail_path') . '/' . $filepath;
+
+    // add thumbnail path prefix
+    $thumbnailFilepath = $_SERVER['DOCUMENT_ROOT'] . option('thumbnail_path') . '/' . $thumbnailFilepath;
+
+    // add thumbnail dimensions suffix, if given
     if ($width || $height) {
       $thumbnailOriginalFilepath = $thumbnailFilepath;
       $thumbnailFileExtension = pathinfo($thumbnailFilepath, PATHINFO_EXTENSION);
@@ -50,11 +59,11 @@ return function ($file, $width = null, $height = null) {
     }
 
     if (($width || $height)) {
+      // create original thumbnail (without dimensions) and go on with
+      // the original thumbnail as source to keep required resources low
       if (!file_exists($thumbnailOriginalFilepath)) {
-        // create original thumbnail to keep required resources low
         createThumbnailImage($file);
       }
-      // go on with the original thumbnail as source
       $filepath = $thumbnailOriginalFilepath;
     }
 
@@ -67,7 +76,7 @@ return function ($file, $width = null, $height = null) {
       $ffmpegCommand = "ffmpeg -i $videoPathForShell -ss 00:00:00 -vframes 1 $thumbnailFilepathForShell";
       exec($ffmpegCommand);
 
-      // go on with generated video thumbnail as source
+      // go on with generated video thumbnail as source -> size down
       $filepath = $thumbnailFilepath;
     }
 
@@ -97,6 +106,7 @@ return function ($file, $width = null, $height = null) {
     $imagick->thumbnailImage($x, $y, true);
     $imagick->writeImage($thumbnailFilepath);
 
+    // return image as blob
     header("Content-Type: " . $imagick->getImageMimeType());
     echo $imagick->getImageBlob();
   }
