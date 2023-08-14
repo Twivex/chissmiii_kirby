@@ -117,7 +117,7 @@ Kirby::plugin('chissmiii/custom', [
 
       if (
         $this->isTopLevel() &&
-        $this->title() !== 'Home'
+        !$this->isHomePage()
       ) {
         return true;
       }
