@@ -2,6 +2,7 @@ import { Carousel } from "bootstrap";
 
 export default class Slider {
   constructor(container) {
+    // initializes variables
     this.container = container;
     this.items = [...container.querySelectorAll(".carousel-item")];
     this.indicatorContainer = this.container.querySelector(
@@ -13,20 +14,31 @@ export default class Slider {
     this.hasIndicators = this.indicatorItems.length > 0;
     this.carousel = Carousel.getOrCreateInstance(container);
     this.slideListeners = [];
+    this.downloadButton = document.getElementById(
+      container.dataset.downloadButton
+    );
     this.filterByNotLoaded = (item) => !item.dataset?.loaded;
     this.filterByIsNotLoading = (item) => !item.dataset?.loading;
 
-    if (container.dataset?.lazyLoad) {
-      this.initLazyLoad();
-    } else if (this.hasIndicators) {
-      this.slideListeners.push(this.scrollIndicators.bind(this));
-    }
-
-    this.slideListeners.push(this.pauseVideo.bind(this));
-
+    // activate slide event listener
     this.container.addEventListener("slide.bs.carousel", (e) => {
       this.emitSlideEvent(e);
     });
+
+    // init lazy load if necessary
+    if (container.dataset?.lazyLoad) {
+      this.initLazyLoad();
+    }
+
+    // activate auto scroll indicators on slide
+    if (this.hasIndicators) {
+      this.slideListeners.push(this.scrollIndicators.bind(this));
+    }
+
+    // activate pause video on slide
+    this.slideListeners.push(this.pauseVideo.bind(this));
+
+    this.initDownloadButton();
   }
 
   emitSlideEvent(event) {
@@ -62,6 +74,18 @@ export default class Slider {
         video.pause();
       }
     }
+  }
+
+  initDownloadButton() {
+    // initially set url of download button
+    const activeItem = this.getActiveItem();
+    if (activeItem) {
+      const { carouselIndex } = activeItem.dataset;
+      this.updateDownloadButton({ to: carouselIndex });
+    }
+
+    // activate auto update url of download button on slide
+    this.slideListeners.push(this.updateDownloadButton.bind(this));
   }
 
   getSurroundingItemBorders(items, index, range, mode = "center", limits = {}) {
@@ -186,7 +210,6 @@ export default class Slider {
 
     if (this.hasIndicators) {
       this.slideListeners.push(this.loadIndicators.bind(this));
-      this.slideListeners.push(this.scrollIndicators.bind(this));
       this.initLazyLoadIndicatorsScrollObserver(this.indicatorItems);
     }
   }
@@ -266,6 +289,17 @@ export default class Slider {
     };
 
     waitForLoad();
+  }
+
+  updateDownloadButton(e) {
+    const targetMedia = this.items[e.to].querySelector("img, video source");
+    const downloadUrl = targetMedia?.dataset?.src ?? targetMedia?.src;
+    const downloadFilename = downloadUrl?.split("/").pop();
+
+    if (targetMedia && downloadUrl) {
+      this.downloadButton.href = downloadUrl;
+      this.downloadButton.download = downloadFilename;
+    }
   }
 
   getNumberOfFittingItems(items, index) {

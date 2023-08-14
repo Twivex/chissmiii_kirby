@@ -15,13 +15,25 @@
 
     .modal-footer {
       @extend .fixed-bottom;
+
+      .fab {
+        margin-right: $modal-header-padding-x * .5;
+      }
+    }
+
+    &.has-slider-indicators .modal-footer {
+      bottom: $carousel-image-indicator-height;
     }
 
     .modal-header,
     .modal-footer {
       @extend .border-0;
+
       .btn-icon {
+        align-items: center;
         color: $white;
+        display: flex;
+        justify-content: center;
       }
 
       &:after {

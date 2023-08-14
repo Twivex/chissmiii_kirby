@@ -114,10 +114,6 @@ document.querySelectorAll("[data-countdown]").forEach((node) => {
   new Countdown(node);
 });
 
-document
-  .querySelectorAll(".carousel:not([data-slider-init='true'])")
-  .forEach((node) => new Slider(node));
-
 document.querySelectorAll('[data-bs-toggle="modal"]').forEach((node) => {
   if (node.dataset.bsTarget === "#modal-upload-form") {
     node.addEventListener("click", (e) => {
@@ -184,3 +180,7 @@ document.querySelectorAll("[data-download]").forEach((node) => {
 document
   .querySelectorAll(".mm-masonry")
   .forEach((container) => new MasonryGallery(container));
+
+document
+  .querySelectorAll(".carousel:not([data-slider-init='true'])")
+  .forEach((node) => new Slider(node));
