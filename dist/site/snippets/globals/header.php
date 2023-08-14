@@ -19,7 +19,7 @@
       // retrieve all js files from js resource path
       $fontsBasepath = option('resource_paths')['fonts'];
       $fontFiles = [];
-      if (dir_exists($fontsBasepath) {
+      if (file_exists($fontsBasepath) && is_dir($fontsBasepath)) {
         $fontFiles = scandir($fontsBasepath);
         $fontFiles = array_filter($fontFiles, function($file) {
           return strpos($file, '.ttf') === strlen($file) - 4;
