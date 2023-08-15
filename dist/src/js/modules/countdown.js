@@ -97,75 +97,32 @@ export default class Countdown {
 
   setupUpdater() {
     const countdown = setInterval(() => {
-      // get needed parts of current time
       const now = new Date();
-      const nowYear = now.getFullYear();
-      const nowMonths = now.getMonth();
-      const nowDays = now.getDate();
-      const nowHours = now.getHours();
-      const nowMinutes = now.getMinutes();
-      const nowSeconds = now.getSeconds();
+      const isPastTarget = now >= this.targetDate; // Check if current time is past the target time
 
-      // get needed parts of target time
-      const targetYear = this.targetDate.getFullYear();
-      const targetMonths = this.targetDate.getMonth();
-      const targetDays = this.targetDate.getDate();
-      const targetHours = this.targetDate.getHours();
-      const targetMinutes = this.targetDate.getMinutes();
-      const targetSeconds = this.targetDate.getSeconds();
-
-      // calculate remaining time:
-      // - start with smallest unit
-      // - if substraction is smaller than 0, borrow 1 from the next greater unit
-      // - proceed until largest unit
-
-      let secondsLeft = targetSeconds - nowSeconds;
-      let minutesLeftBorrow = 0;
-      if (secondsLeft < 0) {
-        secondsLeft = targetSeconds + 60 - nowSeconds;
-        minutesLeftBorrow = 1;
+      let timeDifference;
+      if (isPastTarget) {
+        timeDifference = now - this.targetDate; // Calculate time difference when current time is past target
+      } else {
+        timeDifference = this.targetDate - now; // Calculate time difference when target is in the future
       }
 
-      let minutesLeft = targetMinutes - nowMinutes - minutesLeftBorrow;
-      let hoursLeftBorrow = 0;
-      if (minutesLeft < 0) {
-        minutesLeft = targetMinutes + 60 - nowMinutes - minutesLeftBorrow;
-        hoursLeftBorrow = 1;
-      }
+      // Calculate individual units
+      const secondsLeft = Math.floor((timeDifference / 1000) % 60);
+      const minutesLeft = Math.floor((timeDifference / 1000 / 60) % 60);
+      const hoursLeft = Math.floor((timeDifference / 1000 / 3600) % 24);
+      const daysLeft = Math.floor(timeDifference / 1000 / 3600 / 24);
+      const monthsLeft = Math.floor(daysLeft / 30);
 
-      let hoursLeft = targetHours - nowHours - hoursLeftBorrow;
-      let daysLeftBorrow = 0;
-      if (hoursLeft < 0) {
-        hoursLeft = targetHours + 24 - nowHours - hoursLeftBorrow;
-        daysLeftBorrow = 1;
-      }
-
-      let daysLeft = targetDays - nowDays - daysLeftBorrow;
-      let monthsLeftBorrow = 0;
-      if (daysLeft < 0) {
-        daysLeft = targetDays + 30 - nowDays - daysLeftBorrow;
-        monthsLeftBorrow = 1;
-      }
-
-      const targetMonthsTotal = targetMonths + 12 * targetYear;
-      const nowMonthsTotal = nowMonths + 12 * nowYear;
-      const monthsLeft = targetMonthsTotal - nowMonthsTotal - monthsLeftBorrow;
-
-      // update values (and nodes, if necessary)
+      // Update values and nodes
       this.updateMonths(monthsLeft);
-      this.updateDays(daysLeft);
+      this.updateDays(daysLeft % 30);
       this.updateHours(hoursLeft);
       this.updateMinutes(minutesLeft);
       this.updateSeconds(secondsLeft);
 
-      // stop countdown, if remaining time is 0
-      if (
-        monthsLeft === 0 &&
-        daysLeft === 0 &&
-        hoursLeft === 0 &&
-        minutesLeft === 0 &&
-        secondsLeft === 0
-      ) {
+      // Stop countdown if the time difference is negative
+      if (timeDifference <= 0) {
         clearInterval(countdown);
       }
     }, 1000);

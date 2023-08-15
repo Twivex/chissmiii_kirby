@@ -11,7 +11,8 @@ return [
     'translations' => array_merge(
       json_decode(file_get_contents(option('resource_paths')['languages'] . 'de.json'), true),
       [
-        'countdown-remaining' => 'noch',
+        'countdown-remaining' => 'in',
+        'countdown-carryon' => 'vor',
 
         'cookie-title' => 'Wir haben Kekse!',
         'cookie-text' => 'Unsere Website verwendet Cookies und ähnliche Technologien. Mit einem Klick auf „Zustimmen“ erlaubst du uns alle Cookie-Arten zu speichern. Mit einem Klick auf „Einstellungen“ kannst du Cookies auf deine Bedürfnisse anpassen. Deine erteilte Einwilligung kannst du jederzeit ändern. Weitere Informationen dazu findest du in unserer (link: datenschutzerklarung text: Datenschutzerklärung).',

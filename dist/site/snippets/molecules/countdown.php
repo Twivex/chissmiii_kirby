@@ -16,6 +16,9 @@
 
   $monthsLeft = $yearsInMonths + $months;
   $daysLeft = $diff->format('%d');
+  if (!$positiveDiff) {
+    $daysLeft = $daysLeft + 1;
+  }
 
   $hoursLeft = 0;
   $minutesLeft = 0;
@@ -32,7 +35,13 @@
 
   <?php if ($kirby->language()->code() === 'de'): ?>
     <div class="countdown-element">
-      <span class="fs-3"><?= t('countdown-remaining') ?></span>
+      <span class="fs-3">
+        <?php if ($positiveDiff): ?>
+          <?= t('countdown-remaining') ?>
+        <?php else: ?>
+          <?= t('countdown-carryon') ?>
+        <?php endif; ?>
+      </span>
     </div>
   <?php endif; ?>
 
