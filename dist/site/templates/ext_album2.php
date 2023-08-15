@@ -15,7 +15,7 @@
       snippet('atoms/section-heading', [
         'data' => $page,
         'showParentTitle' => $page->parent() !== null,
-        , 'injected' => $isInjected
+        'injected' => $isInjected
       ]);
     ?>
 

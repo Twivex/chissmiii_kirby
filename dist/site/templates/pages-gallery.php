@@ -7,7 +7,7 @@
 
 <section>
 
-  <?php snippet('atoms/section-heading', [ 'data' => $page, , 'injected' => $isInjected ]); ?>
+  <?php snippet('atoms/section-heading', [ 'data' => $page, 'injected' => $isInjected ]); ?>
 
   <?php
     $lang = $kirby->language();
