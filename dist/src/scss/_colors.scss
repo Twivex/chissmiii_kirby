@@ -1,12 +1,3 @@
-a {
-  color: var(--cm-link-color);
-
-  &:hover,
-  &:focus {
-    color: var(--cm-link-hover-color);
-  }
-}
-
 .text {
   &-primary-contrast {
     color: var(--cm-primary-contrast);
@@ -99,6 +90,15 @@ a {
     }
   }
 
+}
+
+a {
+  color: var(--cm-link-color);
+
+  &:hover,
+  &:focus {
+    color: var(--cm-link-hover-color);
+  }
 }
 
 .bg-primary {
