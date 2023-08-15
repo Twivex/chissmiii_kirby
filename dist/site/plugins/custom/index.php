@@ -244,7 +244,7 @@ Kirby::plugin('chissmiii/custom', [
           $colorVarName = str_replace('_', '-', $colorVarName);
 
           if (strpos($fieldValue, '$') === 0) {
-            array_push($colorVarsOuput, $colorVarName . ': #{' . $fieldValue . '}');
+            array_push($colorVarsOuput, $colorVarName . ': #{' . $fieldValue . '};');
           } else {
             // variable is a color select, so get the selected color variable
 
