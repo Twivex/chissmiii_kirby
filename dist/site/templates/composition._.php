@@ -12,6 +12,7 @@
 
   } else {
 
+    $containsAlbum = false;
     $injected = true;
     $data = compact('site', 'kirby', 'injected');
 
@@ -19,12 +20,17 @@
       $blueprintName = strtolower($child->intendedTemplate());
       $albumPageBlueprints = ['album', 'ext_album', 'ext_album2'];
       if (in_array($blueprintName, $albumPageBlueprints)) {
+        $containsAlbum = true;
         $data['albumPage'] = $child;
         snippet('pages/album.cover', $data);
       } else {
         $data['page'] = $child;
         echo $child->template()->render($data);
       }
+    }
+
+    if ($containsAlbum) {
+      snippet('components/upload-modal');
     }
 
     if (!$isInjected) {
