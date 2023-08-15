@@ -20,39 +20,32 @@ tabs:
                 type: hidden
 
       content_contents:
-        width: 3/4
+        width: 1/2
         fields:
           content_headline:
             type: headline
             label: Inhalte
 
-          headline:
-            label: Überschrift
-            type: text
-            required: true
-
           target_date:
             label: Datum
-            width: 1/2
             type: date
             required: true
             display: DD.MM.YYYY
 
           target_time:
             label: Uhrzeit
-            width: 1/2
             type: time
             display: HH:mm
 
       sidebar:
-        width: 1/4
+        width: 1/2
         fixed: true
         fields:
           cover:
-              label: Bild für Countdown
-              type: files
-              layout: cards
-              max: 1
-              back: white
+            label: Bild für Countdown
+            type: files
+            layout: cards
+            max: 1
+            back: white
 
   files: tabs/files
