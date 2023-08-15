@@ -70,11 +70,9 @@
     .carousel-item {
       img,
       video {
-        max-width: 100%;
-        object-fit: contain;
-      }
-      video {
         max-height: 100%;
+        object-fit: contain;
+        max-width: 100%;
       }
 
       .has-video {
