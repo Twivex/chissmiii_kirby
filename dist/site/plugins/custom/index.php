@@ -115,22 +115,16 @@ Kirby::plugin('chissmiii/custom', [
 
     'showTitle' => function () {
 
-      if (
-        $this->isTopLevel() &&
-        !$this->isHomePage()
-      ) {
+      if ($this->isHomePage()) {
+        return false;
+      }
+
+      if ($this->isTopLevel()) {
         return true;
       }
 
       if ($this->blueprint()->field('show_title') !== null) {
         return $this->show_title()->toBool();
-      }
-
-      if (
-        !is_null($this->parentBlueprint()) &&
-        $this->parentBlueprint() !== 'pages/composition._'
-      ) {
-        return true;
       }
 
       return false;

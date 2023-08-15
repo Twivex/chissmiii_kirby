@@ -9,13 +9,12 @@ fields:
 
       show_title_info:
         width: 1/3
-        whenQuery: parent_blueprint != "pages/composition._"
+        whenQuery: page.parents.count = 0
 
       show_title:
         width: 1/3
-        when:
-          parent_blueprint: "pages/composition._"
+        whenQuery: page.parents.count != 0
 
       title_text_direction:
         width: 1/3
-        whenQuery: parent_blueprint != "pages/composition._" || show_title
+        whenQuery: page.parents.count = 0 || show_title
