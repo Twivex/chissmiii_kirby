@@ -10,7 +10,8 @@
   if (isset($showParentTitle) && $showParentTitle) {
     $title = $data->parent()->title() . ' – ' . $title;
   }
-  $showStickyHeader = !$page->isTopLevel();
+  $isInjected = isset($injected) && $injected === true;
+  $showStickyHeader = !$page->isTopLevel() && !$isInjected;
 ?>
 
 <?php if ($showStickyHeader): ?>

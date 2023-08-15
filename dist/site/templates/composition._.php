@@ -4,7 +4,7 @@
     snippet('globals/header');
   }
 
-  snippet('atoms/section-heading', [ 'data' => $page ]);
+  snippet('atoms/section-heading', [ 'data' => $page, 'injected' => $isInjected ]);
 
   if ($page->isSecured() && !$page->userHasAccess()) {
 

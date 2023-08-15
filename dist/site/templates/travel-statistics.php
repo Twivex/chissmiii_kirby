@@ -12,7 +12,7 @@
 
   <section class="py-4 travel-statistics">
 
-    <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
+    <?php snippet('atoms/section-heading', [ 'data' => $page, 'injected' => $isInjected ]); ?>
 
     <div class="row">
 

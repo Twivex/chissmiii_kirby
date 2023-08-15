@@ -7,7 +7,7 @@
 
 <section>
 
-  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
+  <?php snippet('atoms/section-heading', [ 'data' => $page, 'injected' => $isInjected ]); ?>
 
   <div class="row justify-content-center">
     <div class="col-12 <?= $page->columnsClass() ?>">

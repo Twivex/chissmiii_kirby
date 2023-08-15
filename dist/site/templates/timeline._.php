@@ -7,7 +7,7 @@
 
 <section class="py-4 timeline">
 
-  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
+  <?php snippet('atoms/section-heading', [ 'data' => $page, 'injected' => $isInjected ]); ?>
 
   <?php
     $injected = true;

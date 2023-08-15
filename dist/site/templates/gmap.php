@@ -9,7 +9,7 @@
 
 <section class="py-4">
 
-  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
+  <?php snippet('atoms/section-heading', [ 'data' => $page, 'injected' => $isInjected ]); ?>
 
   <div class="row justify-content-center mb-4">
     <div class="col-12 <?= $page->columnsClass() ?>">

@@ -30,7 +30,7 @@
 
 <section class="py-4">
 
-  <?php snippet('atoms/section-heading', [ 'data' => $page ]); ?>
+  <?php snippet('atoms/section-heading', [ 'data' => $page,'injected' => $isInjected ]); ?>
 
   <div class="row">
 
