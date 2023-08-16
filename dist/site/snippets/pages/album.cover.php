@@ -72,7 +72,7 @@
             'type' => 'icon',
             'icon' => 'download',
             'uri' => $kirby->language()->url() . "/download/$albumUri",
-            'additionalClasses' => ['btn-circled'],
+            'additionalClasses' => ['btn-circled', 'btn-circled-large'],
             'attributes' => [
               'data-download' => 'false',
             ]

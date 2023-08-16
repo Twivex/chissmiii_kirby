@@ -1,5 +1,5 @@
 <?php
-  $iconSize = !empty($iconSize) ? $iconSize : 'large';
+  $size = !empty($size) ? $size : 'large';
 ?>
 
 <a
@@ -13,4 +13,4 @@
   <?php if (!empty($title)): ?>
     title="<?= $title ?>"
   <?php endif; ?>
-><i class="material-symbols-rounded <?= "material-symbols-$iconSize"?>"><?= $iconName ?></i></a>
+><i class="material-symbols-rounded <?= "material-symbols-$size"?>"><?= $iconName ?></i></a>

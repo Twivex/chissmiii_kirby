@@ -47,14 +47,4 @@ a {
   @include media-breakpoint-up(md) {
     margin-bottom: map-get($spacers, 2);
   }
-
-  @include media-breakpoint-down(md) {
-    .sticky-header + & {
-      margin-left: map-get($spacers, 5);
-      margin-right: map-get($spacers, 5);
-
-      align-items: center;
-      min-height: 80px;
-    }
-  }
 }

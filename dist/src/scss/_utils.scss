@@ -65,4 +65,15 @@
       padding-top: 98px;
     }
   }
+
+  @include media-breakpoint-down(md) {
+    & + .section-headline,
+    & + .countdown h2 {
+      margin-left: map-get($spacers, 5);
+      margin-right: map-get($spacers, 5);
+
+      align-items: center;
+      min-height: 80px;
+    }
+  }
 }

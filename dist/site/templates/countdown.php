@@ -21,7 +21,7 @@
 ?>
 
 <!-- COUNTDOWN -->
-<section class="pb-4">
+<section class="countdown pb-4">
 
   <div class="row justify-content-center mb-2">
     <div class="col">

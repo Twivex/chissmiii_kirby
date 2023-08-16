@@ -134,6 +134,9 @@
     font-size: $icon-font-size-lg;
     line-height: 0;
 
+
+
+
     &:disabled,
     &.disabled {
       opacity: 0.5;
@@ -174,9 +177,25 @@
 
   &-circled {
     border-radius: 50%;
+    height: 24px;
+    overflow: hidden;
     padding: 3px;
+    width: 24px;
 
+    &-small {
+      height: 22px;
+      width: 22px;
+    }
 
+    &-large {
+      height: 40px;
+      width: 40px;
+    }
+
+    &-xlarge {
+      height: 64px;
+      width: 464px;
+    }
 
     &.btn-icon .material-symbols {
       &-rounded {

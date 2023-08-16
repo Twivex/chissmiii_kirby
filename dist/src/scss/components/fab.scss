@@ -1,24 +1,18 @@
 .fab {
   @extend .btn, .btn-icon, .btn-circled;
 
-  height: 24px;
-  overflow: hidden;
-  width: 24px;
   z-index: $zindex-sticky;
 
   &-small {
-    height: 22px;
-    width: 22px;
+    @extend .btn-circled-small;
   }
 
   &-large {
-    height: 40px;
-    width: 40px;
+    @extend .btn-circled-large;
   }
 
   &-xlarge {
-    height: 64px;
-    width: 464px;
+    @extend .btn-circled-xlarge;
   }
 
   &-tl {

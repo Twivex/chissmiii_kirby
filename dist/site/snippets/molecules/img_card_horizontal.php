@@ -61,7 +61,7 @@
                         'title' => $link['title'],
                         'url' => $link['uri'],
                         'attributes' => isset($link['attributes']) ? $link['attributes'] : null,
-                        'iconSize' => isset($link['iconSize']) ? $link['iconSize'] : null,
+                        'size' => isset($link['size']) ? $link['size'] : null,
                         'additionalClasses' => $additionalIconClasses,
                       ]);
 
