@@ -1,5 +1,6 @@
 .navbar {
   background-color: $navbar-color;
+  z-index: $zindex-offcanvas-backdrop;
 }
 
 .navbar-dark .offcanvas-header .btn-close {
