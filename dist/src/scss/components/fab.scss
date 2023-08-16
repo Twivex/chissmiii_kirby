@@ -1,6 +1,25 @@
 .fab {
   @extend .btn, .btn-icon, .btn-circled;
+
+  height: 24px;
+  overflow: hidden;
+  width: 24px;
   z-index: $zindex-sticky;
+
+  &-small {
+    height: 22px;
+    width: 22px;
+  }
+
+  &-large {
+    height: 40px;
+    width: 40px;
+  }
+
+  &-xlarge {
+    height: 64px;
+    width: 464px;
+  }
 
   &-tl {
     top: 1rem;

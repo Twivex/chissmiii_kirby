@@ -52,7 +52,7 @@
                 if ($page->downloadable()->toBool()) {
                   snippet('atoms/fab', [
                     'title' => 'Album herunterladen',
-                    'iconSize' => 'large',
+                    'size' => 'large',
                     'iconName' => 'download_for_offline',
                     'additionalClasses' => ['fab-br'],
                     'url' => $file['url'],

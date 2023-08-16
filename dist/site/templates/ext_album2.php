@@ -163,7 +163,7 @@
         if ($page->downloadable()->toBool()) {
           snippet('atoms/fab', [
             'title' => 'Datei herunterladen',
-            'iconSize' => 'large',
+            'size' => 'large',
             'iconName' => 'download',
             'additionalClasses' => ['btn-primary'],
             'attributes' => [

@@ -20,7 +20,7 @@
       <?php snippet('atoms/fab', [
         'iconName' => 'arrow_back',
         'url' => $data->parent()->url(),
-        'iconSize' => 'large',
+        'size' => 'large',
         'additionalClasses' => ['position-absolute', 'btn-nav'],
         'title' => 'Zurück'
       ]) ?>

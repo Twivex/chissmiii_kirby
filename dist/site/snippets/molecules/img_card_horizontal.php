@@ -39,19 +39,22 @@
           <div class="d-flex flex-column flex-sm-row justify-content-between align-items-baseline">
 
             <?php if (isset($showPageLinkBtn) && $showPageLinkBtn): ?>
-              <a href="<?=$pageLinkUri?>" class="btn btn-primary"><?=$pageLinkTitle?></a>
+              <a href="<?=$pageLinkUri?>" class="btn btn-primary d-none d-sm-block"><?=$pageLinkTitle?></a>
             <?php endif; ?>
 
             <?php if (!empty($additionalLinks)): ?>
-              <span class="btn-box align-self-start align-self-sm-end mt-2 mt-sm-0">
+              <span class="btn-box align-self-start align-self-sm-end mt-2 mt-sm-0 <?= count($additionalLinks) === 1 ? 'flex-column' : '' ?>">
                 <?php foreach ($additionalLinks as $link): ?>
 
                   <?php
                     if (isset($link['type']) && $link['type'] === 'icon'):
 
                       $additionalIconClasses = isset($link['additionalClasses']) ? $link['additionalClasses'] : [];
-                      $additionalIconClasses[] = 'btn-primary';
-                      $additionalIconClasses[] = 'ms-2';
+                      $additionalIconClasses = array_merge($additionalIconClasses, [
+                        'btn-primary',
+                        'ms-2',
+                        'align-self-end'
+                      ]);
 
                       snippet('atoms/btn-icon', [
                         'iconName' => $link['icon'],
