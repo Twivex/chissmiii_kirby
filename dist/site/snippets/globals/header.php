@@ -38,13 +38,17 @@
     <?php endif; ?>
 
     <?php
-      if ($page->settings_enabled()->toBool() === true) {
-        $source = $page;
-      } elseif ($page->parents()->count() > 0 && $page->parent()->settings_enabled()->toBool() === true) {
-        $source = $page->parent();
-      } else {
-        $source = $site;
+      function find_page_with_settings_enabled($page) {
+        if ($page->settings_enabled()->toBool() === true) {
+          return $page;
+        }
+        if ($page->parents()->count() > 0) {
+          return find_page_with_settings_enabled($page->parent());
+        }
+        return null;
       }
+
+      $source = find_page_with_settings_enabled($page) ?? $site;
 
       snippet('globals/css-variables', compact('source'));
 
