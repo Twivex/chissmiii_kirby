@@ -4,7 +4,16 @@
     snippet('globals/header');
   }
 
-  snippet('atoms/section-heading', [ 'data' => $page, 'injected' => $isInjected ]);
+  $showParentTitle =
+    $page->parent() !== null &&
+    $page->parent()->intendedTemplate() !== 'pages-gallery' &&
+    $page->parent()->intendedTemplate() !== 'virtual-page';
+
+  snippet('atoms/section-heading', [
+    'data' => $page,
+    'injected' => $isInjected,
+    'showParentTitle' => $showParentTitle,
+  ]);
 
   if ($page->isSecured() && !$page->userHasAccess()) {
 
