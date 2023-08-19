@@ -38,17 +38,7 @@
     <?php endif; ?>
 
     <?php
-      function find_page_with_settings_enabled($page) {
-        if ($page->settings_enabled()->toBool() === true) {
-          return $page;
-        }
-        if ($page->parents()->count() > 0) {
-          return find_page_with_settings_enabled($page->parent());
-        }
-        return null;
-      }
-
-      $source = find_page_with_settings_enabled($page) ?? $site;
+      $source = $page->getSourceOfSettings();
 
       snippet('globals/css-variables', compact('source'));
 

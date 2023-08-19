@@ -1,12 +1,6 @@
 <?php
   $navbarStyleClass = '';
-  if ($page->settings_enabled()->toBool()) {
-    $source = $page;
-  } elseif ($page->parents()->count() > 0 && $page->parent()->settings_enabled()->toBool()) {
-    $source = $page->parent();
-  } else {
-    $source = $site;
-  }
+  $source = $page->getSourceOfSettings();
 
   $navbarStyle = $source->navbar_style()->value();
   if ($navbarStyle) {

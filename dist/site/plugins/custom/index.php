@@ -32,9 +32,23 @@ function sass_mix($color_1, $color_2, $weight = null) {
   return $color;
 };
 
+function getSourceOfSettingsRecursively($page) {
+  if ($page->settings_enabled()->toBool() === true) {
+    return $page;
+  }
+  if ($page->parents()->count() > 0) {
+    return getSourceOfSettingsRecursively($page->parent());
+  }
+  return kirby()->site();
+}
+
 Kirby::plugin('chissmiii/custom', [
 
   'pageMethods' => [
+
+    'getSourceOfSettings' => function () {
+      return getSourceOfSettingsRecursively($this);
+    },
 
     'visibleChildren' => function () {
       if ($this->kirby()->user() && $this->kirby()->user()->isAdmin()) {
