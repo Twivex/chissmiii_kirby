@@ -34,9 +34,9 @@ document.querySelectorAll("[data-form]").forEach((form) => {
 document.querySelectorAll(".card--clickable").forEach((node) => {
   node.addEventListener("click", (e) => {
     if (
-      !e.target.tagName !== "A" &&
+      e.target.tagName !== "A" &&
       !e.target.classList.contains("btn") &&
-      !e.target.parentNode.tagName === "A" &&
+      e.target.parentNode.tagName !== "A" &&
       !e.target.parentNode.classList.contains("btn")
     ) {
       node.querySelector(".btn-primary").click();
