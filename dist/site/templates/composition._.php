@@ -23,6 +23,9 @@
         $containsAlbum = true;
         $data['albumPage'] = $child;
         snippet('pages/album.cover', $data);
+      } elseif (strpos($blueprintName, 'composition') === 0) {
+        $data['page'] = $child;
+        snippet('pages/page.cover', $data);
       } else {
         $data['page'] = $child;
         echo $child->template()->render($data);
