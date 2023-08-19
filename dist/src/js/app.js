@@ -30,6 +30,20 @@ document.querySelectorAll("[data-form]").forEach((form) => {
   new Form(`#${form.id}`);
 });
 
+// click listener for clickable cards
+document.querySelectorAll(".card--clickable").forEach((node) => {
+  node.addEventListener("click", (e) => {
+    if (
+      !e.target.tagName !== "A" &&
+      !e.target.classList.contains("btn") &&
+      !e.target.parentNode.tagName === "A" &&
+      !e.target.parentNode.classList.contains("btn")
+    ) {
+      node.querySelector(".btn-primary").click();
+    }
+  });
+});
+
 document.querySelectorAll("[data-upload-form]").forEach((form) => {
   let fileInput = form.querySelector("input[type=file]");
   let uploadForm = new Form(`#${form.id}`);

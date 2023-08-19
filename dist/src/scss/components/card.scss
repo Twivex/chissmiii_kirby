@@ -30,6 +30,10 @@
     }
   }
 
+  &--clickable {
+    cursor: pointer;
+  }
+
   @include media-breakpoint-down(md) {
     &--horizontal {
       .card-image-col {

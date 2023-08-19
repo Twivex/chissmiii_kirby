@@ -10,27 +10,37 @@
     }
   }
   $additionalClasses = implode(' ', $additionalClasses);
+  if (!empty($pageLinkUri)) {
+    $additionalClasses .= ' card--clickable';
+  }
 ?>
 
 <div class="card card--horizontal <?=$additionalClasses?>">
   <div class="row g-0">
     <div class="card-image-col col-sm-12 col-md-<?=$imgWidth?>">
     <?php if (!empty($imageUrl)): ?>
+
       <?php if (!empty($pageLinkUri)): ?>
         <a href="<?=$pageLinkUri?>">
       <?php endif; ?>
-        <img src="<?=$imageUrl?>" class="card-image" alt="<?=$imageAlt?>">
+
+      <img src="<?=$imageUrl?>" class="card-image" alt="<?=$imageAlt?>">
+
       <?php if (!empty($pageLinkUri)): ?>
         </a>
       <?php endif; ?>
+
     <?php endif; ?>
     </div>
     <div class="card-text-col col-sm-12 col-md-<?=$textWidth?>">
       <div class="card-body d-flex flex-column h-100">
+
         <h5 class="card-title"><?=$title?></h5>
+
         <?php if (isset($description) && !empty($description)): ?>
           <p class="card-text"><?=kt($description)?></p>
         <?php endif; ?>
+
         <?php if (isset($modifiedDate) && !empty($modifiedDate)): ?>
           <p class="card-text"><small class="text-muted">Zuletzt aktualisiert am <?=$modifiedDate?></small></p>
         <?php endif; ?>
