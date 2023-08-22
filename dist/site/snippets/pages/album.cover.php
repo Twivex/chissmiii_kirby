@@ -10,7 +10,7 @@
         $imageAlt = '';
         $imageUrl = '';
         if ($albumPage->album_cover()->isNotEmpty()) {
-          $imageUrl = $albumPage->album_cover()->toFile()->url();
+          $imageUrl = $albumPage->album_cover()->toFile()->resize(1200)->url();
         }
 
         $blueprintName = strtolower($albumPage->intendedTemplate());

@@ -6,9 +6,8 @@
       $pageType = $page->pages_gallery_type();
       $imageUrl = '';
       $imageAlt = $title;
-      $cover = $page->pages_gallery_cover()->toFile();
-      if ($cover) {
-        $imageUrl = $cover->url();
+      if (($cover = $page->pages_gallery_cover())->isNotEmpty()) {
+        $imageUrl = $cover->toFile()->resize(1200)->url();
         $imageAlt = $cover->title()->isNotEmpty() ? $cover->title() : $imageAlt;
       }
       $showPageLinkBtn = true;
