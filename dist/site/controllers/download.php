@@ -37,7 +37,7 @@ return function ($kirby, $target) {
         $zip->addFile($file->realpath(), $file->filename());
       }
     } elseif (
-      $blueprintName === 'ext_album' &&
+      strpos($blueprintName, 'ext_album') === 0 &&
       !empty($targetPage->album_path())
     ) {
       $albumPath = $targetPage->getAlbumPath(true);
