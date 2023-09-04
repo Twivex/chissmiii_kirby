@@ -20,15 +20,7 @@
     <div class="card-image-col col-sm-12 col-md-<?=$imgWidth?>">
     <?php if (!empty($imageUrl)): ?>
 
-      <?php if (!empty($pageLinkUri)): ?>
-        <a href="<?=$pageLinkUri?>">
-      <?php endif; ?>
-
       <img src="<?=$imageUrl?>" class="card-image" alt="<?=$imageAlt?>">
-
-      <?php if (!empty($pageLinkUri)): ?>
-        </a>
-      <?php endif; ?>
 
     <?php endif; ?>
     </div>

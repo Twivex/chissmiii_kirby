@@ -119,6 +119,7 @@ $nav-offcanvas-bg-color:                   var(--cm-navigation-offcanvas-bg-colo
 // Buttons
 $navbar-toggler-focus-width: 0;
 $input-btn-focus-width: .1rem;
+$btn-focus-box-shadow: none;
 $btn-focus-width: 0;
 
 
@@ -132,6 +133,7 @@ $dropdown-border-width: 0;
 $offcanvas-box-shadow: none;
 $offcanvas-border-width: 0;
 $text-muted: var(--cm-text-muted);
+$progress-bar-bg: var(--bs-light);
 
 
 // 3. Include remainder of required Bootstrap stylesheets
@@ -161,7 +163,7 @@ $text-muted: var(--cm-text-muted);
 // @import "bootstrap/scss/pagination";
 // @import "bootstrap/scss/badge";
 @import "bootstrap/scss/alert";
-// @import "bootstrap/scss/progress";
+@import "bootstrap/scss/progress";
 @import "bootstrap/scss/list-group";
 @import "bootstrap/scss/close";
 @import "bootstrap/scss/toasts";

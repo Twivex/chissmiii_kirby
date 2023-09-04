@@ -74,7 +74,8 @@
             'uri' => $kirby->language()->url() . "/download/$albumUri.zip",
             'additionalClasses' => ['btn-circled', 'btn-circled-large'],
             'attributes' => [
-              'data-download' => 'false',
+              'data-download' => '',
+              'data-loading' => 'false',
             ]
           ];
         }

@@ -6,6 +6,17 @@ import MasonryGallery from "./modules/masonry-gallery";
 import Slider from "./modules/slider";
 import { Alert } from "bootstrap";
 
+const LoadingScreen = {
+  show: () => {
+    document.body.style.overflow = "hidden";
+    document.getElementById("loading-screen").classList.remove("d-none");
+  },
+  hide: () => {
+    document.getElementById("loading-screen").classList.add("d-none");
+    document.body.style.overflow = "";
+  },
+};
+
 CookieConsent.init();
 EntryCollector.init();
 
@@ -33,6 +44,7 @@ document.querySelectorAll("[data-form]").forEach((form) => {
 // click listener for clickable cards
 document.querySelectorAll(".card--clickable").forEach((node) => {
   node.addEventListener("click", (e) => {
+    LoadingScreen.show();
     if (
       e.target.tagName !== "A" &&
       !e.target.classList.contains("btn") &&
@@ -147,7 +159,7 @@ document.querySelectorAll("[data-download]").forEach((node) => {
       const iconName = iconNode.innerText;
       const downloadUrl = node.getAttribute("href");
       node.classList.add("disabled");
-      node.dataset.download = true;
+      node.dataset.loading = true;
       iconNode.innerText = "downloading";
       fetch(downloadUrl)
         .then((response) => response.blob())
@@ -161,7 +173,7 @@ document.querySelectorAll("[data-download]").forEach((node) => {
         .then(() => {
           iconNode.innerText = iconName;
           node.classList.remove("disabled");
-          node.dataset.download = false;
+          node.dataset.loading = false;
         });
     }
   });
@@ -171,9 +183,37 @@ document.querySelectorAll("[data-download]").forEach((node) => {
 });
 
 document
+  .querySelectorAll("[data-loading]:not([data-download])")
+  .forEach((node) => {
+    node.addEventListener("click", (e) => {
+      node.dataset.loading = true;
+    });
+  });
+
+document
   .querySelectorAll(".mm-masonry")
   .forEach((container) => new MasonryGallery(container));
 
 document
   .querySelectorAll(".carousel:not([data-slider-init='true'])")
   .forEach((node) => new Slider(node));
+
+LoadingScreen.show();
+
+document.querySelectorAll("[data-loading-screen]").forEach((node) => {
+  node.addEventListener("click", (e) => {
+    LoadingScreen.show();
+  });
+});
+
+document.addEventListener("readystatechange", (event) => {
+  if (event.target.readyState === "complete") {
+    LoadingScreen.hide();
+  }
+});
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    LoadingScreen.hide();
+  }
+});
