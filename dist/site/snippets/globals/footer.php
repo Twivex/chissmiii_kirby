@@ -11,6 +11,7 @@
     ?>
 
     <?php snippet('globals/cookie-banner') ?>
+    <?php snippet('globals/loading-screen') ?>
 
     <script src="<?= $site->url('') ?>/<?= option('resource_paths')['pwacompat'] ?>pwacompat.min.js" async></script>
 

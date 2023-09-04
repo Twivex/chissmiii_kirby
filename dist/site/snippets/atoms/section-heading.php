@@ -22,7 +22,11 @@
         'url' => $data->parent()->url(),
         'size' => 'large',
         'additionalClasses' => ['position-absolute', 'btn-nav'],
-        'title' => 'Zurück'
+        'title' => 'Zurück',
+        'attributes' => [
+          'data-loading' => 'false',
+          'data-loading-screen' => '',
+        ]
       ]) ?>
     </div>
   </div>
