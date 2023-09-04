@@ -50,7 +50,7 @@
     .carousel.has-indicators {
       .carousel-control-prev,
       .carousel-control-next {
-          padding-top: calc(#{$carousel-image-indicator-height} - 72px);
+          padding-bottom: $carousel-image-indicator-height;
       }
     }
 
