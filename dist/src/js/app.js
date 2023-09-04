@@ -211,6 +211,14 @@ document.querySelectorAll("[data-loading-screen]").forEach((node) => {
   });
 });
 
+document.querySelectorAll("[data-history-back]").forEach((node) => {
+  node.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.history.back();
+    return false;
+  });
+});
+
 document.addEventListener("readystatechange", (event) => {
   if (event.target.readyState === "complete") {
     LoadingScreen.hide();

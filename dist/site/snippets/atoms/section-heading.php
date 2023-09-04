@@ -26,6 +26,7 @@
         'attributes' => [
           'data-loading' => 'false',
           'data-loading-screen' => '',
+          'data-history-back' => ''
         ]
       ]) ?>
     </div>
