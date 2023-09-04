@@ -12,13 +12,15 @@
 
 <IfModule mod_headers.c>
 
+  # cache images for one month
+  <FilesMatch "\\.(ico|jpe?g|png|gif|swf)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+
+  # disable cache for cloud files
   <If "%{REQUEST_URI} =~ m#^/cloud#">
     Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
   </If>
-  # cache images for one month
-  <FilesMatch "\\.(ico|gif|swf)$">
-    Header set Cache-Control "max-age=2592000, public"
-  </FilesMatch>
 
   # cache css for one week
   <FilesMatch "\\.(css)$">
