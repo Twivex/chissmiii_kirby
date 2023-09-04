@@ -37,7 +37,7 @@
             <img
               class="mm-masonry__img img-fluid mb-md-0 mb-3"
               src="<?= $imgPlaceholderImage->url() ?>"
-              data-src="/thumbnail?file=<?= urlencode($file['url']) ?>"
+              data-src="/thumbnail<?= $file['url'] ?>"
             />
           </div>
 
@@ -55,7 +55,7 @@
             <img
               class="mm-masonry__img img-fluid mb-md-0 mb-3"
               src="<?= $videoPlaceholderImage->url() ?>"
-              data-src="/thumbnail?file=<?= urlencode($file['url']) ?>"
+              data-src="/thumbnail<?= $file['url'] ?>"
             />
 
           </div>
@@ -102,7 +102,7 @@
                     <div class="d-flex align-items-center">
                       <video
                         preload="metadata"
-                        poster="/thumbnail?file=<?= urlencode($file['url']) ?>"
+                        poster="/thumbnail<?= $file['url'] ?>"
                         controls>
                         <source
                         src="<?= $file['url'] ?>"
@@ -136,7 +136,7 @@
                       <img
                         alt="Slide <?= $k + 1 ?>"
                         src="<?= $imgPlaceholderImage->url() ?>"
-                        data-src="/thumbnail?file=<?= urlencode($file['url']) ?>&width=360&height=240"
+                        data-src="/thumbnail<?= $file['url'] ?>?width=360&height=240"
                       />
 
                     <?php elseif ($file['type'] === 'video'): ?>
@@ -148,7 +148,7 @@
                       <img
                         alt="Slide <?= $k + 1 ?>"
                         src="<?= $videoPlaceholderImage->url() ?>"
-                        data-src="/thumbnail?file=<?= urlencode($file['url']) ?>&width=360&height=240"
+                        data-src="/thumbnail<?= $file['url'] ?>?width=360&height=240"
                       />
 
                     <?php endif; ?>
