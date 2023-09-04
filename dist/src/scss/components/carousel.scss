@@ -21,4 +21,8 @@
     }
   }
 
+  &.pointer-event {
+    touch-action: pan-y pinch-zoom;
+  }
+
 }
