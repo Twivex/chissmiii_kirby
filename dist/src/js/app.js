@@ -44,7 +44,12 @@ document.querySelectorAll("[data-form]").forEach((form) => {
 // click listener for clickable cards
 document.querySelectorAll(".card--clickable").forEach((node) => {
   node.addEventListener("click", (e) => {
-    LoadingScreen.show();
+    if (
+      !e.target.classList.contains("btn-secondary") &&
+      !e.target.parentNode.classList.contains("btn-secondary")
+    ) {
+      LoadingScreen.show();
+    }
     if (
       e.target.tagName !== "A" &&
       !e.target.classList.contains("btn") &&
