@@ -67,6 +67,7 @@ return [
     'method' => 'GET',
     'action' => function ($file) {
       $kirby = kirby();
+      $file = urldecode($file);
 
       if (empty($file) || !file_exists($file)) {
         Header::status(404);
