@@ -141,54 +141,33 @@ document.querySelectorAll('[data-bs-toggle="modal"]').forEach((node) => {
 
 document.querySelectorAll("[data-download]").forEach((node) => {
   node.addEventListener("click", (e) => {
-    if (!node.getAttribute("download")) {
-      e.preventDefault();
-    }
+    e.preventDefault();
     if (!node.classList.contains("disabled")) {
-      const xhr = new XMLHttpRequest();
-      let blob;
-      let iconNode = node.querySelector("i");
-      let iconName = iconNode.innerText;
-      xhr.responseType = "arraybuffer";
-      xhr.onload = function () {
-        blob = new Blob([this.response]);
-      };
-      xhr.onloadstart = function () {
-        node.classList.add("disabled");
-        node.dataset.download = true;
-        iconNode.innerText = "downloading";
-      };
-      xhr.onloadend = function () {
-        if (
-          this.getResponseHeader("Content-type") ===
-            "application/octet-stream" &&
-          this.status === 200
-        ) {
-          let tempEl = document.createElement("a");
-          let contentDispostion = xhr.getResponseHeader("Content-Disposition");
-          let filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-          let matches = filenameRegex.exec(contentDispostion);
-          let filename = "";
-
-          if (matches !== null && matches.length > 1) {
-            filename = matches[1].replace(/['"]/g, "");
-          }
-          document.body.appendChild(tempEl);
-          tempEl.style = "display: none";
+      const iconNode = node.querySelector("i");
+      const iconName = iconNode.innerText;
+      const downloadUrl = node.getAttribute("href");
+      node.classList.add("disabled");
+      node.dataset.download = true;
+      iconNode.innerText = "downloading";
+      fetch(downloadUrl)
+        .then((response) => response.blob())
+        .then((blob) => {
+          const tempEl = document.createElement("a");
           tempEl.href = window.URL.createObjectURL(blob);
-          tempEl.download = filename;
+          tempEl.download =
+            node.getAttribute("download") || downloadUrl.split("/").pop();
           tempEl.click();
-        }
-
-        iconNode.innerText = iconName;
-        node.classList.remove("disabled");
-        node.dataset.download = false;
-      };
-
-      xhr.open("GET", node.getAttribute("href"), true);
-      xhr.send();
+        })
+        .then(() => {
+          iconNode.innerText = iconName;
+          node.classList.remove("disabled");
+          node.dataset.download = false;
+        });
     }
   });
+
+  // ensure to prevent default behaviour
+  return false;
 });
 
 document
