@@ -4,6 +4,8 @@ use Kirby\Http\Response;
 
 return function ($file, $width = null, $height = null) {
 
+  header("Cache-Control: max-age=2592000, public");
+
   function isVideoFile($filepath) {
     return
       in_array(

@@ -3,23 +3,33 @@
 
 # turns cache on for 1 month
 <IfModule mod_expires.c>
- ExpiresActive On
- ExpiresByType image/gif "access plus 1 month"
- ExpiresByType image/jpeg "access plus 1 month"
- ExpiresByType image/png "access plus 1 month"
- ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresActive On
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
 </IfModule>
-<ifmodule mod_headers.c>
- <filesmatch "\\.(ico|jpe?g|png|gif|swf)$">
-  Header set Cache-Control "max-age=2592000, public"
- </filesmatch>
- <filesmatch "\\.(css)$">
-  Header set Cache-Control "max-age=604800, public"
- </filesmatch>
- <filesmatch "\\.(js)$">
-  Header set Cache-Control "max-age=604800, private"
- </filesmatch>
-</ifmodule>
+
+<IfModule mod_headers.c>
+
+  <If "%{REQUEST_URI} =~ m#^/cloud#">
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+  </If>
+  # cache images for one month
+  <FilesMatch "\\.(ico|gif|swf)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+
+  # cache css for one week
+  <FilesMatch "\\.(css)$">
+    Header set Cache-Control "max-age=604800, public"
+  </FilesMatch>
+  # cache js for one week
+  <FilesMatch "\\.(js)$">
+    Header set Cache-Control "max-age=604800, private"
+  </FilesMatch>
+</IfModule>
+
 
 # rewrite rules
 <IfModule mod_rewrite.c>

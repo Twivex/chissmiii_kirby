@@ -63,11 +63,10 @@ return [
     }
   ],
   [
-    'pattern' => 'thumbnail',
+    'pattern' => 'thumbnail/(:all)',
     'method' => 'GET',
-    'action' => function () {
+    'action' => function ($file) {
       $kirby = kirby();
-      $file = urldecode(get('file'));
 
       if (empty($file) || !file_exists($file)) {
         Header::status(404);
