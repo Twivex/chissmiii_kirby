@@ -1,6 +1,6 @@
 .btn {
   &-primary {
-    &, &:disabled {
+    &, &:disabled, .disabled {
       color: var(--cm-primary-contrast) !important;
       background-color: var(--bs-primary);
       border-color: var(--bs-primary);
@@ -16,7 +16,7 @@
   }
 
   &-secondary {
-    &, &:disabled {
+    &, &:disabled, .disabled {
       color: var(--cm-secondary-contrast) !important;
       background-color: var(--bs-secondary);
       border-color: var(--bs-secondary);
@@ -33,7 +33,7 @@
 
 
   &-light {
-    &, &:disabled {
+    &, &:disabled, .disabled {
       background-color: var(--bs-light);
       border-color: var(--bs-light);
       color: var(--cm-light-contrast);
@@ -49,7 +49,7 @@
   }
 
   &-dark {
-    &, &:disabled {
+    &, &:disabled, .disabled {
       background-color: var(--bs-dark);
       border-color: var(--bs-dark);
       color: var(--cm-dark-contrast);
@@ -65,7 +65,7 @@
   }
 
   &-outline-primary {
-    &, &:disabled {
+    &, &:disabled, .disabled {
       border-color: var(--bs-primary);
       color: var(--bs-primary);
     }
@@ -83,7 +83,7 @@
   }
 
   &-outline-secondary {
-    &, &:disabled {
+    &, &:disabled, .disabled {
       border-color: var(--bs-secondary);
       color: var(--bs-secondary);
     }
@@ -100,7 +100,7 @@
   }
 
   &-nav {
-    &, &:disabled {
+    &, &:disabled, .disabled {
       background-color: var(--bs-navbar-color);
       border-color: var(--bs-navbar-color);
       color: var(--bs-nav-link-color);
