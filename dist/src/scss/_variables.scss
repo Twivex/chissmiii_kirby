@@ -16,7 +16,8 @@ $carousel-image-indicator-img-max-width: 120px;
 $carousel-image-indicator-scrollbar-width: 6px;
 $carousel-image-indicator-height: calc(
   #{$carousel-image-indicator-img-max-height} +
-  #{$carousel-image-indicator-scrollbar-width}
+  #{$carousel-image-indicator-scrollbar-width} * 2 +
+  3px
 );
 
 :root {
