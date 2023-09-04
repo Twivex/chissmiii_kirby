@@ -180,6 +180,7 @@ export default class Form {
 
     if (!this.defaultSubmit) {
       event.preventDefault();
+      return false;
     }
   }
 
