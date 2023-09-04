@@ -2,23 +2,21 @@
   .carousel-control-prev,
   .carousel-control-next {
     box-sizing: content-box;
-    opacity: 1;
-    width: $carousel-fullscreen-control-width;
     max-width: $carousel-fullscreen-control-max-width;
     min-width: $carousel-fullscreen-control-min-width;
+    opacity: $carousel-control-opacity;
+    width: $carousel-fullscreen-control-width;
 
     &:after {
-      position: absolute;
       content: '';
-      background-color: $white;
       height: 100%;
-      width: 100%;
+      position: absolute;
       transition: opacity 0.25s ease;
-      opacity: $carousel-control-opacity;
+      width: 100%;
     }
 
-    &:hover:after,
-    &:focus:after {
+    &:hover,
+    &:focus {
       opacity: $carousel-control-hover-opacity;
     }
   }

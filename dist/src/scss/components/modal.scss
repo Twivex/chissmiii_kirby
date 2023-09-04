@@ -30,14 +30,6 @@
         display: flex;
         justify-content: center;
       }
-
-      &:after {
-        content: '';
-        display: block;
-        max-width: $carousel-fullscreen-control-max-width;
-        min-width: $carousel-fullscreen-control-min-width;
-        width: $carousel-fullscreen-control-width;
-      }
     }
 
     .modal-body {
@@ -55,10 +47,9 @@
     }
 
     .carousel.has-indicators {
-      .carousel-inner,
       .carousel-control-prev,
       .carousel-control-next {
-          height: calc(100% - #{$carousel-image-indicator-height} + 2px);
+          padding-top: calc(#{$carousel-image-indicator-height} - 72px);
       }
     }
 
