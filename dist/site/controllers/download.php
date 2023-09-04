@@ -3,6 +3,9 @@ use Kirby\Http\Header;
 
 return function ($kirby, $target) {
   if ($kirby->request()->is('GET')) {
+    $targetArray = explode('.', $target);
+    array_pop($targetArray);
+    $target = implode('.', $targetArray);
     $targetPage = $kirby->page($target);
 
     // check if target page exists
