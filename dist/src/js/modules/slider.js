@@ -17,7 +17,7 @@ export default class Slider {
     this.downloadButton = document.getElementById(
       container.dataset.downloadButton
     );
-    this.filterByNotLoaded = (item) => !item.dataset?.loaded;
+    this.filterByIsNotLoaded = (item) => !item.dataset?.loaded;
     this.filterByIsNotLoading = (item) => !item.dataset?.loading;
 
     // activate slide event listener
@@ -49,7 +49,7 @@ export default class Slider {
   }
 
   hasUnloadedItems(items) {
-    return items.filter(this.filterByNotLoaded).length > 0;
+    return items.filter(this.filterByIsNotLoaded).length > 0;
   }
 
   goToSlide(index) {
@@ -163,7 +163,7 @@ export default class Slider {
     );
 
     surroundingItems
-      .filter(this.filterByNotLoaded)
+      .filter(this.filterByIsNotLoaded)
       .filter(this.filterByIsNotLoading)
       .forEach((item) => {
         const itemImage = item.querySelector("img");
@@ -215,7 +215,7 @@ export default class Slider {
   }
 
   loadItems(e) {
-    this.loadSurroundingItems(this.items, e.to, 8);
+    this.loadSurroundingItems(this.items, e.to, 10);
   }
 
   loadIndicators(e) {
@@ -223,7 +223,7 @@ export default class Slider {
     if (e.init) {
       mode = "right";
     }
-    this.loadSurroundingItems(this.indicatorItems, e.to, 36, mode);
+    this.loadSurroundingItems(this.indicatorItems, e.to, 48, mode);
   }
 
   initLazyLoadIndicatorsScrollObserver(items) {
@@ -238,7 +238,7 @@ export default class Slider {
           this.loadSurroundingItems(
             items,
             entry.target.dataset.bsSlideTo,
-            8,
+            24,
             "right"
           );
           observer.unobserve(entry.target);

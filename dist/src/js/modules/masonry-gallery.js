@@ -28,7 +28,7 @@ export default class MasonryGallery {
       });
     });
 
-    // initially load first 12 images
+    // initially load first images
     this.getUnloadedItems()
       .slice(0, 24)
       .forEach((item) => this.loadImage(item));
