@@ -1,5 +1,6 @@
 image:
   back: white
+accept: image/jpeg, image/png, image/gif
 fields:
   title:
     label: Titel
