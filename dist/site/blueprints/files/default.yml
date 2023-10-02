@@ -1,6 +1,6 @@
 image:
   back: white
-accept: image/jpeg, image/png, image/gif
+accept: image/jpeg, image/png, image/gif, video/mp4
 fields:
   title:
     label: Titel
