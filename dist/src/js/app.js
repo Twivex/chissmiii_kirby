@@ -179,6 +179,7 @@ document.querySelectorAll("[data-download]").forEach((node) => {
           iconNode.innerText = iconName;
           node.classList.remove("disabled");
           node.dataset.loading = false;
+          LoadingScreen.hide();
         });
     }
   });
