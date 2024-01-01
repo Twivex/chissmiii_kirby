@@ -28,6 +28,8 @@ fields:
       ae: Arabische Emirate
       at: Österreich
       be: Belgien
+      ch: Schweiz
+      cv: Kap Verden
       cz: Tschechien
       de: Deutschland
       eg: Ägypten
@@ -39,9 +41,10 @@ fields:
       hu: Ungarn
       id: Indonesien
       it: Italien
+      li: Liechtenstein
       ma: Marokko
       nl: Niederlande
-      pl : Polen
+      pl: Polen
       se: Schweden
       tr: Türkei
       vn: Vietnam
