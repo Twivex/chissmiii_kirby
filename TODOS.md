@@ -16,30 +16,37 @@
 - [X] Footer Nav
 - [X] Impressum
 - [X] Countdown mit Uhrzeit
-- [ ] Gallerie -> bis Mai
-- [ ] Image Upload -> Provider? -> degoo?
+- [X] Gallerie
+- [X] Image Upload
   - https://degoo.com/
   - https://github.com/MDKPredator/degoo_drive
-- [X] Mulit-Lang
+- [X] Mulit-Language
   - [ ] Deutsche Snippets extrahieren
   - [ ] Snippets übersetzen
   - [ ] Sprachwähler-Menü
   - [ ] Inhalte übersetzen -> Marlon?
   - [ ] übersetzte Inhalte einpflegen
 - [~] Dev Server
-- [ ] Theming
+- [X] Theming
   - [X] Gesamte Website
   - [X] Unterseiten
-  - [-] Farbwelten entwickeln
+  - [X] Farbwelten entwickeln
     - [X] Verlobung
     - [X] Standesamt
-    - [-] Hochzeit
-- [ ] HTTPS Redirect einrichten
-- [ ] HTTPS Problem -> Resourcen werden trotzdem über HTTP eingebunden
-- [ ] Einleitungstext für Kontaktformular?
+    - [X] Hochzeit
+- [X] HTTPS Redirect einrichten
 - [X] Content Ordner als git repo
 - [X] Favicon
-- [ ] Share Link Preview -> Micro Properties
+- [X] Text Muted Color
+- [X] Gallerie -> Komposition?
+- [~] Album Cards:
+  - [X] Custom Color
+  - [ ] Image Position
+- [ ] Album Image Upload Statusbar
+- [ ] Album Image Upload Big Files
+- [X] Album Image Preview
+  - [X] Fullscreen
+  - [X] Slider = Mini-Images
 
 ## Infrastruktur
 - Git
