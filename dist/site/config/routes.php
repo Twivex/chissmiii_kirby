@@ -90,7 +90,7 @@ return [
         $height = null;
       }
 
-      $response = kirby()->controller(
+      kirby()->controller(
         'thumbnail',
         compact(
           'file',
@@ -98,8 +98,6 @@ return [
           'height'
         )
       );
-
-      return $response;
     }
 ],
 ];
