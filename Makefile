@@ -63,12 +63,16 @@ npm-watch:
 
 pull-content-2dev:
 	ssh dock@bay "cd /ext_storage/kirby-content && git add . && git commit -m \"updated content\" && git push"; \
-	cd ${EXTERNAL_VOLUMES_PATH}/kirby-content && git pull; \
+	cd ${EXTERNAL_VOLUMES_PATH}/kirby-content && git pull
+
+sync-videos-2dev:
 	rsync -avzP --delete --include="*/" --include="*.mp4" --exclude="*" dock@bay:/ext_storage/kirby-content/ ${EXTERNAL_VOLUMES_PATH}/kirby-content/
 
 push-content-2bay:
 	cd ${EXTERNAL_VOLUMES_PATH}/kirby-content && \
-	git add . && git commit -m "updated content" && git push; \
+	git add . && git commit -m "updated content" && git push
+
+sync-videos-2bay:
 	rsync -avzP --delete --include="*/" --include="*.mp4" --exclude="*" ${EXTERNAL_VOLUMES_PATH}/kirby-content/ dock@bay:/ext_storage/kirby-content/
 
 fix-permissions:
