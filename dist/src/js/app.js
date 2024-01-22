@@ -62,15 +62,35 @@ document.querySelectorAll(".card--clickable").forEach((node) => {
 });
 
 document.querySelectorAll("[data-upload-form]").forEach((form) => {
-  let fileInput = form.querySelector("input[type=file]");
   let uploadForm = new Form(`#${form.id}`);
-  // uploadForm.addInputChangeListener("uploadFile");
   uploadForm.preventDefaultSubmit();
-  uploadForm.onSubmit((e, form) => {
-    form.disable();
 
-    const xhr = new XMLHttpRequest();
+  const CHUNK_SIZE = 100 * 1024 * 1024; // 100 MB in Bytes
+
+  uploadForm.onSubmit((e, form) => {
+    let xhr = new XMLHttpRequest();
+    const fileInput = form.getElement().querySelector("input[type=file]");
+    const files = fileInput.files;
+    const progressWrapper = document.querySelector(".progress-wrapper");
+    const progressBar = document.querySelector(".progress-bar");
+    xhr.timeout = 10 * 60 * 1000;
+    form.disable();
+    progressBar.style.width = "0%";
+    progressBar.innerText = "0%";
+    fileInput.classList.add("d-none");
+    progressWrapper.classList.remove("d-none");
+
+    xhr.upload.addEventListener("progress", (event) => {
+      if (event.lengthComputable) {
+        const percentComplete = Math.round((event.loaded / event.total) * 100);
+        progressBar.style.width = percentComplete + "%";
+        progressBar.setAttribute("aria-valuenow", percentComplete);
+        progressBar.innerText = percentComplete + "%";
+      }
+    });
+
     xhr.onloadend = function () {
+      console.log(xhr.response);
       if (this.status === 200) {
         if (xhr.getResponseHeader("content-type").indexOf("json") > -1) {
           const { error, success } = JSON.parse(xhr.response);
@@ -133,11 +153,101 @@ document.querySelectorAll("[data-upload-form]").forEach((form) => {
           form.reset();
         }
       }
+
+      progressBar.style.width = "0%";
+      progressBar.innerText = "0%";
+      progressWrapper.classList.add("d-none");
+      fileInput.classList.remove("d-none");
+
       form.enable();
     };
+
+    let currentFileNo;
+    let currentChunkNo;
+    let file;
+    let chunksTotal;
+    let formData = form.getFormData();
+
+    const setNextFile = () => {
+      file = files[currentFileNo];
+      chunksTotal = Math.ceil(file.size / CHUNK_SIZE);
+      formData.set("filename", file.name);
+      formData.set("chunks", chunksTotal);
+    };
+
+    const setNextChunk = () => {
+      const start = currentChunkNo * CHUNK_SIZE;
+      const chunkEnd = Math.min(start + CHUNK_SIZE, file.size);
+      const chunk = file.slice(start, chunkEnd);
+      const blobEnd = chunkEnd - 1;
+      const contentRange = "bytes " + start + "-" + chunkEnd + "/" + file.size;
+
+      formData.set(fileInput.name, chunk);
+      formData.set("chunk", currentChunkNo);
+      xhr.setRequestHeader("Content-Range", contentRange);
+    };
+
+    xhr.onreadystatechange = () => {
+      xhr.open(form.getMethod(), form.getAction(), true);
+      xhr.setRequestHeader("Accept", "application/json");
+      console.log(xhr.response);
+
+      if (xhr.readyState === 4) {
+        if (currentChunkNo < chunksTotal - 1) {
+          // file not ready yet, send next chunk
+          currentChunkNo++;
+        } else if (currentFileNo < files.length - 1) {
+          // all chunks send, reset chunk counter and send next file
+          currentChunkNo = 0;
+          currentFileNo++;
+          setNextFile(files, currentFileNo);
+        }
+        setNextChunk(file, formData, currentChunkNo);
+
+        xhr.send(formData);
+      }
+    };
+
+    // initial request with currentFileNo = 0 and currentChunkNo = 0
     xhr.open(form.getMethod(), form.getAction(), true);
     xhr.setRequestHeader("Accept", "application/json");
-    xhr.send(form.getFormData());
+    currentFileNo = 0;
+    currentChunkNo = 0;
+    setNextFile();
+    setNextChunk();
+    xhr.send(formData);
+
+    // for (let i = 0; i < files.length; i++) {
+    //   const file = files[i];
+    //   let start = 0;
+    //   const chunksTotal = Math.ceil(file.size / CHUNK_SIZE);
+    //   let currentChunkNo = 0;
+
+    //   while (start < file.size) {
+    //     const chunkEnd = Math.min(start + CHUNK_SIZE, file.size);
+    //     const chunk = file.slice(start, chunkEnd);
+    //     const blobEnd = chunkEnd - 1;
+    //     const contentRange =
+    //       "bytes " + start + "-" + chunkEnd + "/" + file.size;
+    //     const formData = form.getFormData();
+
+    //     formData.set(fileInput.name, chunk);
+    //     formData.append("filename", file.name);
+    //     formData.append("chunks", chunksTotal);
+    //     formData.append("chunk", currentChunkNo);
+    //     console.log(fileInput.name, chunk);
+
+    //     xhr.open(form.getMethod(), form.getAction(), true);
+    //     xhr.setRequestHeader("Accept", "application/json");
+    //     xhr.setRequestHeader("Content-Range", contentRange);
+    //     xhr.send(formData);
+
+    //     start += CHUNK_SIZE;
+    //     currentChunkNo++;
+    //   }
+    // }
+
+    progressBar.style.width = "0%";
   });
 });
 

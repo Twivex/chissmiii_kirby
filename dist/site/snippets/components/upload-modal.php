@@ -45,6 +45,14 @@
     class="needs-validation"
     novalidate
   >
+
+    <div class="progress-wrapper mb-3 d-none">
+      <p class="fs-5 mb-1">Fortschritt:</p>
+      <div class="progress">
+        <div id="upload-form-<?= $page->uid() ?>-progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+
     <fieldset>
 
       <div class="mb-3">
@@ -59,5 +67,6 @@
       <button type="submit" class="btn btn-primary"><?= t('image-upload-modal-submit') ?></button>
 
     </fieldset>
+
   </form>
 <?php snippet('molecules/modal/close') ?>

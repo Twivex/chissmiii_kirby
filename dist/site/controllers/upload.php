@@ -3,10 +3,11 @@ use Kirby\Http\Header;
 use Kirby\Filesystem\F;
 
 return function ($kirby, $target) {
-  if ($kirby->request()->is('POST')) {
+  $request = $kirby->request();
+  if ($request->is('POST')) {
 
     // check the honeypot and exit if it has been filled in
-    if (empty(get('website')) === false) {
+    if (empty($request->get('website')) === false) {
       go($kirby->page()->url());
       exit;
     }
@@ -20,12 +21,12 @@ return function ($kirby, $target) {
     }
 
     // check if content of target page is downloadable
-    if ($targetPage->downloadable()->toBool() === false) {
+    if ($targetPage->uploadable()->toBool() === false) {
       Header::status(403);
       exit;
     }
 
-    $uploads = $kirby->request()->files()->get('uploadFile');;
+    $uploads = $request->files()->get('uploadFile');
 
     $blueprintName = strtolower($targetPage->intendedTemplate());
 
@@ -96,10 +97,10 @@ return function ($kirby, $target) {
       //   return in_array($fileExtension, ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'mov', 'mpeg', 'mpeg2', 'avi']);
       // });
 
-      if (count($uploads) > 20) {
-        Header::status(400);
-        $alert = 'Du kannst maximal 20 Dateien auf einmal hochladen.';
-      }
+      // if (count($uploads) > 20) {
+      //   Header::status(400);
+      //   $alert = 'Du kannst maximal 20 Dateien auf einmal hochladen.';
+      // }
 
       foreach ($uploads as $upload) {
         // check for duplicate
@@ -123,12 +124,55 @@ return function ($kirby, $target) {
         //   $alert = "Die Datei $filename existiert bereits.";
         //   break;
         // }
+        $contentRange = $request->header('Content-range');
+        [$format, $contentRange] = explode(' ', $contentRange);
+        [$start, $contentRange] = explode('-', $contentRange);
+        [$end, $fileSize] = explode('/', $contentRange);
+        $fileName = $request->get('filename');
+        $chunks = $request->get('chunks');
+        $chunk = $request->get('chunk');
+        echo var_export(compact('uploads', 'chunk','chunks', true));
+        exit;
 
+        $name = 'upload' . crc32($fileName . microtime()) . '_' . F::safeName($fileName);
+        $filePath = $albumPath . '/' . $name;
+        $partFilePath = $filePath . '.part';
         try {
-          $name = 'upload' . crc32($upload['name'] . microtime()) . '_' . F::safeName($upload['name']);
-          move_uploaded_file($upload['tmp_name'], "$albumPath/$name");
+          $out = fopen($partFilePath, $chunk === 0 ? 'wb' : 'ab');
+          if ($out) {
+            // Read binary input stream and append it to temp file
+            $in = fopen($upload['tmp_name'], "rb");
+
+            if ($in) {
+              while ($buff = fread($in, 4096))
+                fwrite($out, $buff);
+            } else {
+              $alert = 'Datei konnte nicht hochgeladen werden.';
+            }
+
+            fclose($in);
+            fclose($out);
+
+            unlink($upload['tmp_name']);
+          } else {
+            $alert = 'Datei konnte nicht hochgeladen werden.';
+          }
         } catch (Exception $e) {
           $alert = 'Error on ' . $upload['name'] . ': ' .$e->getMessage();
+        }
+        if ($chunk < $chunks - 1) {
+          $response = new \Kirby\Cms\Response('', null, '100', [
+            'Cache-Expires' => '600000',
+          ]);
+          return $response->send();
+        } else {
+          if (empty($alert)) {
+            // Strip the temp .part suffix off
+            Header::status(200);
+            rename($partFilePath, $filePath);
+          } else {
+            unlink($partFilePath);
+          }
         }
       }
     }
